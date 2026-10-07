@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>California Legislative Scorecard</title>
+<meta name="description" content="Nonpartisan 2025-26 scorecard for every California legislator, rebuilt from official bulk data by a reproducible pipeline.">
+<style>
+:root{--bg:#f6f7fa;--panel:#fff;--ink:#1b2333;--muted:#5d6678;--line:#dde1ea;--navy:#14213d;--gold:#f2a900;--d:#3a6ea5;--r:#b5483b;--hi:#fff4d6}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1521;--panel:#171f2f;--ink:#e8ecf4;--muted:#9aa4b8;--line:#2a3550;--navy:#e8ecf4;--hi:#3a3115;--d:#6f9fd4;--r:#d97a6c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{background:#14213d;color:#fff;padding:26px 16px 20px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}header .wrap{padding:0}
+h1{margin:0 0 6px;font:700 28px/1.2 Georgia,Cambria,serif}
+header p{margin:0;color:#c9d2e6;max-width:72ch}
+main{padding:18px 0 60px}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.ctl label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{background:var(--panel);color:var(--ink);border:0;padding:7px 12px;font:500 14px system-ui,sans-serif;cursor:pointer;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed=true]{background:var(--navy);color:var(--panel);font-weight:600}
+input[type=search]{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:500 14px system-ui,sans-serif;min-width:200px}
+.note{background:var(--hi);border:1px solid #e6c766;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:nth-child(-n+4),td:nth-child(-n+4){text-align:left}
+th{position:sticky;top:0;background:var(--panel);cursor:pointer;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+th[aria-sort]{color:var(--ink)}
+tbody tr{cursor:pointer}tbody tr:hover{background:var(--hi)}
+.D{color:var(--d);font-weight:700}.R{color:var(--r);font-weight:700}
+.tag{font-size:11px;background:var(--hi);border:1px solid #e6c766;border-radius:999px;padding:1px 7px;margin-left:6px}
+dialog{max-width:900px;width:94vw;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);padding:18px}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog h2{margin:0 0 4px}.sub{color:var(--muted);margin:0 0 12px}
+dialog table td:nth-child(n){text-align:left;white-space:normal}
+.o-signed{color:#2f7d4f;font-weight:600}.o-vetoed{color:var(--r);font-weight:600}.o-not_enacted{color:var(--muted)}
+footer{color:var(--muted);font-size:13px;margin-top:16px}
+a{color:var(--d)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>California Legislative Scorecard</h1>
+<p>Every legislator, 2025-26 session. Bills authored, signed and vetoed, rebuilt from the Legislature's official bulk data. Ranks are within each chamber.</p>
+</div></header>
+<main><div class="wrap">
+<div class="controls">
+ <div class="ctl"><label>Search</label><input id="q" type="search" placeholder="Name or district (e.g. AD59)"></div>
+ <div class="ctl"><label>Chamber</label><div class="seg" id="chamber"><button data-v="all" aria-pressed="true">All</button><button data-v="Assembly">Assembly</button><button data-v="Senate">Senate</button></div></div>
+ <div class="ctl"><label>Party</label><div class="seg" id="party"><button data-v="all" aria-pressed="true">All</button><button data-v="D">D</button><button data-v="R">R</button></div></div>
+ <div class="ctl"><label>Joint lead authors</label><div class="seg" id="method"><button data-v="all_leads" aria-pressed="true">Count each</button><button data-v="first_listed">First-listed only</button></div></div>
+ <div class="ctl"><label>Budget bills</label><div class="seg" id="budget"><button data-v="excl" aria-pressed="true">Excluded</button><button data-v="incl">Included</button></div></div>
+ <div class="ctl"><label>Period</label><div class="seg" id="scope"><button data-v="session" aria-pressed="true">Session</button><button data-v="2025">2025</button><button data-v="2026">2026</button></div></div>
+</div>
+<div class="note">Success rate (signed / introduced) favors members who file fewer bills, so raw counts sit beside it. Members marked <span class="tag">partial</span> joined or left mid-session, so their record covers part of the term. Budget Act bills, which are introduced under the budget chairs' names, are left out of counts and ranks by default; use the Budget bills toggle to include them. The last column shows how many each member has. Year views count introductions by filing year and outcomes by the year of the Governor's action.</div>
+<div class="card"><table id="t"><thead></thead><tbody></tbody></table></div>
+<footer>Not affiliated with any office or legislator.<br>Source: California Legislative Information bulk export (leginfo). Pipeline, tests and methodology are in the repository. Not an endorsement of any legislator.</footer>
+</div></main>
+<dialog id="dlg"><div id="dbody"></div><form method="dialog"><button>Close</button></form></dialog>
+<script src="data.js"></script>
+<script>
+const D = window.ALL, st = {chamber:"all", party:"all", method:"all_leads", scope:"session", budget:"excl", q:"", sort:"rank_signed", dir:1};
+const COLS = [["member","Member"],["party","Party"],["district","District"],["chamber","Chamber"],["introduced","Intro"],["signed","Signed"],["vetoed","Vetoed"],["rate","Rate %"],["rank_signed","Rank signed"],["rank_rate","Rank rate"],["budget_bills","Budget bills"]];
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.querySelectorAll(".seg").forEach(g => g.addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  g.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x===b));
+  st[g.id] = b.dataset.v; render();
+}));
+document.getElementById("q").addEventListener("input", e => { st.q = e.target.value.toLowerCase(); render(); });
+function rows(){
+  let r = D.cards[st.method + "|" + st.scope + "|" + st.budget].filter(x =>
+    (st.chamber==="all" || x.chamber===st.chamber) && (st.party==="all" || x.party===st.party) &&
+    (!st.q || (x.member+" "+x.full_name+" "+x.district).toLowerCase().includes(st.q)));
+  const k = st.sort, d = st.dir;
+  return r.sort((a,b) => (typeof a[k]==="string" ? a[k].localeCompare(b[k]) : (a[k]??1e9)-(b[k]??1e9))*d || a.member.localeCompare(b.member));
+}
+function render(){
+  const th = COLS.map(([k,l]) => `<th data-k="${k}" ${st.sort===k?`aria-sort="${st.dir>0?"ascending":"descending"}"`:""}>${l}${st.sort===k?(st.dir>0?" ▲":" ▼"):""}</th>`).join("");
+  document.querySelector("#t thead").innerHTML = "<tr>"+th+"</tr>";
+  document.querySelector("#t tbody").innerHTML = rows().map(x => `<tr data-m="${esc(x.member)}">
+   <td>${esc(x.member)}${x.partial_term?'<span class="tag">partial</span>':""}</td><td class="${x.party}">${x.party}</td><td>${x.district}</td><td>${x.chamber}</td>
+   <td>${x.introduced}</td><td>${x.signed}</td><td>${x.vetoed}</td><td>${x.rate.toFixed(1)}</td><td>${x.rank_signed}</td><td>${x.rank_rate}</td><td>${x.budget_bills||""}</td></tr>`).join("");
+}
+document.querySelector("#t thead").addEventListener("click", e => {
+  const h = e.target.closest("th"); if(!h) return;
+  const k = h.dataset.k; st.dir = st.sort===k ? -st.dir : 1; st.sort = k; render();
+});
+document.querySelector("#t tbody").addEventListener("click", e => {
+  const tr = e.target.closest("tr"); if(!tr) return;
+  const m = tr.dataset.m, c = D.cards[st.method+"|"+st.scope+"|"+st.budget].find(x => x.member===m);
+  let b = D.bills.filter(x => x.member===m && (st.method==="all_leads" || x.is_first_listed) && (st.budget==="incl" || !x.is_budget));
+  b.sort((x,y) => x.bill_id.localeCompare(y.bill_id, undefined, {numeric:true}));
+  document.getElementById("dbody").innerHTML = `<h2>${esc(c.full_name)}</h2>
+   <p class="sub">${c.chamber} ${c.district} · ${c.party} · ${c.introduced} introduced, ${c.signed} signed, ${c.vetoed} vetoed (${c.rate.toFixed(1)}%)${c.partial_term?" · partial term":""}</p>
+   <table><thead><tr><th>Bill</th><th>Title</th><th>Introduced</th><th>Outcome</th><th>Date</th></tr></thead><tbody>`+
+   b.map(x => `<tr><td><a href="https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260${x.bill_id}" target="_blank" rel="noopener">${x.bill_id}</a>${x.is_joint?" (joint)":""}${x.is_budget?" (budget)":""}</td><td>${esc(x.title)}</td><td>${x.introduced}</td><td class="o-${x.outcome}">${x.outcome.replace("_"," ")}</td><td>${x.action_date||""}</td></tr>`).join("")+"</tbody></table>";
+  document.getElementById("dlg").showModal();
+});
+render();
+</script>
+</body>
+</html>

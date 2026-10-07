@@ -1,0 +1,96 @@
+"""Official-data pipeline: leginfo pubinfo export -> bill-author rows.
+
+Input : data/raw/pubinfo_<year>/*.dat (tab-delimited, backtick-enclosed, NULL literal)
+Output: one row per (bill, lead author) see docs/DATA_DICTIONARY.md for the schema
+"""
+from __future__ import annotations
+
+import re
+from pathlib import Path
+
+import pandas as pd
+
+COLS = {
+    "BILL_TBL": "BILL_ID SESSION_YEAR SESSION_NUM MEASURE_TYPE MEASURE_NUM MEASURE_STATE CHAPTER_YEAR CHAPTER_TYPE CHAPTER_SESSION_NUM CHAPTER_NUM LATEST_BILL_VERSION_ID ACTIVE_FLG TRANS_UID TRANS_UPDATE CURRENT_LOCATION CURRENT_SECONDARY_LOC CURRENT_HOUSE CURRENT_STATUS DAYS_31ST_IN_PRINT",
+    "BILL_HISTORY_TBL": "BILL_ID BILL_HISTORY_ID ACTION_DATE ACTION TRANS_UID TRANS_UPDATE_DT ACTION_SEQUENCE ACTION_CODE ACTION_STATUS PRIMARY_LOCATION SECONDARY_LOCATION TERNARY_LOCATION END_STATUS",
+    "BILL_VERSION_AUTHORS_TBL": "BILL_VERSION_ID TYPE HOUSE NAME CONTRIBUTION COMMITTEE_MEMBERS ACTIVE_FLG TRANS_UID TRANS_UPDATE PRIMARY_AUTHOR_FLG",
+    "BILL_VERSION_TBL": "BILL_VERSION_ID BILL_ID VERSION_NUM BILL_VERSION_ACTION_DATE BILL_VERSION_ACTION REQUEST_NUM SUBJECT VOTE_REQUIRED APPROPRIATION FISCAL_COMMITTEE LOCAL_PROGRAM SUBSTANTIVE_CHANGES URGENCY TAXLEVY BILL_XML ACTIVE_FLG TRANS_UID TRANS_UPDATE",
+    "LEGISLATOR_TBL": "DISTRICT SESSION_YEAR LEGISLATOR_NAME HOUSE_TYPE AUTHOR_NAME FIRST_NAME LAST_NAME MIDDLE_INITIAL NAME_SUFFIX NAME_TITLE WEB_NAME_TITLE PARTY ACTIVE_FLG TRANS_UID TRANS_UPDATE ACTIVE_LEGISLATOR",
+}
+VETO_RE = re.compile(r"^Vetoed by (the )?Governor", re.I)
+SIGN_RE = re.compile(r"^Approved by the Governor", re.I)
+SRC = "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id="
+
+
+def read_table(raw: Path, name: str, usecols=None) -> pd.DataFrame:
+    cols = COLS[name].split()
+    return pd.read_csv(
+        raw / f"{name}.dat", sep="\t", quotechar="`", header=None, names=cols,
+        na_values=["NULL"], keep_default_na=False, dtype=str, engine="python",
+        encoding="utf-8", encoding_errors="replace",
+    ).pipe(lambda d: d[usecols] if usecols else d)
+
+
+def build(raw: str | Path) -> tuple[pd.DataFrame, pd.DataFrame]:
+    raw = Path(raw)
+    bills = read_table(raw, "BILL_TBL")
+    # Regular session only (SESSION_NUM 0). Extraordinary-session bills (SESSION_NUM 1+)
+    # reuse numbers like AB 3 and are not part of the scorecard.
+    bills = bills[bills.MEASURE_TYPE.isin(["AB", "SB"]) & (bills.SESSION_NUM == "0")].copy()
+    bills["bill_id"] = bills.MEASURE_TYPE + bills.MEASURE_NUM
+
+    hist = read_table(raw, "BILL_HISTORY_TBL", ["BILL_ID", "ACTION_DATE", "ACTION"])
+    hist["d"] = pd.to_datetime(hist.ACTION_DATE.str[:10], errors="coerce")
+    intro = hist.groupby("BILL_ID").d.min().rename("introduced")
+    sign = hist[hist.ACTION.fillna("").str.match(SIGN_RE)].groupby("BILL_ID").d.max().rename("signed_on")
+    veto = hist[hist.ACTION.fillna("").str.match(VETO_RE)].groupby("BILL_ID").d.max().rename("vetoed_on")
+    bills = bills.join(intro, on="BILL_ID").join(sign, on="BILL_ID").join(veto, on="BILL_ID")
+
+    signed = (bills.CHAPTER_TYPE == "CHP") | bills.signed_on.notna()
+    vetoed = ((bills.CURRENT_STATUS == "Vetoed") | bills.vetoed_on.notna()) & ~signed
+    bills["outcome"] = "not_enacted"
+    bills.loc[vetoed, "outcome"] = "vetoed"
+    bills.loc[signed, "outcome"] = "signed"
+    bills["action_date"] = bills.signed_on.where(signed, bills.vetoed_on.where(vetoed))
+    bills["filed_year"] = bills.introduced.dt.year.clip(lower=2025)
+    bills["action_year"] = bills.action_date.dt.year.astype("Int64")
+
+    ver = read_table(raw, "BILL_VERSION_TBL", ["BILL_VERSION_ID", "SUBJECT"]).rename(columns={"SUBJECT": "title"})
+    bills = bills.merge(ver, left_on="LATEST_BILL_VERSION_ID", right_on="BILL_VERSION_ID", how="left")
+
+    au = read_table(raw, "BILL_VERSION_AUTHORS_TBL")
+    au = au[(au.TYPE == "Legislator") & (au.CONTRIBUTION == "LEAD_AUTHOR")]
+    au = au.merge(bills[["BILL_ID", "bill_id", "LATEST_BILL_VERSION_ID"]],
+                  left_on="BILL_VERSION_ID", right_on="LATEST_BILL_VERSION_ID")
+    au = au.rename(columns={"NAME": "member", "HOUSE": "author_house"})
+    # first-listed = PRIMARY_AUTHOR_FLG; fall back to file order if a bill has none
+    au["is_first_listed"] = au.PRIMARY_AUTHOR_FLG == "Y"
+    nofirst = ~au.groupby("bill_id").is_first_listed.transform("any")
+    au.loc[nofirst & ~au.duplicated("bill_id"), "is_first_listed"] = True
+    n_leads = au.groupby("bill_id").member.transform("count")
+    au["is_joint"] = n_leads > 1
+    order = au.sort_values("is_first_listed", ascending=False, kind="stable")
+    leads = order.groupby("bill_id").member.agg("+".join).rename("lead_authors")
+    au = au.join(leads, on="bill_id")
+
+    rows = au.merge(bills[["bill_id", "introduced", "outcome", "action_date", "filed_year",
+                           "action_year", "title", "BILL_ID", "CURRENT_STATUS"]],
+                    on=["bill_id", "BILL_ID"])
+    rows["source_url"] = SRC + rows.BILL_ID
+    rows["introduced"] = rows.introduced.dt.strftime("%Y-%m-%d")
+    rows["action_date"] = rows.action_date.dt.strftime("%Y-%m-%d")
+    out = rows[["bill_id", "member", "author_house", "is_first_listed", "is_joint", "introduced",
+                "outcome", "action_date", "lead_authors", "title", "filed_year", "action_year",
+                "source_url"]].copy()
+    # Budget Act bills (AB/SB 100-199 spot bills) are introduced under the budget chairs' names.
+    out["is_budget"] = out.title.fillna("").str.match(r"^Budget Acts?\b")
+    out = out.sort_values(["bill_id", "member"]).reset_index(drop=True)
+
+    lg = read_table(raw, "LEGISLATOR_TBL")
+    lg["chamber"] = lg.HOUSE_TYPE.map({"A": "Assembly", "S": "Senate"})
+    members = lg.rename(columns={"AUTHOR_NAME": "member", "LEGISLATOR_NAME": "full_name",
+                                 "PARTY": "party", "DISTRICT": "district"})
+    members["party"] = members.party.map({"DEM": "D", "REP": "R"}).fillna("Other")
+    members = members[
+        ["member", "full_name", "party", "district", "chamber", "ACTIVE_FLG"]]
+    return out, members
