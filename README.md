@@ -2,7 +2,11 @@
 
 A transparent, reproducible scorecard for every member of the California Legislature, rebuilt from the Legislature's official bulk data. One command downloads the data, parses it, applies documented counting rules and publishes a searchable dashboard.
 
-**Dashboard:** `site/index.html` (search, chamber and party filters, per-member bill lists). Enable GitHub Pages to host it.
+**[Open the live dashboard](https://jasontso2939.github.io/calleg-scorecard/)** · search every member, filter by chamber, open any member's bill list.
+
+![Switching how joint lead authors and budget bills are counted reorders the rankings](docs/media/hero.gif)
+
+<!-- Walkthrough video: add the link here once it's recorded. -->
 
 ## The idea
 
@@ -14,6 +18,33 @@ Most legislative rankings hide their counting decisions. Here each decision is a
 - **Partial terms.** Members who joined or left mid-session are flagged, with sources.
 
 Every number comes from small tested functions, and every bill links to its official history.
+
+## How it works
+
+```mermaid
+flowchart LR
+  L[Legislature bulk export] -->|make fetch| RAW[(data/raw)]
+  RAW --> P[pipeline.py<br/>one row per bill and lead author]
+  REF[(data/reference<br/>hand-sourced seat changes)] --> M
+  P --> M[model.py<br/>counting rules]
+  M --> O[(data/processed CSVs)]
+  O --> S[Static dashboard<br/>GitHub Pages]
+  GA[Weekly GitHub Action] -.->|rebuild and test| L
+```
+
+The pipeline turns the official export into one row per bill and lead author. `scorecard()` in `model.py` applies the counting rules, with the method and time period as arguments, so the dashboard toggles and the tests exercise the same code.
+
+## Decisions and tradeoffs
+
+- **Toggles instead of one "correct" answer.** Reasonable people count joint authorship differently. Showing both methods side by side is more honest than picking one quietly.
+- **Budget bills out by default.** Budget Act bills carry the budget chairs' names and would dominate their totals without saying anything about their own legislating.
+- **Counts beside success rate.** Rate alone rewards members who file very few bills, so neither number is shown without the other.
+- **Hand-sourced reference data where the export falls short.** Mid-session seat changes aren't in the bulk data, so they live in `data/reference/` with sources.
+- **A static site with no build step.** The dashboard is one HTML file and one data file. Nothing to maintain, nothing to break, free to host.
+
+## How it was built
+
+Built with Claude Code. I designed the methodology, counting rules and data model, and directed and reviewed the implementation.
 
 ## 2025-26 at a glance (regular session, Assembly and Senate bills with a legislator author)
 
@@ -56,9 +87,10 @@ A weekly GitHub Action (`refresh.yml`) rebuilds everything from fresh data.
 
 ## Roadmap
 
-1. Classify veto messages by reason across sessions.
-2. An MCP server so an AI assistant can answer questions about the data with source links.
-3. Earlier sessions for trends.
+1. Have the weekly refresh publish to the live dashboard (today it rebuilds and tests the data, then stores it as a workflow artifact).
+2. Classify veto messages by reason across sessions.
+3. An MCP server so an AI assistant can answer questions about the data with source links.
+4. Earlier sessions for trends.
 
 ## License and disclaimer
 
