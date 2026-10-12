@@ -13,11 +13,11 @@ permissions:
 concurrency: {group: refresh-data, cancel-in-progress: false}
 jobs:
   refresh:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: {python-version: "3.11", cache: pip}
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: {python-version: "3.12", cache: pip}
       - run: pip install -r requirements.txt
       - run: bash scripts/fetch_raw.sh session
       - run: bash scripts/extract_raw.sh
@@ -35,20 +35,20 @@ jobs:
             git commit -m "Refresh data from the latest leginfo export"
             git push
           fi
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: scorecard-site-and-data
           path: |
             site/
             data/processed/
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with: {path: site}
 
   deploy:
     needs: refresh
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment: {name: github-pages, url: "${{ steps.d.outputs.page_url }}"}
     steps:
       - id: d
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
