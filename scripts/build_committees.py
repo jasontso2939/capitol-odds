@@ -158,7 +158,7 @@ def main():
     lead = leadership_with_notes(votes)
     mem = assign_roles(mem, lead, votes)
     OUT.mkdir(exist_ok=True, parents=True)
-    votes.drop(columns=["BILL_ID"]).to_csv(OUT / "committee_votes.csv.gz", index=False, compression="gzip")
+    votes.drop(columns=["BILL_ID"]).to_csv(OUT / "committee_votes.csv.gz", index=False, compression={"method": "gzip", "mtime": 0})
     mem.to_csv(OUT / "committee_membership.csv", index=False)
     lead_rows = mem[mem.role != "Member"]
     by_year = (lead_rows.assign(entry=lead_rows.member + " (" + lead_rows.party.fillna("?") + "): " + lead_rows.leadership)
