@@ -28,3 +28,6 @@ One row per member: `introduced`, `sent`, `signed`, `vetoed`, `rate`, `rank_sign
 
 ## data/reference/seat_changes.csv
 Hand-sourced mid-session membership changes: `district`, `chamber`, `member`, `status`, `effective_note`, `predecessor`, `source_url`.
+
+## Committee files
+Committee rosters, leadership and member votes are described in `docs/COMMITTEES.md`, with one table per file. `data/reference/committee_rosters_web.csv` holds the archived committee web rosters used to check them, one row per member listed, with the Internet Archive URL.

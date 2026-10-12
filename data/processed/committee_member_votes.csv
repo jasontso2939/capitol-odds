@@ -1,0 +1,779 @@
+member,house,committee,absent or not voting,no,yes,roll_calls,yes_rate_of_votes_cast
+Addis,Assembly,Assembly Business and Professions,1,0,82,83,1.0
+Addis,Assembly,Assembly Education,4,1,106,111,0.991
+Addis,Assembly,Assembly Elections,0,1,9,10,0.9
+Addis,Assembly,Assembly Health,9,0,293,302,1.0
+Addis,Assembly,Assembly Insurance,0,0,70,70,1.0
+Aguiar-Curry,Assembly,Assembly Agriculture,2,0,37,39,1.0
+Aguiar-Curry,Assembly,Assembly Appropriations,0,0,599,599,1.0
+Aguiar-Curry,Assembly,Assembly Business and Professions,0,0,18,18,1.0
+Aguiar-Curry,Assembly,Assembly Health,3,0,299,302,1.0
+Aguiar-Curry,Assembly,Assembly Higher Education,0,0,1,1,1.0
+Aguiar-Curry,Assembly,Assembly Privacy and Consumer Protection,0,0,18,18,1.0
+Aguiar-Curry,Assembly,Assembly Transportation,3,2,150,155,0.987
+Ahrens,Assembly,Assembly Aging and Long Term Care,0,0,12,12,1.0
+Ahrens,Assembly,Assembly Appropriations,0,0,191,191,1.0
+Ahrens,Assembly,Assembly Business and Professions,5,2,155,162,0.987
+Ahrens,Assembly,Assembly Communications and Conveyance,0,0,11,11,1.0
+Ahrens,Assembly,Assembly Education,0,0,15,15,1.0
+Ahrens,Assembly,Assembly Health,0,0,128,128,1.0
+Ahrens,Assembly,Assembly Higher Education,0,0,4,4,1.0
+Ahrens,Assembly,Assembly Human Services,1,0,19,20,1.0
+Ahrens,Assembly,Assembly Judiciary,0,0,1,1,1.0
+Ahrens,Assembly,Assembly Rules,70,0,339,409,1.0
+Ahrens,Assembly,Assembly Transportation,7,2,176,185,0.989
+Alanis,Assembly,Assembly Agriculture,1,0,38,39,1.0
+Alanis,Assembly,Assembly Appropriations,0,0,35,35,1.0
+Alanis,Assembly,Assembly Business and Professions,8,8,146,162,0.948
+Alanis,Assembly,Assembly Education,0,0,14,14,1.0
+Alanis,Assembly,Assembly Emergency Management,0,0,6,6,1.0
+Alanis,Assembly,Assembly Governmental Organization,0,0,7,7,1.0
+Alanis,Assembly,Assembly Human Services,0,0,9,9,1.0
+Alanis,Assembly,Assembly Labor and Employment,7,8,29,44,0.784
+Alanis,Assembly,Assembly Local Government,3,2,8,13,0.8
+Alanis,Assembly,Assembly Natural Resources,12,38,187,237,0.831
+Alanis,Assembly,Assembly Public Employment and Retirement,17,0,44,61,1.0
+Alanis,Assembly,Assembly Public Safety,40,45,289,374,0.865
+Alanis,Assembly,"Assembly Water, Parks and Wildlife",5,6,42,53,0.875
+Allen,Senate,Senate Budget and Fiscal Review,2,0,45,47,1.0
+Allen,Senate,Senate Elections and Constitutional Amendments,2,1,111,114,0.991
+Allen,Senate,Senate Emergency Management,0,0,34,34,1.0
+Allen,Senate,"Senate Energy, Utilities and Communications",5,1,150,156,0.993
+Allen,Senate,Senate Environmental Quality,10,2,87,99,0.978
+Allen,Senate,Senate Judiciary,12,1,605,618,0.998
+Allen,Senate,Senate Natural Resources and Water,13,1,190,204,0.995
+Allen,Senate,Senate Revenue and Taxation,0,0,1,1,1.0
+Alvarado-Gil,Senate,Senate Agriculture,3,1,28,32,0.966
+Alvarado-Gil,Senate,Senate Governmental Organization,38,2,22,62,0.917
+Alvarado-Gil,Senate,Senate Judiciary,1,2,6,9,0.75
+Alvarado-Gil,Senate,Senate Revenue and Taxation,26,6,34,66,0.85
+Alvarez,Assembly,Assembly Education,12,3,191,206,0.985
+Alvarez,Assembly,Assembly Governmental Organization,17,0,90,107,1.0
+Alvarez,Assembly,Assembly Insurance,1,0,61,62,1.0
+Alvarez,Assembly,"Assembly Water, Parks and Wildlife",12,0,102,114,1.0
+Arambula,Assembly,Assembly Aging and Long Term Care,0,0,10,10,1.0
+Arambula,Assembly,Assembly Appropriations,121,0,1368,1489,1.0
+Arambula,Assembly,Assembly Emergency Management,1,0,91,92,1.0
+Arambula,Assembly,Assembly Health,1,0,71,72,1.0
+Arambula,Assembly,Assembly Labor and Employment,0,0,15,15,1.0
+Arambula,Assembly,Assembly Rules,12,0,6,18,1.0
+Archuleta,Senate,Senate Budget and Fiscal Review,0,0,45,45,1.0
+Archuleta,Senate,"Senate Business, Professions and Economic Development",4,0,189,193,1.0
+Archuleta,Senate,"Senate Energy, Utilities and Communications",6,1,149,156,0.993
+Archuleta,Senate,Senate Governmental Organization,13,0,141,154,1.0
+Archuleta,Senate,Senate Military and Veterans Affairs,0,0,42,42,1.0
+Archuleta,Senate,Senate Transportation,15,0,171,186,1.0
+Arreguín,Senate,"Senate Business, Professions and Economic Development",24,0,169,193,1.0
+Arreguín,Senate,"Senate Energy, Utilities and Communications",6,0,150,156,1.0
+Arreguín,Senate,Senate Housing,2,0,168,170,1.0
+Arreguín,Senate,Senate Human Services,0,0,83,83,1.0
+Arreguín,Senate,Senate Judiciary,6,0,331,337,1.0
+Arreguín,Senate,Senate Local Government,1,0,231,232,1.0
+Arreguín,Senate,Senate Public Safety,2,7,343,352,0.98
+Arreguín,Senate,Senate Transportation,0,0,186,186,1.0
+Ashby,Senate,Senate Agriculture,9,0,8,17,1.0
+Ashby,Senate,"Senate Business, Professions and Economic Development",1,1,93,95,0.989
+Ashby,Senate,Senate Emergency Management,5,0,23,28,1.0
+Ashby,Senate,"Senate Energy, Utilities and Communications",21,0,77,98,1.0
+Ashby,Senate,Senate Governmental Organization,13,0,141,154,1.0
+Ashby,Senate,Senate Housing,0,0,4,4,1.0
+Ashby,Senate,Senate Judiciary,58,5,555,618,0.991
+Ashby,Senate,Senate Local Government,18,0,101,119,1.0
+Ashby,Senate,Senate Revenue and Taxation,4,4,135,143,0.971
+Bains,Assembly,Assembly Aging and Long Term Care,0,0,8,8,1.0
+Bains,Assembly,Assembly Business and Professions,38,7,117,162,0.944
+Bains,Assembly,Assembly Emergency Management,27,0,65,92,1.0
+Bains,Assembly,Assembly Revenue and Taxation,4,0,34,38,1.0
+Bains,Assembly,"Assembly Water, Parks and Wildlife",32,6,76,114,0.927
+Bauer-Kahan,Assembly,Assembly Appropriations,0,0,97,97,1.0
+Bauer-Kahan,Assembly,Assembly Business and Professions,45,1,98,144,0.99
+Bauer-Kahan,Assembly,Assembly Environmental Safety and Toxic Materials,3,0,75,78,1.0
+Bauer-Kahan,Assembly,Assembly Judiciary,30,0,356,386,1.0
+Bauer-Kahan,Assembly,Assembly Privacy and Consumer Protection,9,0,143,152,1.0
+Becker,Senate,"Senate Energy, Utilities and Communications",7,0,149,156,1.0
+Becker,Senate,Senate Human Services,1,0,156,157,1.0
+Becker,Senate,Senate Insurance,2,0,45,47,1.0
+Becker,Senate,Senate Natural Resources and Water,0,2,98,100,0.98
+Becker,Senate,Senate Revenue and Taxation,2,1,63,66,0.984
+Bennett,Assembly,Assembly Elections,8,3,92,103,0.968
+Bennett,Assembly,Assembly Emergency Management,0,0,92,92,1.0
+Bennett,Assembly,Assembly Higher Education,1,0,12,13,1.0
+Bennett,Assembly,Assembly Privacy and Consumer Protection,0,0,40,40,1.0
+Bennett,Assembly,Assembly Transportation,0,0,18,18,1.0
+Bennett,Assembly,"Assembly Water, Parks and Wildlife",2,1,111,114,0.991
+Berman,Assembly,Assembly Business and Professions,2,1,159,162,0.994
+Berman,Assembly,Assembly Elections,1,6,103,110,0.945
+Berman,Assembly,Assembly Governmental Organization,17,0,90,107,1.0
+Berman,Assembly,Assembly Insurance,0,0,70,70,1.0
+Berman,Assembly,Assembly Privacy and Consumer Protection,0,0,11,11,1.0
+Blakespear,Senate,Senate Budget and Fiscal Review,6,0,82,88,1.0
+Blakespear,Senate,Senate Emergency Management,0,0,34,34,1.0
+Blakespear,Senate,Senate Environmental Quality,3,4,203,210,0.981
+Blakespear,Senate,Senate Governmental Organization,0,2,152,154,0.987
+Blakespear,Senate,Senate Natural Resources and Water,0,0,8,8,1.0
+Blakespear,Senate,Senate Transportation,2,4,180,186,0.978
+Blanca Rubio,Assembly,Assembly Aging and Long Term Care,0,0,15,15,1.0
+Blanca Rubio,Assembly,Assembly Banking and Finance,2,1,45,48,0.978
+Blanca Rubio,Assembly,Assembly Communications and Conveyance,1,0,24,25,1.0
+Blanca Rubio,Assembly,Assembly Governmental Organization,1,0,106,107,1.0
+Blanca Rubio,Assembly,Assembly Human Services,3,0,17,20,1.0
+Blanca Rubio,Assembly,Assembly Local Government,9,0,225,234,1.0
+Boerner,Assembly,Assembly Communications and Conveyance,0,0,25,25,1.0
+Boerner,Assembly,Assembly Higher Education,4,0,162,166,1.0
+Boerner,Assembly,Assembly Military and Veterans Affairs,0,0,5,5,1.0
+Boerner,Assembly,Assembly Natural Resources,0,1,12,13,0.923
+Boerner,Assembly,Assembly Public Employment and Retirement,0,0,61,61,1.0
+Boerner,Assembly,Assembly Utilities and Energy,11,1,155,167,0.994
+Boerner,Assembly,"Assembly Water, Parks and Wildlife",3,1,110,114,0.991
+Bonta,Assembly,Assembly Communications and Conveyance,1,0,24,25,1.0
+Bonta,Assembly,"Assembly Economic Development, Growth, and Household Impact",6,0,14,20,1.0
+Bonta,Assembly,Assembly Education,8,8,209,225,0.963
+Bonta,Assembly,Assembly Health,0,1,301,302,0.997
+Bonta,Assembly,Assembly Public Safety,3,1,15,19,0.938
+Bryan,Assembly,Assembly Governmental Organization,6,0,98,104,1.0
+Bryan,Assembly,Assembly Judiciary,9,0,481,490,1.0
+Bryan,Assembly,Assembly Natural Resources,2,1,234,237,0.996
+Bryan,Assembly,Assembly Privacy and Consumer Protection,9,0,164,173,1.0
+Cabaldon,Senate,Senate Appropriations,88,3,3024,3115,0.999
+Cabaldon,Senate,Senate Budget and Fiscal Review,0,0,92,92,1.0
+Cabaldon,Senate,Senate Education,27,7,297,331,0.977
+Cabaldon,Senate,Senate Housing,23,0,147,170,1.0
+Cabaldon,Senate,Senate Local Government,4,0,109,113,1.0
+Cabaldon,Senate,Senate Natural Resources and Water,5,2,93,100,0.979
+Cabaldon,Senate,"Senate Privacy, Digital Technologies, and Consumer Protection",4,1,62,67,0.984
+Caballero,Senate,Senate Agriculture,0,0,17,17,1.0
+Caballero,Senate,Senate Appropriations,0,0,1544,1544,1.0
+Caballero,Senate,"Senate Business, Professions and Economic Development",10,0,88,98,1.0
+Caballero,Senate,"Senate Energy, Utilities and Communications",15,0,141,156,1.0
+Caballero,Senate,Senate Health,2,1,122,125,0.992
+Caballero,Senate,Senate Housing,8,0,162,170,1.0
+Caballero,Senate,Senate Insurance,0,0,21,21,1.0
+Caballero,Senate,Senate Judiciary,22,10,586,618,0.983
+Caballero,Senate,Senate Public Safety,21,2,329,352,0.994
+Calderon,Assembly,Assembly Appropriations,77,1,1905,1983,0.999
+Calderon,Assembly,Assembly Emergency Management,2,0,84,86,1.0
+Calderon,Assembly,Assembly Human Services,2,2,148,152,0.987
+Calderon,Assembly,Assembly Insurance,0,0,70,70,1.0
+Calderon,Assembly,Assembly Utilities and Energy,17,2,148,167,0.987
+Caloza,Assembly,Assembly Appropriations,5,1,2051,2057,1.0
+Caloza,Assembly,Assembly Business and Professions,30,1,131,162,0.992
+Caloza,Assembly,Assembly Communications and Conveyance,1,0,24,25,1.0
+Caloza,Assembly,"Assembly Economic Development, Growth, and Household Impact",0,0,6,6,1.0
+Caloza,Assembly,Assembly Health,1,0,192,193,1.0
+Caloza,Assembly,Assembly Housing and Community Development,5,1,194,200,0.995
+Caloza,Assembly,Assembly Local Government,0,0,17,17,1.0
+Caloza,Assembly,Assembly Transportation,0,0,18,18,1.0
+Caloza,Assembly,"Assembly Water, Parks and Wildlife",3,1,110,114,0.991
+Carrillo,Assembly,Assembly Governmental Organization,25,0,82,107,1.0
+Carrillo,Assembly,Assembly Health,13,0,281,294,1.0
+Carrillo,Assembly,Assembly Local Government,1,0,233,234,1.0
+Carrillo,Assembly,Assembly Military and Veterans Affairs,5,0,38,43,1.0
+Carrillo,Assembly,Assembly Revenue and Taxation,1,0,88,89,1.0
+Carrillo,Assembly,Assembly Transportation,7,2,176,185,0.989
+Castillo,Assembly,Assembly Communications and Conveyance,4,6,13,23,0.684
+Castillo,Assembly,"Assembly Economic Development, Growth, and Household Impact",6,2,29,37,0.935
+Castillo,Assembly,Assembly Education,14,20,177,211,0.898
+Castillo,Assembly,Assembly Environmental Safety and Toxic Materials,17,19,50,86,0.725
+Castillo,Assembly,Assembly Human Services,30,14,103,147,0.88
+Celeste Rodriguez,Assembly,Assembly Health,7,0,196,203,1.0
+Celeste Rodriguez,Assembly,Assembly Higher Education,19,0,98,117,1.0
+Celeste Rodriguez,Assembly,Assembly Human Services,10,0,100,110,1.0
+Celeste Rodriguez,Assembly,"Assembly Water, Parks and Wildlife",12,0,67,79,1.0
+Cervantes,Senate,Senate Appropriations,0,0,1571,1571,1.0
+Cervantes,Senate,Senate Banking and Financial Institutions,0,0,28,28,1.0
+Cervantes,Senate,Senate Elections and Constitutional Amendments,1,3,110,114,0.973
+Cervantes,Senate,Senate Governmental Organization,1,0,153,154,1.0
+Cervantes,Senate,Senate Local Government,1,0,118,119,1.0
+Cervantes,Senate,Senate Transportation,2,0,85,87,1.0
+Chen,Assembly,Assembly Banking and Finance,13,5,30,48,0.857
+Chen,Assembly,Assembly Business and Professions,21,4,137,162,0.972
+Chen,Assembly,Assembly Governmental Organization,0,1,10,11,0.909
+Chen,Assembly,Assembly Health,69,11,193,273,0.946
+Chen,Assembly,Assembly Insurance,16,6,48,70,0.889
+Chen,Assembly,Assembly Judiciary,1,1,4,6,0.8
+Chen,Assembly,Assembly Labor and Employment,32,11,78,121,0.876
+Chen,Assembly,Assembly Public Employment and Retirement,0,0,2,2,1.0
+Chen,Assembly,Assembly Utilities and Energy,43,13,111,167,0.895
+Choi,Senate,Senate Budget and Fiscal Review,32,41,15,88,0.268
+Choi,Senate,"Senate Business, Professions and Economic Development",26,18,149,193,0.892
+Choi,Senate,Senate Education,32,39,260,331,0.87
+Choi,Senate,Senate Elections and Constitutional Amendments,7,34,73,114,0.682
+Choi,Senate,Senate Governmental Organization,2,1,29,32,0.967
+Choi,Senate,Senate Local Government,27,63,142,232,0.693
+Connolly,Assembly,Assembly Agriculture,1,0,38,39,1.0
+Connolly,Assembly,Assembly Environmental Safety and Toxic Materials,0,0,86,86,1.0
+Connolly,Assembly,Assembly Judiciary,3,0,487,490,1.0
+Connolly,Assembly,Assembly Natural Resources,23,3,211,237,0.986
+Cortese,Senate,Senate Agriculture,0,0,15,15,1.0
+Cortese,Senate,Senate Education,6,3,322,331,0.991
+Cortese,Senate,Senate Housing,4,0,162,166,1.0
+Cortese,Senate,"Senate Labor, Public Employment and Retirement",2,2,177,181,0.989
+Cortese,Senate,Senate Natural Resources and Water,0,0,13,13,1.0
+Cortese,Senate,Senate Public Safety,7,7,179,193,0.962
+Cortese,Senate,Senate Transportation,1,1,184,186,0.995
+Dahle,Senate,Senate Appropriations,600,279,2236,3115,0.889
+Dahle,Senate,Senate Emergency Management,4,0,24,28,1.0
+Dahle,Senate,"Senate Energy, Utilities and Communications",44,44,60,148,0.577
+Dahle,Senate,Senate Environmental Quality,42,31,137,210,0.815
+Dahle,Senate,Senate Governmental Organization,21,10,123,154,0.925
+Dahle,Senate,Senate Transportation,35,24,127,186,0.841
+Davies,Assembly,Assembly Governmental Organization,3,5,99,107,0.952
+Davies,Assembly,Assembly Military and Veterans Affairs,2,1,40,43,0.976
+Davies,Assembly,Assembly Natural Resources,0,3,11,14,0.786
+Davies,Assembly,Assembly Transportation,9,21,155,185,0.881
+Davies,Assembly,Assembly Utilities and Energy,16,27,124,167,0.821
+DeMaio,Assembly,Assembly Emergency Management,11,14,67,92,0.827
+DeMaio,Assembly,Assembly Governmental Organization,4,0,15,19,1.0
+DeMaio,Assembly,Assembly Higher Education,26,53,88,167,0.624
+DeMaio,Assembly,Assembly Privacy and Consumer Protection,25,73,75,173,0.507
+DeMaio,Assembly,Assembly Revenue and Taxation,11,28,69,108,0.711
+Dixon,Assembly,Assembly Appropriations,435,418,1179,2032,0.738
+Dixon,Assembly,Assembly Banking and Finance,3,10,35,48,0.778
+Dixon,Assembly,Assembly Business and Professions,0,1,4,5,0.8
+Dixon,Assembly,Assembly Governmental Organization,2,8,90,100,0.918
+Dixon,Assembly,Assembly Judiciary,58,130,296,484,0.695
+Dixon,Assembly,Assembly Privacy and Consumer Protection,21,17,41,79,0.707
+Dixon,Assembly,Assembly Rules,15,2,185,202,0.989
+Durazo,Senate,Senate Budget and Fiscal Review,1,3,84,88,0.966
+Durazo,Senate,Senate Elections and Constitutional Amendments,0,0,3,3,1.0
+Durazo,Senate,Senate Health,4,1,248,253,0.996
+Durazo,Senate,Senate Housing,3,0,167,170,1.0
+Durazo,Senate,Senate Human Services,0,0,20,20,1.0
+Durazo,Senate,Senate Judiciary,14,2,602,618,0.997
+Durazo,Senate,"Senate Labor, Public Employment and Retirement",1,3,177,181,0.983
+Durazo,Senate,Senate Local Government,0,3,229,232,0.987
+Elhawary,Assembly,Assembly Appropriations,0,1,995,996,0.999
+Elhawary,Assembly,"Assembly Arts, Entertainment, Sports, and Tourism",1,3,33,37,0.917
+Elhawary,Assembly,Assembly Business and Professions,3,0,159,162,1.0
+Elhawary,Assembly,Assembly Elections,2,1,52,55,0.981
+Elhawary,Assembly,Assembly Health,0,0,23,23,1.0
+Elhawary,Assembly,Assembly Human Services,6,0,160,166,1.0
+Elhawary,Assembly,Assembly Labor and Employment,5,0,108,113,1.0
+Elhawary,Assembly,Assembly Public Employment and Retirement,0,0,31,31,1.0
+Elhawary,Assembly,Assembly Transportation,0,0,12,12,1.0
+Ellis,Assembly,Assembly Aging and Long Term Care,0,2,13,15,0.867
+Ellis,Assembly,Assembly Appropriations,0,5,38,43,0.884
+Ellis,Assembly,Assembly Business and Professions,0,1,12,13,0.923
+Ellis,Assembly,Assembly Elections,2,10,5,17,0.333
+Ellis,Assembly,Assembly Environmental Safety and Toxic Materials,9,18,43,70,0.705
+Ellis,Assembly,Assembly Health,1,2,5,8,0.714
+Ellis,Assembly,Assembly Higher Education,0,0,5,5,1.0
+Ellis,Assembly,Assembly Insurance,5,12,51,68,0.81
+Ellis,Assembly,Assembly Natural Resources,13,47,162,222,0.775
+Ellis,Assembly,Assembly Privacy and Consumer Protection,1,1,2,4,0.667
+Essayli,Assembly,Assembly Higher Education,2,5,9,16,0.643
+Essayli,Assembly,Assembly Human Services,5,1,9,15,0.9
+Essayli,Assembly,Assembly Judiciary,5,10,22,37,0.688
+Flora,Assembly,Assembly Business and Professions,4,1,71,76,0.986
+Flora,Assembly,Assembly Health,32,4,116,152,0.967
+Flora,Assembly,Assembly Labor and Employment,21,3,39,63,0.929
+Flora,Assembly,Assembly Natural Resources,12,14,96,122,0.873
+Flora,Assembly,Assembly Privacy and Consumer Protection,4,1,8,13,0.889
+Flora,Assembly,Assembly Rules,100,2,111,213,0.982
+Fong,Assembly,Assembly Appropriations,1,1,2055,2057,1.0
+Fong,Assembly,Assembly Banking and Finance,0,1,47,48,0.979
+Fong,Assembly,Assembly Governmental Organization,0,0,107,107,1.0
+Fong,Assembly,Assembly Higher Education,3,0,164,167,1.0
+Fong,Assembly,Assembly Local Government,0,0,13,13,1.0
+Fong,Assembly,Assembly Utilities and Energy,0,0,21,21,1.0
+Gabriel,Assembly,Assembly Governmental Organization,11,0,96,107,1.0
+Gabriel,Assembly,Assembly Housing and Community Development,4,0,1,5,1.0
+Gallagher,Assembly,Assembly Elections,2,7,20,29,0.741
+Gallagher,Assembly,Assembly Governmental Organization,7,1,27,35,0.964
+Gallagher,Assembly,Assembly Health,1,0,4,5,1.0
+Gallagher,Assembly,Assembly Housing and Community Development,10,5,16,31,0.762
+Gallagher,Assembly,Assembly Insurance,0,0,1,1,1.0
+Gallagher,Assembly,"Assembly Water, Parks and Wildlife",12,2,23,37,0.92
+Garcia,Assembly,Assembly Communications and Conveyance,0,1,6,7,0.857
+Garcia,Assembly,Assembly Education,22,11,192,225,0.946
+Garcia,Assembly,Assembly Housing and Community Development,1,5,175,181,0.972
+Garcia,Assembly,Assembly Judiciary,1,0,12,13,1.0
+Garcia,Assembly,Assembly Natural Resources,9,7,221,237,0.969
+Garcia,Assembly,Assembly Public Employment and Retirement,3,0,58,61,1.0
+Garcia,Assembly,Assembly Revenue and Taxation,0,1,31,32,0.969
+Garcia,Assembly,Assembly Rules,12,0,212,224,1.0
+Gipson,Assembly,Assembly Governmental Organization,4,0,103,107,1.0
+Gipson,Assembly,Assembly Higher Education,0,0,1,1,1.0
+Gipson,Assembly,Assembly Human Services,0,0,14,14,1.0
+Gipson,Assembly,Assembly Insurance,0,0,70,70,1.0
+Gipson,Assembly,Assembly Revenue and Taxation,0,0,108,108,1.0
+Gonzalez,Senate,Senate Budget and Fiscal Review,0,0,4,4,1.0
+Gonzalez,Senate,Senate Education,23,2,274,299,0.993
+Gonzalez,Senate,"Senate Energy, Utilities and Communications",13,0,143,156,1.0
+Gonzalez,Senate,Senate Environmental Quality,20,4,186,210,0.979
+Gonzalez,Senate,Senate Health,31,1,221,253,0.995
+Gonzalez,Senate,Senate Housing,23,0,128,151,1.0
+Gonzalez,Senate,"Senate Privacy, Digital Technologies, and Consumer Protection",1,0,66,67,1.0
+Gonzalez,Senate,Senate Public Safety,4,4,144,152,0.973
+Gonzalez,Senate,Senate Transportation,31,0,155,186,1.0
+Grayson,Senate,Senate Appropriations,34,0,3081,3115,1.0
+Grayson,Senate,Senate Banking and Financial Institutions,0,0,28,28,1.0
+Grayson,Senate,"Senate Business, Professions and Economic Development",18,0,164,182,1.0
+Grayson,Senate,Senate Emergency Management,0,0,34,34,1.0
+Grayson,Senate,"Senate Energy, Utilities and Communications",2,0,14,16,1.0
+Grayson,Senate,Senate Housing,12,0,158,170,1.0
+Grayson,Senate,Senate Revenue and Taxation,6,4,133,143,0.971
+Grayson,Senate,Senate Transportation,4,0,182,186,1.0
+Grove,Senate,Senate Budget and Fiscal Review,38,31,19,88,0.38
+Grove,Senate,Senate Emergency Management,0,0,6,6,1.0
+Grove,Senate,"Senate Energy, Utilities and Communications",50,31,75,156,0.708
+Grove,Senate,Senate Health,58,40,155,253,0.795
+Grove,Senate,Senate Military and Veterans Affairs,24,1,17,42,0.944
+Grove,Senate,Senate Natural Resources and Water,35,25,144,204,0.852
+Hadwick,Assembly,Assembly Agriculture,3,0,36,39,1.0
+Hadwick,Assembly,Assembly Appropriations,3,5,29,37,0.853
+Hadwick,Assembly,Assembly Business and Professions,23,11,123,157,0.918
+Hadwick,Assembly,Assembly Emergency Management,8,11,67,86,0.859
+Hadwick,Assembly,Assembly Environmental Safety and Toxic Materials,2,4,10,16,0.714
+Hadwick,Assembly,Assembly Insurance,9,14,47,70,0.77
+Hadwick,Assembly,Assembly Transportation,1,0,8,9,1.0
+Hadwick,Assembly,"Assembly Water, Parks and Wildlife",0,2,6,8,0.75
+Haney,Assembly,Assembly Business and Professions,1,2,147,150,0.987
+Haney,Assembly,Assembly Elections,0,0,1,1,1.0
+Haney,Assembly,Assembly Higher Education,0,0,1,1,1.0
+Haney,Assembly,Assembly Housing and Community Development,0,1,211,212,0.995
+Haney,Assembly,Assembly Local Government,0,0,14,14,1.0
+Haney,Assembly,Assembly Natural Resources,8,0,229,237,1.0
+Haney,Assembly,Assembly Privacy and Consumer Protection,0,0,5,5,1.0
+Haney,Assembly,Assembly Public Safety,43,10,301,354,0.968
+Harabedian,Assembly,Assembly Banking and Finance,0,0,6,6,1.0
+Harabedian,Assembly,Assembly Insurance,1,0,69,70,1.0
+Harabedian,Assembly,Assembly Judiciary,1,0,489,490,1.0
+Harabedian,Assembly,Assembly Public Safety,15,10,349,374,0.972
+Harabedian,Assembly,Assembly Transportation,11,1,155,167,0.994
+Harabedian,Assembly,Assembly Utilities and Energy,3,0,164,167,1.0
+Hart,Assembly,Assembly Appropriations,7,0,798,805,1.0
+Hart,Assembly,Assembly Business and Professions,1,0,82,83,1.0
+Hart,Assembly,Assembly Environmental Safety and Toxic Materials,0,0,8,8,1.0
+Hart,Assembly,Assembly Judiciary,0,0,20,20,1.0
+Hart,Assembly,Assembly Natural Resources,1,0,17,18,1.0
+Hart,Assembly,Assembly Privacy and Consumer Protection,0,0,8,8,1.0
+Hart,Assembly,Assembly Public Safety,0,0,11,11,1.0
+Hart,Assembly,Assembly Transportation,4,2,179,185,0.989
+Hart,Assembly,Assembly Utilities and Energy,8,0,159,167,1.0
+Hart,Assembly,"Assembly Water, Parks and Wildlife",3,0,111,114,1.0
+Hoover,Assembly,Assembly Appropriations,226,170,683,1079,0.801
+Hoover,Assembly,Assembly Communications and Conveyance,3,5,17,25,0.773
+Hoover,Assembly,Assembly Education,12,16,197,225,0.925
+Hoover,Assembly,Assembly Governmental Organization,0,0,7,7,1.0
+Hoover,Assembly,Assembly Local Government,15,11,86,112,0.887
+Hoover,Assembly,Assembly Natural Resources,14,36,173,223,0.828
+Hoover,Assembly,Assembly Privacy and Consumer Protection,22,17,68,107,0.8
+Hoover,Assembly,Assembly Transportation,6,30,140,176,0.824
+Hurtado,Senate,Senate Agriculture,0,0,15,15,1.0
+Hurtado,Senate,Senate Banking and Financial Institutions,5,0,23,28,1.0
+Hurtado,Senate,Senate Budget and Fiscal Review,3,0,42,45,1.0
+Hurtado,Senate,"Senate Energy, Utilities and Communications",9,1,130,140,0.992
+Hurtado,Senate,Senate Environmental Quality,25,5,180,210,0.973
+Hurtado,Senate,Senate Governmental Organization,29,0,125,154,1.0
+Hurtado,Senate,Senate Natural Resources and Water,21,4,79,104,0.952
+Irwin,Assembly,Assembly Agriculture,1,0,38,39,1.0
+Irwin,Assembly,Assembly Business and Professions,7,4,151,162,0.974
+Irwin,Assembly,Assembly Higher Education,1,0,12,13,1.0
+Irwin,Assembly,Assembly Military and Veterans Affairs,0,0,24,24,1.0
+Irwin,Assembly,Assembly Privacy and Consumer Protection,11,6,156,173,0.963
+Irwin,Assembly,Assembly Rules,80,0,388,468,1.0
+Irwin,Assembly,Assembly Utilities and Energy,10,2,155,167,0.987
+Jackson,Assembly,Assembly Business and Professions,2,2,158,162,0.988
+Jackson,Assembly,Assembly Higher Education,3,1,163,167,0.994
+Jackson,Assembly,Assembly Human Services,5,0,141,146,1.0
+Jackson,Assembly,Assembly Transportation,4,3,178,185,0.983
+Jeff Gonzalez,Assembly,Assembly Aging and Long Term Care,1,0,11,12,1.0
+Jeff Gonzalez,Assembly,Assembly Agriculture,1,2,36,39,0.947
+Jeff Gonzalez,Assembly,Assembly Appropriations,6,9,47,62,0.839
+Jeff Gonzalez,Assembly,"Assembly Arts, Entertainment, Sports, and Tourism",9,1,27,37,0.964
+Jeff Gonzalez,Assembly,Assembly Health,3,4,22,29,0.846
+Jeff Gonzalez,Assembly,Assembly Higher Education,11,22,103,136,0.824
+Jeff Gonzalez,Assembly,Assembly Military and Veterans Affairs,2,1,40,43,0.976
+Jeff Gonzalez,Assembly,"Assembly Water, Parks and Wildlife",8,18,88,114,0.83
+Johnson,Assembly,Assembly Business and Professions,8,4,61,73,0.938
+Johnson,Assembly,Assembly Elections,5,16,25,46,0.61
+Johnson,Assembly,Assembly Health,38,23,84,145,0.785
+Johnson,Assembly,Assembly Judiciary,2,3,18,23,0.857
+Johnson,Assembly,Assembly Local Government,14,23,72,109,0.758
+Jones,Senate,Senate Budget and Fiscal Review,0,1,0,1,0.0
+Jones,Senate,Senate Governmental Organization,12,5,75,92,0.938
+Jones,Senate,Senate Insurance,17,9,21,47,0.7
+Jones,Senate,"Senate Privacy, Digital Technologies, and Consumer Protection",18,20,12,50,0.375
+Kalra,Assembly,Assembly Higher Education,0,0,7,7,1.0
+Kalra,Assembly,Assembly Housing and Community Development,13,0,199,212,1.0
+Kalra,Assembly,Assembly Judiciary,1,1,488,490,0.998
+Kalra,Assembly,Assembly Labor and Employment,0,0,121,121,1.0
+Kalra,Assembly,Assembly Natural Resources,13,2,222,237,0.991
+Kalra,Assembly,Assembly Utilities and Energy,5,1,140,146,0.993
+Krell,Assembly,Assembly Appropriations,2,0,1077,1079,1.0
+Krell,Assembly,Assembly Banking and Finance,1,0,47,48,1.0
+Krell,Assembly,Assembly Business and Professions,2,0,77,79,1.0
+Krell,Assembly,Assembly Communications and Conveyance,0,0,14,14,1.0
+Krell,Assembly,Assembly Health,1,1,147,149,0.993
+Krell,Assembly,Assembly Insurance,7,0,63,70,1.0
+Krell,Assembly,Assembly Rules,19,0,224,243,1.0
+Lackey,Assembly,"Assembly Arts, Entertainment, Sports, and Tourism",5,2,30,37,0.938
+Lackey,Assembly,Assembly Elections,4,4,16,24,0.8
+Lackey,Assembly,Assembly Labor and Employment,5,5,4,14,0.444
+Lackey,Assembly,Assembly Privacy and Consumer Protection,1,1,3,5,0.75
+Lackey,Assembly,Assembly Public Employment and Retirement,22,1,36,59,0.973
+Lackey,Assembly,Assembly Public Safety,47,61,266,374,0.813
+Lackey,Assembly,Assembly Rules,122,3,324,449,0.991
+Lackey,Assembly,Assembly Transportation,46,16,123,185,0.885
+Lackey,Assembly,"Assembly Water, Parks and Wildlife",0,0,2,2,1.0
+Laird,Senate,Senate Budget and Fiscal Review,0,0,92,92,1.0
+Laird,Senate,Senate Education,1,2,145,148,0.986
+Laird,Senate,Senate Human Services,1,0,73,74,1.0
+Laird,Senate,Senate Judiciary,17,1,578,596,0.998
+Laird,Senate,"Senate Labor, Public Employment and Retirement",6,3,172,181,0.983
+Laird,Senate,Senate Local Government,1,1,230,232,0.996
+Laird,Senate,Senate Natural Resources and Water,0,3,180,183,0.984
+Lee,Assembly,Assembly Environmental Safety and Toxic Materials,1,0,85,86,1.0
+Lee,Assembly,Assembly Housing and Community Development,7,6,199,212,0.971
+Lee,Assembly,Assembly Human Services,0,4,162,166,0.976
+Lee,Assembly,Assembly Judiciary,2,1,93,96,0.989
+Lee,Assembly,Assembly Labor and Employment,1,1,119,121,0.992
+Limón,Senate,Senate Banking and Financial Institutions,3,0,12,15,1.0
+Limón,Senate,Senate Education,0,0,12,12,1.0
+Limón,Senate,Senate Elections and Constitutional Amendments,0,1,53,54,0.981
+Limón,Senate,"Senate Energy, Utilities and Communications",5,0,77,82,1.0
+Limón,Senate,Senate Health,3,0,125,128,1.0
+Limón,Senate,Senate Human Services,0,0,79,79,1.0
+Limón,Senate,Senate Natural Resources and Water,0,1,103,104,0.99
+Limón,Senate,Senate Transportation,3,0,81,84,1.0
+Lowenthal,Assembly,Assembly Business and Professions,1,1,160,162,0.994
+Lowenthal,Assembly,Assembly Communications and Conveyance,0,0,25,25,1.0
+Lowenthal,Assembly,Assembly Education,7,2,216,225,0.991
+Lowenthal,Assembly,Assembly Governmental Organization,0,0,3,3,1.0
+Lowenthal,Assembly,Assembly Privacy and Consumer Protection,0,1,172,173,0.994
+Lowenthal,Assembly,Assembly Transportation,9,0,87,96,1.0
+Macedo,Assembly,Assembly Business and Professions,15,11,128,154,0.921
+Macedo,Assembly,Assembly Elections,5,14,38,57,0.731
+Macedo,Assembly,Assembly Governmental Organization,10,8,63,81,0.887
+Macedo,Assembly,Assembly Higher Education,0,8,18,26,0.692
+Macedo,Assembly,Assembly Insurance,0,0,1,1,1.0
+Macedo,Assembly,Assembly Judiciary,56,120,209,385,0.635
+Macedo,Assembly,Assembly Natural Resources,3,31,80,114,0.721
+Macedo,Assembly,Assembly Privacy and Consumer Protection,15,48,80,143,0.625
+Macedo,Assembly,Assembly Transportation,10,34,132,176,0.795
+Macedo,Assembly,"Assembly Water, Parks and Wildlife",14,12,35,61,0.745
+Mark González,Assembly,Assembly Appropriations,24,0,2051,2075,1.0
+Mark González,Assembly,Assembly Health,6,0,288,294,1.0
+Mark González,Assembly,Assembly Public Safety,21,7,336,364,0.98
+Mark González,Assembly,Assembly Revenue and Taxation,0,0,3,3,1.0
+Mark González,Assembly,Assembly Rules,67,0,401,468,1.0
+Mark González,Assembly,Assembly Utilities and Energy,9,0,158,167,1.0
+McKinnor,Assembly,"Assembly Arts, Entertainment, Sports, and Tourism",2,4,31,37,0.886
+McKinnor,Assembly,Assembly Environmental Safety and Toxic Materials,4,0,82,86,1.0
+McKinnor,Assembly,Assembly Governmental Organization,17,1,89,107,0.989
+McKinnor,Assembly,Assembly Privacy and Consumer Protection,7,1,152,160,0.993
+McKinnor,Assembly,Assembly Public Employment and Retirement,1,0,60,61,1.0
+McKinnor,Assembly,Assembly Revenue and Taxation,4,0,101,105,1.0
+McNerney,Senate,Senate Agriculture,0,0,32,32,1.0
+McNerney,Senate,Senate Budget and Fiscal Review,0,0,88,88,1.0
+McNerney,Senate,Senate Emergency Management,0,0,6,6,1.0
+McNerney,Senate,"Senate Energy, Utilities and Communications",2,0,154,156,1.0
+McNerney,Senate,Senate Judiciary,2,0,20,22,1.0
+McNerney,Senate,Senate Military and Veterans Affairs,0,0,42,42,1.0
+McNerney,Senate,"Senate Privacy, Digital Technologies, and Consumer Protection",1,0,66,67,1.0
+McNerney,Senate,Senate Revenue and Taxation,3,6,134,143,0.957
+Menjivar,Senate,Senate Budget and Fiscal Review,1,3,84,88,0.966
+Menjivar,Senate,"Senate Business, Professions and Economic Development",40,2,139,181,0.986
+Menjivar,Senate,Senate Education,0,0,20,20,1.0
+Menjivar,Senate,Senate Environmental Quality,10,5,195,210,0.975
+Menjivar,Senate,Senate Health,17,0,236,253,1.0
+Menjivar,Senate,Senate Human Services,0,0,4,4,1.0
+Menjivar,Senate,Senate Insurance,0,0,26,26,1.0
+Menjivar,Senate,Senate Military and Veterans Affairs,10,0,32,42,1.0
+Menjivar,Senate,Senate Transportation,15,1,170,186,0.994
+Michelle Rodriguez,Assembly,Assembly Banking and Finance,1,1,46,48,0.979
+Michelle Rodriguez,Assembly,"Assembly Economic Development, Growth, and Household Impact",0,0,17,17,1.0
+Michelle Rodriguez,Assembly,Assembly Governmental Organization,2,0,105,107,1.0
+Michelle Rodriguez,Assembly,Assembly Insurance,1,0,69,70,1.0
+Michelle Rodriguez,Assembly,Assembly Military and Veterans Affairs,1,0,18,19,1.0
+Michelle Rodriguez,Assembly,Assembly Public Employment and Retirement,0,0,30,30,1.0
+Michelle Rodriguez,Assembly,Assembly Revenue and Taxation,4,0,53,57,1.0
+Michelle Rodriguez,Assembly,Assembly Rules,120,0,348,468,1.0
+Muratsuchi,Assembly,Assembly Appropriations,76,0,19,95,1.0
+Muratsuchi,Assembly,"Assembly Economic Development, Growth, and Household Impact",6,0,5,11,1.0
+Muratsuchi,Assembly,Assembly Education,3,6,106,115,0.946
+Muratsuchi,Assembly,Assembly Higher Education,19,1,134,154,0.993
+Muratsuchi,Assembly,Assembly Natural Resources,51,1,172,224,0.994
+Muratsuchi,Assembly,"Assembly Water, Parks and Wildlife",0,0,25,25,1.0
+Nguyen,Assembly,Assembly Appropriations,0,0,18,18,1.0
+Nguyen,Assembly,Assembly Business and Professions,4,1,157,162,0.994
+Nguyen,Assembly,Assembly Governmental Organization,1,0,106,107,1.0
+Nguyen,Assembly,Assembly Insurance,2,0,68,70,1.0
+Nguyen,Assembly,Assembly Public Employment and Retirement,2,0,59,61,1.0
+Nguyen,Assembly,Assembly Public Safety,62,3,309,374,0.99
+Niello,Senate,Senate Banking and Financial Institutions,4,3,21,28,0.875
+Niello,Senate,Senate Budget and Fiscal Review,32,44,16,92,0.267
+Niello,Senate,"Senate Business, Professions and Economic Development",25,23,145,193,0.863
+Niello,Senate,"Senate Energy, Utilities and Communications",0,2,6,8,0.75
+Niello,Senate,Senate Human Services,1,1,10,12,0.909
+Niello,Senate,Senate Insurance,8,10,29,47,0.744
+Niello,Senate,Senate Judiciary,75,173,370,618,0.681
+Ochoa Bogh,Senate,Senate Budget and Fiscal Review,36,33,23,92,0.411
+Ochoa Bogh,Senate,Senate Education,29,36,266,331,0.881
+Ochoa Bogh,Senate,"Senate Energy, Utilities and Communications",24,40,92,156,0.697
+Ochoa Bogh,Senate,Senate Governmental Organization,7,13,134,154,0.912
+Ochoa Bogh,Senate,Senate Health,0,0,2,2,1.0
+Ochoa Bogh,Senate,Senate Housing,13,33,124,170,0.79
+Ochoa Bogh,Senate,Senate Human Services,14,11,120,145,0.916
+Ochoa Bogh,Senate,"Senate Privacy, Digital Technologies, and Consumer Protection",14,11,29,54,0.725
+Ochoa Bogh,Senate,Senate Revenue and Taxation,0,0,1,1,1.0
+Ortega,Assembly,"Assembly Arts, Entertainment, Sports, and Tourism",0,3,34,37,0.919
+Ortega,Assembly,Assembly Education,1,1,2,4,0.667
+Ortega,Assembly,Assembly Insurance,7,0,63,70,1.0
+Ortega,Assembly,Assembly Labor and Employment,0,0,121,121,1.0
+Ortega,Assembly,Assembly Privacy and Consumer Protection,1,0,172,173,1.0
+Pacheco,Assembly,Assembly Appropriations,39,1,2035,2075,1.0
+Pacheco,Assembly,Assembly Governmental Organization,1,0,106,107,1.0
+Pacheco,Assembly,Assembly Health,0,0,17,17,1.0
+Pacheco,Assembly,Assembly Judiciary,34,1,455,490,0.998
+Pacheco,Assembly,Assembly Local Government,10,0,224,234,1.0
+Pacheco,Assembly,Assembly Rules,0,0,468,468,1.0
+Padilla,Senate,Senate Agriculture,4,0,28,32,1.0
+Padilla,Senate,Senate Environmental Quality,9,2,93,104,0.979
+Padilla,Senate,Senate Governmental Organization,2,0,152,154,1.0
+Padilla,Senate,Senate Health,1,1,251,253,0.996
+Padilla,Senate,Senate Housing,9,0,161,170,1.0
+Padilla,Senate,Senate Insurance,0,0,47,47,1.0
+Padilla,Senate,"Senate Privacy, Digital Technologies, and Consumer Protection",1,0,66,67,1.0
+Papan,Assembly,Assembly Environmental Safety and Toxic Materials,0,0,86,86,1.0
+Papan,Assembly,Assembly Insurance,0,0,8,8,1.0
+Papan,Assembly,Assembly Judiciary,9,0,450,459,1.0
+Papan,Assembly,Assembly Transportation,16,3,166,185,0.982
+Papan,Assembly,Assembly Utilities and Energy,0,0,167,167,1.0
+Papan,Assembly,"Assembly Water, Parks and Wildlife",0,1,113,114,0.991
+Patel,Assembly,"Assembly Economic Development, Growth, and Household Impact",0,0,37,37,1.0
+Patel,Assembly,Assembly Education,5,8,212,225,0.964
+Patel,Assembly,Assembly Health,3,0,299,302,1.0
+Patel,Assembly,Assembly Higher Education,9,0,157,166,1.0
+Patel,Assembly,Assembly Rules,5,0,238,243,1.0
+Patterson,Assembly,Assembly Aging and Long Term Care,0,0,3,3,1.0
+Patterson,Assembly,Assembly Business and Professions,0,0,8,8,1.0
+Patterson,Assembly,Assembly Health,43,33,175,251,0.841
+Patterson,Assembly,Assembly Housing and Community Development,31,16,164,211,0.911
+Patterson,Assembly,Assembly Natural Resources,0,0,1,1,1.0
+Patterson,Assembly,Assembly Privacy and Consumer Protection,40,32,96,168,0.75
+Patterson,Assembly,Assembly Utilities and Energy,27,21,119,167,0.85
+Pellerin,Assembly,Assembly Appropriations,119,0,1956,2075,1.0
+Pellerin,Assembly,Assembly Business and Professions,2,0,160,162,1.0
+Pellerin,Assembly,Assembly Education,0,2,92,94,0.979
+Pellerin,Assembly,Assembly Elections,0,6,106,112,0.946
+Pellerin,Assembly,Assembly Natural Resources,15,1,221,237,0.995
+Pellerin,Assembly,Assembly Privacy and Consumer Protection,8,0,147,155,1.0
+Petrie-Norris,Assembly,"Assembly Economic Development, Growth, and Household Impact",1,0,36,37,1.0
+Petrie-Norris,Assembly,Assembly Insurance,4,0,66,70,1.0
+Petrie-Norris,Assembly,Assembly Privacy and Consumer Protection,30,1,142,173,0.993
+Petrie-Norris,Assembly,Assembly Utilities and Energy,0,0,167,167,1.0
+Pérez,Senate,Senate Budget and Fiscal Review,2,0,86,88,1.0
+Pérez,Senate,Senate Education,4,3,324,331,0.991
+Pérez,Senate,Senate Emergency Management,0,0,34,34,1.0
+Pérez,Senate,Senate Environmental Quality,3,2,106,111,0.981
+Pérez,Senate,Senate Health,12,0,113,125,1.0
+Pérez,Senate,Senate Housing,0,0,13,13,1.0
+Pérez,Senate,Senate Human Services,13,0,115,128,1.0
+Pérez,Senate,Senate Public Safety,8,4,340,352,0.988
+Pérez,Senate,Senate Transportation,0,0,3,3,1.0
+Quirk-Silva,Assembly,"Assembly Arts, Entertainment, Sports, and Tourism",7,3,27,37,0.9
+Quirk-Silva,Assembly,Assembly Housing and Community Development,4,1,193,198,0.995
+Quirk-Silva,Assembly,Assembly Local Government,0,0,1,1,1.0
+Quirk-Silva,Assembly,Assembly Military and Veterans Affairs,0,0,19,19,1.0
+Quirk-Silva,Assembly,Assembly Revenue and Taxation,1,0,107,108,1.0
+Ramos,Assembly,Assembly Governmental Organization,8,0,99,107,1.0
+Ramos,Assembly,Assembly Higher Education,1,0,25,26,1.0
+Ramos,Assembly,Assembly Local Government,9,1,201,211,0.995
+Ramos,Assembly,Assembly Military and Veterans Affairs,0,0,5,5,1.0
+Ramos,Assembly,Assembly Public Safety,43,17,314,374,0.949
+Ransom,Assembly,Assembly Agriculture,0,0,39,39,1.0
+Ransom,Assembly,Assembly Emergency Management,0,0,92,92,1.0
+Ransom,Assembly,Assembly Local Government,17,0,217,234,1.0
+Ransom,Assembly,Assembly Transportation,6,3,176,185,0.983
+Reyes,Senate,Senate Banking and Financial Institutions,0,0,13,13,1.0
+Reyes,Senate,Senate Budget and Fiscal Review,0,0,45,45,1.0
+Reyes,Senate,Senate Education,4,0,179,183,1.0
+Reyes,Senate,"Senate Energy, Utilities and Communications",2,0,72,74,1.0
+Reyes,Senate,Senate Environmental Quality,0,0,7,7,1.0
+Reyes,Senate,Senate Housing,4,0,2,6,1.0
+Reyes,Senate,Senate Judiciary,8,0,273,281,1.0
+Reyes,Senate,Senate Natural Resources and Water,0,0,11,11,1.0
+Reyes,Senate,"Senate Privacy, Digital Technologies, and Consumer Protection",0,0,67,67,1.0
+Reyes,Senate,Senate Public Safety,0,0,7,7,1.0
+Richardson,Senate,Senate Appropriations,28,0,3087,3115,1.0
+Richardson,Senate,Senate Banking and Financial Institutions,0,0,28,28,1.0
+Richardson,Senate,Senate Budget and Fiscal Review,1,0,91,92,1.0
+Richardson,Senate,"Senate Business, Professions and Economic Development",0,0,23,23,1.0
+Richardson,Senate,"Senate Energy, Utilities and Communications",5,0,69,74,1.0
+Richardson,Senate,Senate Governmental Organization,5,1,148,154,0.993
+Richardson,Senate,Senate Health,3,0,125,128,1.0
+Richardson,Senate,Senate Insurance,2,0,24,26,1.0
+Richardson,Senate,Senate Transportation,2,0,184,186,1.0
+Rivas,Assembly,"Assembly Arts, Entertainment, Sports, and Tourism",2,1,0,3,0.0
+Rogers,Assembly,Assembly Communications and Conveyance,1,0,24,25,1.0
+Rogers,Assembly,Assembly Health,1,0,143,144,1.0
+Rogers,Assembly,Assembly Transportation,8,2,175,185,0.989
+Rogers,Assembly,Assembly Utilities and Energy,4,1,162,167,0.994
+Rogers,Assembly,"Assembly Water, Parks and Wildlife",4,1,109,114,0.991
+Rubio,Senate,Senate Emergency Management,7,0,27,34,1.0
+Rubio,Senate,"Senate Energy, Utilities and Communications",12,0,132,144,1.0
+Rubio,Senate,Senate Governmental Organization,3,0,151,154,1.0
+Rubio,Senate,Senate Health,48,0,205,253,1.0
+Rubio,Senate,Senate Insurance,4,0,43,47,1.0
+Sanchez,Assembly,Assembly Appropriations,533,76,325,934,0.81
+Sanchez,Assembly,Assembly Communications and Conveyance,1,0,1,2,1.0
+Sanchez,Assembly,Assembly Governmental Organization,4,4,46,54,0.92
+Sanchez,Assembly,Assembly Health,40,52,210,302,0.802
+Sanchez,Assembly,Assembly Housing and Community Development,0,1,0,1,0.0
+Sanchez,Assembly,Assembly Human Services,0,1,9,10,0.9
+Sanchez,Assembly,Assembly Judiciary,44,148,293,485,0.664
+Sanchez,Assembly,Assembly Natural Resources,2,2,10,14,0.833
+Sanchez,Assembly,Assembly Revenue and Taxation,4,16,37,57,0.698
+Sanchez,Assembly,Assembly Rules,106,1,335,442,0.997
+Schiavo,Assembly,Assembly Banking and Finance,8,1,39,48,0.975
+Schiavo,Assembly,Assembly Health,17,0,285,302,1.0
+Schiavo,Assembly,Assembly Military and Veterans Affairs,0,0,43,43,1.0
+Schiavo,Assembly,Assembly Utilities and Energy,1,1,165,167,0.994
+Schiavo,Assembly,"Assembly Water, Parks and Wildlife",0,0,1,1,1.0
+Schultz,Assembly,Assembly Housing and Community Development,0,0,6,6,1.0
+Schultz,Assembly,Assembly Natural Resources,4,2,231,237,0.991
+Schultz,Assembly,Assembly Public Safety,1,24,349,374,0.936
+Schultz,Assembly,Assembly Utilities and Energy,2,0,144,146,1.0
+Seyarto,Senate,Senate Appropriations,132,387,2596,3115,0.87
+Seyarto,Senate,Senate Budget and Fiscal Review,38,39,10,87,0.204
+Seyarto,Senate,Senate Emergency Management,0,2,32,34,0.941
+Seyarto,Senate,Senate Housing,24,45,101,170,0.692
+Seyarto,Senate,Senate Local Government,25,68,139,232,0.671
+Seyarto,Senate,Senate Natural Resources and Water,14,34,156,204,0.821
+Seyarto,Senate,"Senate Privacy, Digital Technologies, and Consumer Protection",5,13,12,30,0.48
+Seyarto,Senate,Senate Public Safety,16,98,238,352,0.708
+Seyarto,Senate,Senate Transportation,18,33,135,186,0.804
+Sharp-Collins,Assembly,Assembly Aging and Long Term Care,0,0,15,15,1.0
+Sharp-Collins,Assembly,Assembly Appropriations,31,0,899,930,1.0
+Sharp-Collins,Assembly,Assembly Health,9,1,292,302,0.997
+Sharp-Collins,Assembly,Assembly Higher Education,15,2,148,165,0.987
+Sharp-Collins,Assembly,Assembly Military and Veterans Affairs,1,0,18,19,1.0
+Sharp-Collins,Assembly,Assembly Public Safety,24,23,313,360,0.932
+Sharp-Collins,Assembly,Assembly Transportation,3,3,71,77,0.959
+Smallwood-Cuevas,Senate,Senate Budget and Fiscal Review,0,1,87,88,0.989
+Smallwood-Cuevas,Senate,"Senate Business, Professions and Economic Development",33,0,160,193,1.0
+Smallwood-Cuevas,Senate,Senate Governmental Organization,12,0,142,154,1.0
+Smallwood-Cuevas,Senate,Senate Health,13,0,112,125,1.0
+Smallwood-Cuevas,Senate,"Senate Labor, Public Employment and Retirement",0,3,178,181,0.983
+Solache,Assembly,Assembly Appropriations,0,1,2074,2075,1.0
+Solache,Assembly,"Assembly Economic Development, Growth, and Household Impact",0,0,37,37,1.0
+Solache,Assembly,Assembly Elections,1,4,107,112,0.964
+Solache,Assembly,Assembly Governmental Organization,3,0,104,107,1.0
+Solache,Assembly,Assembly Higher Education,0,0,1,1,1.0
+Solache,Assembly,Assembly Human Services,1,0,35,36,1.0
+Solache,Assembly,Assembly Utilities and Energy,0,0,21,21,1.0
+Soria,Assembly,Assembly Agriculture,0,0,39,39,1.0
+Soria,Assembly,Assembly Banking and Finance,3,0,39,42,1.0
+Soria,Assembly,"Assembly Economic Development, Growth, and Household Impact",0,0,37,37,1.0
+Soria,Assembly,Assembly Governmental Organization,9,0,98,107,1.0
+Stefani,Assembly,Assembly Appropriations,0,0,54,54,1.0
+Stefani,Assembly,"Assembly Economic Development, Growth, and Household Impact",0,0,20,20,1.0
+Stefani,Assembly,Assembly Elections,3,6,103,112,0.945
+Stefani,Assembly,Assembly Health,7,1,287,295,0.997
+Stefani,Assembly,Assembly Judiciary,2,0,457,459,1.0
+Stefani,Assembly,Assembly Local Government,3,0,223,226,1.0
+Stern,Senate,Senate Emergency Management,1,0,33,34,1.0
+Stern,Senate,"Senate Energy, Utilities and Communications",4,4,144,152,0.973
+Stern,Senate,Senate Judiciary,38,3,577,618,0.995
+Stern,Senate,Senate Natural Resources and Water,4,2,187,193,0.989
+Strickland,Senate,Senate Banking and Financial Institutions,3,3,22,28,0.88
+Strickland,Senate,"Senate Business, Professions and Economic Development",27,26,139,192,0.842
+Strickland,Senate,"Senate Energy, Utilities and Communications",20,56,80,156,0.588
+Strickland,Senate,"Senate Labor, Public Employment and Retirement",8,80,93,181,0.538
+Strickland,Senate,Senate Transportation,5,35,146,186,0.807
+Ta,Assembly,Assembly Appropriations,555,300,1220,2075,0.803
+Ta,Assembly,Assembly Governmental Organization,9,5,93,107,0.949
+Ta,Assembly,Assembly Housing and Community Development,36,26,150,212,0.852
+Ta,Assembly,Assembly Local Government,40,36,158,234,0.814
+Ta,Assembly,Assembly Revenue and Taxation,10,3,38,51,0.927
+Ta,Assembly,Assembly Rules,2,0,96,98,1.0
+Ta,Assembly,Assembly Utilities and Energy,28,20,119,167,0.856
+Tangipa,Assembly,Assembly Appropriations,446,446,1111,2003,0.714
+Tangipa,Assembly,Assembly Elections,1,11,30,42,0.732
+Tangipa,Assembly,Assembly Higher Education,17,35,99,151,0.739
+Tangipa,Assembly,Assembly Housing and Community Development,54,24,103,181,0.811
+Tangipa,Assembly,Assembly Human Services,17,20,92,129,0.821
+Tangipa,Assembly,Assembly Judiciary,9,11,30,50,0.732
+Tangipa,Assembly,Assembly Transportation,1,0,8,9,1.0
+Tangipa,Assembly,"Assembly Water, Parks and Wildlife",4,15,40,59,0.727
+Umberg,Senate,"Senate Business, Professions and Economic Development",23,0,170,193,1.0
+Umberg,Senate,Senate Elections and Constitutional Amendments,3,1,110,114,0.991
+Umberg,Senate,Senate Judiciary,5,5,608,618,0.992
+Umberg,Senate,Senate Military and Veterans Affairs,0,0,42,42,1.0
+Umberg,Senate,"Senate Privacy, Digital Technologies, and Consumer Protection",7,0,60,67,1.0
+Umberg,Senate,Senate Revenue and Taxation,3,3,70,76,0.959
+Umberg,Senate,Senate Transportation,0,0,87,87,1.0
+Valencia,Assembly,"Assembly Arts, Entertainment, Sports, and Tourism",2,1,31,34,0.969
+Valencia,Assembly,Assembly Banking and Finance,0,1,47,48,0.979
+Valencia,Assembly,Assembly Governmental Organization,11,0,96,107,1.0
+Valencia,Assembly,Assembly Insurance,7,1,62,70,0.984
+Valencia,Assembly,Assembly Military and Veterans Affairs,0,0,43,43,1.0
+Valladares,Senate,"Senate Business, Professions and Economic Development",1,0,0,1,
+Valladares,Senate,Senate Environmental Quality,21,30,159,210,0.841
+Valladares,Senate,Senate Governmental Organization,10,5,107,122,0.955
+Valladares,Senate,Senate Health,60,25,166,251,0.869
+Valladares,Senate,Senate Judiciary,171,117,321,609,0.733
+Valladares,Senate,Senate Revenue and Taxation,5,7,64,76,0.901
+Valladares,Senate,Senate Transportation,44,20,122,186,0.859
+Wahab,Senate,Senate Appropriations,70,9,3036,3115,0.997
+Wahab,Senate,Senate Budget and Fiscal Review,0,0,47,47,1.0
+Wahab,Senate,"Senate Business, Professions and Economic Development",0,0,98,98,1.0
+Wahab,Senate,"Senate Energy, Utilities and Communications",6,2,148,156,0.987
+Wahab,Senate,Senate Governmental Organization,4,0,150,154,1.0
+Wahab,Senate,Senate Housing,0,3,82,85,0.965
+Wahab,Senate,Senate Human Services,0,0,9,9,1.0
+Wahab,Senate,Senate Insurance,2,0,19,21,1.0
+Wahab,Senate,Senate Judiciary,19,5,594,618,0.992
+Wallis,Assembly,"Assembly Economic Development, Growth, and Household Impact",0,2,35,37,0.946
+Wallis,Assembly,Assembly Governmental Organization,4,5,98,107,0.951
+Wallis,Assembly,Assembly Insurance,5,6,59,70,0.908
+Wallis,Assembly,Assembly Utilities and Energy,27,15,125,167,0.893
+Ward,Assembly,"Assembly Arts, Entertainment, Sports, and Tourism",0,3,34,37,0.919
+Ward,Assembly,Assembly Housing and Community Development,1,1,40,42,0.976
+Ward,Assembly,Assembly Labor and Employment,1,1,112,114,0.991
+Ward,Assembly,Assembly Local Government,3,0,216,219,1.0
+Ward,Assembly,Assembly Privacy and Consumer Protection,4,0,169,173,1.0
+Ward,Assembly,Assembly Transportation,4,0,152,156,1.0
+Ward,Assembly,"Assembly Water, Parks and Wildlife",0,0,9,9,1.0
+Weber Pierson,Senate,Senate Budget and Fiscal Review,3,0,89,92,1.0
+Weber Pierson,Senate,"Senate Business, Professions and Economic Development",17,0,78,95,1.0
+Weber Pierson,Senate,Senate Governmental Organization,3,0,151,154,1.0
+Weber Pierson,Senate,Senate Health,21,2,230,253,0.991
+Weber Pierson,Senate,Senate Human Services,11,0,63,74,1.0
+Weber Pierson,Senate,Senate Judiciary,62,0,556,618,1.0
+Wicks,Assembly,Assembly Appropriations,0,0,2075,2075,1.0
+Wicks,Assembly,Assembly Housing and Community Development,10,1,201,212,0.995
+Wicks,Assembly,Assembly Judiciary,0,0,37,37,1.0
+Wicks,Assembly,Assembly Local Government,0,0,1,1,1.0
+Wicks,Assembly,Assembly Natural Resources,38,1,180,219,0.994
+Wicks,Assembly,Assembly Privacy and Consumer Protection,8,0,137,145,1.0
+Wiener,Senate,Senate Budget and Fiscal Review,0,0,47,47,1.0
+Wiener,Senate,Senate Elections and Constitutional Amendments,0,3,54,57,0.947
+Wiener,Senate,Senate Health,1,0,127,128,1.0
+Wiener,Senate,Senate Judiciary,7,6,605,618,0.99
+Wiener,Senate,Senate Local Government,1,1,111,113,0.991
+Wiener,Senate,"Senate Privacy, Digital Technologies, and Consumer Protection",0,0,67,67,1.0
+Wiener,Senate,Senate Public Safety,1,13,338,352,0.963
+Wiener,Senate,Senate Transportation,4,1,94,99,0.989
+Wilson,Assembly,Assembly Business and Professions,0,0,12,12,1.0
+Wilson,Assembly,Assembly Education,2,0,2,4,1.0
+Wilson,Assembly,Assembly Housing and Community Development,29,5,178,212,0.973
+Wilson,Assembly,Assembly Local Government,19,0,215,234,1.0
+Wilson,Assembly,Assembly Privacy and Consumer Protection,17,0,154,171,1.0
+Wilson,Assembly,Assembly Public Safety,0,0,14,14,1.0
+Wilson,Assembly,Assembly Transportation,3,3,179,185,0.984
+Zbur,Assembly,"Assembly Arts, Entertainment, Sports, and Tourism",1,3,33,37,0.917
+Zbur,Assembly,Assembly Education,16,2,92,110,0.979
+Zbur,Assembly,Assembly Judiciary,7,1,481,489,0.998
+Zbur,Assembly,Assembly Natural Resources,19,3,215,237,0.986
+Zbur,Assembly,Assembly Rules,145,0,318,463,1.0
+Zbur,Assembly,Assembly Utilities and Energy,15,0,152,167,1.0
+Ávila Farías,Assembly,Assembly Aging and Long Term Care,6,0,9,15,1.0
+Ávila Farías,Assembly,Assembly Emergency Management,0,0,6,6,1.0
+Ávila Farías,Assembly,Assembly Housing and Community Development,2,14,188,204,0.931
+Ávila Farías,Assembly,Assembly Insurance,2,0,68,70,1.0
+Ávila Farías,Assembly,Assembly Military and Veterans Affairs,0,0,38,38,1.0
+Ávila Farías,Assembly,Assembly Transportation,29,0,12,41,1.0
+Ávila Farías,Assembly,"Assembly Water, Parks and Wildlife",17,0,97,114,1.0

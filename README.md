@@ -6,6 +6,7 @@ A transparent, reproducible scorecard for every member of the California Legisla
 
 - `site/index.html`: the scorecard (search, chamber and party filters, per-member bill lists).
 - `site/trends.html`: statewide trends. Where bills die, Appropriations outcomes by party, policy committees with the highest risk, fiscal flags, coauthors, timing, spot bills, and veto reasons.
+- `site/committees.html`: committee rosters by year, chairs and vice chairs with dates, and every member's committee votes, from the official roll calls. See `docs/COMMITTEES.md`.
 - `site/outlook.html`: bill outlook. Estimates a proposed bill's chance of being signed from its author, first policy committee, fiscal features, coalition and timing, with similar past bills. Accuracy is stated on the page (AUC 0.65); see `docs/MODEL.md`.
 
 ## The idea
@@ -32,7 +33,8 @@ make fetch     # download the 2025-26 session export (~1.2 GB, logged in data/ra
 make extract   # unpack the tables the pipeline reads
 make build     # data/processed/*.csv
 make site      # site/data.js for the dashboard
-make insights  # site/insights.js: trends and the bill outlook model
+make committees  # committee rosters, chairs and member votes from the roll calls
+make insights  # site/insights.js and site/committees.js: trends, committees and the outlook model
 make test
 python3 -m http.server -d site   # open http://localhost:8000
 ```
@@ -48,6 +50,7 @@ A weekly GitHub Action (`refresh.yml`) rebuilds everything from fresh data.
 | `src/calleg/build.py` | One command from raw export to processed tables |
 | `src/calleg/features.py` | One row per bill: committees, fiscal flags, coalition, timing, spot bills |
 | `src/calleg/trends.py` | Statewide trend tables, including veto-reason classification |
+| `src/calleg/committees.py` | Committee rosters, chairs and member votes from roll calls |
 | `src/calleg/predict.py` | Bill outlook model: training, evaluation, export for the browser |
 | `data/reference/` | Hand-sourced facts the export lacks (mid-session seat changes) |
 | `data/processed/` | Pipeline output (bills, members, scorecards) |
@@ -64,9 +67,8 @@ A weekly GitHub Action (`refresh.yml`) rebuilds everything from fresh data.
 
 ## Roadmap
 
-1. Committee votes and rosters, so the outlook model can use the relationship between a bill, its author and the committee's members (details in `docs/MODEL.md`).
-2. Earlier sessions for longer author histories and out-of-session testing.
-3. Staged estimates: chance of clearing each committee, the floor and the Governor.
+1. Staged estimates: chance of clearing each committee vote, the floor and the Governor, where committee relationships should matter most (details in `docs/MODEL.md`).
+2. Earlier sessions for longer author histories, cross-session voting records and out-of-session testing.
 4. An MCP server so an AI assistant can answer questions about the data with source links.
 
 ## License and disclaimer

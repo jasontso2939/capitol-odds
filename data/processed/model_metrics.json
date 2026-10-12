@@ -1,52 +1,52 @@
 {
   "bills": 3697,
   "base_rate": 0.445,
-  "cv_auc": 0.651,
+  "cv_auc": 0.653,
   "cv_brier": 0.229,
   "base_brier": 0.247,
   "temporal_auc_2025_to_2026": 0.657,
   "calibration": [
     {
       "band": "(0.0, 0.2]",
-      "bills": 298,
+      "bills": 295,
       "predicted": 0.147,
-      "actual": 0.141
+      "actual": 0.146
     },
     {
       "band": "(0.2, 0.3]",
-      "bills": 410,
+      "bills": 420,
       "predicted": 0.252,
-      "actual": 0.288
+      "actual": 0.29
     },
     {
       "band": "(0.3, 0.4]",
-      "bills": 656,
-      "predicted": 0.355,
-      "actual": 0.377
+      "bills": 663,
+      "predicted": 0.352,
+      "actual": 0.371
     },
     {
       "band": "(0.4, 0.5]",
-      "bills": 867,
+      "bills": 873,
       "predicted": 0.452,
-      "actual": 0.484
+      "actual": 0.485
     },
     {
       "band": "(0.5, 0.6]",
-      "bills": 860,
-      "predicted": 0.546,
-      "actual": 0.508
+      "bills": 822,
+      "predicted": 0.547,
+      "actual": 0.523
     },
     {
       "band": "(0.6, 0.7]",
-      "bills": 462,
+      "bills": 447,
       "predicted": 0.643,
-      "actual": 0.61
+      "actual": 0.566
     },
     {
       "band": "(0.7, 1.0]",
-      "bills": 144,
-      "predicted": 0.75,
-      "actual": 0.688
+      "bills": 177,
+      "predicted": 0.752,
+      "actual": 0.723
     }
   ]
 }

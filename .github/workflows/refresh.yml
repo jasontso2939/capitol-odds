@@ -15,6 +15,7 @@ jobs:
       - run: bash scripts/extract_raw.sh
       - run: PYTHONPATH=src python -m calleg.build
       - run: PYTHONPATH=src python scripts/build_site_all.py
+      - run: PYTHONPATH=src python scripts/build_committees.py
       - run: PYTHONPATH=src python scripts/build_insights.py
       - run: PYTHONPATH=src python -m pytest -q
       - uses: actions/upload-artifact@v4

@@ -17,6 +17,7 @@ Whether a regular Assembly or Senate bill by a legislator is signed by the Gover
 | Coauthors | Count at introduction (log scale), any coauthor from the other party |
 | Joint leads | More than one lead author; a joint lead from the other party |
 | Spot bill | Introduced text under 3,000 characters containing "intent of the Legislature to enact" |
+| Author on the committee | Whether the lead author is a regular member of the first policy committee that year, and whether they chair it, from committee roll calls (`docs/COMMITTEES.md`) |
 | Author's track record | Signed rate on the author's other bills, shrunk toward the party average with a weight of 8 bills. Leave-one-out in training so a bill never sees its own outcome |
 
 ## Method
@@ -27,10 +28,10 @@ Regularized logistic regression (scikit-learn, C = 0.5). Every coefficient is ex
 
 | Check | Result |
 |---|---|
-| Five-fold cross-validated AUC | 0.651 |
+| Five-fold cross-validated AUC | 0.653 |
 | Train on bills introduced in 2025, test on 2026 | AUC 0.657 |
 | Brier score | 0.229 (base rate alone: 0.247) |
-| Calibration | Close in the middle; slightly overconfident above 50% (predicted 75%, actual 69% in the top band) |
+| Calibration | Close in the middle; slightly overconfident above 50% (predicted 75%, actual 72% in the top band) |
 
 AUC 0.65 means the model ranks a signed bill above an unsigned one about 65% of the time. That is useful for comparing scenarios and spotting risk factors. It is not a forecast for any single bill. Adding subject-line text (TF-IDF) did not help (cross-validated 0.661, temporal 0.652), so the model leaves it out.
 
@@ -40,12 +41,26 @@ AUC 0.65 means the model ranks a signed bill above an unsigned one about 65% of 
 - The model sees no bill merits, opposition or support, the Governor's priorities, or amendments.
 - Descriptive, not causal. A bill with a cross-party coauthor may do better because it was already a consensus bill.
 
-## Roadmap: author, committee and member relationships
+## Committee relationships: what the roll calls added
 
-The goal is to model the relationship between a bill's subject, its author and the members of the committees it must pass. Next steps, in order:
+Tested on 2025-26 with the same cross-validation and 2025-to-2026 split:
 
-1. **Committee votes.** Extract BILL_DETAIL_VOTE_TBL and BILL_SUMMARY_VOTE_TBL from the same export. These record how each member voted in each committee and floor vote, which supports features such as: author sits on the referral committee, coauthors on the committee, share of committee members who coauthored, and each member's past yes rate on bills by this author or party.
-2. **Committee rosters and chairs.** Members and chairs by committee for each session, from the Assembly and Senate committee pages or the export's location codes.
-3. **Earlier sessions.** 2021-22 and 2023-24 exports for longer author histories and a true out-of-session test.
-4. **Bill content.** Topic features from the introduced text (not just the subject line) and the Legislative Counsel's digest.
-5. **Staged models.** Separate estimates for each gate (policy committee, Appropriations, floor, second house, Governor), so the page can say where a bill is most likely to stop.
+| Feature | CV AUC | 2025 to 2026 AUC |
+|---|---|---|
+| Model without committee features | 0.651 | 0.657 |
+| + author sits on the committee | 0.652 | 0.656 |
+| + author chairs the committee | 0.653 | 0.658 |
+| + other authors who sit on the committee | 0.650 | 0.658 |
+| + committee's party balance, chair's party | 0.650 to 0.651 | 0.657 |
+| + members' past yes rate on the author's bills (votes before introduction only) | 0.650 | 0.654 |
+
+The model keeps the two author-committee flags (together: CV 0.653, temporal 0.657). The others are left out: they added nothing, and the coauthor count on the committee took a negative sign once total coauthors were in, which would mislead. Members' voting history on an author is shown on the outlook page as context, not used in the estimate, because committee roll calls mostly record bills already headed for passage (yes rates near 95%) and bills held without a vote leave no roll call.
+
+The committee itself (already a model input) and the author's party carry most of what roster relationships could add within one session.
+
+## Roadmap
+
+1. **Staged models.** Predict each gate separately (policy committee vote, Appropriations, floor, second house, Governor). Roll calls give a clean target for each committee vote, where relationship features should matter more than for final signature.
+2. **Earlier sessions.** 2021-22 and 2023-24 exports for longer author histories, member-to-author voting records across sessions, and a true out-of-session test.
+3. **Bill content.** Topic features from the introduced text and the Legislative Counsel's digest, matched to each committee member's record on similar bills.
+4. **Support and opposition.** Registered positions from committee analyses (BILL_ANALYSIS_TBL holds the analysis documents).

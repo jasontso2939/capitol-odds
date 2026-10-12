@@ -61,7 +61,7 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
 <header><div class="wrap">
 <h1>Bill Outlook</h1>
 <p>Estimate the chance a proposed bill is signed, from what is known when it is introduced. A statistical model trained on every legislator's 2025-26 bills.</p>
-<nav><a href="index.html">Scorecard</a><a href="trends.html">Trends</a><a href="outlook.html" aria-current="page">Bill outlook</a></nav>
+<nav><a href="index.html">Scorecard</a><a href="trends.html">Trends</a><a href="committees.html">Committees</a><a href="outlook.html" aria-current="page">Bill outlook</a></nav>
 </div></header>
 <main><div class="wrap">
 <div class="note"><b>Read this as a rough guide.</b> On bills it had not seen, the model ranks a signed bill above an unsigned one about <span id="aucpct"></span> of the time (AUC <span id="auc"></span>, where 0.5 is a coin flip). It cannot see a bill's merits, the Governor's priorities, opposition, or deals made along the way. It is one session of data.</div>
@@ -107,18 +107,20 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
  <div class="fac" id="fac"></div>
 </div>
 <div class="panel"><h2>Context</h2><div id="ctx" class="small"></div></div>
+<div class="panel"><h2>The author and the committee</h2><div id="rel" class="small"></div></div>
 <div class="panel"><h2>How well the model is calibrated</h2>
  <div class="small">Bills grouped by predicted chance, against the share that were actually signed (five-fold cross-validation).</div>
  <div id="calib"></div>
 </div>
-<div class="panel"><h2>Not in the model yet</h2>
- <div class="small">Committee membership and votes (whether the author or coauthors sit on the committee, the chair's record on similar bills, how members voted), bill text beyond the subject line, opposition and support letters, and earlier sessions. These are the next additions; see the roadmap in the repository.</div>
+<div class="panel"><h2>What the model can and cannot see</h2>
+ <div class="small">It now uses committee rosters from the roll calls: whether the author sits on or chairs the committee. Tested on 2025-26, these added little accuracy beyond the author's party, record and the committee itself, so they move estimates only slightly. How members voted on the author's past bills is shown for context but left out of the estimate: committee roll calls mostly record bills that were already headed for passage, so yes rates sit near 95% and did not predict outcomes. Not yet included: bill text beyond the subject line, support and opposition, and earlier sessions.</div>
 </div>
 </div>
 </div>
 <footer>Not affiliated with any office or legislator. Not a forecast of any specific bill and not advice.<br>Source: California Legislative Information bulk export (leginfo). Model code, tests and methodology are in the repository.</footer>
 </div></main>
 <script src="insights.js"></script>
+<script src="committees.js"></script>
 <script>
 const M = INSIGHTS.model, MET = INSIGHTS.metrics, B = INSIGHTS.bills;
 const $ = id => document.getElementById(id);
@@ -127,12 +129,19 @@ const pc = p => (100 * p).toFixed(0) + "%";
 const BIN = ["appropriation","urgency","taxlevy","local_program","supermajority","cross_party_coauthor","cross_party_joint_lead","spot_bill"];
 const LABEL = {appropriation:"Makes an appropriation", urgency:"Urgency clause", taxlevy:"Tax levy", local_program:"State-mandated local program", supermajority:"Two-thirds vote", cross_party_coauthor:"Coauthor from the other party", cross_party_joint_lead:"Joint lead from the other party", spot_bill:"Spot bill", joint_lead:"Joint lead author"};
 const OUT = {signed:"Signed", vetoed:"Vetoed", not_enacted:"Did not pass"};
+const CM = window.COMMITTEES || {committees: [], area_code: {}, pairs: []};
+function committeeYear(area) {
+  const c = CM.committees.find(x => x.code === CM.area_code[area]);
+  if (!c) return null;
+  const y = Object.keys(c.years).sort().pop();
+  return {c, y, data: c.years[y]};
+}
 
 $("auc").textContent = MET.cv_auc.toFixed(2); $("aucpct").textContent = Math.round(MET.cv_auc * 100) + "%";
 $("basepct").textContent = pc(M.base_rate); $("gbase").style.left = (100 * M.base_rate) + "%";
 const authors = [...M.authors].sort((a, b) => a.member.localeCompare(b.member));
 $("author").innerHTML = '<option value="">New or unlisted member</option>' +
-  authors.map((a, i) => `<option value="${i}">${esc(a.member)} (${a.party}, ${a.origin}, ${a.bills} bills)</option>`).join("");
+  authors.map((a, i) => `<option value="${i}">${esc(a.member)} (${a.party}, ${a.origin})</option>`).join("");
 $("calib").innerHTML = "<table><thead><tr><th>Predicted</th><th class='n'>Bills</th><th class='n'>Predicted avg</th><th class='n'>Actually signed</th></tr></thead><tbody>" +
   MET.calibration.map(c => { const [lo, hi] = c.band.replace(/[(\]]/g, "").split(", ").map(Number);
     return `<tr><td>${pc(lo)} to ${pc(hi)}</td><td class="n">${c.bills}</td><td class="n">${pc(c.predicted)}</td><td class="n">${pc(c.actual)}</td></tr>`; }).join("") + "</tbody></table>";
@@ -146,12 +155,17 @@ function state() {
     log1p_coauthors: Math.log1p(Math.max(0, +$("coauth").value || 0)), joint_lead: +$("joint_lead").checked, a};
   for (const b of BIN) s[b] = +$(b).checked;
   if (s.cross_party_joint_lead) s.joint_lead = 1;
+  const cy = committeeYear(s.policy_area), regs = cy ? cy.data.members.filter(m => m[3] === "regular member") : [];
+  const me = a ? regs.find(m => m[0] === a.member) : null;
+  s.cy = cy;
+  s.author_on_committee = me ? 1 : 0;
+  s.author_chairs_committee = me && me[2] === "Chair" ? 1 : 0;
   return s;
 }
 function logit(s) {
   const c = M.coef; let z = M.intercept;
   for (const k of ["party", "origin", "policy_area", "filing_window"]) z += c[`${k}_${s[k]}`] || 0;
-  for (const k of [...BIN, "log1p_coauthors", "joint_lead", "author_record"]) z += (c[k] || 0) * s[k];
+  for (const k of [...BIN, "log1p_coauthors", "joint_lead", "author_record", "author_on_committee", "author_chairs_committee"]) z += (c[k] || 0) * (s[k] || 0);
   return z;
 }
 const P = s => 1 / (1 + Math.exp(-logit(s)));
@@ -176,6 +190,8 @@ function render() {
   if (s.joint_lead) f.push([LABEL.joint_lead, p - P({...s, joint_lead: 0, cross_party_joint_lead: 0})]);
   for (const b of BIN) if (s[b] && b !== "cross_party_joint_lead") f.push([LABEL[b], p - P({...s, [b]: 0})]);
   if (s.cross_party_joint_lead) f.push([LABEL.cross_party_joint_lead, p - P({...s, cross_party_joint_lead: 0})]);
+  if (s.author_chairs_committee) f.push(["Author chairs the committee", p - P({...s, author_chairs_committee: 0})]);
+  if (s.author_on_committee) f.push(["Author sits on the committee", p - P({...s, author_on_committee: 0, author_chairs_committee: 0})]);
   f.sort((x, y) => Math.abs(y[1]) - Math.abs(x[1]));
   $("fac").innerHTML = f.map(([l, d]) => `<div>${esc(l)}</div><div class="${d >= 0 ? "up" : "dn"}">${d >= 0 ? "+" : "−"}${Math.abs(100 * d).toFixed(1)} pts</div>`).join("");
   const ab = B.filter(b => b.policy_area === s.policy_area), as = ab.filter(b => b.outcome === "signed").length;
@@ -183,6 +199,27 @@ function render() {
   if (s.a) { const mb = B.filter(b => b.member === s.a.member), ms = mb.filter(b => b.outcome === "signed").length;
     ctx += `<p><b>${esc(s.a.member)}</b>: ${mb.length} bills as first-listed lead author in 2025-26, ${ms} signed (${mb.length ? pc(ms / mb.length) : "–"}). The model shrinks each record toward the party average, more so for members with few bills.</p>`; }
   $("ctx").innerHTML = ctx;
+  relPanel(s);
+}
+function relPanel(s) {
+  if (!s.cy) { $("rel").innerHTML = "<p>No roll-call roster for this committee.</p>"; return; }
+  const {c, y, data} = s.cy, regs = data.members.filter(m => m[3] === "regular member");
+  const ch = regs.find(m => m[2] === "Chair"), vc = regs.find(m => m[2] === "Vice Chair");
+  const nd = regs.filter(m => m[1] === "D").length, nr = regs.filter(m => m[1] === "R").length;
+  let h = `<p><b>${esc(c.name)}</b>, ${y} roster from roll calls: chair ${ch ? `<span class="${ch[1]}">${esc(ch[0])} (${ch[1]})</span>` : "not recorded"}, vice chair ${vc ? `<span class="${vc[1]}">${esc(vc[0])} (${vc[1]})</span>` : "not recorded"}; ${regs.length} regular members, ${nd} D and ${nr} R. <a href="committees.html">Full roster and votes</a>.</p>`;
+  if (s.a) {
+    h += `<p>${esc(s.a.member)} ${s.author_chairs_committee ? "chairs this committee" : s.author_on_committee ? "sits on this committee" : "does not sit on this committee"} (${y}).</p>`;
+    const [ia, im, iy, ino] = ["author", "member", "yes", "no"].map(k => CM.pair_cols.indexOf(k));
+    const names = new Set(regs.map(m => m[0]));
+    const rows = CM.pairs.filter(r => r[ia] === s.a.member && names.has(r[im])).sort((a, b) => (a[iy] + a[ino]) < (b[iy] + b[ino]) ? 1 : -1);
+    const ty = rows.reduce((t, r) => t + r[iy], 0), tn = rows.reduce((t, r) => t + r[ino], 0);
+    if (rows.length) {
+      const party = Object.fromEntries(regs.map(m => [m[0], m[1]]));
+      h += `<p>Current members' committee votes on ${esc(s.a.member)}'s 2025-26 bills (any committee): ${ty} yes, ${tn} no.</p><div style="max-height:220px;overflow:auto"><table><thead><tr><th>Member</th><th class="n">Yes</th><th class="n">No</th></tr></thead><tbody>` +
+        rows.map(r => `<tr><td><span class="${party[r[im]] || ""}">${esc(r[im])}</span></td><td class="n">${r[iy]}</td><td class="n">${r[ino]}</td></tr>`).join("") + "</tbody></table></div>";
+    } else h += "<p>No recorded committee votes by these members on this author's bills.</p>";
+  }
+  $("rel").innerHTML = h;
 }
 function similar() {
   const w = $("kw").value.toLowerCase().split(/\W+/).filter(x => x.length > 2);

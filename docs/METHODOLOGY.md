@@ -45,3 +45,7 @@ Competition ranking: ties share the best rank (1, 2, 2, 4). Rank by bills signed
 ## Trends and the bill outlook model
 
 The Trends and Bill outlook pages use a bill-level table built in `src/calleg/features.py`. "Died in Appropriations" means the bill's final location is an Appropriations committee (Assembly CX25, Senate CS61). A bill's policy committee is its first referral outside Rules and Appropriations. Veto reasons come from keyword rules applied to the Governor's veto messages (VETO_MESSAGE_TBL), assigned in a fixed priority order; they approximate the main stated reason. The model, its inputs and its accuracy are documented in `docs/MODEL.md`.
+
+## Committees
+
+Committee rosters, chairs and member votes come from the committee roll calls, which list every member on each hearing date with the chair first. Rules and checks are in `docs/COMMITTEES.md`.

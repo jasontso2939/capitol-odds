@@ -3,8 +3,9 @@
 A regularized logistic regression, chosen so every coefficient can be read and the
 model can run in the browser. Inputs: author party and house, first policy committee,
 filing window, fiscal features of the introduced bill, coauthors and joint leads at
-introduction, spot-bill status, and the author's own track record (smoothed toward
-the party average). Bills never referred to a policy committee are left out, so the
+introduction, spot-bill status, the author's own track record (smoothed toward
+the party average), and the author's relationship to the committee: whether the author
+sits on or chairs it. Bills never referred to a policy committee are left out, so the
 output reads as "chance of being signed once referred to this committee".
 """
 from __future__ import annotations
@@ -18,6 +19,7 @@ from sklearn.model_selection import StratifiedKFold
 CATS = ["party", "origin", "policy_area", "filing_window"]
 BINS = ["appropriation", "urgency", "taxlevy", "local_program", "supermajority",
         "cross_party_coauthor", "cross_party_joint_lead", "spot_bill"]
+REL = ["author_on_committee", "author_chairs_committee"]   # from committee roll calls (calleg.committees)
 SMOOTH_K = 8   # bills of "prior" weight when shrinking an author's record toward the party average
 C = 0.5
 
@@ -54,6 +56,9 @@ def design(train: pd.DataFrame, target: pd.DataFrame, columns: list[str] | None 
     X["log1p_coauthors"] = np.log1p(target.n_coauthors_intro.values)
     X["joint_lead"] = (target.n_leads_intro.values > 1).astype(float)
     X["author_record"] = _author_logit(train, target, leave_one_out)
+    if all(c in target for c in REL):
+        for c in REL:
+            X[c] = target[c].astype(float).values
     if columns is not None:
         X = X.reindex(columns=columns, fill_value=0.0)
     return X

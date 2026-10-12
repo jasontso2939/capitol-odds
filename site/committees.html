@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Committee Rosters</title>
+<meta name="description" content="Who sat on each California Assembly and Senate committee in 2025 and 2026, who chaired it, and how each member voted, from the Legislature's official roll calls.">
+<style>
+:root{--bg:#f6f7fa;--panel:#fff;--ink:#1b2333;--muted:#5d6678;--line:#dde1ea;--navy:#14213d;--gold:#f2a900;--d:#3a6ea5;--r:#b5483b;--hi:#fff4d6}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1521;--panel:#171f2f;--ink:#e8ecf4;--muted:#9aa4b8;--line:#2a3550;--navy:#e8ecf4;--hi:#3a3115;--d:#6f9fd4;--r:#d97a6c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{background:#14213d;color:#fff;padding:26px 16px 20px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}header .wrap{padding:0}
+h1{margin:0 0 6px;font:700 28px/1.2 Georgia,Cambria,serif}
+header p{margin:0;color:#c9d2e6;max-width:72ch}
+main{padding:18px 0 60px}
+nav{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}
+nav a{color:#c9d2e6;text-decoration:none;font-size:14px;padding:4px 10px;border:1px solid #33456b;border-radius:999px}
+nav a[aria-current=page]{background:#fff;color:#14213d;font-weight:600;border-color:#fff}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.ctl{min-width:0}
+.ctl label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+select{max-width:100%;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:500 14px system-ui,sans-serif}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{background:var(--panel);color:var(--ink);border:0;padding:7px 12px;font:500 14px system-ui,sans-serif;cursor:pointer;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed=true]{background:var(--navy);color:var(--panel);font-weight:600}
+.note{background:var(--hi);border:1px solid #e6c766;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:14px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+section h2{margin:0 0 4px;font:700 19px/1.3 Georgia,Cambria,serif}
+.lede{color:var(--muted);margin:0 0 12px;font-size:14px;max-width:80ch}
+.stats{display:flex;flex-wrap:wrap;gap:10px 28px;margin:6px 0 4px}
+.stat b{display:block;font:700 26px/1.1 Georgia,Cambria,serif}.stat span{font-size:13px;color:var(--muted)}
+.scroll{overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+th:nth-child(-n+4),td:nth-child(-n+4){text-align:left}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.D{color:var(--d);font-weight:700}.R{color:var(--r);font-weight:700}
+.muted{color:var(--muted)}
+.tag{font-size:12px;background:var(--hi);border:1px solid #e6c766;border-radius:999px;padding:1px 8px;white-space:nowrap}
+footer{color:var(--muted);font-size:13px;margin-top:16px}
+a{color:var(--d)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Committee Rosters</h1>
+<p>Who sat on each policy and fiscal committee, who chaired it, and how members voted. 2025 and 2026, from the Legislature's own roll calls.</p>
+<nav><a href="index.html">Scorecard</a><a href="trends.html">Trends</a><a href="committees.html" aria-current="page">Committees</a><a href="outlook.html">Bill outlook</a></nav>
+</div></header>
+<main><div class="wrap">
+<div class="note">Every committee roll call lists all of the committee's members on that date, with the chair first and the vice chair second, so rosters here are dated and year-specific. Members who appear on fewer than half of a year's hearings are marked <span class="tag">part of year or substitute</span>: they joined or left mid-year, or sat in for an absent member. Checked against archived committee web pages: <span id="chk"></span></div>
+<div class="controls">
+ <div class="ctl"><label for="cmte">Committee</label><select id="cmte"></select></div>
+ <div class="ctl"><label>Year</label><div class="seg" id="year"><button data-v="2025" aria-pressed="true">2025</button><button data-v="2026">2026</button></div></div>
+</div>
+<div id="out"></div>
+<footer>Not affiliated with any office or legislator.<br>Source: California Legislative Information bulk export (leginfo), committee roll calls (BILL_DETAIL_VOTE_TBL). Roster checks use Internet Archive copies of each committee's members page; see data/processed/committee_roster_check.csv in the repository.</footer>
+</div></main>
+<script src="committees.js"></script>
+<script>
+const CM = COMMITTEES, $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const st = {code: null, year: "2025"};
+const list = [...CM.committees].sort((a, b) => a.name.localeCompare(b.name));
+$("cmte").innerHTML = ["Assembly", "Senate"].map(h => `<optgroup label="${h}">` +
+  list.filter(c => c.house === h).map(c => `<option value="${c.code}">${esc(c.name.replace(h + " ", ""))}</option>`).join("") + "</optgroup>").join("");
+st.code = $("cmte").value;
+$("chk").textContent = CM.check ? `${CM.check.explained} of ${CM.check.total} comparisons matched exactly or differed only by a temporary substitute; the chair agreed in ${CM.check.chair} and the vice chair in ${CM.check.vice}.` : "";
+$("cmte").addEventListener("input", e => { st.code = e.target.value; render(); });
+$("year").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return;
+  $("year").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); st.year = b.dataset.v; render(); });
+const pct = (a, b) => b ? Math.round(100 * a / b) + "%" : "–";
+function render() {
+  const c = CM.committees.find(x => x.code === st.code), y = c.years[st.year];
+  if (!y) { $("out").innerHTML = `<section><h2>${esc(c.name)}, ${st.year}</h2><p class="lede">No roll calls were recorded for this committee in ${st.year}, so the vote record has no roster for that year.</p></section>`; return; }
+  const lead = c.leadership.filter(l => l[2].startsWith(st.year) || l[3].startsWith(st.year));
+  const mem = [...y.members].sort((a, b) => ({Chair: 0, "Vice Chair": 1}[a[2]] ?? 2) - ({Chair: 0, "Vice Chair": 1}[b[2]] ?? 2) || (a[3] === b[3] ? 0 : a[3] === "regular member" ? -1 : 1) || a[0].localeCompare(b[0]));
+  $("out").innerHTML = `<section><h2>${esc(c.name)}, ${st.year}</h2>
+   <div class="stats"><div class="stat"><b>${y.hearing_dates}</b><span>hearing dates with roll calls</span></div>
+   <div class="stat"><b>${y.roll_calls}</b><span>roll calls</span></div><div class="stat"><b>${pct(y.passed, y.roll_calls)}</b><span>of roll calls passed</span></div>
+   <div class="stat"><b>${mem.filter(m => m[3] === "regular member").length}</b><span>regular members</span></div></div>
+   <p class="lede">Bills held without a vote (for example on the Appropriations suspense file) have no roll call, so the pass rate covers only bills that got a vote.</p></section>
+   <section><h2>Chair and vice chair</h2><p class="lede">Each stretch of hearings under the same chair and vice chair, in date order.</p><div class="scroll"><table><thead><tr><th>From</th><th>To</th><th>Chair</th><th>Vice chair</th><th>Hearings</th></tr></thead><tbody>` +
+   lead.map(l => `<tr><td>${l[2]}</td><td>${l[3]}</td><td>${esc(l[0])}</td><td>${esc(l[1])}${l[5] ? `<div class="muted" style="font-size:12px">${esc(l[5])}</div>` : ""}</td><td>${l[4]}</td></tr>`).join("") +
+   `</tbody></table></div></section>
+   <section><h2>Members and votes</h2><p class="lede">Votes are every roll call in this committee in ${st.year}. Yes rate counts only votes cast.</p><div class="scroll"><table><thead><tr><th>Member</th><th>Party</th><th>Role</th><th>Status</th><th>Hearings on roll</th><th>Yes</th><th>No</th><th>Absent or not voting</th><th>Yes rate</th></tr></thead><tbody>` +
+   mem.map(m => `<tr><td>${esc(m[0])}</td><td class="${m[1]}">${m[1]}</td><td>${m[2]}</td><td>${m[3] === "regular member" ? "Regular" : '<span class="tag">part of year or substitute</span>'}</td><td>${m[4]} of ${y.hearing_dates}</td><td>${m[6]}</td><td>${m[7]}</td><td>${m[8]}</td><td>${pct(m[6], m[6] + m[7])}</td></tr>`).join("") +
+   `</tbody></table></div></section>`;
+}
+render();
+</script>
+</body>
+</html>
