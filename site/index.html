@@ -39,12 +39,16 @@ dialog table td:nth-child(n){text-align:left;white-space:normal}
 .o-signed{color:#2f7d4f;font-weight:600}.o-vetoed{color:var(--r);font-weight:600}.o-not_enacted{color:var(--muted)}
 footer{color:var(--muted);font-size:13px;margin-top:16px}
 a{color:var(--d)}
+nav{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}
+nav a{color:#c9d2e6;text-decoration:none;font-size:14px;padding:4px 10px;border:1px solid #33456b;border-radius:999px}
+nav a[aria-current=page]{background:#fff;color:#14213d;font-weight:600;border-color:#fff}
 </style>
 </head>
 <body>
 <header><div class="wrap">
 <h1>California Legislative Scorecard</h1>
 <p>Every legislator, 2025-26 session. Bills authored, signed and vetoed, rebuilt from the Legislature's official bulk data. Ranks are within each chamber.</p>
+<nav><a href="index.html" aria-current="page">Scorecard</a><a href="trends.html">Trends</a><a href="outlook.html">Bill outlook</a></nav>
 </div></header>
 <main><div class="wrap">
 <div class="controls">

@@ -1,0 +1,52 @@
+{
+  "bills": 3697,
+  "base_rate": 0.445,
+  "cv_auc": 0.651,
+  "cv_brier": 0.229,
+  "base_brier": 0.247,
+  "temporal_auc_2025_to_2026": 0.657,
+  "calibration": [
+    {
+      "band": "(0.0, 0.2]",
+      "bills": 298,
+      "predicted": 0.147,
+      "actual": 0.141
+    },
+    {
+      "band": "(0.2, 0.3]",
+      "bills": 410,
+      "predicted": 0.252,
+      "actual": 0.288
+    },
+    {
+      "band": "(0.3, 0.4]",
+      "bills": 656,
+      "predicted": 0.355,
+      "actual": 0.377
+    },
+    {
+      "band": "(0.4, 0.5]",
+      "bills": 867,
+      "predicted": 0.452,
+      "actual": 0.484
+    },
+    {
+      "band": "(0.5, 0.6]",
+      "bills": 860,
+      "predicted": 0.546,
+      "actual": 0.508
+    },
+    {
+      "band": "(0.6, 0.7]",
+      "bills": 462,
+      "predicted": 0.643,
+      "actual": 0.61
+    },
+    {
+      "band": "(0.7, 1.0]",
+      "bills": 144,
+      "predicted": 0.75,
+      "actual": 0.688
+    }
+  ]
+}

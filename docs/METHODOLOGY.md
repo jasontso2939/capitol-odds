@@ -41,3 +41,7 @@ Competition ranking: ties share the best rank (1, 2, 2, 4). Rank by bills signed
 - Partial terms are listed in `data/reference/seat_changes.csv` with sources (SD-36, AD-32, AD-63).
 - Budget Act bills are introduced under the budget chairs' names (Gabriel 45, Laird 11, Wiener 7). They are excluded from counts and ranks by default (the dashboard has a toggle to include them) and shown in a `budget_bills` column.
 - Validation: unit tests on the counting rules (`tests/test_model.py`) and data-quality checks on the full build (`tests/test_data_quality.py`).
+
+## Trends and the bill outlook model
+
+The Trends and Bill outlook pages use a bill-level table built in `src/calleg/features.py`. "Died in Appropriations" means the bill's final location is an Appropriations committee (Assembly CX25, Senate CS61). A bill's policy committee is its first referral outside Rules and Appropriations. Veto reasons come from keyword rules applied to the Governor's veto messages (VETO_MESSAGE_TBL), assigned in a fixed priority order; they approximate the main stated reason. The model, its inputs and its accuracy are documented in `docs/MODEL.md`.
