@@ -8,7 +8,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from calleg.sessions import SESSIONS, raw_dir
+from calleg.sessions import SESSIONS, raw_dir, is_complete
 
 ROOT = Path(__file__).resolve().parents[1]
 BILLS = pd.read_csv(ROOT / "data/processed/bills_all.csv")
@@ -20,7 +20,7 @@ def test_every_session_is_present():
     assert sorted(MEMBERS.session.unique()) == list(SESSIONS)
 
 
-@pytest.mark.parametrize("session", SESSIONS)
+@pytest.mark.parametrize("session", [s for s in SESSIONS if is_complete(s)])
 def test_session_sizes_are_plausible(session):
     b = BILLS[BILLS.session == session].drop_duplicates("bill_id")
     assert 3500 <= len(b) <= 5500                     # AB and SB introduced per session
@@ -37,6 +37,24 @@ def test_one_name_per_person_within_a_session():
         assert len(g) <= 2 or g.partial_term.all(), (s, d, list(g.member))
 
 
+# Different people who share a seat's first name across sessions (not name changes)
+DIFFERENT_PEOPLE = {("AD06", "kevin")}   # Kevin Kiley, then Kevin McCarty after redistricting
+
+
+def test_name_changes_are_linked():
+    """One person keeps one key across sessions even when the listed name changes
+    (data/reference/name_changes.csv, checked by hand; person_aliases.csv links the keys)."""
+    m = MEMBERS[MEMBERS.member.notna()].copy()
+    m["first"] = m.full_name.str.split(",").str[-1].str.strip().str.split().str[0].str.lower()
+    for (d, f), g in m.groupby(["district", "first"]):
+        assert g.person.nunique() == 1 or (d, f) in DIFFERENT_PEOPLE, (d, f, sorted(g.person.unique()))
+    nc = pd.read_csv(ROOT / "data/reference/name_changes.csv")
+    changed = {p for p, g in m.groupby("person") if g.member.nunique() > 1}
+    assert changed <= set(nc.person), f"new name change to check by hand: {changed - set(nc.person)}"
+    for p in ["kamlager|sydney", "padilla|stephen", "weber|akilah", "boerner|tasha"]:
+        assert m[m.person == p].session.nunique() >= 2
+
+
 def test_pandemic_session_is_the_low_point():
     u = BILLS.drop_duplicates(["session", "bill_id"])
     rate = u.groupby("session").outcome.apply(lambda s: (s == "signed").mean())
@@ -46,8 +64,18 @@ def test_pandemic_session_is_the_low_point():
 archive = pytest.mark.skipif(not (ROOT / "data/archive/pubinfo_2017").exists(), reason="session archive not fetched")
 
 
+def test_rollover_dates():
+    import datetime as dt
+    from calleg.sessions import session_for
+    assert session_for(dt.date(2026, 11, 30)) == 2025
+    assert session_for(dt.date(2026, 12, 7)) == 2027     # new session convenes in December
+    assert session_for(dt.date(2027, 6, 1)) == 2027
+    assert session_for(dt.date(2028, 9, 30)) == 2027
+    assert not is_complete(2027, dt.date(2028, 9, 30)) and is_complete(2027, dt.date(2028, 10, 1))
+
+
 @archive
-@pytest.mark.parametrize("session", [2017, 2019, 2021, 2023])
+@pytest.mark.parametrize("session", [s for s in SESSIONS if is_complete(s) and s < max(SESSIONS)])
 def test_archived_votes_add_up_to_official_tallies(session):
     from calleg import committees as C
     raw = raw_dir(session)

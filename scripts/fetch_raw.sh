@@ -2,7 +2,8 @@
 # Download raw files from the California Legislature's public data server and
 # record each one in data/raw/MANIFEST.md. Resumable: safe to run again.
 #   bash scripts/fetch_raw.sh docs      # data dictionary + table definitions (~400 KB)
-#   bash scripts/fetch_raw.sh session   # the 2025-26 session database (~1.2 GB)
+#   bash scripts/fetch_raw.sh session [YEAR]   # one session's database (~1.2 GB); YEAR defaults to
+#                                               # the session in progress (2025 for 2025-26)
 set -euo pipefail
 BASE="https://downloads.leginfo.legislature.ca.gov"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -29,6 +30,6 @@ fi
 
 case "${1:-}" in
   docs)    fetch pubinfo_Readme.pdf; fetch pubinfo_load.zip ;;
-  session) fetch pubinfo_2025.zip ;;
+  session) fetch "pubinfo_${2:-$(python3 "$ROOT/scripts/current_session.py")}.zip" ;;
   *) echo "usage: $0 docs|session"; exit 1 ;;
 esac

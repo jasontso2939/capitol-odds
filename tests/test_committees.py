@@ -90,3 +90,15 @@ def test_each_roll_call_has_one_chair_slot():
     v = C.committee_votes(RAW)
     first = v[v.roll_order == 1].groupby(["BILL_ID", "committee_code", "vote_time", "vote_seq", "motion_id"]).size()
     assert (first == 1).all()
+
+
+def test_renamed_committees_keep_one_history(mem):
+    """A renamed committee appears under its current name, with the old name for the years it applied.
+    Each rename is a single code whose old name ends the year before the new one starts."""
+    lin = pd.read_csv(ROOT / "data/reference/committee_lineage.csv")
+    for r in lin[lin.relation == "renamed"].itertuples():
+        g = mem[mem.committee == r.current_name]
+        assert set(g.committee_code) == {r.code}, r
+        old, new = g[g.name_then == r.name].year, g[g.name_then == r.current_name].year
+        assert len(old) and len(new) and old.max() < new.min(), r
+        assert not (mem.committee == r.name).any()          # never listed separately

@@ -1,0 +1,13 @@
+house,code,name,current_name,relation,note
+Assembly,CX04,Assembly Elections and Redistricting,Assembly Elections,renamed,Same code; renamed for the 2021-22 session
+Assembly,CX17,"Assembly Public Employees, Retirement, and Social Security",Assembly Public Employment and Retirement,renamed,Same code; renamed for the 2019-20 session
+Assembly,CX34,"Assembly Jobs, Economic Development, and the Economy","Assembly Economic Development, Growth, and Household Impact",renamed,Same code; renamed for the 2025-26 session
+Assembly,CX37,"Assembly Arts, Entertainment, Sports, Tourism, and Internet Media","Assembly Arts, Entertainment, Sports, and Tourism",renamed,Same code; renamed for the 2023-24 session
+Assembly,CX38,Assembly Veterans Affairs,Assembly Military and Veterans Affairs,renamed,Same code; renamed for the 2021-22 session
+Senate,CS56,Senate Public Employment and Retirement,"Senate Labor, Public Employment and Retirement",renamed,Same code; renamed for the 2019-20 session when it took over the work of Senate Labor and Industrial Relations
+Senate,CS59,Senate Transportation and Housing,Senate Transportation,renamed,Same code; renamed for the 2019-20 session when housing bills moved to the new Senate Housing committee
+Senate,CS66,Senate Veterans Affairs,Senate Military and Veterans Affairs,renamed,Same code; renamed for the 2021-22 session
+Senate,CS51,Senate Labor and Industrial Relations,"Senate Labor, Public Employment and Retirement",merged,Last roll calls 2018; its work moved to Senate Public Employment and Retirement (CS56) in 2019. Kept separate because both met in 2017-18
+Senate,CS75,Senate Housing,Senate Housing,created,First roll calls 2019; took housing bills from Senate Transportation and Housing
+Senate,CS73,Senate Governance and Finance,Senate Governance and Finance,split,Last roll calls 2024; Senate Local Government (CS82) and Senate Revenue and Taxation (CS83) began hearing bills in 2024
+Senate,CS80,"Senate Insurance, Banking and Financial Institutions","Senate Insurance, Banking and Financial Institutions",split,Roll calls only in 2017; Senate Insurance (CS70) and Senate Banking and Financial Institutions (CS69) hold roll calls from 2017

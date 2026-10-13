@@ -33,7 +33,9 @@ def intro_text_stats(raw: Path, zip_path: Path, out_csv: Path) -> pd.DataFrame:
 
     Reads only the introduced versions from the session zip. Cached to out_csv.
     """
-    if out_csv.exists():
+    # Reuse the cache unless a newer download is present (the current session keeps adding bills)
+    if out_csv.exists() and not (zip_path and Path(zip_path).exists()
+                                 and Path(zip_path).stat().st_mtime > out_csv.stat().st_mtime):
         return pd.read_csv(out_csv)
     v = read_table(raw, "BILL_VERSION_TBL", ["BILL_ID", "BILL_VERSION_ACTION", "BILL_XML"])
     v = v[v.BILL_ID.str.match(r"^\d{9}(AB|SB)\d+$") & (v.BILL_VERSION_ACTION == "Introduced")]
@@ -108,9 +110,9 @@ def build_features(raw: str | Path, zip_path: str | Path | None = None,
     mem = mem.assign(party=mem.party.map({"DEM": "D", "REP": "R"}).fillna(mem.party))
     m = m.merge(mem, on="member", how="left")
     # person key that carries across sessions (the short author name alone can be shared by different people)
+    from .pipeline import person_keys
     lg = read_table(raw, "LEGISLATOR_TBL", ["AUTHOR_NAME", "FIRST_NAME", "LAST_NAME"]).dropna(subset=["AUTHOR_NAME"])
-    norm = lambda s: s.fillna("").str.normalize("NFKD").str.encode("ascii", "ignore").str.decode("ascii").str.lower().str.strip()
-    lg["person"] = norm(lg.LAST_NAME).str.split().str[0] + "|" + norm(lg.FIRST_NAME).str.split().str[0]
+    lg["person"] = person_keys(lg)
     m["person"] = m.member.map(lg.drop_duplicates("AUTHOR_NAME").set_index("AUTHOR_NAME").person).fillna(m.member)
     m["signed"] = m.outcome == "signed"
     m["died_in"] = np.where((m.outcome == "not_enacted") & m.CURRENT_LOCATION.isin(appr["Assembly"]), "Assembly Appropriations",

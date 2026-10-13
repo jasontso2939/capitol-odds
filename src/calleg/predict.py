@@ -110,26 +110,42 @@ def evaluate(d: pd.DataFrame, folds: int = 5, seed: int = 0) -> dict:
             "calibration": calib.round(3).to_dict(orient="records")}
 
 
-def fit_export(d: pd.DataFrame) -> dict:
+def fit_export(d: pd.DataFrame, members: pd.DataFrame | None = None, current: pd.DataFrame | None = None,
+               current_session: int | None = None) -> dict:
+    """Fit on d (finished sessions) and export what the browser needs.
+
+    members: the current session's roster (member, party, chamber, person), so authors who
+    have not yet carried a bill can be scored. current: the current session's bills, used for
+    the committee list when it has enough of them. A new session is scored at the level of
+    the latest session in d (the reference session)."""
     X = design(d, d, leave_one_out=True)
     clf = LogisticRegression(C=C, max_iter=5000).fit(X.values, d.signed.astype(int))
     coef = dict(zip(X.columns, clf.coef_[0].round(4)))
-    cur = d[d.session == d.session.max()] if "session" in d else d
-    keep = ["member", "party", "origin"] + (["person"] if "person" in d else [])
-    authors = cur.groupby(keep).size().reset_index(name="bills")
-    if "person" in d:
-        authors["bills_all_sessions"] = authors.person.map(d.groupby("person").size())
-        authors["signed_all_sessions"] = authors.person.map(d.groupby("person").signed.sum()).astype(int)
-        authors["sessions"] = authors.person.map(d.groupby("person").session.nunique())
+    ref = int(d.session.max()) if "session" in d else None
+    last = d[d.session == ref] if ref is not None else d
+    cur = current if current is not None and len(current) else last
+    if members is not None:
+        authors = members[members.party.isin(["D", "R"])].rename(columns={"chamber": "origin"})
+        authors = authors[["member", "party", "origin"] + (["person"] if "person" in authors else [])].drop_duplicates("member")
+        authors["bills"] = authors.member.map(cur.groupby("member").size()).fillna(0).astype(int)
+    else:
+        keep = ["member", "party", "origin"] + (["person"] if "person" in d else [])
+        authors = cur.groupby(keep).size().reset_index(name="bills")
+    if "person" in d and "person" in authors:
+        authors["bills_all_sessions"] = authors.person.map(d.groupby("person").size()).fillna(0).astype(int)
+        authors["signed_all_sessions"] = authors.person.map(d.groupby("person").signed.sum()).fillna(0).astype(int)
+        authors["sessions"] = authors.person.map(d.groupby("person").session.nunique()).fillna(0).astype(int)
     full_logit = _author_logit(d, authors.assign(signed=0), leave_one_out=False)
     authors["author_record"] = full_logit.round(4)
-    areas = sorted(cur.policy_area.dropna().unique())   # committees that exist in the current session
+    # committees of the current session once it has a meaningful number of referred bills
+    areas = sorted((cur if len(cur) >= 300 else last).policy_area.dropna().unique())
     prior = d.groupby("party").signed.mean().clip(1e-3, 1 - 1e-3)
     party_prior = {p: round(float(np.log(r / (1 - r))), 4) for p, r in prior.items()}
     return {"intercept": round(float(clf.intercept_[0]), 4), "coef": coef,
             "party_prior": party_prior,
             "authors": authors.to_dict(orient="records"),
             "policy_areas": areas, "filing_windows": sorted(d.filing_window.unique()),
-            "base_rate": round(float(cur.signed.mean()), 3),          # current session
+            "base_rate": round(float(last.signed.mean()), 3),          # reference (latest finished) session
             "base_rate_all": round(float(d.signed.mean()), 3),
-            "current_session": int(d.session.max()) if "session" in d else None}
+            "reference_session": ref,
+            "current_session": int(current_session) if current_session is not None else ref}

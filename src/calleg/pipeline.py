@@ -30,11 +30,42 @@ def table_path(raw: Path, name: str) -> Path:
 
 def read_table(raw: Path, name: str, usecols=None) -> pd.DataFrame:
     cols = COLS[name].split()
-    return pd.read_csv(
-        table_path(raw, name), sep="\t", quotechar="`", header=None, names=cols,
-        na_values=["NULL"], keep_default_na=False, dtype=str, engine="python",
-        encoding="utf-8", encoding_errors="replace",
-    ).pipe(lambda d: d[usecols] if usecols else d)
+    path = table_path(raw, name)
+    if not path.exists() or path.stat().st_size == 0:   # e.g. no votes yet early in a session
+        df = pd.DataFrame(columns=cols, dtype=str)
+    else:
+        try:
+            df = pd.read_csv(
+                path, sep="\t", quotechar="`", header=None, names=cols,
+                na_values=["NULL"], keep_default_na=False, dtype=str, engine="python",
+                encoding="utf-8", encoding_errors="replace",
+            )
+        except pd.errors.EmptyDataError:
+            df = pd.DataFrame(columns=cols, dtype=str)
+    return df[usecols] if usecols else df
+
+
+def _norm(s: pd.Series) -> pd.Series:
+    return s.fillna("").str.normalize("NFKD").str.encode("ascii", "ignore").str.decode("ascii").str.lower().str.strip()
+
+
+def person_keys(lg: pd.DataFrame) -> pd.Series:
+    """A key for one person across sessions: first word of last name | first word of first name.
+
+    The short author name ("Weber", "Rodriguez") can belong to different people in different
+    sessions; a hand-checked list in data/reference/person_aliases.csv links people whose
+    names changed."""
+    key = _norm(lg.LAST_NAME).str.split().str[0].fillna("") + "|" + _norm(lg.FIRST_NAME).str.split().str[0].fillna("")
+    alias_file = Path(__file__).resolve().parents[2] / "data/reference/person_aliases.csv"
+    if alias_file.exists():
+        al = pd.read_csv(alias_file)
+        key = key.replace(dict(zip(al.alias_key, al.person_key)))
+    return key
+
+
+def slug(person: str) -> str:
+    """File-safe form of a person key, used for the legislator pages (e.g. "weber|akilah" -> "weber-akilah")."""
+    return re.sub(r"[^a-z0-9]+", "-", str(person).lower()).strip("-")
 
 
 def name_aliases(raw: Path, bill_counts: pd.Series) -> dict[str, str]:
@@ -115,11 +146,12 @@ def build(raw: str | Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     out = out.sort_values(["bill_id", "member"]).reset_index(drop=True)
 
     lg = read_table(raw, "LEGISLATOR_TBL")
-    lg = lg[~lg.AUTHOR_NAME.isin(alias)]
+    lg = lg[~lg.AUTHOR_NAME.isin(alias)].copy()
+    lg["person"] = person_keys(lg)
     lg["chamber"] = lg.HOUSE_TYPE.map({"A": "Assembly", "S": "Senate"})
     members = lg.rename(columns={"AUTHOR_NAME": "member", "LEGISLATOR_NAME": "full_name",
                                  "PARTY": "party", "DISTRICT": "district"})
     members["party"] = members.party.map({"DEM": "D", "REP": "R"}).fillna("Other")
     members = members[
-        ["member", "full_name", "party", "district", "chamber", "ACTIVE_FLG"]].assign(session=start)
+        ["member", "full_name", "party", "district", "chamber", "ACTIVE_FLG", "person"]].assign(session=start)
     return out, members

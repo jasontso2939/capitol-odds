@@ -1,0 +1,20 @@
+person,names_by_session,full_names,districts,checked_basis
+boerner|tasha,2019:Boerner Horvath / 2021:Boerner Horvath / 2023:Boerner / 2025:Boerner,"Boerner Horvath, Tasha / Boerner, Tasha",AD76 / AD77,Same first name and full-name record; listed as Boerner Horvath through 2021-22 and Boerner from 2023-24; seat renumbered AD76 to AD77 by 2021 redistricting
+bonta|mia,2021:Mia Bonta / 2023:Bonta / 2025:Bonta,"Bonta, Mia",AD18,"Listed as Mia Bonta in 2021-22, a session Rob Bonta also served in; Bonta after"
+carrillo|juan,2023:Juan Carrillo / 2025:Carrillo,"Carrillo, Juan",AD39,Listed as Juan Carrillo while Wendy Carrillo served (2023-24); Carrillo after
+carrillo|wendy,2017:Carrillo / 2019:Carrillo / 2021:Carrillo / 2023:Wendy Carrillo,"Carrillo, Wendy",AD51 / AD52,Listed as Wendy Carrillo once Juan Carrillo joined (2023-24); AD51 renumbered AD52
+dahle|megan,2019:Megan Dahle / 2021:Megan Dahle / 2023:Megan Dahle / 2025:Dahle,"Dahle, Megan",AD01 / SD01,Listed as Megan Dahle while Brian Dahle served; Dahle after moving to SD01 (2024)
+fong|mike,2021:Mike Fong / 2023:Mike Fong / 2025:Fong,"Fong, Mike",AD49,Listed as Mike Fong while Vince Fong served; Fong after
+fong|vince,2017:Fong / 2019:Fong / 2021:Fong / 2023:Vince Fong,"Fong, Vince",AD34 / AD32,Listed as Vince Fong once Mike Fong joined (2023-24); AD34 renumbered AD32
+garcia|eduardo,2017:Eduardo Garcia / 2019:Eduardo Garcia / 2021:Eduardo Garcia / 2023:Garcia,"Garcia, Eduardo",AD56 / AD36,Listed as Eduardo Garcia while Cristina Garcia served; Garcia after; AD56 renumbered AD36
+gonzalez|lena,2019:Lena Gonzalez / 2021:Gonzalez / 2023:Gonzalez / 2025:Gonzalez,"Gonzalez, Lena A.",SD33,Listed as Lena Gonzalez while Lorena Gonzalez served (2019-20); Gonzalez after
+gonzalez|lorena,2017:Gonzalez Fletcher / 2019:Gonzalez / 2021:Lorena Gonzalez,"Gonzalez, Lorena",AD80,"Lorena Gonzalez Fletcher; listed as Gonzalez, then Lorena Gonzalez once Lena Gonzalez joined"
+kamlager|sydney,2017:Kamlager-Dove / 2019:Kamlager-Dove / 2021:Kamlager,"Kamlager-Dove, Sydney / Kamlager, Sydney",AD54,Sydney Kamlager-Dove listed as Kamlager from 2021; same seat (AD54). Linked by person_aliases.csv
+nguyen|stephanie,2023:Stephanie Nguyen / 2025:Nguyen,"Nguyen, Stephanie",AD10,Listed as Stephanie Nguyen while Janet Nguyen served; Nguyen after
+padilla|stephen,2023:Padilla / 2025:Padilla,"Padilla, Steve C. / Padilla, Stephen C.",SD18,Steve Padilla (SD18) listed with first name Stephen from 2025; display name unchanged. Linked by person_aliases.csv
+patterson|jim,2017:Patterson / 2019:Patterson / 2021:Patterson / 2023:Jim Patterson,"Patterson, Jim",AD23 / AD08,Listed as Jim Patterson once Joe Patterson joined (2023-24); AD23 renumbered AD08
+patterson|joe,2023:Joe Patterson / 2025:Patterson,"Patterson, Joe",AD05,Listed as Joe Patterson while Jim Patterson served; Patterson after
+rivas|robert,2019:Robert Rivas / 2021:Robert Rivas / 2023:Robert Rivas / 2025:Rivas,"Rivas, Robert",AD30 / AD29,Listed as Robert Rivas while Luz Rivas served; Rivas after
+rubio|blanca,2017:Rubio / 2019:Blanca Rubio / 2021:Blanca Rubio / 2023:Blanca Rubio / 2025:Blanca Rubio,"Rubio, Blanca E.",AD48,Listed as Blanca Rubio once Susan Rubio joined the Senate (2019-20)
+stone|mark,2017:Mark Stone / 2019:Mark Stone / 2021:Stone,"Stone, Mark",AD29,Listed as Mark Stone while Jeff Stone served; Stone after
+weber|akilah,2021:Akilah Weber / 2023:Weber / 2025:Weber Pierson,"Weber, M.D., Akilah / Weber Pierson, M.D., Akilah",AD79 / SD39,"Listed as Akilah Weber in 2021-22, a session Shirley Weber also served in; Weber in 2023-24; Weber Pierson after moving to SD39"

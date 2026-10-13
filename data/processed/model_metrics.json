@@ -12,31 +12,31 @@
     2025
   ],
   "within_session_auc": 0.657,
-  "out_of_session_auc": 0.661,
-  "out_of_session_predicted_rate": 0.408,
+  "out_of_session_auc": 0.662,
+  "out_of_session_predicted_rate": 0.407,
   "out_of_session_actual_rate": 0.445,
   "calibration": [
     {
       "band": "(0.0, 0.2]",
-      "bills": 2250,
+      "bills": 2253,
       "predicted": 0.138,
-      "actual": 0.141
+      "actual": 0.14
     },
     {
       "band": "(0.2, 0.3]",
-      "bills": 3314,
+      "bills": 3306,
       "predicted": 0.253,
       "actual": 0.265
     },
     {
       "band": "(0.3, 0.4]",
-      "bills": 4439,
+      "bills": 4448,
       "predicted": 0.351,
-      "actual": 0.36
+      "actual": 0.359
     },
     {
       "band": "(0.4, 0.5]",
-      "bills": 4796,
+      "bills": 4795,
       "predicted": 0.448,
       "actual": 0.438
     },
@@ -44,19 +44,144 @@
       "band": "(0.5, 0.6]",
       "bills": 3095,
       "predicted": 0.545,
-      "actual": 0.54
+      "actual": 0.541
     },
     {
       "band": "(0.6, 0.7]",
-      "bills": 1374,
+      "bills": 1370,
       "predicted": 0.641,
       "actual": 0.634
     },
     {
       "band": "(0.7, 1.0]",
-      "bills": 407,
+      "bills": 408,
       "predicted": 0.742,
-      "actual": 0.732
+      "actual": 0.73
     }
-  ]
+  ],
+  "stages": {
+    "out_of_session_auc": 0.659,
+    "out_of_session_predicted_rate": 0.407,
+    "out_of_session_actual_rate": 0.445,
+    "steps": [
+      {
+        "step": "policy",
+        "name": "Policy committee",
+        "bills_reaching": 3696,
+        "actual_pass_rate": 0.852,
+        "predicted_pass_rate": 0.828,
+        "auc": 0.777
+      },
+      {
+        "step": "appropriations",
+        "name": "Appropriations",
+        "bills_reaching": 3148,
+        "actual_pass_rate": 0.812,
+        "predicted_pass_rate": 0.812,
+        "auc": 0.636
+      },
+      {
+        "step": "floor",
+        "name": "Floor of the first house",
+        "bills_reaching": 2557,
+        "actual_pass_rate": 0.978,
+        "predicted_pass_rate": 0.98,
+        "auc": 0.593
+      },
+      {
+        "step": "second_house",
+        "name": "Second house",
+        "bills_reaching": 2500,
+        "actual_pass_rate": 0.755,
+        "predicted_pass_rate": 0.741,
+        "auc": 0.542
+      },
+      {
+        "step": "governor",
+        "name": "Governor",
+        "bills_reaching": 1888,
+        "actual_pass_rate": 0.871,
+        "predicted_pass_rate": 0.838,
+        "auc": 0.62
+      }
+    ],
+    "cv_auc": 0.673,
+    "calibration": [
+      {
+        "band": "(0.0, 0.2]",
+        "bills": 2279,
+        "predicted": 0.125,
+        "actual": 0.144
+      },
+      {
+        "band": "(0.2, 0.3]",
+        "bills": 2933,
+        "predicted": 0.254,
+        "actual": 0.26
+      },
+      {
+        "band": "(0.3, 0.4]",
+        "bills": 4487,
+        "predicted": 0.353,
+        "actual": 0.351
+      },
+      {
+        "band": "(0.4, 0.5]",
+        "bills": 5154,
+        "predicted": 0.449,
+        "actual": 0.439
+      },
+      {
+        "band": "(0.5, 0.6]",
+        "bills": 3285,
+        "predicted": 0.545,
+        "actual": 0.545
+      },
+      {
+        "band": "(0.6, 0.7]",
+        "bills": 1307,
+        "predicted": 0.639,
+        "actual": 0.647
+      },
+      {
+        "band": "(0.7, 1.0]",
+        "bills": 230,
+        "predicted": 0.729,
+        "actual": 0.713
+      }
+    ],
+    "step_rates": [
+      {
+        "step": "policy",
+        "name": "Policy committee",
+        "reached": 19675,
+        "passed": 15219
+      },
+      {
+        "step": "appropriations",
+        "name": "Appropriations",
+        "reached": 15219,
+        "passed": 12630
+      },
+      {
+        "step": "floor",
+        "name": "Floor of the first house",
+        "reached": 12630,
+        "passed": 12301
+      },
+      {
+        "step": "second_house",
+        "name": "Second house",
+        "reached": 12301,
+        "passed": 9094
+      },
+      {
+        "step": "governor",
+        "name": "Governor",
+        "reached": 9094,
+        "passed": 7730
+      }
+    ],
+    "sent_to_appropriations": 13146
+  }
 }

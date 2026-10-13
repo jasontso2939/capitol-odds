@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-13",
+  "sessions": {
+    "2017": {
+      "complete": true,
+      "bills": 4479,
+      "signed": 1702,
+      "vetoed": 318,
+      "signed_pct": 38.15,
+      "members": 124
+    },
+    "2019": {
+      "complete": true,
+      "bills": 4576,
+      "signed": 1103,
+      "vetoed": 228,
+      "signed_pct": 24.08,
+      "members": 122
+    },
+    "2021": {
+      "complete": true,
+      "bills": 4188,
+      "signed": 1571,
+      "vetoed": 234,
+      "signed_pct": 37.45,
+      "members": 126
+    },
+    "2023": {
+      "complete": true,
+      "bills": 4522,
+      "signed": 1771,
+      "vetoed": 344,
+      "signed_pct": 39.14,
+      "members": 120
+    },
+    "2025": {
+      "complete": true,
+      "bills": 3956,
+      "signed": 1664,
+      "vetoed": 243,
+      "signed_pct": 42.36,
+      "members": 121
+    }
+  },
+  "model": {
+    "cv_auc": 0.674,
+    "out_of_session_auc": 0.662,
+    "staged_cv_auc": 0.673,
+    "staged_out_of_session_auc": 0.659,
+    "out_of_session_predicted": 0.407,
+    "out_of_session_actual": 0.445,
+    "trained_on": [
+      2017,
+      2019,
+      2021,
+      2023,
+      2025
+    ]
+  },
+  "veto_review": {
+    "reviewed": 148,
+    "agree": 119
+  },
+  "committee_seats": 6421,
+  "committee_years": [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "unreviewed_name_changes": []
+}

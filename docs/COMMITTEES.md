@@ -10,7 +10,20 @@ Checks that the rows are complete: the per-member yes and no counts reproduce th
 
 ## Rules
 
-- **Years covered.** 2017 through 2026 (five sessions). Committees are matched across sessions by name, since codes are reassigned; renamed committees appear under each name they had.
+- **Years covered.** Every year from 2017. Committees are matched across sessions by name. Eight were renamed under the same code and are shown under their current name, with the old name noted for the years it applied (`data/reference/committee_lineage.csv`):
+
+| Old name | Current name | From |
+| --- | --- | --- |
+| Assembly Public Employees, Retirement, and Social Security | Assembly Public Employment and Retirement | 2019 |
+| Assembly Elections and Redistricting | Assembly Elections | 2021 |
+| Assembly Veterans Affairs | Assembly Military and Veterans Affairs | 2021 |
+| Assembly Arts, Entertainment, Sports, Tourism, and Internet Media | Assembly Arts, Entertainment, Sports, and Tourism | 2023 |
+| Assembly Jobs, Economic Development, and the Economy | Assembly Economic Development, Growth, and Household Impact | 2025 |
+| Senate Public Employment and Retirement | Senate Labor, Public Employment and Retirement | 2019 |
+| Senate Transportation and Housing | Senate Transportation | 2019 |
+| Senate Veterans Affairs | Senate Military and Veterans Affairs | 2021 |
+
+  Merges and splits are noted but kept separate, because the old and new committees met in the same years: Senate Labor and Industrial Relations (last roll calls 2018), Senate Governance and Finance (split into Local Government and Revenue and Taxation in 2024), and Senate Insurance, Banking and Financial Institutions (2017 only). Each rename was checked by its code: the old name's last year comes right before the new name's first, with no overlap (`tests/test_committees.py`).
 - **Year.** Rosters are built per calendar year from the hearings held that year. Membership and chairs changed between 2025 and 2026 on many committees (for example Assembly Appropriations' vice chair, and the chairs of Senate Appropriations and Senate Budget), so 2025 and 2026 are kept separate.
 - **Regular member.** On the roll for at least half of the committee's hearing dates that year. Anyone else is marked "part of year or substitute": they joined or left mid-year, or sat in for an absent member (both houses allow temporary substitutes).
 - **Chair and vice chair.** The members listed first and second. A single hearing where the order differs, between two stretches with the same leaders, is treated as a substitution day, not a change, and is noted in `committee_leadership.csv`. Real changes during a year (such as Senate Appropriations' chair between January and April 2026) are kept with their hearing dates.

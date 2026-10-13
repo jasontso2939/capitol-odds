@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Legislator Records</title>
+<meta name="description" content="Every California legislator since the 2017-18 session: bills by session with chamber ranks, committee seats and committee votes, from official bulk data.">
+<style>
+:root{--bg:#f6f7fa;--panel:#fff;--ink:#1b2333;--muted:#5d6678;--line:#dde1ea;--navy:#14213d;--gold:#f2a900;--d:#3a6ea5;--r:#b5483b;--hi:#fff4d6}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1521;--panel:#171f2f;--ink:#e8ecf4;--muted:#9aa4b8;--line:#2a3550;--navy:#e8ecf4;--hi:#3a3115;--d:#6f9fd4;--r:#d97a6c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{background:#14213d;color:#fff;padding:26px 16px 20px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}header .wrap{padding:0}
+h1{margin:0 0 6px;font:700 28px/1.2 Georgia,Cambria,serif}
+header p{margin:0;color:#c9d2e6;max-width:72ch}
+main{padding:18px 0 60px}
+nav{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}
+nav a{color:#c9d2e6;text-decoration:none;font-size:14px;padding:4px 10px;border:1px solid #33456b;border-radius:999px}
+nav a[aria-current=page]{background:#fff;color:#14213d;font-weight:600;border-color:#fff}
+footer{color:var(--muted);font-size:13px;margin-top:16px}
+a{color:var(--d)}
+.D{color:var(--d);font-weight:700}.R{color:var(--r);font-weight:700}
+.o-signed{color:#2f7d4f;font-weight:600}.o-vetoed{color:var(--r);font-weight:600}.o-not_enacted{color:var(--muted)}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.ctl label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+input[type=search]{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:500 14px system-ui,sans-serif;min-width:240px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+section h2{margin:0 0 6px;font:700 19px/1.3 Georgia,Cambria,serif}
+.lede{color:var(--muted);margin:0 0 12px;font-size:14px;max-width:80ch}
+.stats{display:flex;flex-wrap:wrap;gap:10px}
+.stat{background:var(--bg);border-radius:10px;padding:10px 14px;min-width:120px}
+.stat b{display:block;font:700 24px/1.1 Georgia,Cambria,serif}.stat span{font-size:13px;color:var(--muted)}
+.scroll{overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr.link{cursor:pointer}tbody tr.link:hover{background:var(--hi)}
+.tag{font-size:11px;background:var(--hi);border:1px solid #e6c766;border-radius:999px;padding:1px 7px;margin-left:6px;white-space:nowrap}
+.muted{color:var(--muted)}.small{font-size:13px}
+.mini{display:inline-block;height:10px;background:#8a96ad;border-radius:3px;vertical-align:middle;margin-right:6px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{background:var(--panel);color:var(--ink);border:0;padding:7px 12px;font:500 14px system-ui,sans-serif;cursor:pointer;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed=true]{background:var(--navy);color:var(--panel);font-weight:600}
+[hidden]{display:none!important}
+</style>
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+<header><div class="wrap">
+<h1 id="title">Legislators</h1>
+<p id="sub">Every legislator since <span id="first"></span>: bills by session with chamber ranks, committee seats and committee votes. A person keeps one page when their listed name changes.</p>
+<nav></nav>
+</div></header>
+<main><div class="wrap" id="main"><p class="loading">Loading…</p></div>
+<div class="wrap"><footer>Not affiliated with any office or legislator. Not an endorsement of any legislator.<br>Source: California Legislative Information bulk export (leginfo): bills, outcomes and committee roll calls. Methodology is in the repository.</footer></div></main>
+<script src="common.js"></script>
+<script src="data/sessions.js"></script>
+<script src="data/people_index.js"></script>
+<script>
+CL.nav("legislator.html");
+const {esc, label} = CL, $ = id => document.getElementById(id);
+const IX = PEOPLE_INDEX, IC = Object.fromEntries(IX.cols.map((c, i) => [c, i]));
+$("first").textContent = label(SESSIONS[0].year);
+const DEF = {p: "", q: "", cur: "1", bs: "all", bo: "all"};
+const st = CL.readState(DEF);
+const OUT = {signed: "Signed", vetoed: "Vetoed", not_enacted: "Did not pass"};
+
+function listPage() {
+  document.title = "Legislators";
+  $("main").innerHTML = `<div class="controls"><div class="ctl"><label for="q">Search</label><input id="q" type="search" placeholder="Name or district (e.g. AD59)" value="${esc(st.q)}"></div>
+    <div class="ctl"><label>Show</label><div class="seg" id="cur"><button data-v="1">Serving in ${label(IX.current)}</button><button data-v="0">Everyone since ${label(SESSIONS[0].year)}</button></div></div></div>
+    <div class="tools"><button class="btn" id="dl">Download CSV</button><button class="btn" id="share">Copy link</button><span class="small muted" id="count"></span></div>
+    <section style="padding:0"><div class="scroll"><table><thead><tr><th>Name</th><th>Party</th><th>Seat</th><th class="hide-sm">Sessions</th><th class="n">Bills</th><th class="n">Signed</th><th class="n">Rate</th></tr></thead><tbody id="rows"></tbody></table></div></section>`;
+  const rows = () => {
+    const q = st.q.toLowerCase();
+    return IX.rows.filter(r => (st.cur === "0" || r[IC.sessions].includes(IX.current)) &&
+      (!q || (r[IC.name] + " " + r[IC.member] + " " + r[IC.district]).toLowerCase().includes(q)))
+      .sort((a, b) => a[IC.name].localeCompare(b[IC.name]));
+  };
+  const draw = () => {
+    CL.writeState(st, DEF);
+    document.querySelectorAll("#cur button").forEach(b => b.setAttribute("aria-pressed", b.dataset.v === st.cur));
+    const R = rows();
+    $("count").textContent = `${R.length} legislators`;
+    $("rows").innerHTML = R.map(r => `<tr class="link" data-s="${esc(r[IC.slug])}"><td><a href="?p=${encodeURIComponent(r[IC.slug])}">${esc(r[IC.name])}</a></td><td class="${r[IC.party]}">${r[IC.party]}</td><td>${r[IC.district]}</td>
+      <td class="hide-sm">${r[IC.sessions].map(label).join(", ")}</td><td class="n">${r[IC.introduced]}</td><td class="n">${r[IC.signed]}</td><td class="n">${CL.pct(r[IC.signed], r[IC.introduced])}</td></tr>`).join("");
+  };
+  $("q").addEventListener("input", e => { st.q = e.target.value; draw(); });
+  $("cur").addEventListener("click", e => { const b = e.target.closest("button"); if (b) { st.cur = b.dataset.v; draw(); } });
+  $("rows").addEventListener("click", e => { const tr = e.target.closest("tr"); if (tr && !e.target.closest("a")) { location.search = "?p=" + encodeURIComponent(tr.dataset.s); } });
+  $("dl").addEventListener("click", () => CL.csv("ca-legislators.csv", rows().map(r => [r[IC.name], r[IC.member], r[IC.party], r[IC.chamber], r[IC.district], r[IC.sessions].map(label).join(" "), r[IC.introduced], r[IC.signed]]),
+    ["name", "listed_as", "party", "chamber", "latest_district", "sessions", "bills_as_lead_author", "signed"]));
+  CL.shareButton($("share"));
+  draw();
+}
+
+function profile(P) {
+  document.title = `${P.name}: legislative record`;
+  $("title").textContent = P.name;
+  const rec = P.record, I = Object.fromEntries(P.bill_cols.map((k, i) => [k, i])), K = Object.fromEntries(P.committee_cols.map((k, i) => [k, i]));
+  const tot = rec.reduce((t, r) => ({i: t.i + r.introduced, s: t.s + r.signed, v: t.v + r.vetoed}), {i: 0, s: 0, v: 0});
+  const seats = [...new Set(rec.map(r => `${r.chamber} ${r.district}`))];
+  $("sub").innerHTML = `<span class="${P.party}" style="color:inherit">${P.party === "D" ? "Democrat" : P.party === "R" ? "Republican" : P.party}</span> · ${esc(seats.join(", then "))}` +
+    (P.names.length > 1 ? ` · listed as ${P.names.map(esc).join(", then ")}` : "") + ` · <a href="legislator.html" style="color:#c9d2e6">All legislators</a>`;
+  const yesT = P.committees.reduce((t, c) => t + c[K.yes], 0), noT = P.committees.reduce((t, c) => t + c[K.no], 0);
+  const outlook = P.current ? `<a class="btn" href="outlook.html?a=${encodeURIComponent(P.member)}">Bill outlook for ${esc(P.member)}</a>` : "";
+  const maxRate = Math.max(...rec.map(r => r.rate), 1);
+  let h = `<div class="tools">${outlook}<button class="btn" id="share">Copy link</button></div>
+   <section><h2>At a glance</h2><div class="stats">
+    <div class="stat"><b>${rec.length}</b><span>session${rec.length > 1 ? "s" : ""} with bills since ${label(SESSIONS[0].year)}</span></div>
+    <div class="stat"><b>${tot.i}</b><span>bills as lead author</span></div>
+    <div class="stat"><b>${tot.s}</b><span>signed (${CL.pct(tot.s, tot.i)})</span></div>
+    <div class="stat"><b>${tot.v}</b><span>vetoed</span></div>
+    <div class="stat"><b>${yesT + noT ? CL.pct(yesT, yesT + noT) : "–"}</b><span>yes votes in committee (${(yesT + noT).toLocaleString()} cast)</span></div></div>
+    <p class="lede" style="margin-top:10px">Bills count every bill with this member as a lead author, including joint lead authors; Budget Act bills are left out. Ranks are within the member's chamber that session; tied members share a rank.</p></section>
+   <section><h2>Record by session</h2><div class="tools"><button class="btn sm" id="dlr">CSV</button></div><div class="scroll"><table><thead><tr><th>Session</th><th>Seat</th><th class="n">Bills</th><th class="n">Signed</th><th class="n">Vetoed</th><th>Signed rate</th><th class="n">Chamber rank: signed</th><th class="n hide-sm">Chamber rank: rate</th></tr></thead><tbody>` +
+    rec.map(r => `<tr><td><a href="index.html?sess=${r.session}&q=${encodeURIComponent(r.member)}&m=${encodeURIComponent(r.member)}">${label(r.session)}</a>${r.partial_term ? '<span class="tag">partial</span>' : ""}${SESSIONS.find(s => s.year === r.session && !s.complete) ? '<span class="tag">in progress</span>' : ""}</td>
+      <td>${r.chamber} ${r.district}${r.party !== P.party ? ` (${r.party})` : ""}</td><td class="n">${r.introduced}</td><td class="n">${r.signed}</td><td class="n">${r.vetoed}</td>
+      <td><span class="mini" style="width:${60 * r.rate / maxRate}px"></span>${r.rate.toFixed(1)}%</td><td class="n">${r.rank_signed} of ${r.chamber_size}</td><td class="n hide-sm">${r.rank_rate} of ${r.chamber_size}</td></tr>`).join("") +
+    `</tbody></table></div></section>`;
+  // Committees by year
+  const years = [...new Set(P.committees.map(c => c[K.year]))].sort().reverse();
+  h += `<section><h2>Committee seats and votes</h2><p class="lede">From the committees' roll calls: each committee this member sat on, by year, with their role and how they voted there. "Part of year or substitute" means on the roll for fewer than half the hearings that year.</p><div class="tools"><button class="btn sm" id="dlc">CSV</button></div>` +
+    (years.length ? `<div class="scroll"><table><thead><tr><th>Year</th><th>Committee</th><th>Role</th><th class="n">Yes</th><th class="n">No</th><th class="n hide-sm">Absent or not voting</th><th class="n">Yes rate</th></tr></thead><tbody>` +
+    years.map(y => P.committees.filter(c => c[K.year] === y).sort((a, b) => ({Chair: 0, "Vice Chair": 1}[a[K.role]] ?? 2) - ({Chair: 0, "Vice Chair": 1}[b[K.role]] ?? 2) || a[K.committee].localeCompare(b[K.committee]))
+      .map((c, i) => `<tr><td>${i ? "" : y}</td><td><a href="committees.html?c=${encodeURIComponent(c[K.committee])}&y=${y}">${esc(c[K.committee])}</a>${c[K.name_then] ? `<div class="small muted">then called ${esc(c[K.name_then])}</div>` : ""}${c[K.status] === "regular member" ? "" : '<span class="tag">part of year or substitute</span>'}</td>
+        <td>${esc(c[K.role])}</td><td class="n">${c[K.yes]}</td><td class="n">${c[K.no]}</td><td class="n hide-sm">${c[K.absent]}</td><td class="n">${CL.pct(c[K.yes], c[K.yes] + c[K.no])}</td></tr>`).join("")).join("") +
+    `</tbody></table></div>` : "<p>No committee roll calls list this member.</p>") + `</section>`;
+  // Bills
+  h += `<section><h2>Bills as lead author</h2><div class="controls" style="padding:0;border:0;margin-bottom:10px">
+    <div class="ctl"><label for="bs">Session</label><select id="bs"><option value="all">All sessions</option>${[...new Set(P.bills.map(b => b[I.session]))].sort().reverse().map(s => `<option value="${s}">${label(s)}</option>`).join("")}</select></div>
+    <div class="ctl"><label for="bo">Outcome</label><select id="bo"><option value="all">All</option><option value="signed">Signed</option><option value="vetoed">Vetoed</option><option value="not_enacted">Did not pass</option></select></div>
+    <div class="ctl"><button class="btn" id="dlb">Download CSV</button></div></div><div id="bills"></div></section>`;
+  $("main").innerHTML = h;
+  $("bs").value = st.bs; $("bo").value = st.bo;
+  const bills = () => P.bills.slice().sort((a, b) => b[I.session] - a[I.session]).filter(b => (st.bs === "all" || String(b[I.session]) === st.bs) && (st.bo === "all" || b[I.outcome] === st.bo));
+  const drawBills = () => {
+    CL.writeState(st, DEF);
+    const B = bills();
+    $("bills").innerHTML = `<p class="small muted">${B.length} bills${B.some(b => b[I.budget]) ? "; Budget Act bills are marked" : ""}.</p><div class="scroll" style="max-height:520px"><table><thead><tr><th>Session</th><th>Bill</th><th>Title</th><th class="hide-sm">Introduced</th><th>Outcome</th></tr></thead><tbody>` +
+      B.map(b => `<tr><td>${label(b[I.session])}</td><td><a href="${CL.leginfo(b[I.session], b[I.bill_id])}" target="_blank" rel="noopener">${b[I.bill_id]}</a>${b[I.joint] ? " <span class='small muted'>(joint)</span>" : ""}${b[I.budget] ? " <span class='small muted'>(budget)</span>" : ""}</td><td>${esc(b[I.title])}</td><td class="hide-sm">${b[I.introduced]}</td><td class="o-${b[I.outcome]}">${OUT[b[I.outcome]]}${b[I.action_date] && b[I.outcome] !== "not_enacted" ? `<div class="small muted">${b[I.action_date]}</div>` : ""}</td></tr>`).join("") + "</tbody></table></div>";
+  };
+  $("bs").addEventListener("input", e => { st.bs = e.target.value; drawBills(); });
+  $("bo").addEventListener("input", e => { st.bo = e.target.value; drawBills(); });
+  const slugName = P.slug;
+  $("dlb").addEventListener("click", () => CL.csv(`${slugName}-bills.csv`, bills().map(b => [label(b[I.session]), ...P.bill_cols.slice(1).map(k => b[I[k]])]), ["session", ...P.bill_cols.slice(1)]));
+  $("dlr").addEventListener("click", () => CL.csv(`${slugName}-record.csv`, rec.map(r => ({...r, session: label(r.session)}))));
+  $("dlc").addEventListener("click", () => CL.csv(`${slugName}-committees.csv`, P.committees, P.committee_cols));
+  CL.shareButton($("share"));
+  drawBills();
+}
+
+if (st.p) {
+  CL.load(`data/people/${encodeURIComponent(st.p)}.js`).then(() => profile(window.PEOPLE[st.p]))
+    .catch(() => { $("main").innerHTML = `<p>No legislator found for this link. <a href="legislator.html">See all legislators</a>.</p>`; });
+} else listPage();
+</script>
+</body>
+</html>

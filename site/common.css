@@ -1,0 +1,22 @@
+/* Shared by every page: tool buttons (CSV, copy link) and phone layout. */
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.btn{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font:500 13px system-ui,sans-serif;cursor:pointer;text-decoration:none;display:inline-block}
+.btn:hover{border-color:var(--muted)}
+.btn.sm{padding:3px 9px;font-size:12px}
+select{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:500 14px system-ui,sans-serif;max-width:100%}
+.loading{color:var(--muted);font-size:14px}
+@media (max-width:640px){
+  body{font-size:14px}
+  header{padding:16px 12px 14px}
+  h1{font-size:22px!important}
+  header p{font-size:13px}
+  .wrap{padding:0 12px}
+  nav a{font-size:13px;padding:3px 8px}
+  .controls{padding:10px 12px!important;gap:10px 14px!important}
+  .seg button{padding:6px 9px;font-size:13px}
+  input[type=search]{min-width:0;width:100%}
+  .ctl{min-width:0;max-width:100%}
+  th,td{padding:6px 6px!important}
+  .hide-sm{display:none!important}
+  .note{font-size:13px}
+}

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
 <title>Committee Rosters</title>
 <meta name="description" content="Who sat on each California Assembly and Senate committee from 2017 through 2026, who chaired it, and how each member voted, from the Legislature's official roll calls.">
 <style>
@@ -43,12 +44,13 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute
 footer{color:var(--muted);font-size:13px;margin-top:16px}
 a{color:var(--d)}
 </style>
+<link rel="stylesheet" href="common.css">
 </head>
 <body>
 <header><div class="wrap">
 <h1>Committee Rosters</h1>
-<p>Who sat on each policy and fiscal committee, who chaired it, and how members voted. 2017 through 2026, from the Legislature's own roll calls.</p>
-<nav><a href="index.html">Scorecard</a><a href="trends.html">Trends</a><a href="committees.html" aria-current="page">Committees</a><a href="outlook.html">Bill outlook</a></nav>
+<p>Who sat on each policy and fiscal committee, who chaired it, and how members voted, year by year since 2017, from the Legislature's own roll calls.</p>
+<nav></nav>
 </div></header>
 <main><div class="wrap">
 <div class="note">Every committee roll call lists all of the committee's members on that date, with the chair first and the vice chair second, so rosters here are dated and year-specific. Members who appear on fewer than half of a year's hearings are marked <span class="tag">part of year or substitute</span>: they joined or left mid-year, or sat in for an absent member. For 2025 and 2026, rosters were checked against archived committee web pages: <span id="chk"></span></div>
@@ -56,45 +58,71 @@ a{color:var(--d)}
  <div class="ctl"><label for="cmte">Committee</label><select id="cmte"></select></div>
  <div class="ctl"><label for="year">Year</label><select id="year"></select></div>
 </div>
-<div id="out"></div>
+<div class="tools"><button class="btn" id="dl">Download roster and votes (CSV)</button><button class="btn" id="dll">Download chair history (CSV)</button><button class="btn" id="share">Copy link</button></div>
+<div id="out"><p class="loading">Loading…</p></div>
 <footer>Not affiliated with any office or legislator.<br>Source: California Legislative Information bulk export (leginfo), committee roll calls (BILL_DETAIL_VOTE_TBL). Roster checks use Internet Archive copies of each committee's members page; see data/processed/committee_roster_check.csv in the repository.</footer>
 </div></main>
-<script src="committees.js"></script>
+<script src="common.js"></script>
+<script src="data/committees_index.js"></script>
 <script>
-const CM = COMMITTEES, $ = id => document.getElementById(id);
-const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const YEARS = [...new Set(CM.committees.flatMap(c => Object.keys(c.years)))].sort().reverse();
-const st = {name: null, year: String(CM.current || YEARS[0])};
-$("year").innerHTML = YEARS.map(y => `<option${y === st.year ? " selected" : ""}>${y}</option>`).join("");
+CL.nav("committees.html");
+const CM = COMMITTEES, $ = id => document.getElementById(id), {esc} = CL;
+const YEARS = [...CM.years].sort().reverse();
+const DEF = {c: "", y: YEARS.includes(String(CM.current + 1)) ? String(CM.current + 1) : YEARS[0]};
+const st = CL.readState(DEF);
+if (!YEARS.includes(st.y)) st.y = DEF.y;
+$("year").innerHTML = YEARS.map(y => `<option${y === st.y ? " selected" : ""}>${y}</option>`).join("");
 const list = [...CM.committees].sort((a, b) => a.name.localeCompare(b.name));
+const LIN = Object.fromEntries((CM.lineage || []).filter(l => l[2] !== "renamed").map(l => [l[0], l]));
 function fillCommittees() {
-  const cur = st.name;
+  const cur = st.c;
   $("cmte").innerHTML = ["Assembly", "Senate"].map(h => `<optgroup label="${h}">` +
-    list.filter(c => c.house === h && c.years[st.year]).map(c => `<option value="${esc(c.name)}"${c.name === cur ? " selected" : ""}>${esc(c.name.replace(h + " ", ""))}</option>`).join("") + "</optgroup>").join("");
-  st.name = $("cmte").value;
+    list.filter(c => c.house === h && c.years[st.y]).map(c => `<option value="${esc(c.name)}"${c.name === cur ? " selected" : ""}>${esc(c.name.replace(h + " ", ""))}</option>`).join("") + "</optgroup>").join("");
+  st.c = $("cmte").value;
 }
 fillCommittees();
 $("chk").textContent = CM.check ? `${CM.check.explained} of ${CM.check.total} comparisons matched exactly or differed only by a temporary substitute; the chair agreed in ${CM.check.chair} and the vice chair in ${CM.check.vice}.` : "";
-$("cmte").addEventListener("input", e => { st.name = e.target.value; render(); });
-$("year").addEventListener("input", e => { st.year = e.target.value; fillCommittees(); render(); });
+$("cmte").addEventListener("input", e => { st.c = e.target.value; render(); });
+$("year").addEventListener("input", e => { st.y = e.target.value; fillCommittees(); render(); });
 const pct = (a, b) => b ? Math.round(100 * a / b) + "%" : "–";
+const ORDER = m => ({Chair: 0, "Vice Chair": 1}[m[2]] ?? 2);
+function members() {
+  const y = (window.CMY || {})[st.y] || {};
+  return [...(y[st.c] || [])].sort((a, b) => ORDER(a) - ORDER(b) || (a[3] === b[3] ? 0 : a[3] === "regular member" ? -1 : 1) || a[0].localeCompare(b[0]));
+}
 function render() {
-  const c = CM.committees.find(x => x.name === st.name), y = c.years[st.year];
-  if (!y) { $("out").innerHTML = `<section><h2>${esc(c.name)}, ${st.year}</h2><p class="lede">No roll calls were recorded for this committee in ${st.year}, so the vote record has no roster for that year.</p></section>`; return; }
-  const lead = c.leadership.filter(l => l[2].startsWith(st.year) || l[3].startsWith(st.year));
-  const mem = [...y.members].sort((a, b) => ({Chair: 0, "Vice Chair": 1}[a[2]] ?? 2) - ({Chair: 0, "Vice Chair": 1}[b[2]] ?? 2) || (a[3] === b[3] ? 0 : a[3] === "regular member" ? -1 : 1) || a[0].localeCompare(b[0]));
-  $("out").innerHTML = `<section><h2>${esc(c.name)}, ${st.year}</h2>
+  CL.writeState(st, DEF);
+  CL.load(`data/committees_${st.y}.js`).then(draw).catch(() => { $("out").innerHTML = "<p>Could not load this year's rosters.</p>"; });
+}
+function draw() {
+  const c = CM.committees.find(x => x.name === st.c), y = c && c.years[st.y];
+  if (!y) { $("out").innerHTML = `<section><h2>${esc(st.c)}, ${st.y}</h2><p class="lede">No roll calls were recorded for this committee in ${st.y}, so the vote record has no roster for that year.</p></section>`; return; }
+  const lead = c.leadership.filter(l => l[2].startsWith(st.y) || l[3].startsWith(st.y));
+  const mem = members();
+  const formerly = Object.entries(c.years).filter(([, v]) => v.name_then).map(([k, v]) => [k, v.name_then]);
+  const names = [...new Set(formerly.map(f => f[1]))].map(n => `${esc(n)} (${formerly.filter(f => f[1] === n).map(f => f[0]).sort().filter((v, i, a) => i === 0 || i === a.length - 1).join(" to ")})`);
+  const lin = LIN[c.name];
+  $("out").innerHTML = `<section><h2>${esc(c.name)}, ${st.y}</h2>
+   ${y.name_then ? `<p class="lede">Called <b>${esc(y.name_then)}</b> in ${st.y}.</p>` : ""}
+   ${names.length && !y.name_then ? `<p class="lede">Earlier name: ${names.join("; ")}.</p>` : ""}
+   ${lin ? `<p class="lede">${esc(lin[3])}.</p>` : ""}
    <div class="stats"><div class="stat"><b>${y.hearing_dates}</b><span>hearing dates with roll calls</span></div>
    <div class="stat"><b>${y.roll_calls}</b><span>roll calls</span></div><div class="stat"><b>${pct(y.passed, y.roll_calls)}</b><span>of roll calls passed</span></div>
    <div class="stat"><b>${mem.filter(m => m[3] === "regular member").length}</b><span>regular members</span></div></div>
    <p class="lede">Bills held without a vote (for example on the Appropriations suspense file) have no roll call, so the pass rate covers only bills that got a vote.</p></section>
-   <section><h2>Chair and vice chair</h2><p class="lede">Each stretch of hearings under the same chair and vice chair, in date order.</p><div class="scroll"><table><thead><tr><th>From</th><th>To</th><th>Chair</th><th>Vice chair</th><th>Hearings</th></tr></thead><tbody>` +
-   lead.map(l => `<tr><td>${l[2]}</td><td>${l[3]}</td><td>${esc(l[0])}</td><td>${esc(l[1])}${l[5] ? `<div class="muted" style="font-size:12px">${esc(l[5])}</div>` : ""}</td><td>${l[4]}</td></tr>`).join("") +
+   <section><h2>Chair and vice chair</h2><p class="lede">Each stretch of hearings under the same chair and vice chair, in date order.</p><div class="scroll"><table><thead><tr><th>From</th><th>To</th><th>Chair</th><th>Vice chair</th><th class="hide-sm">Hearings</th></tr></thead><tbody>` +
+   lead.map(l => `<tr><td>${l[2]}</td><td>${l[3]}</td><td>${esc(l[0])}</td><td>${esc(l[1])}${l[5] ? `<div class="muted" style="font-size:12px">${esc(l[5])}</div>` : ""}</td><td class="hide-sm">${l[4]}</td></tr>`).join("") +
    `</tbody></table></div></section>
-   <section><h2>Members and votes</h2><p class="lede">Votes are every roll call in this committee in ${st.year}. Yes rate counts only votes cast.</p><div class="scroll"><table><thead><tr><th>Member</th><th>Party</th><th>Role</th><th>Status</th><th>Hearings on roll</th><th>Yes</th><th>No</th><th>Absent or not voting</th><th>Yes rate</th></tr></thead><tbody>` +
-   mem.map(m => `<tr><td>${esc(m[0])}</td><td class="${m[1]}">${m[1]}</td><td>${m[2]}</td><td>${m[3] === "regular member" ? "Regular" : '<span class="tag">part of year or substitute</span>'}</td><td>${m[4]} of ${y.hearing_dates}</td><td>${m[6]}</td><td>${m[7]}</td><td>${m[8]}</td><td>${pct(m[6], m[6] + m[7])}</td></tr>`).join("") +
+   <section><h2>Members and votes</h2><p class="lede">Votes are every roll call in this committee in ${st.y}. Yes rate counts only votes cast.</p><div class="scroll"><table><thead><tr><th>Member</th><th>Party</th><th>Role</th><th class="hide-sm">Status</th><th class="hide-sm">Hearings on roll</th><th>Yes</th><th>No</th><th class="hide-sm">Absent or not voting</th><th>Yes rate</th></tr></thead><tbody>` +
+   mem.map(m => `<tr><td>${esc(m[0])}${m[3] === "regular member" ? "" : ' <span class="tag">part of year or substitute</span>'}</td><td class="${m[1]}">${m[1]}</td><td>${m[2]}</td><td class="hide-sm">${m[3] === "regular member" ? "Regular" : "Part of year or substitute"}</td><td class="hide-sm">${m[4]} of ${y.hearing_dates}</td><td>${m[6]}</td><td>${m[7]}</td><td class="hide-sm">${m[8]}</td><td>${pct(m[6], m[6] + m[7])}</td></tr>`).join("") +
    `</tbody></table></div></section>`;
 }
+$("dl").addEventListener("click", () => CL.csv(`${st.c.replace(/\W+/g, "-").toLowerCase()}-${st.y}-roster-votes.csv`,
+  members().map(m => [st.c, st.y, ...m.slice(0, 5), m[5], m[6], m[7], m[8], m[6] + m[7] ? (m[6] / (m[6] + m[7])).toFixed(3) : ""]),
+  ["committee", "year", "member", "party", "role", "status", "hearings_on_roll", "leadership_dates", "yes", "no", "absent_or_not_voting", "yes_rate_of_votes_cast"]));
+$("dll").addEventListener("click", () => { const c = CM.committees.find(x => x.name === st.c);
+  CL.csv(`${st.c.replace(/\W+/g, "-").toLowerCase()}-chairs.csv`, c.leadership.map(l => [st.c, ...l]), ["committee", "chair", "vice_chair", "from_date", "to_date", "hearing_dates", "note"]); });
+CL.shareButton($("share"));
 render();
 </script>
 </body>

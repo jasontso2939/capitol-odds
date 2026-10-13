@@ -37,17 +37,43 @@ CORE_SHARE = 0.5   # a member present on at least half of a committee's hearing 
 
 def _read(raw: Path, name: str, cols: list[str]) -> pd.DataFrame:
     from calleg.pipeline import table_path
-    return pd.read_csv(table_path(raw, name), sep="\t", quotechar="`", header=None, names=cols,
+    path = table_path(raw, name)
+    if not path.exists() or path.stat().st_size == 0:
+        return pd.DataFrame(columns=cols, dtype=str)
+    try:
+        return _read_csv(path, cols)
+    except pd.errors.EmptyDataError:
+        return pd.DataFrame(columns=cols, dtype=str)
+
+
+def _read_csv(path: Path, cols: list[str]) -> pd.DataFrame:
+    return pd.read_csv(path, sep="\t", quotechar="`", header=None, names=cols,
                        na_values=["NULL"], keep_default_na=False, dtype=str, engine="c",
                        encoding="utf-8", encoding_errors="replace")
 
 
+LINEAGE = Path(__file__).resolve().parents[2] / "data/reference/committee_lineage.csv"
+
+
+def renames() -> dict[str, str]:
+    """Old committee name -> current name, for committees renamed under the same code
+    (data/reference/committee_lineage.csv, checked by hand). Merged and split committees are
+    listed there too but kept separate, since the old and new ones met in the same years."""
+    if not LINEAGE.exists():
+        return {}
+    L = pd.read_csv(LINEAGE)
+    return dict(zip(L[L.relation == "renamed"].name, L[L.relation == "renamed"].current_name))
+
+
 def committee_names(raw: str | Path) -> pd.DataFrame:
+    """Committee codes with names. `committee` is the current name (renamed committees carry
+    one name across sessions); `name_then` is the name the session used."""
     loc = _read(raw, "LOCATION_CODE_TBL", LOC_COLS)
     loc = loc[loc.LOCATION_CODE.str.match(r"^C[XS]\d")].copy()
     loc["house"] = loc.LOCATION_CODE.str[1].map({"X": "Assembly", "S": "Senate"})
-    loc["committee"] = loc.house + " " + loc.LONG_DESCRIPTION.str.replace("&", "and", regex=False)
-    return loc[["LOCATION_CODE", "house", "committee"]].drop_duplicates("LOCATION_CODE")
+    loc["name_then"] = loc.house + " " + loc.LONG_DESCRIPTION.str.replace("&", "and", regex=False)
+    loc["committee"] = loc.name_then.replace(renames())
+    return loc[["LOCATION_CODE", "house", "committee", "name_then"]].drop_duplicates("LOCATION_CODE")
 
 
 def committee_votes(raw: str | Path) -> pd.DataFrame:
@@ -67,7 +93,7 @@ def committee_votes(raw: str | Path) -> pd.DataFrame:
     v = v.merge(committee_names(raw), on="LOCATION_CODE", how="left")
     v["bill_id"] = v.BILL_ID.str.replace(r"^\d{9}", "", regex=True)
     v["result"] = v.VOTE_RESULT.str.strip("()").str.lower()
-    return v[["bill_id", "BILL_ID", "house", "LOCATION_CODE", "committee", "vote_date", "year", "VOTE_DATE_TIME",
+    return v[["bill_id", "BILL_ID", "house", "LOCATION_CODE", "committee", "name_then", "vote_date", "year", "VOTE_DATE_TIME",
               "VOTE_DATE_SEQ", "MOTION_ID", "MOTION_TEXT", "result", "member", "roll_order", "vote"]].rename(
         columns={"LOCATION_CODE": "committee_code", "MOTION_TEXT": "motion", "VOTE_DATE_TIME": "vote_time",
                  "VOTE_DATE_SEQ": "vote_seq", "MOTION_ID": "motion_id"})
@@ -77,7 +103,7 @@ def hearing_rosters(votes: pd.DataFrame) -> pd.DataFrame:
     """The roster printed on each committee hearing date: one row per committee, date and member.
 
     A member's position is the order most often printed that day (chair 1, vice chair 2)."""
-    g = (votes.groupby(["committee_code", "committee", "house", "vote_date", "member"])
+    g = (votes.groupby(["committee_code", "committee", "name_then", "house", "vote_date", "member"])
          .roll_order.agg(lambda s: s.mode().iloc[0]).reset_index())
     g["role"] = g.roll_order.map({1: "Chair", 2: "Vice Chair"}).fillna("Member")
     return g
@@ -92,7 +118,7 @@ def membership_by_year(votes: pd.DataFrame, legislators: pd.DataFrame | None = N
     r = hearing_rosters(votes)
     r["year"] = r.vote_date.str[:4].astype(int)
     dates = r.groupby(["committee_code", "year"]).vote_date.nunique().rename("hearing_dates")
-    m = (r.groupby(["committee_code", "committee", "house", "year", "member"])
+    m = (r.groupby(["committee_code", "committee", "name_then", "house", "year", "member"])
          .agg(dates_on_roll=("vote_date", "nunique"), first_on_roll=("vote_date", "min"), last_on_roll=("vote_date", "max"),
               chair_dates=("role", lambda s: (s == "Chair").sum()), vice_dates=("role", lambda s: (s == "Vice Chair").sum()))
          .reset_index().join(dates, on=["committee_code", "year"]))

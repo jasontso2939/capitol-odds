@@ -7,3 +7,5 @@ data/raw/*
 !data/raw/MANIFEST.md
 .venv/
 data/archive/
+commit_message.txt
+alert.md

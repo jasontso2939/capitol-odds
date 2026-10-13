@@ -1,6 +1,6 @@
 """One command: raw official export -> processed tables + all-member scorecard.
 
-    python -m calleg.build [--raw data/raw/pubinfo_2025] [--out data/processed]
+    python -m calleg.build [--out data/processed]   (every session in calleg.sessions)
 """
 from __future__ import annotations
 
@@ -26,8 +26,8 @@ def prepare_members(bills: pd.DataFrame, members: pd.DataFrame) -> pd.DataFrame:
     members = members[~(twin & ~has_bills)]
     seat = pd.read_csv(Path(__file__).resolve().parents[2] / "data/reference/seat_changes.csv")
     shared_seat = members.duplicated("district", keep=False)
-    from .sessions import CURRENT   # seat_changes.csv records the current session's changes
-    listed = members.member.isin(seat.member) & members.district.isin(seat.district) & (members.session == CURRENT)
+    key = set(zip(seat.session, seat.district, seat.member))
+    listed = pd.Series([k in key for k in zip(members.session, members.district, members.member)], index=members.index)
     members["partial_term"] = shared_seat | listed
     first = bills.groupby("member").introduced.min().rename("first_bill_date")
     last = bills.groupby("member").introduced.max().rename("last_bill_date")

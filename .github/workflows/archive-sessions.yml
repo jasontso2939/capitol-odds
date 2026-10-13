@@ -1,11 +1,10 @@
 name: archive-sessions
 # Packs earlier sessions' leginfo exports into compact files on the session-archive branch.
 # Older sessions do not change, so this runs once (or when the packing script changes).
+# The weekly refresh archives each session as it finishes (scripts/ensure_archive.sh); run this
+# by hand only to repack sessions, for example after changing scripts/archive_session.py.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: [".github/workflows/archive-sessions.yml", "scripts/archive_session.py"]
 permissions:
   contents: write
 jobs:
@@ -31,10 +30,15 @@ jobs:
     steps:
       - uses: actions/download-artifact@v7
         with: {path: art, merge-multiple: true}
-      - name: Commit to session-archive branch
+      - uses: actions/checkout@v7
+        with: {ref: session-archive, path: existing}
+        continue-on-error: true
+      - name: Commit to session-archive branch (keeping sessions not repacked here)
         run: |
           git init -q -b session-archive repo && cd repo
-          mkdir -p data/archive && cp -r ../art/* data/archive/
+          mkdir -p data/archive
+          [ -d ../existing/data/archive ] && cp -r ../existing/data/archive/* data/archive/ || true
+          cp -r ../art/* data/archive/
           cat > README.md <<'MD'
           Compact copies of earlier California legislative sessions from the leginfo bulk export
           (downloads.leginfo.legislature.ca.gov), built by .github/workflows/archive-sessions.yml on main.

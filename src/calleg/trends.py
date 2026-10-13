@@ -11,12 +11,16 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+# Keyword rules for a veto message's main stated reason, tried in this order; a message
+# matching none is a policy, legal or implementation objection. Checked against 148
+# messages read in full (data/reference/veto_review.csv): see docs/METHODOLOGY.md.
 VETO_REASONS = {
-    "Cost or belongs in the budget": r"budget process|not accounted for|General Fund|unfunded|cost pressure|significant[^.]{0,40}costs|ongoing costs|costs? (?:that are )?not (?:included|accounted)|without (?:an identified|a clear) (?:funding )?source|fiscal",
-    "Duplicative or unnecessary": r"duplicat|redundant|unnecessary|not (?:convinced|persuaded)[^.]{0,40}necessary|already (?:has|have|conducts|permits|maintain|includes|grants|in place|exist|established|provides|requires|underway)|existing law (?:already|appears sufficient|effectively)",
-    "Defers to an agency, executive or bargaining process": r"collective bargaining|rulemaking|regulatory process|advisory group|working group|Collaborative|executive order|study is complete|ongoing work|work (?:is|remains) ongoing|premature|administratively|task force|stakeholder process",
-    "Policy, legal or implementation concerns": r"concern|undermine|conflict|unintended|unworkable|burdensome|precedent|due process|weaken|unclear|confusion|disrupt",
+    "Cost or belongs in the budget": r"budget process|not (?:accounted for|included|contemplated) in the (?:state )?budget|not (?:included|accounted for) in the (?:\d{4}(?:-\d{2})? )?Budget Act|cost pressures?|unfunded|without (?:an identified|a clear|a stable) (?:funding )?source|funding source|significant (?:new |ongoing |one-time )?(?:General Fund )?costs|ongoing costs|costs? (?:that are )?not (?:included|accounted)|stress on the [A-Z][a-z]+ (?:Vehicle )?Account|tax expenditures?|exceed the statutory funding cap|presume funding|properly funded",
+    "Duplicative or unnecessary": r"duplicat|redundant|unnecessary|not needed|not necessary|need for this bill is unclear|not every problem deserves a law|has been solved|already (?:has|have|conducts|permits|maintain|includes|grants|in place|exist|established|provides|requires|underway|available|lawfully|implemented|protects|allows|prioritizes)|existing law (?:already|appears sufficient|effectively)|can be (?:easily )?handled under current law|replicates",
+    "Defers to an agency, executive or bargaining process": r"collective bargaining|labor negotiations|rulemaking|regulatory process|advisory group|working group|Collaborative|executive order|study is complete|ongoing work|work (?:is|remains) ongoing|premature|administratively|task force|stakeholder process|leave this matter to|wait for the findings|developing a plan|existing regulatory processes|ongoing implementation|is directing|I am directing",
 }
+OTHER_REASON = "Policy, legal or implementation objection"
+REVIEW = Path(__file__).resolve().parents[2] / "data/reference/veto_review.csv"
 REPEAT_VETO = r"vetoed (?:a |an )?(?:similar|nearly identical|identical|substantially similar)|(?:last year|two years ago|previously),? I vetoed|I vetoed[^.]{0,60}(?:last year|in 20\d\d|previously)"
 
 
@@ -128,22 +132,35 @@ def veto_reasons(raw: str | Path, m: pd.DataFrame) -> dict:
         v = pd.read_csv(raw / "veto_text.csv.gz")
         v = v[v.BILL_ID.isin(m.BILL_ID)].copy()
         v["body"] = v.body.fillna("").map(clean)
+    elif not (raw / "VETO_MESSAGE_TBL.dat").exists():   # no vetoes yet
+        v = pd.DataFrame({"BILL_ID": pd.Series(dtype=str), "body": pd.Series(dtype=str)})
     else:                                             # full download with message files
         v = pd.read_csv(raw / "VETO_MESSAGE_TBL.dat", sep="\t", header=None, quotechar="`",
                         names=["BILL_ID", "date", "lob", "uid", "ts"])
         v = v[v.BILL_ID.isin(m.BILL_ID)].copy()
         v["body"] = v.lob.map(lambda lob: clean((raw / lob).read_text(errors="replace")))
+    v = v[v.BILL_ID.isin(m.BILL_ID[m.outcome == "vetoed"])]   # the table also holds a few signing messages
     for k, pat in VETO_REASONS.items():
         v[k] = v.body.str.contains(pat, case=False, regex=True)
     cats = list(VETO_REASONS)
-    v["primary"] = np.select([v[k] for k in cats], cats, "Policy disagreement (other)")
+    v["primary"] = np.select([v[k] for k in cats], cats, OTHER_REASON) if len(v) else pd.Series(dtype=str)
     v["repeat"] = v.body.str.contains(REPEAT_VETO, case=False, regex=True)
     v = v.merge(m[["BILL_ID", "bill_id", "party"]], on="BILL_ID", how="left")
     summary = [{"reason": c, "any_mention": int(v[c].sum()), "primary": int((v.primary == c).sum())} for c in cats]
-    summary.append({"reason": "Policy disagreement (other)", "any_mention": None,
-                    "primary": int((v.primary == "Policy disagreement (other)").sum())})
+    summary.append({"reason": OTHER_REASON, "any_mention": None, "primary": int((v.primary == OTHER_REASON).sum())})
     return {"messages": len(v), "vetoed_bills": int((m.outcome == "vetoed").sum()), "summary": summary,
-            "repeat": _rec(v[v.repeat][["bill_id", "party"]])}
+            "repeat": _rec(v[v.repeat][["bill_id", "party"]]), "review": review_agreement(v)}
+
+
+def review_agreement(v: pd.DataFrame) -> dict:
+    """How often the keyword label matches the reason found by reading the whole message."""
+    if not REVIEW.exists() or not len(v):
+        return {"reviewed": 0, "agree": 0, "held_out_reviewed": 0, "held_out_agree": 0}
+    r = pd.read_csv(REVIEW)
+    r = r[r.reviewed_reason != "Not a veto message"].merge(v[["BILL_ID", "primary"]], on="BILL_ID")
+    ok = r.primary == r.reviewed_reason
+    h = r["sample"] == "held_out"
+    return {"reviewed": len(r), "agree": int(ok.sum()), "held_out_reviewed": int(h.sum()), "held_out_agree": int((ok & h).sum())}
 
 
 def all_trends(m: pd.DataFrame, raw: str | Path) -> dict:

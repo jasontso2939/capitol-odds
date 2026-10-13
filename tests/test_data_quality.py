@@ -6,8 +6,11 @@ import pytest
 
 from calleg.pipeline import build
 
-RAW = Path(__file__).resolve().parents[1] / "data/raw/pubinfo_2025"
-pytestmark = pytest.mark.skipif(not (RAW / "BILL_TBL.dat").exists(), reason="raw export not downloaded")
+from calleg.sessions import raw_dir
+
+RAW = raw_dir(2025)   # full download while current, session archive afterwards
+pytestmark = pytest.mark.skipif(not ((RAW / "BILL_TBL.dat").exists() or (RAW / "BILL_TBL.dat.gz").exists()),
+                                reason="2025-26 data not downloaded")
 
 
 @pytest.fixture(scope="module")
@@ -56,9 +59,9 @@ def test_seat_change_reference_parses_and_flags_members(built):
     from calleg.build import prepare_members
     bills, m = built
     ref = pd.read_csv(Path(__file__).resolve().parents[1] / "data/reference/seat_changes.csv")
-    assert list(ref.columns[:3]) == ["district", "chamber", "member"]
+    assert list(ref.columns[:4]) == ["session", "district", "chamber", "member"]
     flagged = set(prepare_members(bills, m).query("partial_term").member)
-    assert flagged == set(ref.member)
+    assert flagged == set(ref[ref.session == 2025].member)
 
 
 def test_budget_bills_flagged(built):

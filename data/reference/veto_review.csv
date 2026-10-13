@@ -1,0 +1,151 @@
+review_id,sample,session,BILL_ID,reviewed_reason,reviewed_detail
+1,tuning,2017,201720180AB427,Duplicative or unnecessary,
+2,tuning,2017,201720180SB1127,"Policy, legal or implementation objection",general disagreement
+3,tuning,2017,201720180SB1019,"Defers to an agency, executive or bargaining process",
+4,tuning,2017,201720180AB1472,Duplicative or unnecessary,
+5,tuning,2017,201720180AB1019,Duplicative or unnecessary,
+6,tuning,2017,201720180AB2314,"Defers to an agency, executive or bargaining process",
+7,tuning,2017,201720180AB2005,"Policy, legal or implementation objection",specific concern
+8,tuning,2017,201720180AB2135,"Policy, legal or implementation objection",specific concern
+9,tuning,2017,201720180SB1415,"Policy, legal or implementation objection",general disagreement
+10,tuning,2017,201720180AB313,"Policy, legal or implementation objection",specific concern
+11,tuning,2017,201720180AB1939,"Policy, legal or implementation objection",general disagreement
+12,tuning,2017,201720180AB2298,Duplicative or unnecessary,
+13,tuning,2017,201720180AB3145,"Defers to an agency, executive or bargaining process",
+14,tuning,2017,201720180AB2054,Duplicative or unnecessary,
+15,tuning,2017,201720180AB186,"Policy, legal or implementation objection",general disagreement
+16,tuning,2017,201720180AB1097,"Policy, legal or implementation objection",general disagreement
+17,tuning,2017,201720180AB2058,"Policy, legal or implementation objection",specific concern
+18,tuning,2017,201720180AB2050,Cost or belongs in the budget,
+19,tuning,2017,201720180AB1873,"Policy, legal or implementation objection",specific concern
+20,tuning,2017,201720180AB391,Duplicative or unnecessary,
+21,tuning,2019,201920200AB550,"Policy, legal or implementation objection",specific concern
+22,tuning,2019,201920200AB1688,"Defers to an agency, executive or bargaining process",
+23,tuning,2019,201920200SB199,Duplicative or unnecessary,
+24,tuning,2019,201920200SB914,"Policy, legal or implementation objection",specific concern
+25,tuning,2019,201920200AB684,"Defers to an agency, executive or bargaining process",
+26,tuning,2019,201920200SB577,Duplicative or unnecessary,
+27,tuning,2019,201920200AB1835,"Policy, legal or implementation objection",specific concern
+28,tuning,2019,201920200AB1084,"Policy, legal or implementation objection",specific concern
+29,tuning,2019,201920200AB869,"Policy, legal or implementation objection",specific concern
+30,tuning,2019,201920200SB268,"Policy, legal or implementation objection",specific concern
+31,tuning,2019,201920200AB993,Duplicative or unnecessary,
+32,tuning,2019,201920200AB792,"Policy, legal or implementation objection",specific concern
+33,tuning,2019,201920200AB927,Cost or belongs in the budget,
+34,tuning,2019,201920200AB1153,Duplicative or unnecessary,
+35,tuning,2019,201920200AB1466,"Policy, legal or implementation objection",specific concern
+36,tuning,2019,201920200SB757,"Policy, legal or implementation objection",specific concern
+37,tuning,2019,201920200AB1093,Duplicative or unnecessary,
+38,tuning,2019,201920200AB1214,Cost or belongs in the budget,
+39,tuning,2019,201920200AB2296,Cost or belongs in the budget,
+40,tuning,2019,201920200SB1064,"Policy, legal or implementation objection",specific concern
+41,tuning,2021,202120220AB603,Duplicative or unnecessary,
+42,tuning,2021,202120220AB123,Cost or belongs in the budget,
+43,tuning,2021,202120220AB240,Cost or belongs in the budget,
+44,tuning,2021,202120220AB2124,Cost or belongs in the budget,
+45,tuning,2021,202120220AB2510,"Policy, legal or implementation objection",general disagreement
+46,tuning,2021,202120220SB792,Duplicative or unnecessary,
+47,tuning,2021,202120220SB867,Cost or belongs in the budget,
+48,tuning,2021,202120220SB543,"Policy, legal or implementation objection",specific concern
+49,tuning,2021,202120220AB2516,Cost or belongs in the budget,
+50,tuning,2021,202120220AB2548,Cost or belongs in the budget,
+51,tuning,2021,202120220AB105,"Policy, legal or implementation objection",specific concern
+52,tuning,2021,202120220AB1215,"Defers to an agency, executive or bargaining process",
+53,tuning,2021,202120220AB2520,Cost or belongs in the budget,
+54,tuning,2021,202120220AB2550,Duplicative or unnecessary,
+55,tuning,2021,202120220AB865,Cost or belongs in the budget,
+56,tuning,2021,202120220SB549,Duplicative or unnecessary,
+57,tuning,2021,202120220AB1893,"Policy, legal or implementation objection",specific concern
+58,tuning,2021,202120220AB1692,Cost or belongs in the budget,
+59,tuning,2021,202120220AB1456,Cost or belongs in the budget,
+60,tuning,2021,202120220SB410,Cost or belongs in the budget,
+61,tuning,2023,202320240AB37,"Policy, legal or implementation objection",specific concern
+62,tuning,2023,202320240SB1292,"Policy, legal or implementation objection",specific concern
+63,tuning,2023,202320240AB1738,Cost or belongs in the budget,
+64,tuning,2023,202320240AB2074,Not a veto message,
+65,tuning,2023,202320240AB819,"Policy, legal or implementation objection",general disagreement
+66,tuning,2023,202320240AB372,Cost or belongs in the budget,
+67,tuning,2023,202320240AB85,Duplicative or unnecessary,
+68,tuning,2023,202320240AB2467,"Policy, legal or implementation objection",specific concern
+69,tuning,2023,202320240AB1696,"Policy, legal or implementation objection",specific concern
+70,tuning,2023,202320240AB2120,"Policy, legal or implementation objection",specific concern
+71,tuning,2023,202320240AB1826,"Policy, legal or implementation objection",general disagreement
+72,tuning,2023,202320240AB718,Cost or belongs in the budget,
+73,tuning,2023,202320240AB448,Cost or belongs in the budget,
+74,tuning,2023,202320240SB354,Cost or belongs in the budget,
+75,tuning,2023,202320240SB1432,"Policy, legal or implementation objection",general disagreement
+76,tuning,2023,202320240SB1022,"Policy, legal or implementation objection",specific concern
+77,tuning,2023,202320240SB302,Not a veto message,
+78,tuning,2023,202320240AB1478,Duplicative or unnecessary,
+79,tuning,2023,202320240AB746,"Policy, legal or implementation objection",specific concern
+80,tuning,2023,202320240AB1112,"Policy, legal or implementation objection",specific concern
+81,tuning,2025,202520260SB641,"Policy, legal or implementation objection",specific concern
+82,tuning,2025,202520260AB1064,"Policy, legal or implementation objection",specific concern
+83,tuning,2025,202520260SB34,"Policy, legal or implementation objection",general disagreement
+84,tuning,2025,202520260AB393,"Defers to an agency, executive or bargaining process",
+85,tuning,2025,202520260AB527,"Policy, legal or implementation objection",specific concern
+86,tuning,2025,202520260AB1074,Cost or belongs in the budget,
+87,tuning,2025,202520260SB404,"Policy, legal or implementation objection",specific concern
+88,tuning,2025,202520260AB650,"Policy, legal or implementation objection",specific concern
+89,tuning,2025,202520260AB546,"Policy, legal or implementation objection",specific concern
+90,tuning,2025,202520260SB682,"Policy, legal or implementation objection",specific concern
+91,tuning,2025,202520260AB1273,"Policy, legal or implementation objection",specific concern
+92,tuning,2025,202520260AB400,Duplicative or unnecessary,
+93,tuning,2025,202520260SB783,"Policy, legal or implementation objection",general disagreement
+94,tuning,2025,202520260AB620,"Defers to an agency, executive or bargaining process",
+95,tuning,2025,202520260SB865,Cost or belongs in the budget,
+96,tuning,2025,202520260AB986,Duplicative or unnecessary,
+97,tuning,2025,202520260AB1378,"Policy, legal or implementation objection",specific concern
+98,tuning,2025,202520260SB419,Cost or belongs in the budget,
+99,tuning,2025,202520260SB1057,"Policy, legal or implementation objection",specific concern
+100,tuning,2025,202520260AB1089,"Policy, legal or implementation objection",general disagreement
+101,held_out,2017,201720180AB2772,Duplicative or unnecessary,
+102,held_out,2017,201720180AB3131,"Policy, legal or implementation objection",specific concern
+103,held_out,2017,201720180SB1265,"Policy, legal or implementation objection",general disagreement
+104,held_out,2017,201720180AB2790,Cost or belongs in the budget,
+105,held_out,2017,201720180AB1437,Duplicative or unnecessary,
+106,held_out,2017,201720180AB894,"Policy, legal or implementation objection",general disagreement
+107,held_out,2017,201720180AB3135,Cost or belongs in the budget,
+108,held_out,2017,201720180SB715,"Policy, legal or implementation objection",specific concern
+109,held_out,2017,201720180SB702,Duplicative or unnecessary,
+110,held_out,2017,201720180SB947,Duplicative or unnecessary,
+111,held_out,2019,201920200AB734,Cost or belongs in the budget,
+112,held_out,2019,201920200SB365,Cost or belongs in the budget,
+113,held_out,2019,201920200AB556,"Policy, legal or implementation objection",general disagreement
+114,held_out,2019,201920200AB506,"Policy, legal or implementation objection",specific concern
+115,held_out,2019,201920200AB1307,Cost or belongs in the budget,
+116,held_out,2019,201920200SB154,Cost or belongs in the budget,
+117,held_out,2019,201920200AB524,"Policy, legal or implementation objection",general disagreement
+118,held_out,2019,201920200AB618,Duplicative or unnecessary,
+119,held_out,2019,201920200AB1299,"Policy, legal or implementation objection",general disagreement
+120,held_out,2019,201920200AB2100,"Defers to an agency, executive or bargaining process",
+121,held_out,2021,202120220SB1488,"Policy, legal or implementation objection",specific concern
+122,held_out,2021,202120220AB1560,Duplicative or unnecessary,
+123,held_out,2021,202120220AB1238,"Policy, legal or implementation objection",specific concern
+124,held_out,2021,202120220SB1371,Cost or belongs in the budget,
+125,held_out,2021,202120220AB1768,Duplicative or unnecessary,
+126,held_out,2021,202120220AB857,"Policy, legal or implementation objection",specific concern
+127,held_out,2021,202120220AB1331,Cost or belongs in the budget,
+128,held_out,2021,202120220AB279,"Policy, legal or implementation objection",specific concern
+129,held_out,2021,202120220SB981,"Policy, legal or implementation objection",specific concern
+130,held_out,2021,202120220SB1302,Duplicative or unnecessary,
+131,held_out,2023,202320240AB371,Cost or belongs in the budget,
+132,held_out,2023,202320240AB1890,Duplicative or unnecessary,
+133,held_out,2023,202320240AB637,"Policy, legal or implementation objection",specific concern
+134,held_out,2023,202320240AB676,"Policy, legal or implementation objection",specific concern
+135,held_out,2023,202320240SB1391,Duplicative or unnecessary,
+136,held_out,2023,202320240SB542,Cost or belongs in the budget,
+137,held_out,2023,202320240AB2271,"Policy, legal or implementation objection",specific concern
+138,held_out,2023,202320240SB278,"Policy, legal or implementation objection",specific concern
+139,held_out,2023,202320240AB632,Cost or belongs in the budget,
+140,held_out,2023,202320240AB2681,"Policy, legal or implementation objection",specific concern
+141,held_out,2025,202520260SB629,Cost or belongs in the budget,
+142,held_out,2025,202520260SB632,Cost or belongs in the budget,
+143,held_out,2025,202520260AB86,"Defers to an agency, executive or bargaining process",
+144,held_out,2025,202520260AB76,"Policy, legal or implementation objection",general disagreement
+145,held_out,2025,202520260AB734,"Policy, legal or implementation objection",specific concern
+146,held_out,2025,202520260AB44,"Policy, legal or implementation objection",specific concern
+147,held_out,2025,202520260SB787,Duplicative or unnecessary,
+148,held_out,2025,202520260AB1889,"Policy, legal or implementation objection",specific concern
+149,held_out,2025,202520260AB432,"Policy, legal or implementation objection",specific concern
+150,held_out,2025,202520260SB7,"Policy, legal or implementation objection",specific concern
