@@ -20,13 +20,24 @@ SUMMARY_COLS = ("BILL_ID LOCATION_CODE VOTE_DATE_TIME VOTE_DATE_SEQ MOTION_ID AY
 LOC_COLS = ("SESSION_YEAR LOCATION_CODE LOCATION_TYPE CONSENT_CALENDAR_CODE DESCRIPTION LONG_DESCRIPTION "
             "ACTIVE_FLG TRANS_UID TRANS_UPDATE INACTIVE_FILE_FLG").split()
 MOTION_COLS = "MOTION_ID MOTION_TEXT TRANS_UID TRANS_UPDATE".split()
-# Roll-call names that differ from LEGISLATOR_TBL.AUTHOR_NAME
-NAME_ALIASES = {"Weber": "Weber Pierson"}
+def roll_name_aliases(raw: Path, roll_names: set[str]) -> dict[str, str]:
+    """Roll calls sometimes use a shorter name than the session's author list
+    (2025-26: "Weber" for Weber Pierson). Map a roll-call name that is not an author name
+    to the one author name that begins with it, within the same session only."""
+    from calleg.pipeline import read_table
+    authors = set(read_table(Path(raw), "LEGISLATOR_TBL").AUTHOR_NAME.dropna())
+    out = {}
+    for n in roll_names - authors:
+        hits = [a for a in authors if a.startswith(n + " ")]
+        if len(hits) == 1:
+            out[n] = hits[0]
+    return out
 CORE_SHARE = 0.5   # a member present on at least half of a committee's hearing dates in a year is a regular member
 
 
 def _read(raw: Path, name: str, cols: list[str]) -> pd.DataFrame:
-    return pd.read_csv(Path(raw) / f"{name}.dat", sep="\t", quotechar="`", header=None, names=cols,
+    from calleg.pipeline import table_path
+    return pd.read_csv(table_path(raw, name), sep="\t", quotechar="`", header=None, names=cols,
                        na_values=["NULL"], keep_default_na=False, dtype=str, engine="c",
                        encoding="utf-8", encoding_errors="replace")
 
@@ -44,7 +55,7 @@ def committee_votes(raw: str | Path) -> pd.DataFrame:
     raw = Path(raw)
     v = _read(raw, "BILL_DETAIL_VOTE_TBL", VOTE_COLS)
     v = v[v.LOCATION_CODE.str.match(r"^C[XS]\d")].copy()
-    v["member"] = v.LEGISLATOR_NAME.replace(NAME_ALIASES)
+    v["member"] = v.LEGISLATOR_NAME.replace(roll_name_aliases(raw, set(v.LEGISLATOR_NAME)))
     v["vote_date"] = v.VOTE_DATE_TIME.str[:10]
     v["year"] = v.vote_date.str[:4].astype(int)
     v["roll_order"] = pd.to_numeric(v.MEMBER_ORDER, errors="coerce").astype("Int64")

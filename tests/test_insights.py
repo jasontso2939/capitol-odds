@@ -21,20 +21,21 @@ def ins():
 
 
 def test_insights_has_every_section(ins):
-    assert {"session", "trends", "model", "metrics", "bills"} <= ins.keys()
+    assert {"session", "sessions", "trends", "model", "metrics"} <= ins.keys()
+    assert {"all", "2017", "2019", "2021", "2023", "2025", "over_time"} <= ins["trends"].keys()
     assert {"appropriations_by_party", "where_failed_bills_died", "policy_area_risk", "fiscal_flags",
-            "coalition", "timing", "second_house", "spot_bills", "veto_rate_by_area", "veto_reasons"} <= ins["trends"].keys()
+            "coalition", "timing", "second_house", "spot_bills", "veto_rate_by_area", "veto_reasons"} <= ins["trends"]["2025"].keys()
 
 
 def test_appropriations_counts_add_up(ins):
-    for r in ins["trends"]["appropriations_by_party"]:
+    for r in ins["trends"]["all"]["appropriations_by_party"] + ins["trends"]["2017"]["appropriations_by_party"]:
         assert 0 <= r["died"] <= r["sent"]
         assert r["pct_died"] == pytest.approx(100 * r["died"] / r["sent"], abs=0.06)
 
 
 def test_where_failed_bills_died_sums_to_100(ins):
     for p in ["D", "R"]:
-        tot = sum(r["pct"] for r in ins["trends"]["where_failed_bills_died"] if r["party"] == p)
+        tot = sum(r["pct"] for r in ins["trends"]["all"]["where_failed_bills_died"] if r["party"] == p)
         assert tot == pytest.approx(100, abs=0.2)
 
 
@@ -42,7 +43,10 @@ def test_model_is_better_than_base_rate_and_reported_honestly(ins):
     m = ins["metrics"]
     assert 0.6 <= m["cv_auc"] <= 0.8          # if this jumps, look for leakage before celebrating
     assert m["cv_brier"] < m["base_brier"]
-    assert m["temporal_auc_2025_to_2026"] > 0.6
+    assert m["within_session_auc"] > 0.6
+    assert m["out_of_session_auc"] > 0.6           # trained on 2017-2024, tested on 2025-26
+    assert abs(m["out_of_session_predicted_rate"] - m["out_of_session_actual_rate"]) < 0.08
+    assert m["sessions"] == [2017, 2019, 2021, 2023, 2025]
     assert sum(c["bills"] for c in m["calibration"]) == m["bills"]
 
 

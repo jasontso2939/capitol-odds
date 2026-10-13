@@ -48,6 +48,10 @@ def test_rosters_agree_with_archived_web_pages(chk):
     ("Assembly Education", 2026, "Patel", "Chair"),
     ("Senate Budget and Fiscal Review", 2025, "Wiener", "Chair"),
     ("Senate Budget and Fiscal Review", 2026, "Laird", "Chair"),
+    ("Assembly Appropriations", 2017, "Gonzalez Fletcher", "Chair"),
+    ("Assembly Appropriations", 2022, "Holden", "Chair"),
+    ("Senate Appropriations", 2017, "Lara", "Chair"),
+    ("Senate Appropriations", 2019, "Portantino", "Chair"),
 ])
 def test_known_chairs_by_year(mem, committee, year, member, role):
     row = mem[(mem.committee == committee) & (mem.year == year) & (mem.member == member)]

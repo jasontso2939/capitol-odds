@@ -120,14 +120,19 @@ def veto_rate_by_area(m: pd.DataFrame, min_sent: int = 20) -> list[dict]:
 
 def veto_reasons(raw: str | Path, m: pd.DataFrame) -> dict:
     raw = Path(raw)
-    v = pd.read_csv(raw / "VETO_MESSAGE_TBL.dat", sep="\t", header=None, quotechar="`",
-                    names=["BILL_ID", "date", "lob", "uid", "ts"])
-    v = v[v.BILL_ID.isin(m.BILL_ID)].copy()
-    def body(lob):
-        t = re.sub(r"\s+", " ", (raw / lob).read_text(errors="replace"))
+    def clean(t):
+        t = re.sub(r"\s+", " ", t)
         t = re.sub(r"^.*?without my signature\.", "", t)
         return re.sub(r"(For (these|this) reason.*|Sincerely.*)$", "", t).strip()
-    v["body"] = v.lob.map(body)
+    if (raw / "veto_text.csv.gz").exists():          # session archive
+        v = pd.read_csv(raw / "veto_text.csv.gz")
+        v = v[v.BILL_ID.isin(m.BILL_ID)].copy()
+        v["body"] = v.body.fillna("").map(clean)
+    else:                                             # full download with message files
+        v = pd.read_csv(raw / "VETO_MESSAGE_TBL.dat", sep="\t", header=None, quotechar="`",
+                        names=["BILL_ID", "date", "lob", "uid", "ts"])
+        v = v[v.BILL_ID.isin(m.BILL_ID)].copy()
+        v["body"] = v.lob.map(lambda lob: clean((raw / lob).read_text(errors="replace")))
     for k, pat in VETO_REASONS.items():
         v[k] = v.body.str.contains(pat, case=False, regex=True)
     cats = list(VETO_REASONS)

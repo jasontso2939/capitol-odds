@@ -10,11 +10,15 @@ Checks that the rows are complete: the per-member yes and no counts reproduce th
 
 ## Rules
 
+- **Years covered.** 2017 through 2026 (five sessions). Committees are matched across sessions by name, since codes are reassigned; renamed committees appear under each name they had.
 - **Year.** Rosters are built per calendar year from the hearings held that year. Membership and chairs changed between 2025 and 2026 on many committees (for example Assembly Appropriations' vice chair, and the chairs of Senate Appropriations and Senate Budget), so 2025 and 2026 are kept separate.
 - **Regular member.** On the roll for at least half of the committee's hearing dates that year. Anyone else is marked "part of year or substitute": they joined or left mid-year, or sat in for an absent member (both houses allow temporary substitutes).
 - **Chair and vice chair.** The members listed first and second. A single hearing where the order differs, between two stretches with the same leaders, is treated as a substitution day, not a change, and is noted in `committee_leadership.csv`. Real changes during a year (such as Senate Appropriations' chair between January and April 2026) are kept with their hearing dates.
 
-## Check against the committees' web pages
+## Check against the committees' web pages (2025 and 2026)
+
+Earlier years have no web check; their roll calls reproduce the official vote tallies (`tests/test_sessions.py`), and spot checks of known chairs pass (for example Assembly Appropriations: Gonzalez Fletcher 2017 to 2021, Holden 2022 to 2023, Wicks from 2024).
+
 
 Each committee's members page was read from the Internet Archive near mid-June 2025 and mid-June 2026 (`data/reference/committee_rosters_web.csv`, with the archive URL for every row), then compared with the roll call on the nearest hearing date that year (`data/processed/committee_roster_check.csv`).
 

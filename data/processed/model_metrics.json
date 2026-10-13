@@ -1,52 +1,62 @@
 {
-  "bills": 3697,
-  "base_rate": 0.445,
-  "cv_auc": 0.653,
-  "cv_brier": 0.229,
-  "base_brier": 0.247,
-  "temporal_auc_2025_to_2026": 0.657,
+  "bills": 19675,
+  "base_rate": 0.393,
+  "cv_auc": 0.674,
+  "cv_brier": 0.217,
+  "base_brier": 0.239,
+  "sessions": [
+    2017,
+    2019,
+    2021,
+    2023,
+    2025
+  ],
+  "within_session_auc": 0.657,
+  "out_of_session_auc": 0.661,
+  "out_of_session_predicted_rate": 0.408,
+  "out_of_session_actual_rate": 0.445,
   "calibration": [
     {
       "band": "(0.0, 0.2]",
-      "bills": 295,
-      "predicted": 0.147,
-      "actual": 0.146
+      "bills": 2250,
+      "predicted": 0.138,
+      "actual": 0.141
     },
     {
       "band": "(0.2, 0.3]",
-      "bills": 420,
-      "predicted": 0.252,
-      "actual": 0.29
+      "bills": 3302,
+      "predicted": 0.253,
+      "actual": 0.263
     },
     {
       "band": "(0.3, 0.4]",
-      "bills": 663,
-      "predicted": 0.352,
-      "actual": 0.371
+      "bills": 4445,
+      "predicted": 0.351,
+      "actual": 0.361
     },
     {
       "band": "(0.4, 0.5]",
-      "bills": 873,
-      "predicted": 0.452,
-      "actual": 0.485
+      "bills": 4808,
+      "predicted": 0.448,
+      "actual": 0.437
     },
     {
       "band": "(0.5, 0.6]",
-      "bills": 822,
-      "predicted": 0.547,
-      "actual": 0.523
+      "bills": 3085,
+      "predicted": 0.545,
+      "actual": 0.542
     },
     {
       "band": "(0.6, 0.7]",
-      "bills": 447,
-      "predicted": 0.643,
-      "actual": 0.566
+      "bills": 1383,
+      "predicted": 0.642,
+      "actual": 0.629
     },
     {
       "band": "(0.7, 1.0]",
-      "bills": 177,
-      "predicted": 0.752,
-      "actual": 0.723
+      "bills": 402,
+      "predicted": 0.742,
+      "actual": 0.741
     }
   ]
 }

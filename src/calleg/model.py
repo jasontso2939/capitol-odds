@@ -15,7 +15,7 @@ import pandas as pd
 # all_leads: every lead author gets credit (leginfo's "Lead Authors" field).
 # first_listed: only the first-listed author gets credit (what bulk exports show).
 METHODS = ("all_leads", "first_listed")
-# session: whole 2025-26 session. 2025 / 2026: one calendar slice of it.
+# session: the whole two-year session. A year (e.g. 2025): one calendar slice of it.
 SCOPES = ("session", 2025, 2026)
 
 
@@ -55,8 +55,9 @@ def scorecard(
     """
     if method not in METHODS:
         raise ValueError(f"method must be one of {METHODS}")
-    if scope not in SCOPES:
-        raise ValueError(f"scope must be one of {SCOPES}")
+    years = set(bills["filed_year"].dropna().astype(int))
+    if scope != "session" and scope not in years:
+        raise ValueError(f"scope must be 'session' or a year in the data {sorted(years)}")
 
     b = bills[bills["is_first_listed"]] if method == "first_listed" else bills
 

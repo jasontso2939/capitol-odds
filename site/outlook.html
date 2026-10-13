@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bill Outlook</title>
-<meta name="description" content="Estimate a proposed California bill's chance of being signed from its author, first policy committee, fiscal features, coalition and timing. Trained on the 2025-26 session.">
+<meta name="description" content="Estimate a proposed California bill's chance of being signed from its author, first policy committee, fiscal features, coalition and timing. Trained on every legislator's bills from 2017-18 through 2025-26.">
 <style>
 :root{--bg:#f6f7fa;--panel:#fff;--ink:#1b2333;--muted:#5d6678;--line:#dde1ea;--navy:#14213d;--gold:#f2a900;--d:#3a6ea5;--r:#b5483b;--hi:#fff4d6}
 @media (prefers-color-scheme:dark){:root{--bg:#0f1521;--panel:#171f2f;--ink:#e8ecf4;--muted:#9aa4b8;--line:#2a3550;--navy:#e8ecf4;--hi:#3a3115;--d:#6f9fd4;--r:#d97a6c}}
@@ -60,11 +60,11 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
 <body>
 <header><div class="wrap">
 <h1>Bill Outlook</h1>
-<p>Estimate the chance a proposed bill is signed, from what is known when it is introduced. A statistical model trained on every legislator's 2025-26 bills.</p>
+<p>Estimate the chance a proposed bill is signed, from what is known when it is introduced. A statistical model trained on every legislator's bills from 2017-18 through 2025-26.</p>
 <nav><a href="index.html">Scorecard</a><a href="trends.html">Trends</a><a href="committees.html">Committees</a><a href="outlook.html" aria-current="page">Bill outlook</a></nav>
 </div></header>
 <main><div class="wrap">
-<div class="note"><b>Read this as a rough guide.</b> On bills it had not seen, the model ranks a signed bill above an unsigned one about <span id="aucpct"></span> of the time (AUC <span id="auc"></span>, where 0.5 is a coin flip). It cannot see a bill's merits, the Governor's priorities, opposition, or deals made along the way. It is one session of data.</div>
+<div class="note"><b>Read this as a rough guide.</b> Trained on 2017-18 through 2023-24 and tested on the 2025-26 session it had not seen, the model ranked a signed bill above an unsigned one about <span id="aucpct"></span> of the time (AUC <span id="auc"></span>, where 0.5 is a coin flip). Estimates assume conditions like the 2025-26 session. It cannot see a bill's merits, the Governor's priorities, opposition, or deals made along the way.</div>
 <div class="layout">
 <div>
 <div class="panel"><h2>The bill</h2>
@@ -94,14 +94,14 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
 </div>
 <div class="panel"><h2>Similar past bills</h2>
  <div class="f"><input id="kw" type="search" placeholder="Keywords from the title, e.g. wildfire insurance"></div>
- <div id="sim" class="small">Type a few words to see 2025-26 bills with matching titles and how they ended.</div>
+ <div id="sim" class="small">Type a few words to see bills since 2017 with matching titles and how they ended.</div>
 </div>
 </div>
 <div>
 <div class="panel" aria-live="polite"><h2>Estimated chance of being signed</h2>
  <div class="big" id="p"></div><span class="band" id="band"></span>
  <div class="gauge"><div class="fill" id="gfill"></div><div class="base" id="gbase" title="Average bill"></div></div>
- <div class="small">Gold line: average bill in the training data (<span id="basepct"></span> signed).</div>
+ <div class="small">Gold line: average 2025-26 bill (<span id="basepct"></span> signed).</div>
  <h2 style="margin-top:16px">What moves this estimate</h2>
  <div class="small">Change in the estimate from each input, compared with a typical value (no flag, no coauthors, an average committee and window, the party average for the author).</div>
  <div class="fac" id="fac"></div>
@@ -113,16 +113,19 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
  <div id="calib"></div>
 </div>
 <div class="panel"><h2>What the model can and cannot see</h2>
- <div class="small">It now uses committee rosters from the roll calls: whether the author sits on or chairs the committee. Tested on 2025-26, these added little accuracy beyond the author's party, record and the committee itself, so they move estimates only slightly. How members voted on the author's past bills is shown for context but left out of the estimate: committee roll calls mostly record bills that were already headed for passage, so yes rates sit near 95% and did not predict outcomes. Not yet included: bill text beyond the subject line, support and opposition, and earlier sessions.</div>
+ <div class="small">It learns from five sessions (about 19,700 bills) and uses each author's record across them. It also uses committee rosters from the roll calls: whether the author sits on or chairs the committee. These added little accuracy beyond the author's party, record and the committee itself, so they move estimates only slightly. Sessions differ (2019-20 had far fewer bills signed because of the pandemic), so estimates are set to the level of the latest session. How members voted on the author's past bills is shown for context but left out of the estimate, because committee roll calls mostly record bills already headed for passage. Not yet included: bill text beyond the subject line, and support and opposition.</div>
 </div>
 </div>
 </div>
 <footer>Not affiliated with any office or legislator. Not a forecast of any specific bill and not advice.<br>Source: California Legislative Information bulk export (leginfo). Model code, tests and methodology are in the repository.</footer>
 </div></main>
 <script src="insights.js"></script>
+<script src="data/bills_index.js"></script>
 <script src="committees.js"></script>
 <script>
-const M = INSIGHTS.model, MET = INSIGHTS.metrics, B = INSIGHTS.bills;
+const M = INSIGHTS.model, MET = INSIGHTS.metrics;
+const OC = {s: "signed", v: "vetoed", n: "not_enacted"};
+const B = BILLS.rows.map(r => ({session: r[0], bill_id: r[1], title: r[2], member: BILLS.members[r[3]], party: r[4], policy_area: BILLS.areas[r[5]], outcome: OC[r[6]]}));
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const pc = p => (100 * p).toFixed(0) + "%";
@@ -137,7 +140,8 @@ function committeeYear(area) {
   return {c, y, data: c.years[y]};
 }
 
-$("auc").textContent = MET.cv_auc.toFixed(2); $("aucpct").textContent = Math.round(MET.cv_auc * 100) + "%";
+const AUC = MET.out_of_session_auc ?? MET.cv_auc;
+$("auc").textContent = AUC.toFixed(2); $("aucpct").textContent = Math.round(AUC * 100) + "%";
 $("basepct").textContent = pc(M.base_rate); $("gbase").style.left = (100 * M.base_rate) + "%";
 const authors = [...M.authors].sort((a, b) => a.member.localeCompare(b.member));
 $("author").innerHTML = '<option value="">New or unlisted member</option>' +
@@ -165,6 +169,7 @@ function state() {
 function logit(s) {
   const c = M.coef; let z = M.intercept;
   for (const k of ["party", "origin", "policy_area", "filing_window"]) z += c[`${k}_${s[k]}`] || 0;
+  if (M.current_session) z += c[`session_${M.current_session}`] || 0;   // score as a bill in the latest session
   for (const k of [...BIN, "log1p_coauthors", "joint_lead", "author_record", "author_on_committee", "author_chairs_committee"]) z += (c[k] || 0) * (s[k] || 0);
   return z;
 }
@@ -194,10 +199,14 @@ function render() {
   if (s.author_on_committee) f.push(["Author sits on the committee", p - P({...s, author_on_committee: 0, author_chairs_committee: 0})]);
   f.sort((x, y) => Math.abs(y[1]) - Math.abs(x[1]));
   $("fac").innerHTML = f.map(([l, d]) => `<div>${esc(l)}</div><div class="${d >= 0 ? "up" : "dn"}">${d >= 0 ? "+" : "−"}${Math.abs(100 * d).toFixed(1)} pts</div>`).join("");
-  const ab = B.filter(b => b.policy_area === s.policy_area), as = ab.filter(b => b.outcome === "signed").length;
-  let ctx = `<p><b>${esc(s.policy_area)}</b>: ${ab.length} bills in 2025-26 went here first; ${as} (${ab.length ? pc(as / ab.length) : "–"}) were signed.${ab.length < 20 ? " Small sample, so the committee effect is uncertain." : ""}</p>`;
-  if (s.a) { const mb = B.filter(b => b.member === s.a.member), ms = mb.filter(b => b.outcome === "signed").length;
-    ctx += `<p><b>${esc(s.a.member)}</b>: ${mb.length} bills as first-listed lead author in 2025-26, ${ms} signed (${mb.length ? pc(ms / mb.length) : "–"}). The model shrinks each record toward the party average, more so for members with few bills.</p>`; }
+  const ab = B.filter(b => b.policy_area === s.policy_area), cb = ab.filter(b => b.session === M.current_session);
+  const sg = x => x.filter(b => b.outcome === "signed").length;
+  let ctx = `<p><b>${esc(s.policy_area)}</b>: ${cb.length} bills in 2025-26 went here first; ${sg(cb)} (${cb.length ? pc(sg(cb) / cb.length) : "–"}) were signed. Since 2017: ${ab.length} bills, ${ab.length ? pc(sg(ab) / ab.length) : "–"} signed.${cb.length < 20 ? " Small sample this session, so the committee effect is uncertain." : ""}</p>`;
+  if (s.a) { const mb = B.filter(b => b.member === s.a.member && b.session === M.current_session), ms = sg(mb);
+    const all = s.a.bills_all_sessions;
+    ctx += `<p><b>${esc(s.a.member)}</b>: ${mb.length} bills as first-listed lead author in 2025-26, ${ms} signed (${mb.length ? pc(ms / mb.length) : "–"}).` +
+      (all && s.a.sessions > 1 ? ` Across ${s.a.sessions} sessions since 2017: ${all} bills, ${s.a.signed_all_sessions} signed (${pc(s.a.signed_all_sessions / all)}).` : "") +
+      ` The model uses the full record, shrunk toward the party average, more so for members with few bills.</p>`; }
   $("ctx").innerHTML = ctx;
   relPanel(s);
 }
@@ -223,13 +232,13 @@ function relPanel(s) {
 }
 function similar() {
   const w = $("kw").value.toLowerCase().split(/\W+/).filter(x => x.length > 2);
-  if (!w.length) { $("sim").innerHTML = "Type a few words to see 2025-26 bills with matching titles and how they ended."; return; }
+  if (!w.length) { $("sim").innerHTML = "Type a few words to see bills since 2017 with matching titles and how they ended."; return; }
   const hits = B.map(b => ({b, n: w.filter(x => b.title.toLowerCase().includes(x)).length})).filter(x => x.n)
-    .sort((x, y) => y.n - x.n || x.b.bill_id.localeCompare(y.b.bill_id, undefined, {numeric: true}));
+    .sort((x, y) => y.n - x.n || y.b.session - x.b.session || x.b.bill_id.localeCompare(y.b.bill_id, undefined, {numeric: true}));
   const top = hits.filter(x => x.n === w.length).length ? hits.filter(x => x.n === w.length) : hits;
   const sg = top.filter(x => x.b.outcome === "signed").length;
   $("sim").innerHTML = top.length ? `<p>${top.length} bill${top.length > 1 ? "s match" : " matches"}${top.filter(x => x.n === w.length).length ? " every word" : " some words"}; ${sg} signed (${pc(sg / top.length)}).</p><div style="max-height:340px;overflow:auto"><table><thead><tr><th>Bill</th><th>Title</th><th>Author</th><th>Outcome</th></tr></thead><tbody>` +
-    top.slice(0, 60).map(({b}) => `<tr><td>${esc(b.bill_id)}</td><td>${esc(b.title)}</td><td><span class="${b.party}">${esc(b.member)}</span></td><td class="o-${b.outcome}">${OUT[b.outcome]}</td></tr>`).join("") + "</tbody></table></div>" : "<p>No matching titles.</p>";
+    top.slice(0, 60).map(({b}) => `<tr><td>${esc(b.bill_id)}<div class="small">${b.session}-${String(b.session + 1).slice(2)}</div></td><td>${esc(b.title)}</td><td><span class="${b.party}">${esc(b.member)}</span></td><td class="o-${b.outcome}">${OUT[b.outcome]}</td></tr>`).join("") + "</tbody></table></div>" : "<p>No matching titles.</p>";
 }
 document.querySelectorAll("select,input").forEach(e => e.addEventListener("input", () => {
   if (e.id === "kw") return similar();

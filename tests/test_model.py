@@ -13,8 +13,9 @@ from calleg import scorecard
 
 ROOT = Path(__file__).resolve().parents[1]
 BILLS = pd.read_csv(ROOT / "data/processed/bills_all.csv", dtype={"action_year": "Int64"})
-BILLS = BILLS[~BILLS.is_budget].drop(columns=["author_house"])
+BILLS = BILLS[~BILLS.is_budget & (BILLS.session == 2025)].drop(columns=["author_house"])
 MEMBERS = pd.read_csv(ROOT / "data/processed/members_all.csv")
+MEMBERS = MEMBERS[MEMBERS.session == 2025]
 
 
 def oracle(method, scope):

@@ -1,5 +1,13 @@
 # Methodology
 
+## Sessions
+
+Five two-year sessions: 2017-18, 2019-20, 2021-22, 2023-24 and 2025-26. The current session is read from the full leginfo download; earlier ones from compact archives packed once by `.github/workflows/archive-sessions.yml` (gzipped copies of the same tables, the veto message text, and introduced-text statistics, with the download's SHA-256 recorded). Each session is processed on its own: committee codes are reassigned between sessions, so committees are matched by name, never by code.
+
+- **One name per person.** The export sometimes lists one legislator twice in a session under a spelling or married-name variant (Kamlager / Kamlager-Dove, Gonzalez / Gonzalez Fletcher). Two names for the same seat and first name are merged, keeping the name with more bills.
+- **Partial terms.** Flagged when two members held the same seat in a session (a resignation and special election), plus the current session's documented changes in `data/reference/seat_changes.csv`.
+- **Across sessions.** The model links an author's sessions by last and first name, since the short author name can belong to different people in different years.
+
 These rules are implemented in `src/calleg/model.py` and checked by `tests/`.
 
 ## Roster

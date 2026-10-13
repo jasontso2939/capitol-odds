@@ -6,3 +6,4 @@ shot*.png
 data/raw/*
 !data/raw/MANIFEST.md
 .venv/
+data/archive/

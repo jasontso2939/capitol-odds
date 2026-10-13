@@ -55,18 +55,26 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute
 <body>
 <header><div class="wrap">
 <h1>Statewide Bill Trends</h1>
-<p>Where bills die, what goes with success, and why the Governor vetoes. 2025-26 session, every legislator. Budget bills are excluded.</p>
+<p>Where bills die, what goes with success, and why the Governor vetoes. Every legislator, 2017-18 through 2025-26. Budget bills are excluded.</p>
 <nav><a href="index.html">Scorecard</a><a href="trends.html" aria-current="page">Trends</a><a href="committees.html">Committees</a><a href="outlook.html">Bill outlook</a></nav>
 </div></header>
 <main><div class="wrap">
 <div class="note">These are descriptive patterns, not causes. A bill with more coauthors may pass more often because it was a stronger bill to begin with. Each figure counts regular Assembly and Senate bills by a legislator (not committee bills); see the methodology in the repository for exact rules.</div>
+<div class="controls" style="display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px">
+ <div><label for="sess" style="display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px">Session</label>
+ <select id="sess" style="background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:500 14px system-ui,sans-serif"></select></div>
+</div>
 <div class="toc" id="toc"></div>
+<section id="over"><h2>Ten years at a glance</h2><p class="lede">Each two-year session side by side. 2019-20 stands out: the 2020 pandemic cut the legislative calendar and far fewer bills were signed.</p><div id="overbody"></div></section>
 <div id="out"></div>
 <footer>Not affiliated with any office or legislator.<br>Source: California Legislative Information bulk export (leginfo), including the Governor's veto messages. Pipeline, tests and methodology are in the repository.</footer>
 </div></main>
 <script src="insights.js"></script>
 <script>
-const T = INSIGHTS.trends;
+let T;
+const KEYS = Object.keys(INSIGHTS.trends).filter(k => /^\d{4}$/.test(k)).sort().reverse();
+const lab = k => k === "all" ? "All sessions (2017-18 to 2025-26)" : `${k}-${String(+k + 1).slice(2)}`;
+document.getElementById("sess").innerHTML = ["all", ...KEYS].map(k => `<option value="${k}">${lab(k)}</option>`).join("");
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const pct = v => v == null ? "–" : v.toFixed(1) + "%";
 const PN = {D:"Democrats", R:"Republicans"};
@@ -79,7 +87,9 @@ function table(cols, rows) {
   return "<div style='overflow:auto'><table><thead><tr>" + cols.map(c => `<th>${c[1]}</th>`).join("") + "</tr></thead><tbody>" +
     rows.map(r => "<tr>" + cols.map(c => `<td>${c[2] ? c[2](r[c[0]], r) : esc(r[c[0]])}</td>`).join("") + "</tr>").join("") + "</tbody></table></div>";
 }
-const S = [];
+let S = [];
+function draw(key) {
+T = INSIGHTS.trends[key]; S = [];
 function sec(id, title, lede, body) { S.push(`<section id="${id}"><h2>${esc(title)}</h2><p class="lede">${lede}</p>${body}</section>`); }
 
 // 1. Appropriations by party
@@ -102,7 +112,8 @@ function sec(id, title, lede, body) { S.push(`<section id="${id}"><h2>${esc(titl
 // 3. Policy committee risk
 sec("areas", "Policy committees whose bills most often die in Appropriations",
   "Grouped by each bill's first policy committee, among bills that reached an Appropriations committee. Committees with at least 25 such bills.",
-  bars(T.policy_area_risk.map(x => ({l: x.policy_area, v: x.pct_died, c: "bad", txt: `${pct(x.pct_died)}`, title: `${x.policy_area}: ${x.died} of ${x.sent} died, ${pct(x.pct_signed)} signed`})), {max: 100}) +
+  (T.policy_area_risk.length > 20 ? '<p class="lede">The 20 highest shown; the full table is below.</p>' : "") +
+  bars(T.policy_area_risk.slice(0, 20).map(x => ({l: x.policy_area, v: x.pct_died, c: "bad", txt: `${pct(x.pct_died)}`, title: `${x.policy_area}: ${x.died} of ${x.sent} died, ${pct(x.pct_signed)} signed`})), {max: 100}) +
   "<details style='margin-top:10px'><summary>Full table</summary>" + table([["policy_area","Policy committee"],["sent","Bills"],["died","Died in Approps"],["pct_died","% died",pct],["pct_signed","% signed",pct]], T.policy_area_risk) + "</details>");
 // 4. Fiscal flags
 {
@@ -126,9 +137,14 @@ sec("areas", "Policy committees whose bills most often die in Appropriations",
 // 6. Timing
 {
   const order = ["early (Dec-Jan)", "Feb 1-14", "Feb 15-deadline"], r = [];
-  for (const y of [2025, 2026]) { r.push({grp: `Introduced in ${y}`});
+  const yrs = [...new Set(T.timing.map(t => t.filed_year))].sort();
+  if (yrs.length > 2) {
+    r.push({grp: "All years combined"});
+    for (const w of order) { const xs = T.timing.filter(t => t.filing_window === w), n = xs.reduce((a, t) => a + t.bills, 0), sgn = xs.reduce((a, t) => a + t.signed, 0);
+      if (n) r.push({l: `${w} (${n})`, v: 100 * sgn / n}); }
+  } else for (const y of yrs) { r.push({grp: `Introduced in ${y}`});
     for (const w of order) { const x = T.timing.find(t => t.filed_year === y && t.filing_window === w); if (x) r.push({l: `${w} (${x.bills})`, v: x.pct_signed}); } }
-  sec("timing", "When bills are introduced", "Share signed by introduction window. Bills filed in the last two weeks before the deadline were signed least often in both years.", bars(r, {max: 100}));
+  sec("timing", "When bills are introduced", "Share signed by introduction window: December and January, the first half of February, or the last two weeks before the introduction deadline.", bars(r, {max: 100}));
 }
 // 7. Second house + spot bills
 {
@@ -143,11 +159,25 @@ sec("areas", "Policy committees whose bills most often die in Appropriations",
   const v = T.veto_reasons;
   const rr = v.summary.map(x => ({l: x.reason, v: x.primary, txt: String(x.primary)}));
   sec("vetoes", "Vetoes: which policy areas and why",
-    `${v.messages} veto messages, each classified by its main stated reason using keyword rules (an approximation; read the message for any single bill). ${v.repeat.length} messages say the Governor vetoed a similar bill before: ${v.repeat.map(x => esc(x.bill_id)).join(", ")}.`,
+    `${v.messages} veto messages, each classified by its main stated reason using keyword rules (an approximation; read the message for any single bill). ${v.repeat.length} messages say the Governor vetoed a similar bill before${v.repeat.length <= 12 ? ": " + v.repeat.map(x => esc(x.bill_id)).join(", ") : ""}.`,
     `<div class="grid2"><div><div class="lede"><b>Main stated reason</b> (number of messages)</div>${bars(rr)}</div><div><div class="lede"><b>Veto rate by policy committee</b> (bills reaching the Governor, at least 20)</div>${bars(T.veto_rate_by_area.slice(0, 12).map(x => ({l: x.policy_area, v: x.pct_vetoed, c: "bad", title: `${x.vetoed} of ${x.sent} vetoed`})))}</div></div>`);
 }
 document.getElementById("out").innerHTML = S.join("");
 document.getElementById("toc").innerHTML = [...document.querySelectorAll("section")].map(s => `<a href="#${s.id}">${esc(s.querySelector("h2").textContent.split(":")[0])}</a>`).join("");
+}
+// Ten-year overview (independent of the session picker)
+{
+  const O = INSIGHTS.trends.over_time;
+  const t = (cols) => "<div style='overflow:auto'><table><thead><tr><th>Session</th>" + cols.map(c => `<th>${c[1]}</th>`).join("") + "</tr></thead><tbody>" +
+    O.map(o => "<tr><td>" + o.label + "</td>" + cols.map(c => `<td>${c[2] ? c[2](o[c[0]]) : o[c[0]]}</td>`).join("") + "</tr>").join("") + "</tbody></table></div>";
+  const P = v => v == null ? "–" : v.toFixed(1) + "%";
+  document.getElementById("overbody").innerHTML = t([["bills","Bills"],["signed_pct","Signed",P],["signed_pct_D","Signed, D authors",P],["signed_pct_R","Signed, R authors",P],["vetoed_pct_of_sent","Vetoed (of bills sent)",P],
+    ["died_Assembly_appr_pct_D","Died in Asm Approps, D",P],["died_Assembly_appr_pct_R","Died in Asm Approps, R",P],["died_Senate_appr_pct_D","Died in Sen Approps, D",P],["died_Senate_appr_pct_R","Died in Sen Approps, R",P]]) +
+    "<p class='lede' style='margin-top:8px'>Appropriations columns: share of bills sent to that committee (in either house) that ended the session there.</p>";
+}
+const sel = document.getElementById("sess");
+sel.addEventListener("input", e => draw(e.target.value));
+draw("all");
 </script>
 </body>
 </html>

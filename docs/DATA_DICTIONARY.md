@@ -5,7 +5,8 @@ One row per bill and lead author (regular-session AB and SB).
 
 | Column | Meaning |
 | --- | --- |
-| `bill_id` | Bill number without a space, for example `AB460` |
+| `session` | First year of the two-year session: 2017, 2019, 2021, 2023 or 2025 |
+| `bill_id` | Bill number without a space, for example `AB460`. Unique within a session, reused across sessions |
 | `member` | Author name as the Legislature lists it; matches `members_all.csv` |
 | `author_house` | `ASSEMBLY` or `SENATE` |
 | `is_first_listed` | True if this member is the bill's primary (first-listed) lead author |

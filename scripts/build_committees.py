@@ -23,8 +23,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from calleg import committees as C  # noqa: E402
 from calleg.pipeline import read_table  # noqa: E402
+from calleg.sessions import available, raw_dir, CURRENT  # noqa: E402
 
-RAW = ROOT / "data/raw/pubinfo_2025"
+RAW = raw_dir(CURRENT)
 OUT = ROOT / "data/processed"
 WEB = ROOT / "data/reference/committee_rosters_web.csv"
 
@@ -42,8 +43,8 @@ SITE_CODE = {
 }
 
 
-def legislators() -> pd.DataFrame:
-    lg = read_table(RAW, "LEGISLATOR_TBL")
+def legislators(raw=RAW) -> pd.DataFrame:
+    lg = read_table(raw, "LEGISLATOR_TBL")
     lg = lg[lg.AUTHOR_NAME.notna()].copy()
     lg["party"] = lg.PARTY.map({"DEM": "D", "REP": "R"}).fillna(lg.PARTY)
     return lg.rename(columns={"AUTHOR_NAME": "member", "DISTRICT": "district", "LAST_NAME": "last_name"})[
@@ -152,9 +153,15 @@ def assign_roles(mem: pd.DataFrame, lead: pd.DataFrame, votes: pd.DataFrame) -> 
 
 
 def main():
-    votes = C.committee_votes(RAW)
-    lg = legislators()
-    mem = C.membership_by_year(votes, lg[["member", "party", "district"]].drop_duplicates("member"))
+    V, Mm = [], []
+    for year in available():
+        v = C.committee_votes(raw_dir(year)).assign(session=year)
+        lgs = legislators(raw_dir(year))
+        Mm.append(C.membership_by_year(v, lgs[["member", "party", "district"]].drop_duplicates("member")))
+        V.append(v)
+    votes = pd.concat(V, ignore_index=True)
+    mem = pd.concat(Mm, ignore_index=True)
+    lg = legislators(RAW)
     lead = leadership_with_notes(votes)
     mem = assign_roles(mem, lead, votes)
     OUT.mkdir(exist_ok=True, parents=True)

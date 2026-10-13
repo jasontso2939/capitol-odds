@@ -16,31 +16,16 @@ import pandas as pd
 
 from .pipeline import read_table, build
 
-APPR_CODES = {"CX25": "Assembly", "CS61": "Senate"}
-NON_POLICY = {"CX25", "CS61", "CS58", "CX29"}  # Appropriations and Rules committees
+def committee_codes(raw: Path) -> pd.DataFrame:
+    """Committee codes for one session with full names, from that session's LOCATION_CODE_TBL.
 
-# Full committee names for the leginfo abbreviations (2025-26 standing committees).
-COMMITTEE_NAMES = {
-    "Asm A.,E.,S., & T": "Arts, Entertainment, Sports and Tourism", "Asm AGING & L.T.C": "Aging and Long-Term Care",
-    "Asm AGRI": "Agriculture", "Asm B. & F": "Banking and Finance", "Asm B. & P": "Business and Professions",
-    "Asm C. & C": "Communications and Conveyance", "Asm E.D., G., & H.I": "Economic Development, Growth and Household Impact",
-    "Asm E.M": "Emergency Management", "Asm E.S & T.M": "Environmental Safety and Toxic Materials", "Asm ED": "Education",
-    "Asm ELECTIONS": "Elections", "Asm G.O": "Governmental Organization", "Asm H. & C.D": "Housing and Community Development",
-    "Asm HEALTH": "Health", "Asm HIGHER ED": "Higher Education", "Asm HUM. S": "Human Services", "Asm INS": "Insurance",
-    "Asm JUD": "Judiciary", "Asm L. & E": "Labor and Employment", "Asm L. GOV": "Local Government",
-    "Asm M. & V.A": "Military and Veterans Affairs", "Asm NAT. RES": "Natural Resources",
-    "Asm P. & C.P": "Privacy and Consumer Protection", "Asm P. E. & R": "Public Employment and Retirement",
-    "Asm PUB. S": "Public Safety", "Asm REV. & TAX": "Revenue and Taxation", "Asm RLS": "Rules", "Asm TRANS": "Transportation",
-    "Asm U. & E": "Utilities and Energy", "Asm W. P., & W": "Water, Parks and Wildlife",
-    "Sen AGRI": "Agriculture", "Sen B. & F. R": "Budget and Fiscal Review", "Sen B. & F.I": "Banking and Financial Institutions",
-    "Sen B. P. & E.D": "Business, Professions and Economic Development", "Sen E. & C.A": "Elections and Constitutional Amendments",
-    "Sen E., U & C": "Energy, Utilities and Communications", "Sen E.M": "Emergency Management", "Sen E.Q": "Environmental Quality",
-    "Sen ED": "Education", "Sen G.O": "Governmental Organization", "Sen HEALTH": "Health", "Sen HOUSING": "Housing",
-    "Sen HUMAN S": "Human Services", "Sen INS": "Insurance", "Sen JUD": "Judiciary", "Sen L. GOV": "Local Government",
-    "Sen L., P.E. & R": "Labor, Public Employment and Retirement", "Sen M. & V.A": "Military and Veterans Affairs",
-    "Sen N.R. & W": "Natural Resources and Water", "Sen P., D.T., & C.P": "Privacy, Digital Technologies and Consumer Protection",
-    "Sen PUB. S": "Public Safety", "Sen REV. & TAX": "Revenue and Taxation", "Sen TRANS": "Transportation",
-}
+    Codes are reassigned between sessions, so names (not codes) are what carry across years."""
+    from .committees import committee_names
+    c = committee_names(raw)
+    c["kind"] = "policy"
+    c.loc[c.committee.str.endswith(" Appropriations"), "kind"] = "appropriations"
+    c.loc[c.committee.str.endswith(" Rules"), "kind"] = "rules"
+    return c
 
 
 def intro_text_stats(raw: Path, zip_path: Path, out_csv: Path) -> pd.DataFrame:
@@ -70,8 +55,8 @@ def intro_text_stats(raw: Path, zip_path: Path, out_csv: Path) -> pd.DataFrame:
 def filing_window(d: pd.Timestamp) -> str:
     if pd.isna(d):
         return "unknown"
-    y, m, day = d.year, d.month, d.day
-    if y == 2024 or (y == 2025 and m == 1) or (y == 2026 and m == 1):
+    m, day = d.month, d.day
+    if m in (12, 1):   # December pre-files and January
         return "early (Dec-Jan)"
     if m == 2 and day <= 14:
         return "Feb 1-14"
@@ -96,38 +81,40 @@ def build_features(raw: str | Path, zip_path: str | Path | None = None,
     h["a"] = h.ACTION.fillna("").str.replace(r"\s+", " ", regex=True)
     h = h.sort_values(["BILL_ID", "d", "seq"])
 
-    # committee code -> short name
-    ref = h[h.a.str.contains(r"(?:Referred|Re-referred) to Com\. on [^.]", regex=True)
-            & h.TERNARY_LOCATION.str.match(r"^C[SX]\d+$", na=False)].copy()
-    ref["cname"] = ref.a.str.extract(r"(?:Referred|Re-referred) to Com\. on (.+?)\.?$")[0].str.strip()
-    cmap = ref.groupby("TERNARY_LOCATION").cname.agg(lambda s: s.value_counts().index[0]).to_dict()
+    cc = committee_codes(raw)
+    name_of = cc.set_index("LOCATION_CODE").committee
+    appr = {house: cc[(cc.kind == "appropriations") & (cc.house == house)].LOCATION_CODE.tolist()
+            for house in ("Assembly", "Senate")}
+    non_policy = set(cc[cc.kind != "policy"].LOCATION_CODE)
 
     loc = h.TERNARY_LOCATION.fillna("")
-    g = h.groupby("BILL_ID")
     f = pd.DataFrame(index=bt.BILL_ID)
-    for code, house in APPR_CODES.items():
-        inA = h[loc == code]
+    for house, codes in appr.items():
+        inA = h[loc.isin(codes)]
         f[f"appr_{house}"] = f.index.isin(inA.BILL_ID)
         f[f"susp_{house}"] = f.index.isin(inA[inA.a.str.contains("suspense")].BILL_ID)
-    pol = h[h.TERNARY_LOCATION.str.match(r"^C[SX]\d+$", na=False) & ~h.TERNARY_LOCATION.isin(NON_POLICY)]
+    pol = h[h.TERNARY_LOCATION.str.match(r"^C[SX]\d+$", na=False) & ~h.TERNARY_LOCATION.isin(non_policy)]
     first_pol = pol.groupby("BILL_ID").TERNARY_LOCATION.first()
     f["first_policy_code"] = first_pol
-    abbr = first_pol.str[:2].map({"CX": "Asm", "CS": "Sen"}) + " " + first_pol.map(cmap).str.rstrip(".")
-    house = first_pol.str[:2].map({"CX": "Assembly", "CS": "Senate"})
-    f["policy_area"] = house + " " + abbr.map(COMMITTEE_NAMES).fillna(abbr.str[4:])
+    f["policy_area"] = first_pol.map(name_of)
     f["passed_origin"] = f.index.isin(h[h.a.str.contains(r"Passed\..*Ordered to the (?:Senate|Assembly)")].BILL_ID)
     f = f.reset_index()
 
     m = bt[["BILL_ID", "bill_id", "origin", "CURRENT_LOCATION"]].merge(f, on="BILL_ID", how="left")
-    first = author_rows[author_rows.is_first_listed][["bill_id", "member", "outcome", "introduced",
+    first = author_rows[author_rows.is_first_listed][["session", "bill_id", "member", "outcome", "introduced",
                                                       "filed_year", "action_year", "title", "is_budget"]]
     m = m.merge(first, on="bill_id", how="inner")  # legislator-authored only
     mem = members[members.member.notna()].drop_duplicates("member")[["member", "party", "chamber"]]
     mem = mem.assign(party=mem.party.map({"DEM": "D", "REP": "R"}).fillna(mem.party))
     m = m.merge(mem, on="member", how="left")
+    # person key that carries across sessions (the short author name alone can be shared by different people)
+    lg = read_table(raw, "LEGISLATOR_TBL", ["AUTHOR_NAME", "FIRST_NAME", "LAST_NAME"]).dropna(subset=["AUTHOR_NAME"])
+    norm = lambda s: s.fillna("").str.normalize("NFKD").str.encode("ascii", "ignore").str.decode("ascii").str.lower().str.strip()
+    lg["person"] = norm(lg.LAST_NAME).str.split().str[0] + "|" + norm(lg.FIRST_NAME).str.split().str[0]
+    m["person"] = m.member.map(lg.drop_duplicates("AUTHOR_NAME").set_index("AUTHOR_NAME").person).fillna(m.member)
     m["signed"] = m.outcome == "signed"
-    m["died_in"] = np.where((m.outcome == "not_enacted") & (m.CURRENT_LOCATION == "CX25"), "Assembly Appropriations",
-                    np.where((m.outcome == "not_enacted") & (m.CURRENT_LOCATION == "CS61"), "Senate Appropriations", None))
+    m["died_in"] = np.where((m.outcome == "not_enacted") & m.CURRENT_LOCATION.isin(appr["Assembly"]), "Assembly Appropriations",
+                    np.where((m.outcome == "not_enacted") & m.CURRENT_LOCATION.isin(appr["Senate"]), "Senate Appropriations", None))
 
     # introduced-version flags and authors (known at introduction)
     v = read_table(raw, "BILL_VERSION_TBL", ["BILL_VERSION_ID", "BILL_ID", "BILL_VERSION_ACTION", "SUBJECT",

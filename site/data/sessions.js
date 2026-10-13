@@ -1,0 +1,1 @@
+window.SESSIONS = [{"year": 2017, "label": "2017-18", "bills": 4479}, {"year": 2019, "label": "2019-20", "bills": 4576}, {"year": 2021, "label": "2021-22", "bills": 4188}, {"year": 2023, "label": "2023-24", "bills": 4522}, {"year": 2025, "label": "2025-26", "bills": 3956}];

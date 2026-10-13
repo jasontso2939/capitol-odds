@@ -47,28 +47,44 @@ nav a[aria-current=page]{background:#fff;color:#14213d;font-weight:600;border-co
 <body>
 <header><div class="wrap">
 <h1>California Legislative Scorecard</h1>
-<p>Every legislator, 2025-26 session. Bills authored, signed and vetoed, rebuilt from the Legislature's official bulk data. Ranks are within each chamber.</p>
+<p>Every legislator, 2017-18 through 2025-26 sessions. Bills authored, signed and vetoed, rebuilt from the Legislature's official bulk data. Ranks are within each chamber.</p>
 <nav><a href="index.html" aria-current="page">Scorecard</a><a href="trends.html">Trends</a><a href="committees.html">Committees</a><a href="outlook.html">Bill outlook</a></nav>
 </div></header>
 <main><div class="wrap">
 <div class="controls">
+ <div class="ctl"><label for="sess">Session</label><select id="sess"></select></div>
  <div class="ctl"><label>Search</label><input id="q" type="search" placeholder="Name or district (e.g. SD10)"></div>
  <div class="ctl"><label>Chamber</label><div class="seg" id="chamber"><button data-v="all" aria-pressed="true">All</button><button data-v="Assembly">Assembly</button><button data-v="Senate">Senate</button></div></div>
  <div class="ctl"><label>Party</label><div class="seg" id="party"><button data-v="all" aria-pressed="true">All</button><button data-v="D">D</button><button data-v="R">R</button></div></div>
  <div class="ctl"><label>Joint lead authors</label><div class="seg" id="method"><button data-v="all_leads" aria-pressed="true">Count each</button><button data-v="first_listed">First-listed only</button></div></div>
  <div class="ctl"><label>Budget bills</label><div class="seg" id="budget"><button data-v="excl" aria-pressed="true">Excluded</button><button data-v="incl">Included</button></div></div>
- <div class="ctl"><label>Period</label><div class="seg" id="scope"><button data-v="session" aria-pressed="true">Session</button><button data-v="2025">2025</button><button data-v="2026">2026</button></div></div>
+ <div class="ctl"><label>Period</label><div class="seg" id="scope"></div></div>
 </div>
 <div class="note">Success rate (signed / introduced) favors members who file fewer bills, so raw counts sit beside it. Members marked <span class="tag">partial</span> joined or left mid-session, so their record covers part of the term. Budget Act bills, which are introduced under the budget chairs' names, are left out of counts and ranks by default; use the Budget bills toggle to include them. The last column shows how many each member has. Year views count introductions by filing year and outcomes by the year of the Governor's action.</div>
 <div class="card"><table id="t"><thead></thead><tbody></tbody></table></div>
 <footer>Not affiliated with any office or legislator.<br>Source: California Legislative Information bulk export (leginfo). Pipeline, tests and methodology are in the repository. Not an endorsement of any legislator.</footer>
 </div></main>
 <dialog id="dlg"><div id="dbody"></div><form method="dialog"><button>Close</button></form></dialog>
-<script src="data.js"></script>
+<script src="data/sessions.js"></script>
 <script>
-const D = window.ALL, st = {chamber:"all", party:"all", method:"all_leads", scope:"session", budget:"excl", q:"", sort:"rank_signed", dir:1};
+let D = null;
+const st = {chamber:"all", party:"all", method:"all_leads", scope:"session", budget:"excl", q:"", sort:"rank_signed", dir:1};
 const COLS = [["member","Member"],["party","Party"],["district","District"],["chamber","Chamber"],["introduced","Intro"],["signed","Signed"],["vetoed","Vetoed"],["rate","Rate %"],["rank_signed","Rank signed"],["rank_rate","Rank rate"],["budget_bills","Budget bills"]];
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sel = document.getElementById("sess");
+sel.innerHTML = [...SESSIONS].reverse().map(x => `<option value="${x.year}">${x.label}</option>`).join("");
+sel.style.cssText = "background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:500 14px system-ui,sans-serif";
+function scopeButtons(y) {
+  document.getElementById("scope").innerHTML = [["session","Session"],[y,y],[y+1,y+1]].map(([v,l]) =>
+    `<button data-v="${v}" aria-pressed="${String(v)===String(st.scope)}">${l}</button>`).join("");
+}
+function load(y) {
+  y = +y;
+  const go = () => { D = window.ALLS[y]; if (st.scope !== "session") st.scope = String(y); scopeButtons(y); render(); };
+  if (window.ALLS && window.ALLS[y]) return go();
+  const s = document.createElement("script"); s.src = `data/scorecard_${y}.js`; s.onload = go; document.body.appendChild(s);
+}
+sel.addEventListener("input", e => load(e.target.value));
 document.querySelectorAll(".seg").forEach(g => g.addEventListener("click", e => {
   const b = e.target.closest("button"); if(!b) return;
   g.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x===b));
@@ -101,10 +117,10 @@ document.querySelector("#t tbody").addEventListener("click", e => {
   document.getElementById("dbody").innerHTML = `<h2>${esc(c.full_name)}</h2>
    <p class="sub">${c.chamber} ${c.district} · ${c.party} · ${c.introduced} introduced, ${c.signed} signed, ${c.vetoed} vetoed (${c.rate.toFixed(1)}%)${c.partial_term?" · partial term":""}</p>
    <table><thead><tr><th>Bill</th><th>Title</th><th>Introduced</th><th>Outcome</th><th>Date</th></tr></thead><tbody>`+
-   b.map(x => `<tr><td><a href="https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260${x.bill_id}" target="_blank" rel="noopener">${x.bill_id}</a>${x.is_joint?" (joint)":""}${x.is_budget?" (budget)":""}</td><td>${esc(x.title)}</td><td>${x.introduced}</td><td class="o-${x.outcome}">${x.outcome.replace("_"," ")}</td><td>${x.action_date||""}</td></tr>`).join("")+"</tbody></table>";
+   b.map(x => `<tr><td><a href="https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=${D.session}${D.session+1}0${x.bill_id}" target="_blank" rel="noopener">${x.bill_id}</a>${x.is_joint?" (joint)":""}${x.is_budget?" (budget)":""}</td><td>${esc(x.title)}</td><td>${x.introduced}</td><td class="o-${x.outcome}">${x.outcome.replace("_"," ")}</td><td>${x.action_date||""}</td></tr>`).join("")+"</tbody></table>";
   document.getElementById("dlg").showModal();
 });
-render();
+load(sel.value);
 </script>
 </body>
 </html>

@@ -1,122 +1,614 @@
-member,full_name,party,district,introduced,sent,signed,vetoed,rate,rank_signed,rank_rate,rank_r_signed,rank_r_rate,chamber,partial_term,first_bill_date,last_bill_date,budget_bills
-Berman,"Berman, Marc",D,AD23,42,30,29,1,69.0,1,3,,,Assembly,False,2024-12-02,2026-02-23,0.0
-Bryan,"Bryan, Isaac G.",D,AD55,35,27,23,4,65.7,2,5,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Aguiar-Curry,"Aguiar-Curry, Cecilia M.",D,AD04,37,24,23,1,62.2,2,8,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Irwin,"Irwin, Jacqui",D,AD42,37,24,23,1,62.2,2,8,,,Assembly,False,2025-01-13,2026-03-05,0.0
-Bonta,"Bonta, Mia",D,AD18,35,22,22,0,62.9,5,6,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Stefani,"Stefani, Catherine",D,AD19,35,24,22,2,62.9,5,6,,,Assembly,False,2025-02-03,2026-02-20,0.0
-Mark González,"González, Mark",D,AD54,37,25,22,3,59.5,5,12,,,Assembly,False,2025-02-03,2026-02-20,0.0
-Wicks,"Wicks, Buffy",D,AD14,29,21,21,0,72.4,8,2,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Valencia,"Valencia, Avelino",D,AD68,31,22,21,1,67.7,8,4,,,Assembly,False,2025-01-08,2026-02-20,0.0
-Pellerin,"Pellerin, Gail",D,AD28,35,22,21,1,60.0,8,10,,,Assembly,False,2025-01-08,2026-02-20,0.0
-Fong,"Fong, Mike",D,AD49,35,21,20,1,57.1,11,13,,,Assembly,False,2024-12-16,2026-02-20,0.0
-Haney,"Haney, Matt",D,AD17,35,21,20,1,57.1,11,13,,,Assembly,False,2025-01-16,2026-02-20,0.0
-Kalra,"Kalra, Ash",D,AD25,35,23,20,3,57.1,11,13,,,Assembly,False,2025-01-15,2026-02-20,0.0
-Ramos,"Ramos, James C.",D,AD45,30,20,18,2,60.0,14,10,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Bauer-Kahan,"Bauer-Kahan, Rebecca",D,AD16,33,21,18,3,54.5,14,16,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Addis,"Addis, Dawn",D,AD30,35,19,18,1,51.4,14,17,,,Assembly,False,2025-01-23,2026-02-20,0.0
-Pacheco,"Pacheco, Blanca",D,AD64,35,20,18,2,51.4,14,17,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Schiavo,"Schiavo, Pilar",D,AD40,36,19,18,1,50.0,14,19,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Connolly,"Connolly, Damon",D,AD12,35,19,17,2,48.6,19,21,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Ward,"Ward, Christopher M.",D,AD78,35,20,17,3,48.6,19,21,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Gipson,"Gipson, Mike A.",D,AD65,36,20,17,3,47.2,19,24,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Schultz,"Schultz, Nick",D,AD44,36,21,17,4,47.2,19,24,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Zbur,"Zbur, Rick Chavez",D,AD51,36,18,17,1,47.2,19,24,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Alvarez,"Alvarez, David",D,AD80,33,20,16,4,48.5,24,23,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Gabriel,"Gabriel, Jesse",D,AD46,34,16,16,0,47.1,24,27,,,Assembly,False,2025-01-08,2026-02-20,45.0
-Dixon,"Dixon, Diane",R,AD72,35,16,16,0,45.7,24,28,1.0,1.0,Assembly,False,2024-12-02,2026-02-20,0.0
-Rogers,"Rogers, Chris",D,AD02,35,23,16,7,45.7,24,28,,,Assembly,False,2025-01-16,2026-02-20,0.0
-Nguyen,"Nguyen, Stephanie",D,AD10,30,16,15,1,50.0,28,19,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Quirk-Silva,"Quirk-Silva, Sharon",D,AD67,33,17,15,2,45.5,28,30,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Bennett,"Bennett, Steve",D,AD38,34,19,15,4,44.1,28,31,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Wilson,"Wilson, Lori D.",D,AD11,34,18,15,3,44.1,28,31,,,Assembly,False,2025-01-29,2026-02-19,0.0
-Michelle Rodriguez,"Rodriguez, Michelle",D,AD53,35,17,15,2,42.9,28,33,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Carrillo,"Carrillo, Juan",D,AD39,35,18,14,4,40.0,33,36,,,Assembly,False,2025-01-16,2026-02-20,0.0
-Hadwick,"Hadwick, Heather",R,AD01,35,16,14,2,40.0,33,36,2.0,2.0,Assembly,False,2025-01-14,2026-02-20,0.0
-Ávila Farías,"Ávila Farías, Anamarie",D,AD15,35,16,14,2,40.0,33,36,,,Assembly,False,2025-02-14,2026-02-20,0.0
-Soria,"Soria, Esmeralda",D,AD27,36,18,14,4,38.9,33,41,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Hoover,"Hoover, Josh",R,AD07,37,15,14,1,37.8,33,44,2.0,4.0,Assembly,False,2025-01-21,2026-02-20,0.0
-Ransom,"Ransom, Rhodesia",D,AD13,32,17,13,4,40.6,38,35,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Davies,"Davies, Laurie",R,AD74,34,14,13,1,38.2,38,43,4.0,3.0,Assembly,False,2025-01-13,2026-02-20,0.0
-Lee,"Lee, Alex",D,AD24,35,16,13,3,37.1,38,47,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Papan,"Papan, Diane",D,AD21,35,16,13,3,37.1,38,47,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Sharp-Collins,"Sharp-Collins, LaShae",D,AD79,35,16,13,3,37.1,38,47,,,Assembly,False,2025-02-03,2026-02-20,0.0
-Solache,"Solache, Jr., José Luis",D,AD62,36,15,13,2,36.1,38,51,,,Assembly,False,2025-01-28,2026-02-20,0.0
-Ahrens,"Ahrens, Patrick",D,AD26,37,15,13,2,35.1,38,53,,,Assembly,False,2025-01-14,2026-02-20,0.0
-Celeste Rodriguez,"Rodriguez, Celeste",D,AD43,28,15,12,3,42.9,45,33,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Krell,"Krell, Maggy",D,AD06,30,12,12,0,40.0,45,36,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Lowenthal,"Lowenthal, Josh",D,AD69,30,12,12,0,40.0,45,36,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Elhawary,"Elhawary, Sade",D,AD57,31,16,12,4,38.7,45,42,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Harabedian,"Harabedian, John",D,AD41,32,17,12,5,37.5,45,45,,,Assembly,False,2025-01-06,2026-02-20,0.0
-Hart,"Hart, Gregg",D,AD37,32,14,12,2,37.5,45,45,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Petrie-Norris,"Petrie-Norris, Cottie",D,AD73,34,15,12,3,35.3,45,52,,,Assembly,False,2025-01-21,2026-02-20,0.0
-Patel,"Patel, Darshana R.",D,AD76,30,13,11,2,36.7,52,50,,,Assembly,False,2025-01-08,2026-02-20,0.0
-Chen,"Chen, Phillip",R,AD59,33,11,11,0,33.3,52,54,5.0,5.0,Assembly,False,2024-12-18,2026-02-20,0.0
-McKinnor,"McKinnor, Tina",D,AD61,33,15,11,4,33.3,52,54,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Alanis,"Alanis, Juan",R,AD22,35,12,11,1,31.4,52,57,5.0,6.0,Assembly,False,2024-12-02,2026-02-20,0.0
-Muratsuchi,"Muratsuchi, Al",D,AD66,35,14,11,3,31.4,52,57,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Lackey,"Lackey, Tom",R,AD34,36,12,10,2,27.8,57,60,7.0,7.0,Assembly,False,2024-12-02,2026-02-20,0.0
-Patterson,"Patterson, Joe",R,AD05,37,11,10,1,27.0,57,62,7.0,8.0,Assembly,False,2024-12-02,2026-02-20,0.0
-Calderon,"Calderon, Lisa",D,AD56,28,10,9,1,32.1,59,56,,,Assembly,False,2024-12-10,2026-02-20,0.0
-Blanca Rubio,"Rubio, Blanca E.",D,AD48,31,13,9,4,29.0,59,59,,,Assembly,False,2025-01-16,2026-02-20,0.0
-Jackson,"Jackson, Corey A.",D,AD60,33,13,9,4,27.3,59,61,,,Assembly,False,2024-12-12,2026-02-20,0.0
-Caloza,"Caloza, Jessica",D,AD52,34,13,9,4,26.5,59,64,,,Assembly,False,2025-01-16,2026-02-20,0.0
-Wallis,"Wallis, Greg",R,AD47,30,9,8,1,26.7,63,63,9.0,9.0,Assembly,False,2024-12-02,2026-02-20,0.0
-Arambula,"Arambula, Joaquin",D,AD31,35,9,8,1,22.9,63,68,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Ta,"Ta, Tri",R,AD70,35,11,8,3,22.9,63,68,9.0,10.0,Assembly,False,2024-12-19,2026-02-20,0.0
-Garcia,"Garcia, Robert",D,AD50,28,9,7,2,25.0,66,65,,,Assembly,False,2024-12-20,2026-02-19,0.0
-Boerner,"Boerner, Tasha",D,AD77,30,13,7,6,23.3,66,67,,,Assembly,False,2025-01-06,2026-02-20,0.0
-Ortega,"Ortega, Liz",D,AD20,33,12,7,5,21.2,66,70,,,Assembly,False,2024-12-02,2026-02-20,0.0
-Jeff Gonzalez,"Gonzalez, Jeff",R,AD36,35,7,7,0,20.0,66,71,11.0,11.0,Assembly,False,2025-02-10,2026-02-20,0.0
-Bains,"Bains, Jasmeet",D,AD35,25,8,6,2,24.0,70,66,,,Assembly,False,2025-01-15,2026-02-20,0.0
-Macedo,"Macedo, Alexandra",R,AD33,33,6,6,0,18.2,70,72,12.0,12.0,Assembly,False,2024-12-02,2026-02-20,0.0
-Flora,"Flora, Heath",R,AD09,28,6,4,2,14.3,72,73,13.0,13.0,Assembly,False,2024-12-02,2026-02-20,0.0
-Johnson,"Johnson, Natasha",R,AD63,28,4,4,0,14.3,72,73,13.0,13.0,Assembly,True,2026-01-26,2026-02-20,0.0
-Tangipa,"Tangipa, David J.",R,AD08,32,4,3,1,9.4,74,76,15.0,16.0,Assembly,False,2024-12-03,2026-02-20,0.0
-Rivas,"Rivas, Robert",D,AD29,2,2,2,0,100.0,75,1,,,Assembly,False,2025-01-15,2026-02-18,0.0
-Ellis,"Ellis, Stan",R,AD32,16,3,2,1,12.5,75,75,16.0,15.0,Assembly,True,2025-02-19,2026-02-20,0.0
-Sanchez,"Sanchez, Kate",R,AD71,18,1,1,0,5.6,77,77,17.0,17.0,Assembly,False,2025-01-06,2026-02-19,0.0
-Castillo,"Castillo, Leticia",R,AD58,21,1,1,0,4.8,77,78,17.0,18.0,Assembly,False,2025-01-27,2026-02-20,0.0
-Gallagher,"Gallagher, James",R,AD03,22,2,1,1,4.5,77,79,17.0,19.0,Assembly,False,2024-12-02,2026-02-20,0.0
-DeMaio,"DeMaio, Carl",R,AD75,31,1,1,0,3.2,77,80,17.0,20.0,Assembly,False,2024-12-02,2026-02-20,0.0
-Essayli,"Essayli, Bill",R,AD63,17,0,0,0,0.0,81,81,21.0,21.0,Assembly,True,2024-12-02,2025-02-21,0.0
-Laird,"Laird, John",D,SD17,34,30,30,0,88.2,1,1,,,Senate,False,2024-12-02,2026-02-20,11.0
-Durazo,"Durazo, Maria Elena",D,SD26,35,26,25,1,71.4,2,3,,,Senate,False,2024-12-02,2026-02-20,0.0
-Umberg,"Umberg, Thomas J.",D,SD34,36,26,24,2,66.7,3,4,,,Senate,False,2024-12-02,2026-02-19,0.0
-Arreguín,"Arreguín, Jesse",D,SD07,35,23,22,1,62.9,4,6,,,Senate,False,2024-12-02,2026-02-20,0.0
-Cortese,"Cortese, Dave",D,SD15,35,23,22,1,62.9,4,6,,,Senate,False,2024-12-02,2026-02-20,0.0
-Cabaldon,"Cabaldon, Christopher",D,SD03,33,22,21,1,63.6,6,5,,,Senate,False,2024-12-02,2026-02-20,0.0
-Grayson,"Grayson, Timothy S.",D,SD09,34,21,21,0,61.8,6,8,,,Senate,False,2025-01-23,2026-02-19,0.0
-Allen,"Allen, Benjamin",D,SD24,35,23,21,2,60.0,6,9,,,Senate,False,2024-12-05,2026-02-20,0.0
-Blakespear,"Blakespear, Catherine S.",D,SD38,35,22,21,1,60.0,6,9,,,Senate,False,2024-12-02,2026-02-20,0.0
-Reyes,"Reyes, Eloise Gómez",D,SD29,35,23,21,2,60.0,6,9,,,Senate,False,2025-01-30,2026-02-20,0.0
-Weber Pierson,"Weber Pierson, M.D., Akilah",D,SD39,35,23,21,2,60.0,6,9,,,Senate,False,2024-12-02,2026-02-19,0.0
-Wiener,"Wiener, Scott D.",D,SD11,35,22,21,1,60.0,6,9,,,Senate,False,2024-12-03,2026-02-20,7.0
-Caballero,"Caballero, Anna M.",D,SD14,35,30,20,10,57.1,13,14,,,Senate,False,2025-01-15,2026-02-19,0.0
-Padilla,"Padilla, Stephen C.",D,SD18,36,24,20,4,55.6,13,15,,,Senate,False,2024-12-02,2026-02-19,0.0
-Archuleta,"Archuleta, Bob",D,SD30,35,20,19,1,54.3,15,16,,,Senate,False,2025-02-10,2026-02-20,0.0
-Cervantes,"Cervantes, Sabrina",D,SD31,35,22,19,3,54.3,15,16,,,Senate,False,2024-12-02,2026-02-20,0.0
-Becker,"Becker, Josh",D,SD13,36,21,18,3,50.0,17,18,,,Senate,False,2025-01-30,2026-02-20,0.0
-McNerney,"McNerney, Jerry",D,SD05,35,23,17,6,48.6,18,19,,,Senate,False,2024-12-02,2026-02-20,0.0
-Wahab,"Wahab, Aisha",D,SD10,35,19,17,2,48.6,18,19,,,Senate,False,2024-12-03,2026-02-20,0.0
-Pérez,"Pérez, Sasha Renée",D,SD25,37,23,17,6,45.9,18,22,,,Senate,False,2024-12-20,2026-02-20,0.0
-Richardson,"Richardson, Laura",D,SD35,34,21,16,5,47.1,21,21,,,Senate,False,2024-12-02,2026-02-20,0.0
-Stern,"Stern, Henry I.",D,SD27,35,18,16,2,45.7,21,23,,,Senate,False,2025-02-13,2026-02-20,0.0
-Limón,"Limón, Monique",D,SD21,19,15,15,0,78.9,23,2,,,Senate,False,2025-02-11,2026-02-20,0.0
-Ashby,"Ashby, Angelique V.",D,SD08,33,20,15,5,45.5,23,24,,,Senate,False,2024-12-02,2026-02-20,0.0
-Smallwood-Cuevas,"Smallwood-Cuevas, Lola",D,SD28,32,17,14,3,43.8,25,27,,,Senate,False,2024-12-03,2026-02-20,0.0
-Menjivar,"Menjivar, Caroline",D,SD20,33,19,14,5,42.4,25,28,,,Senate,False,2024-12-02,2026-02-20,0.0
-Rubio,"Rubio, Susan",D,SD22,36,15,13,2,36.1,27,29,,,Senate,False,2024-12-02,2026-02-20,0.0
-Seyarto,"Seyarto, Kelly",R,SD32,35,14,12,2,34.3,28,30,1.0,1.0,Senate,False,2024-12-02,2026-02-20,0.0
-Gonzalez,"Gonzalez, Lena A.",D,SD33,25,13,11,2,44.0,29,26,,,Senate,False,2024-12-02,2026-02-20,0.0
-Niello,"Niello, Roger W.",R,SD06,35,11,11,0,31.4,29,31,2.0,2.0,Senate,False,2024-12-18,2026-02-20,0.0
-Ochoa Bogh,"Ochoa Bogh, Rosilicie",R,SD19,35,10,10,0,28.6,31,32,3.0,3.0,Senate,False,2024-12-02,2026-02-20,0.0
-Hurtado,"Hurtado, Melissa",D,SD16,32,13,9,4,28.1,32,33,,,Senate,False,2025-01-27,2026-02-20,0.0
-Grove,"Grove, Shannon",R,SD12,33,9,9,0,27.3,32,34,4.0,4.0,Senate,False,2024-12-02,2026-02-20,0.0
-Choi,"Choi, Steven S.",R,SD37,30,7,7,0,23.3,34,35,5.0,5.0,Senate,False,2025-02-03,2026-02-20,0.0
-Jones,"Jones, Brian W.",R,SD40,28,6,6,0,21.4,35,36,6.0,6.0,Senate,False,2024-12-02,2026-02-20,0.0
-McGuire,"McGuire, Mike",D,SD02,11,5,5,0,45.5,36,24,,,Senate,False,2025-02-20,2026-02-20,0.0
-Valladares,"Valladares, Suzette Martinez",R,SD23,33,5,5,0,15.2,36,37,7.0,7.0,Senate,False,2024-12-02,2026-02-20,0.0
-Strickland,"Strickland, Tony",R,SD36,18,2,2,0,11.1,38,38,8.0,8.0,Senate,True,2025-01-23,2026-02-20,0.0
-Dahle,"Dahle, Megan",R,SD01,14,2,1,1,7.1,39,39,9.0,9.0,Senate,False,2025-02-20,2026-02-20,0.0
-Alvarado-Gil,"Alvarado-Gil, Marie",R,SD04,30,1,1,0,3.3,39,40,9.0,10.0,Senate,False,2025-01-27,2026-02-20,0.0
+member,full_name,party,district,introduced,sent,signed,vetoed,rate,rank_signed,rank_rate,rank_r_signed,rank_r_rate,chamber,partial_term,first_bill_date,last_bill_date,budget_bills,session
+Low,"Low, Evan",D,AD28,57,42,34,8,59.6,1,5,,,Assembly,False,2017-01-19,2018-04-02,0.0,2017
+Aguiar-Curry,"Aguiar-Curry, Cecilia M.",D,AD04,41,29,29,0,70.7,2,2,,,Assembly,False,2017-02-01,2018-02-16,0.0,2017
+Bloom,"Bloom, Richard",D,AD50,53,29,27,2,50.9,3,14,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Berman,"Berman, Marc",D,AD24,37,30,25,5,67.6,4,3,,,Assembly,False,2017-01-19,2018-02-16,0.0,2017
+Mark Stone,"Stone, Mark",D,AD29,41,27,25,2,61.0,4,4,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Limón,"Limón, Monique",D,AD37,50,29,25,4,50.0,4,15,,,Assembly,False,2017-01-10,2018-02-16,0.0,2017
+Chiu,"Chiu, David",D,AD17,45,26,24,2,53.3,7,9,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Jones-Sawyer,"Jones-Sawyer, Sr. Reginald B.",D,AD59,46,26,24,2,52.2,7,11,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Maienschein,"Maienschein, Brian",R,AD77,47,26,24,2,51.1,7,12,1.0,1.0,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+O'Donnell,"O'Donnell, Patrick",D,AD70,49,25,24,1,49.0,7,16,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Wood,"Wood, Jim",D,AD02,49,27,24,3,49.0,7,16,,,Assembly,False,2016-12-09,2018-02-16,0.0,2017
+Santiago,"Santiago, Miguel",D,AD53,51,26,24,2,47.1,7,20,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Gonzalez Fletcher,"Gonzalez, Lorena",D,AD80,53,40,24,16,45.3,7,26,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Friedman,"Friedman, Laura",D,AD43,45,24,23,1,51.1,14,12,,,Assembly,False,2017-02-09,2018-02-16,0.0,2017
+Quirk,"Quirk, Bill",D,AD20,49,28,23,5,46.9,14,21,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Levine,"Levine, Marc",D,AD10,50,27,23,4,46.0,14,24,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Gloria,"Gloria, Todd",D,AD78,41,25,22,3,53.7,17,8,,,Assembly,False,2017-01-19,2018-02-16,0.0,2017
+Irwin,"Irwin, Jacqui",D,AD44,48,24,22,2,45.8,17,25,,,Assembly,False,2017-02-09,2018-02-16,0.0,2017
+Weber,"Weber, Shirley N.",D,AD79,44,25,21,4,47.7,19,19,,,Assembly,False,2017-01-09,2018-02-16,0.0,2017
+Eduardo Garcia,"Garcia, Eduardo",D,AD56,49,25,21,4,42.9,19,31,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+McCarty,"McCarty, Kevin",D,AD07,43,23,20,3,46.5,21,23,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Chau,"Chau, Ed",D,AD49,45,23,20,3,44.4,21,29,,,Assembly,False,2017-01-04,2018-02-16,0.0,2017
+Obernolte,"Obernolte, Jay",R,AD33,48,26,20,6,41.7,21,33,2.0,4.0,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Bonta,"Bonta, Rob",D,AD18,52,24,20,4,38.5,21,42,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Eggman,"Eggman, Susan Talamantes",D,AD13,43,22,19,3,44.2,25,30,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Arambula,"Arambula, Joaquin",D,AD31,48,23,19,4,39.6,25,38,,,Assembly,False,2017-01-04,2018-02-16,0.0,2017
+Gipson,"Gipson, Mike A.",D,AD64,48,22,19,3,39.6,25,38,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Daly,"Daly, Tom",D,AD69,31,20,18,2,58.1,28,6,,,Assembly,False,2017-02-08,2018-02-16,0.0,2017
+Muratsuchi,"Muratsuchi, Al",D,AD66,33,19,18,1,54.5,28,7,,,Assembly,False,2017-01-10,2018-02-16,0.0,2017
+Mullin,"Mullin, Kevin",D,AD22,34,18,18,0,52.9,28,10,,,Assembly,False,2017-01-05,2018-02-16,0.0,2017
+Reyes,"Reyes, Eloise Gómez",D,AD47,45,26,18,8,40.0,28,37,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Quirk-Silva,"Quirk-Silva, Sharon",D,AD65,50,22,18,4,36.0,28,45,,,Assembly,False,2017-01-04,2018-02-16,0.0,2017
+Rubio,"Rubio, Blanca E.",D,AD48,52,22,18,4,34.6,28,48,,,Assembly,False,2017-01-10,2018-02-16,0.0,2017
+Caballero,"Caballero, Anna M.",D,AD30,53,25,18,7,34.0,28,49,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Kalra,"Kalra, Ash",D,AD27,38,22,17,5,44.7,35,28,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Thurmond,"Thurmond, Tony",D,AD15,44,25,17,8,38.6,35,41,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Rodriguez,"Rodriguez, Freddie",D,AD52,35,19,15,4,42.9,37,31,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Cunningham,"Cunningham, Jordan",R,AD35,37,15,15,0,40.5,37,36,3.0,5.0,Assembly,False,2017-02-13,2018-02-16,0.0,2017
+Bigelow,"Bigelow, Franklin E.",R,AD05,29,17,14,3,48.3,39,18,4.0,2.0,Assembly,False,2017-01-17,2018-02-16,0.0,2017
+Cooley,"Cooley, Ken",D,AD08,34,17,14,3,41.2,39,34,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Cervantes,"Cervantes, Sabrina",D,AD60,37,17,14,3,37.8,39,44,,,Assembly,False,2016-12-14,2018-02-16,0.0,2017
+Chu,"Chu, Kansen",D,AD25,32,17,13,4,40.6,42,35,,,Assembly,False,2017-01-12,2018-02-16,0.0,2017
+Calderon,"Calderon, Ian C.",D,AD57,34,19,13,6,38.2,42,43,,,Assembly,False,2017-01-05,2018-02-16,0.0,2017
+Salas,"Salas, Jr. Rudy",D,AD32,40,18,13,5,32.5,42,51,,,Assembly,False,2017-01-13,2018-02-16,0.0,2017
+Frazier,"Frazier, Jim",D,AD11,46,19,13,6,28.3,42,60,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Grayson,"Grayson, Timothy S.",D,AD14,38,16,12,4,31.6,46,53,,,Assembly,False,2017-02-08,2018-02-16,0.0,2017
+Gray,"Gray, Adam C.",D,AD21,40,16,12,4,30.0,46,54,,,Assembly,False,2017-01-25,2018-04-05,0.0,2017
+Ting,"Ting, Philip Y.",D,AD19,46,14,12,2,26.1,46,62,,,Assembly,False,2016-12-05,2018-02-16,25.0,2017
+Nazarian,"Nazarian, Adrin",D,AD46,47,21,12,9,25.5,46,63,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Medina,"Medina, Jose",D,AD61,28,16,11,5,39.3,50,40,,,Assembly,False,2017-01-05,2018-02-16,0.0,2017
+Cooper,"Cooper, Jim",D,AD09,37,15,11,4,29.7,50,56,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Holden,"Holden, Chris R.",D,AD41,35,15,10,5,28.6,52,58,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Waldron,"Waldron, Marie",R,AD75,35,12,10,2,28.6,52,58,5.0,8.0,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Gallagher,"Gallagher, James",R,AD03,42,12,10,2,23.8,52,65,5.0,11.0,Assembly,False,2017-01-11,2018-02-16,0.0,2017
+Bocanegra,"Bocanegra, Raul",D,AD39,20,10,9,1,45.0,55,27,,,Assembly,False,2016-12-05,2017-02-17,0.0,2017
+Lackey,"Lackey, Tom",R,AD36,38,14,9,5,23.7,55,66,7.0,12.0,Assembly,False,2016-12-12,2018-02-16,0.0,2017
+Mayes,"Mayes, Chad",R,AD42,15,7,7,0,46.7,57,22,8.0,3.0,Assembly,False,2017-01-26,2018-02-16,0.0,2017
+Baker,"Baker, Catharine B.",R,AD16,20,7,7,0,35.0,57,46,8.0,6.0,Assembly,False,2017-01-26,2018-02-16,0.0,2017
+Carrillo,"Carrillo, Wendy",D,AD51,20,9,7,2,35.0,57,46,,,Assembly,True,2018-01-04,2018-02-16,0.0,2017
+Dababneh,"Dababneh, Matt",D,AD45,22,8,7,1,31.8,57,52,,,Assembly,False,2017-01-30,2017-02-17,0.0,2017
+Ridley-Thomas,"Ridley-Thomas, Sebastian",D,AD54,24,7,7,0,29.2,57,57,,,Assembly,True,2016-12-05,2017-02-17,0.0,2017
+Flora,"Flora, Heath",R,AD12,25,7,7,0,28.0,57,61,8.0,9.0,Assembly,False,2017-02-14,2018-02-16,0.0,2017
+Chávez,"Chávez, Rocky J.",R,AD76,29,8,7,1,24.1,57,64,8.0,10.0,Assembly,False,2017-01-11,2018-02-16,0.0,2017
+Burke,"Burke, Autumn R.",D,AD62,49,8,7,1,14.3,57,70,,,Assembly,False,2017-01-11,2018-02-16,0.0,2017
+Dahle,"Dahle, Brian",R,AD01,18,6,6,0,33.3,65,50,12.0,7.0,Assembly,False,2017-01-10,2018-02-16,0.0,2017
+Cristina Garcia,"Garcia, Cristina",D,AD58,20,7,6,1,30.0,65,54,,,Assembly,False,2016-12-05,2018-02-08,0.0,2017
+Steinorth,"Steinorth, Marc",R,AD40,30,8,6,2,20.0,65,67,12.0,13.0,Assembly,False,2016-12-05,2018-02-14,0.0,2017
+Chen,"Chen, Phillip",R,AD55,35,7,6,1,17.1,65,68,12.0,14.0,Assembly,False,2017-02-09,2018-02-16,0.0,2017
+Mathis,"Mathis, Devon J.",R,AD26,34,5,5,0,14.7,69,69,15.0,15.0,Assembly,False,2016-12-14,2018-02-16,0.0,2017
+Kiley,"Kiley, Kevin",R,AD06,45,6,5,1,11.1,69,73,15.0,18.0,Assembly,False,2017-01-19,2018-02-16,0.0,2017
+Choi,"Choi, Ph.D., Steven S.",R,AD68,30,6,4,2,13.3,71,71,17.0,16.0,Assembly,False,2017-02-14,2018-02-16,0.0,2017
+Acosta,"Acosta, Dante",R,AD38,32,5,4,1,12.5,71,72,17.0,17.0,Assembly,False,2017-02-13,2018-02-16,0.0,2017
+Voepel,"Voepel, Randy",R,AD71,26,3,2,1,7.7,73,74,19.0,19.0,Assembly,False,2017-02-08,2018-02-16,0.0,2017
+Brough,"Brough, William P.",R,AD73,37,2,2,0,5.4,73,75,19.0,20.0,Assembly,False,2016-12-06,2018-02-16,0.0,2017
+Patterson,"Patterson, Jim",R,AD23,41,5,2,3,4.9,73,76,19.0,21.0,Assembly,False,2016-12-13,2018-02-16,0.0,2017
+Kamlager-Dove,"Kamlager-Dove, Sydney",D,AD54,1,1,1,0,100.0,76,1,,,Assembly,True,2017-02-16,2017-02-16,0.0,2017
+Melendez,"Melendez, Melissa A.",R,AD67,24,1,1,0,4.2,76,77,22.0,22.0,Assembly,False,2016-12-05,2018-02-16,0.0,2017
+Harper,"Harper, Matthew",R,AD74,42,1,1,0,2.4,76,78,22.0,23.0,Assembly,False,2017-02-13,2018-02-16,0.0,2017
+Fong,"Fong, Vince",R,AD34,36,1,0,1,0.0,79,79,24.0,24.0,Assembly,False,2017-01-04,2018-02-16,0.0,2017
+Gomez,"Gomez, Jimmy",D,AD51,9,0,0,0,0.0,79,79,,,Assembly,True,2016-12-05,2017-02-17,0.0,2017
+Rendon,"Rendon, Anthony",D,AD63,0,0,0,0,0.0,79,79,,,Assembly,False,2018-02-15,2018-02-15,0.0,2017
+Travis Allen,"Allen, Travis",R,AD72,36,0,0,0,0.0,79,79,24.0,24.0,Assembly,False,2016-12-06,2018-02-16,0.0,2017
+Lara,"Lara, Ricardo",D,SD33,45,37,34,3,75.6,1,1,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Dodd,"Dodd, Bill",D,SD03,41,31,31,0,75.6,2,1,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Hill,"Hill, Jerry",D,SD13,48,36,31,5,64.6,2,7,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Hertzberg,"Hertzberg, Robert M.",D,SD18,40,29,29,0,72.5,4,4,,,Senate,False,2016-12-05,2018-02-15,0.0,2017
+McGuire,"McGuire, Mike",D,SD02,37,30,26,4,70.3,5,5,,,Senate,False,2016-12-12,2018-02-16,0.0,2017
+Jackson,"Jackson, Hannah-Beth",D,SD19,41,30,26,4,63.4,5,8,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Hernandez,"Hernandez, Ed",D,SD22,39,23,23,0,59.0,7,10,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Bradford,"Bradford, Steven",D,SD35,38,25,22,3,57.9,8,11,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Wiener,"Wiener, Scott D.",D,SD11,41,26,22,4,53.7,8,14,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Beall,"Beall, Jim",D,SD15,38,24,21,3,55.3,10,12,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Skinner,"Skinner, Nancy",D,SD09,39,24,21,3,53.8,10,13,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Pan,"Pan, Richard",D,SD06,43,27,21,6,48.8,10,17,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Leyva,"Leyva, Connie M.",D,SD20,40,24,18,6,45.0,13,18,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Monning,"Monning, Bill",D,SD17,26,17,17,0,65.4,14,6,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Portantino,"Portantino, Anthony J.",D,SD25,41,25,16,9,39.0,15,22,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Atkins,"Atkins, Toni G.",D,SD39,24,17,15,2,62.5,16,9,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Roth,"Roth, Richard",D,SD31,30,16,15,1,50.0,16,15,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Hueso,"Hueso, Ben",D,SD40,36,18,15,3,41.7,16,20,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Allen,"Allen, Benjamin",D,SD26,40,16,15,1,37.5,16,24,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Stern,"Stern, Henry I.",D,SD27,39,18,14,4,35.9,20,25,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Wieckowski,"Wieckowski, Bob",D,SD10,29,15,13,2,44.8,21,19,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Mitchell,"Mitchell, Holly J.",D,SD30,15,11,11,0,73.3,22,3,,,Senate,False,2016-12-05,2018-02-16,3.0,2017
+Newman,"Newman, Josh",D,SD29,28,11,11,0,39.3,22,21,,,Senate,True,2016-12-05,2018-02-16,0.0,2017
+Cannella,"Cannella, Anthony",R,SD12,26,11,10,1,38.5,24,23,1.0,1.0,Senate,False,2017-01-30,2018-02-16,0.0,2017
+Morrell,"Morrell, Mike",R,SD23,34,10,10,0,29.4,24,27,1.0,2.0,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Galgiani,"Galgiani, Cathleen",D,SD05,40,15,9,6,22.5,26,30,,,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Bates,"Bates, Patricia C.",R,SD36,31,8,7,1,22.6,27,29,3.0,4.0,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Glazer,"Glazer, Steven M.",D,SD07,39,11,7,4,17.9,27,32,,,Senate,False,2016-12-21,2018-02-16,0.0,2017
+Moorlach,"Moorlach, John M. W.",R,SD37,40,8,7,1,17.5,27,33,3.0,6.0,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Vidak,"Vidak, Andy",R,SD14,23,6,6,0,26.1,30,28,5.0,3.0,Senate,False,2017-02-15,2018-02-16,0.0,2017
+Nguyen,"Nguyen, Janet",R,SD34,40,6,6,0,15.0,30,34,5.0,7.0,Senate,False,2017-01-11,2018-02-16,0.0,2017
+Nielsen,"Nielsen, Jim",R,SD04,25,7,5,2,20.0,32,31,7.0,5.0,Senate,False,2017-01-13,2018-02-16,0.0,2017
+Mendoza,"Mendoza, Tony",D,SD32,39,7,5,2,12.8,32,37,,,Senate,True,2016-12-05,2018-02-16,0.0,2017
+Stone,"Stone, Jeff",R,SD28,40,6,5,1,12.5,32,38,7.0,10.0,Senate,False,2017-02-14,2018-02-16,0.0,2017
+De León,"De León, Kevin",D,SD24,13,5,4,1,30.8,35,26,,,Senate,False,2016-12-05,2018-02-15,0.0,2017
+Anderson,"Anderson, Joel",R,SD38,30,4,4,0,13.3,35,35,9.0,8.0,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Wilk,"Wilk, Scott",R,SD21,31,5,4,1,12.9,35,36,9.0,9.0,Senate,False,2017-01-10,2018-02-16,0.0,2017
+Berryhill,"Berryhill, Tom",R,SD08,30,3,3,0,10.0,38,39,11.0,11.0,Senate,False,2017-01-19,2018-02-16,0.0,2017
+Fuller,"Fuller, Jean",R,SD16,21,3,2,1,9.5,39,40,12.0,12.0,Senate,False,2017-02-09,2018-02-16,0.0,2017
+Gaines,"Gaines, Ted",R,SD01,26,3,2,1,7.7,39,41,12.0,13.0,Senate,False,2016-12-05,2018-02-16,0.0,2017
+Delgado,"Delgado, Vanessa",D,SD32,2,2,1,1,50.0,41,15,,,Senate,True,2017-02-17,2018-02-06,0.0,2017
+Chang,Chang Ling Ling,R,SD29,1,0,0,0,0.0,42,42,14.0,14.0,Senate,True,2018-02-05,2018-02-05,0.0,2017
+Berman,"Berman, Marc",D,AD24,45,21,20,1,44.4,1,1,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Gonzalez,"Gonzalez, Lorena",D,AD80,51,27,20,7,39.2,1,4,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Low,"Low, Evan",D,AD28,57,22,19,3,33.3,3,14,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Maienschein,"Maienschein, Brian",D,AD77,48,22,18,4,37.5,4,5,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Ting,"Ting, Philip Y.",D,AD19,53,22,18,4,34.0,4,12,,,Assembly,False,2018-12-03,2020-02-21,9.0,2019
+Mark Stone,"Stone, Mark",D,AD29,42,19,17,2,40.5,6,3,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Gloria,"Gloria, Todd",D,AD78,48,19,17,2,35.4,6,9,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Limón,"Limón, Monique",D,AD37,49,19,17,2,34.7,6,10,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Wood,"Wood, Jim",D,AD02,50,20,17,3,34.0,6,12,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Chiu,"Chiu, David",D,AD17,49,16,16,0,32.7,10,18,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Aguiar-Curry,"Aguiar-Curry, Cecilia M.",D,AD04,41,17,15,2,36.6,11,6,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Jones-Sawyer,"Jones-Sawyer, Sr. Reginald B.",D,AD59,42,18,15,3,35.7,11,7,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Wicks,"Wicks, Buffy",D,AD15,45,16,15,1,33.3,11,14,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Kalra,"Kalra, Ash",D,AD27,51,22,15,7,29.4,11,25,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Bonta,"Bonta, Rob",D,AD18,54,17,15,2,27.8,11,28,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Holden,"Holden, Chris R.",D,AD41,42,16,14,2,33.3,16,14,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Friedman,"Friedman, Laura",D,AD43,46,17,14,3,30.4,16,21,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Reyes,"Reyes, Eloise Gómez",D,AD47,39,14,13,1,33.3,18,14,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Eggman,"Eggman, Susan Talamantes",D,AD13,41,13,13,0,31.7,18,20,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Chau,"Chau, Ed",D,AD49,44,13,13,0,29.5,18,24,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Gipson,"Gipson, Mike A.",D,AD64,45,14,13,1,28.9,18,26,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Petrie-Norris,"Petrie-Norris, Cottie",D,AD74,45,15,13,2,28.9,18,26,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Weber,"Weber, Shirley N.",D,AD79,47,18,13,5,27.7,18,29,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Santiago,"Santiago, Miguel",D,AD53,53,14,13,1,24.5,18,34,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Cervantes,"Cervantes, Sabrina",D,AD60,45,14,12,2,26.7,25,31,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Obernolte,"Obernolte, Jay",R,AD33,48,15,12,3,25.0,25,33,1.0,1.0,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Irwin,"Irwin, Jacqui",D,AD44,49,15,12,3,24.5,25,34,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+McCarty,"McCarty, Kevin",D,AD07,50,14,12,2,24.0,25,38,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Nazarian,"Nazarian, Adrin",D,AD46,50,14,12,2,24.0,25,38,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Quirk,"Quirk, Bill",D,AD20,50,16,12,4,24.0,25,38,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Burke,"Burke, Autumn R.",D,AD62,43,15,11,4,25.6,31,32,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Carrillo,"Carrillo, Wendy",D,AD51,45,14,11,3,24.4,31,36,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Grayson,"Grayson, Timothy S.",D,AD14,49,12,11,1,22.4,31,42,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Smith,"Smith, Christy",D,AD38,23,12,10,2,43.5,34,2,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Medina,"Medina, Jose",D,AD61,28,11,10,1,35.7,34,7,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Bauer-Kahan,"Bauer-Kahan, Rebecca",D,AD16,31,12,10,2,32.3,34,19,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Mullin,"Mullin, Kevin",D,AD22,33,10,10,0,30.3,34,23,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Cristina Garcia,"Garcia, Cristina",D,AD58,37,12,10,2,27.0,34,30,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Bloom,"Bloom, Richard",D,AD50,47,11,10,1,21.3,34,45,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Levine,"Levine, Marc",D,AD10,49,14,10,4,20.4,34,49,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Salas,"Salas, Jr., Rudy",D,AD32,51,14,10,4,19.6,34,53,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Ramos,"Ramos, James C.",D,AD40,26,10,9,1,34.6,42,11,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Chu,"Chu, Kansen",D,AD25,41,11,9,2,22.0,42,43,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Gabriel,"Gabriel, Jesse",D,AD45,45,13,9,4,20.0,42,50,,,Assembly,False,2019-01-07,2020-02-21,0.0,2019
+O'Donnell,"O'Donnell, Patrick",D,AD70,47,13,9,4,19.1,42,54,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Eduardo Garcia,"Garcia, Eduardo",D,AD56,50,10,9,1,18.0,42,56,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Daly,"Daly, Tom",D,AD69,33,11,8,3,24.2,47,37,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Boerner Horvath,"Boerner Horvath, Tasha",D,AD76,38,8,8,0,21.1,47,46,,,Assembly,False,2019-02-11,2020-02-20,0.0,2019
+Robert Rivas,"Rivas, Robert",D,AD30,38,11,8,3,21.1,47,46,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Kamlager-Dove,"Kamlager-Dove, Sydney",D,AD54,23,9,7,2,30.4,50,21,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Muratsuchi,"Muratsuchi, Al",D,AD66,32,7,7,0,21.9,50,44,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Calderon,"Calderon, Ian C.",D,AD57,34,12,7,5,20.6,50,48,,,Assembly,False,2019-01-10,2020-02-21,0.0,2019
+Lackey,"Lackey, Tom",R,AD36,35,7,7,0,20.0,50,50,2.0,3.0,Assembly,False,2018-12-04,2020-02-21,0.0,2019
+Chen,"Chen, Phillip",R,AD55,46,8,7,1,15.2,50,60,2.0,6.0,Assembly,False,2019-02-13,2020-02-21,0.0,2019
+Quirk-Silva,"Quirk-Silva, Sharon",D,AD65,46,9,7,2,15.2,50,60,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Blanca Rubio,"Rubio, Blanca E.",D,AD48,48,11,7,4,14.6,50,63,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Dahle,"Dahle, Brian",R,AD01,26,6,6,0,23.1,57,41,4.0,2.0,Assembly,True,2019-01-09,2020-02-21,0.0,2019
+Arambula,"Arambula, Joaquin",D,AD31,33,7,6,1,18.2,57,55,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Gallagher,"Gallagher, James",R,AD03,41,8,6,2,14.6,57,63,4.0,7.0,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Frazier,"Frazier, Jim",D,AD11,50,6,6,0,12.0,57,66,,,Assembly,False,2018-12-13,2020-02-21,0.0,2019
+Cooley,"Cooley, Ken",D,AD08,25,8,5,3,20.0,61,50,,,Assembly,False,2018-12-05,2020-02-20,0.0,2019
+Luz Rivas,"Rivas, Luz M.",D,AD39,31,9,5,4,16.1,61,58,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Rodriguez,"Rodriguez, Freddie",D,AD52,33,8,5,3,15.2,61,60,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Cooper,"Cooper, Jim",D,AD09,37,6,5,1,13.5,61,65,,,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Patterson,"Patterson, Jim",R,AD23,48,5,5,0,10.4,61,67,6.0,8.0,Assembly,False,2018-12-05,2020-02-21,0.0,2019
+Bigelow,"Bigelow, Franklin E.",R,AD05,26,6,4,2,15.4,66,59,7.0,5.0,Assembly,False,2019-01-10,2020-02-21,0.0,2019
+Waldron,"Waldron, Marie",R,AD75,17,3,3,0,17.6,67,57,8.0,4.0,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Cunningham,"Cunningham, Jordan",R,AD35,32,4,3,1,9.4,67,68,8.0,9.0,Assembly,False,2018-12-05,2020-02-21,0.0,2019
+Voepel,"Voepel, Randy",R,AD71,43,5,3,2,7.0,67,70,8.0,11.0,Assembly,False,2019-01-07,2020-02-21,0.0,2019
+Gray,"Gray, Adam C.",D,AD21,45,5,3,2,6.7,67,71,,,Assembly,False,2019-02-15,2020-02-21,0.0,2019
+Diep,"Diep, Tyler",R,AD72,27,2,2,0,7.4,71,69,11.0,10.0,Assembly,False,2019-01-30,2020-02-21,0.0,2019
+Brough,"Brough, William P.",R,AD73,31,3,2,1,6.5,71,72,11.0,12.0,Assembly,False,2019-01-16,2020-02-21,0.0,2019
+Mathis,"Mathis, Devon J.",R,AD26,33,3,2,1,6.1,71,73,11.0,13.0,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Fong,"Fong, Vince",R,AD34,47,2,2,0,4.3,71,75,11.0,14.0,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Mayes,"Mayes, Chad",Other,AD42,22,2,1,1,4.5,75,74,,,Assembly,False,2019-01-18,2020-02-21,0.0,2019
+Choi,"Choi, Ph.D., Steven S.",R,AD68,29,1,1,0,3.4,75,76,15.0,15.0,Assembly,False,2019-01-22,2020-02-19,0.0,2019
+Flora,"Flora, Heath",R,AD12,36,3,1,2,2.8,75,77,15.0,16.0,Assembly,False,2019-01-28,2020-02-21,0.0,2019
+Kiley,"Kiley, Kevin",R,AD06,44,1,1,0,2.3,75,78,15.0,17.0,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Megan Dahle,"Dahle, Megan",R,AD01,15,0,0,0,0.0,79,79,18.0,18.0,Assembly,True,2020-01-30,2020-02-21,0.0,2019
+Melendez,"Melendez, Melissa A.",R,AD67,29,2,0,2,0.0,79,79,18.0,18.0,Assembly,False,2018-12-03,2020-02-21,0.0,2019
+Rendon,"Rendon, Anthony",D,AD63,0,0,0,0,0.0,79,79,,,Assembly,False,2019-02-06,2019-02-06,0.0,2019
+Dodd,"Dodd, Bill",D,SD03,41,23,22,1,53.7,1,2,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Umberg,"Umberg, Thomas J.",D,SD34,38,20,17,3,44.7,2,3,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Hertzberg,"Hertzberg, Robert M.",D,SD18,39,17,16,1,41.0,3,5,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+McGuire,"McGuire, Mike",D,SD02,36,16,15,1,41.7,4,4,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Hill,"Hill, Jerry",D,SD13,40,17,15,2,37.5,4,7,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Wiener,"Wiener, Scott D.",D,SD11,40,16,14,2,35.0,6,9,,,Senate,False,2018-12-03,2020-02-19,0.0,2019
+Bradford,"Bradford, Steven",D,SD35,41,17,14,3,34.1,6,12,,,Senate,False,2019-01-23,2020-02-21,0.0,2019
+Rubio,"Rubio, Susan",D,SD22,37,14,13,1,35.1,8,8,,,Senate,False,2019-02-13,2020-02-21,0.0,2019
+Monning,"Monning, Bill",D,SD17,30,13,12,1,40.0,9,6,,,Senate,False,2019-01-30,2020-02-21,0.0,2019
+Skinner,"Skinner, Nancy",D,SD09,39,16,12,4,30.8,9,14,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Jones,"Jones, Brian W.",R,SD38,40,13,12,1,30.0,9,15,1.0,1.0,Senate,False,2019-02-15,2020-02-21,0.0,2019
+Beall,"Beall, Jim",D,SD15,33,17,11,6,33.3,12,13,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Portantino,"Portantino, Anthony J.",D,SD25,44,18,11,7,25.0,12,18,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Leyva,"Leyva, Connie M.",D,SD20,29,10,10,0,34.5,14,11,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Jackson,"Jackson, Hannah-Beth",D,SD19,39,13,10,3,25.6,14,17,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Glazer,"Glazer, Steven M.",D,SD07,46,11,10,1,21.7,14,27,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Wieckowski,"Wieckowski, Bob",D,SD10,26,10,9,1,34.6,17,10,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Allen,"Allen, Benjamin",D,SD26,40,13,9,4,22.5,17,21,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Hueso,"Hueso, Ben",D,SD40,40,12,9,3,22.5,17,21,,,Senate,False,2019-02-04,2020-02-21,0.0,2019
+Pan,"Pan, Richard",D,SD06,40,13,9,4,22.5,17,21,,,Senate,False,2019-01-08,2020-02-21,0.0,2019
+Stern,"Stern, Henry I.",D,SD27,40,9,9,0,22.5,17,21,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Durazo,"Durazo, Maria Elena",D,SD24,42,12,9,3,21.4,17,28,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Mitchell,"Mitchell, Holly J.",D,SD30,12,9,8,1,66.7,23,1,,,Senate,False,2018-12-03,2020-02-21,3.0,2019
+Hurtado,"Hurtado, Melissa",D,SD14,27,10,8,2,29.6,23,16,,,Senate,False,2019-02-04,2020-02-21,0.0,2019
+Archuleta,"Archuleta, Bob",D,SD32,36,8,8,0,22.2,23,25,,,Senate,False,2019-02-14,2020-02-21,0.0,2019
+Caballero,"Caballero, Anna M.",D,SD12,36,11,8,3,22.2,23,25,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Roth,"Roth, Richard",D,SD31,24,6,6,0,25.0,27,18,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Chang,"Chang, Ling Ling",R,SD29,28,8,6,2,21.4,27,28,2.0,2.0,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Nielsen,"Nielsen, Jim",R,SD04,40,8,6,2,15.0,27,30,2.0,3.0,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Moorlach,"Moorlach, John M. W.",R,SD37,38,7,5,2,13.2,30,31,4.0,4.0,Senate,False,2019-01-30,2020-02-21,0.0,2019
+Galgiani,"Galgiani, Cathleen",D,SD05,40,8,5,3,12.5,30,32,,,Senate,False,2019-01-09,2020-02-21,0.0,2019
+Atkins,"Atkins, Toni G.",D,SD39,17,5,4,1,23.5,32,20,,,Senate,False,2018-12-03,2020-02-21,0.0,2019
+Bates,"Bates, Patricia C.",R,SD36,34,5,4,1,11.8,32,34,5.0,6.0,Senate,False,2018-12-17,2020-02-21,0.0,2019
+Morrell,"Morrell, Mike",R,SD23,29,3,3,0,10.3,34,35,6.0,7.0,Senate,False,2019-01-30,2020-02-21,0.0,2019
+Stone,"Stone, Jeff",R,SD28,16,2,2,0,12.5,35,32,7.0,5.0,Senate,False,2019-02-19,2019-02-22,0.0,2019
+Grove,"Grove, Shannon",R,SD16,27,2,2,0,7.4,35,36,7.0,8.0,Senate,False,2019-02-07,2020-02-21,0.0,2019
+Wilk,"Wilk, Scott",R,SD21,32,3,2,1,6.2,35,37,7.0,9.0,Senate,False,2018-12-10,2020-02-21,0.0,2019
+Borgeas,"Borgeas, Andreas",R,SD08,34,1,1,0,2.9,38,38,10.0,10.0,Senate,False,2019-01-29,2020-02-21,0.0,2019
+Gaines,"Gaines, Ted",R,SD01,0,0,0,0,0.0,39,39,11.0,11.0,Senate,False,,,0.0,2019
+Lara,"Lara, Ricardo",D,SD33,2,0,0,0,0.0,39,39,,,Senate,True,2018-12-03,2018-12-03,0.0,2019
+Lena Gonzalez,"Gonzalez, Lena A.",D,SD33,15,0,0,0,0.0,39,39,,,Senate,True,2019-02-20,2020-02-21,0.0,2019
+McCarty,"McCarty, Kevin",D,AD07,48,28,23,5,47.9,1,18,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Berman,"Berman, Marc",D,AD24,37,22,22,0,59.5,2,6,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Maienschein,"Maienschein, Brian",D,AD77,37,23,22,1,59.5,2,6,,,Assembly,False,2020-12-17,2022-02-18,0.0,2021
+Bauer-Kahan,"Bauer-Kahan, Rebecca",D,AD16,36,23,21,2,58.3,4,9,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Irwin,"Irwin, Jacqui",D,AD44,44,23,21,2,47.7,4,19,,,Assembly,False,2020-12-09,2022-02-18,0.0,2021
+Bloom,"Bloom, Richard",D,AD50,45,22,21,1,46.7,4,21,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Calderon,"Calderon, Lisa",D,AD57,34,22,20,2,58.8,7,8,,,Assembly,False,2021-01-21,2022-02-18,0.0,2021
+Holden,"Holden, Chris R.",D,AD41,37,23,20,3,54.1,7,12,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Ting,"Ting, Philip Y.",D,AD19,50,23,20,3,40.0,7,38,,,Assembly,False,2020-12-07,2022-02-18,12.0,2021
+Grayson,"Grayson, Timothy S.",D,AD14,49,22,19,3,38.8,10,41,,,Assembly,False,2021-02-02,2022-02-18,0.0,2021
+Santiago,"Santiago, Miguel",D,AD53,52,20,19,1,36.5,10,43,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Bennett,"Bennett, Steve",D,AD37,30,18,18,0,60.0,12,4,,,Assembly,False,2021-02-12,2022-02-18,0.0,2021
+Luz Rivas,"Rivas, Luz M.",D,AD39,33,18,18,0,54.5,12,11,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Jones-Sawyer,"Jones-Sawyer, Sr. Reginald B.",D,AD59,36,21,18,3,50.0,12,15,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Quirk,"Quirk, Bill",D,AD20,38,20,18,2,47.4,12,20,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Friedman,"Friedman, Laura",D,AD43,39,21,18,3,46.2,12,22,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Low,"Low, Evan",D,AD28,45,19,18,1,40.0,12,38,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Arambula,"Arambula, Joaquin",D,AD31,50,23,18,5,36.0,12,46,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Ward,"Ward, Christopher M.",D,AD78,32,17,17,0,53.1,19,13,,,Assembly,False,2020-12-07,2022-02-17,0.0,2021
+Salas,"Salas, Jr., Rudy",D,AD32,41,22,17,5,41.5,19,32,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Gabriel,"Gabriel, Jesse",D,AD45,42,20,17,3,40.5,19,36,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Ramos,"Ramos, James C.",D,AD40,38,19,16,3,42.1,22,29,,,Assembly,False,2020-12-11,2022-02-18,0.0,2021
+Kalra,"Kalra, Ash",D,AD27,39,19,16,3,41.0,22,33,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Carrillo,"Carrillo, Wendy",D,AD51,43,17,16,1,37.2,22,42,,,Assembly,False,2020-12-17,2022-02-18,0.0,2021
+Quirk-Silva,"Quirk-Silva, Sharon",D,AD65,46,21,16,5,34.8,22,49,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Nazarian,"Nazarian, Adrin",D,AD46,48,18,16,2,33.3,22,51,,,Assembly,False,2020-12-08,2022-02-18,0.0,2021
+Rodriguez,"Rodriguez, Freddie",D,AD52,50,19,16,3,32.0,22,53,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Wood,"Wood, Jim",D,AD02,34,18,15,3,44.1,28,25,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Aguiar-Curry,"Aguiar-Curry, Cecilia M.",D,AD04,35,18,15,3,42.9,28,26,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Lee,"Lee, Alex",D,AD25,37,18,15,3,40.5,28,36,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Gipson,"Gipson, Mike A.",D,AD64,43,18,15,3,34.9,28,47,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Robert Rivas,"Rivas, Robert",D,AD30,43,17,15,2,34.9,28,47,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Kamlager,"Kamlager, Sydney",D,AD54,33,16,14,2,42.4,33,28,,,Assembly,True,2020-12-18,2022-02-18,0.0,2021
+Levine,"Levine, Marc",D,AD10,44,16,14,2,31.8,33,55,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Davies,"Davies, Laurie",R,AD73,29,13,13,0,44.8,35,23,1.0,1.0,Assembly,False,2021-01-12,2022-02-18,0.0,2021
+Cervantes,"Cervantes, Sabrina",D,AD60,31,15,13,2,41.9,35,30,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Cristina Garcia,"Garcia, Cristina",D,AD58,36,17,13,4,36.1,35,44,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Petrie-Norris,"Petrie-Norris, Cottie",D,AD74,36,13,13,0,36.1,35,44,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Chen,"Chen, Phillip",R,AD55,49,14,13,1,26.5,35,62,1.0,5.0,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Reyes,"Reyes, Eloise Gómez",D,AD47,28,17,12,5,42.9,40,26,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Boerner Horvath,"Boerner Horvath, Tasha",D,AD76,35,16,12,4,34.3,40,50,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Wicks,"Wicks, Buffy",D,AD15,44,14,12,2,27.3,40,60,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Blanca Rubio,"Rubio, Blanca E.",D,AD48,48,13,12,1,25.0,40,63,,,Assembly,False,2021-01-11,2022-02-18,0.0,2021
+Medina,"Medina, Jose",D,AD61,27,14,11,3,40.7,44,34,,,Assembly,False,2020-12-11,2022-02-18,0.0,2021
+Stone,"Stone, Mark",D,AD29,27,14,11,3,40.7,44,34,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Cooley,"Cooley, Ken",D,AD08,28,13,11,2,39.3,44,40,,,Assembly,False,2021-02-08,2022-02-18,0.0,2021
+Flora,"Flora, Heath",R,AD12,36,11,11,0,30.6,44,56,3.0,3.0,Assembly,False,2021-01-19,2022-02-18,0.0,2021
+Cooper,"Cooper, Jim",D,AD09,39,14,11,3,28.2,44,59,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Lorena Gonzalez,"Gonzalez, Lorena",D,AD80,19,12,10,2,52.6,49,14,,,Assembly,False,2020-12-07,2021-04-05,0.0,2021
+Mia Bonta,"Bonta, Mia",D,AD18,24,12,10,2,41.7,49,31,,,Assembly,True,2021-01-14,2022-02-18,0.0,2021
+Chau,"Chau, Ed",D,AD49,15,9,9,0,60.0,51,4,,,Assembly,True,2020-12-07,2021-02-19,0.0,2021
+Akilah Weber,"Weber, M.D., Akilah",D,AD79,16,11,9,2,56.2,51,10,,,Assembly,True,2021-02-17,2022-02-18,0.0,2021
+Mullin,"Mullin, Kevin",D,AD22,27,10,9,1,33.3,51,51,,,Assembly,False,2021-01-27,2022-02-18,0.0,2021
+Muratsuchi,"Muratsuchi, Al",D,AD66,43,10,9,1,20.9,51,67,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Eduardo Garcia,"Garcia, Eduardo",D,AD56,49,13,9,4,18.4,51,73,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Patterson,"Patterson, Jim",R,AD23,49,12,9,3,18.4,51,73,4.0,11.0,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Chiu,"Chiu, David",D,AD17,18,8,8,0,44.4,57,24,,,Assembly,True,2020-12-07,2021-02-19,0.0,2021
+Gallagher,"Gallagher, James",R,AD03,25,9,8,1,32.0,57,53,5.0,2.0,Assembly,False,2020-12-07,2022-02-17,0.0,2021
+Cunningham,"Cunningham, Jordan",R,AD35,37,10,8,2,21.6,57,66,5.0,7.0,Assembly,False,2020-12-16,2022-02-18,0.0,2021
+Bryan,"Bryan, Isaac G.",D,AD54,23,8,7,1,30.4,60,57,,,Assembly,True,2021-01-26,2022-02-17,0.0,2021
+Mayes,"Mayes, Chad",Other,AD42,26,9,7,2,26.9,60,61,,,Assembly,False,2020-12-17,2022-02-18,0.0,2021
+Choi,"Choi, Ph.D., Steven S.",R,AD68,31,8,7,1,22.6,60,65,7.0,6.0,Assembly,False,2021-01-13,2022-02-18,0.0,2021
+Villapudua,"Villapudua, Carlos",D,AD13,36,11,7,4,19.4,60,70,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Fong,"Fong, Vince",R,AD34,40,8,7,1,17.5,60,76,7.0,13.0,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Waldron,"Waldron, Marie",R,AD75,20,7,6,1,30.0,65,58,9.0,4.0,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Seyarto,"Seyarto, Kelly",R,AD67,29,8,6,2,20.7,65,69,9.0,8.0,Assembly,False,2020-12-07,2022-02-16,0.0,2021
+Mathis,"Mathis, Devon J.",R,AD26,38,7,6,1,15.8,65,78,9.0,15.0,Assembly,False,2021-01-11,2022-02-18,0.0,2021
+Burke,"Burke, Autumn R.",D,AD62,10,5,5,0,50.0,68,15,,,Assembly,True,2020-12-07,2022-01-05,0.0,2021
+Gray,"Gray, Adam C.",D,AD21,22,6,5,1,22.7,68,64,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Daly,"Daly, Tom",D,AD69,24,9,5,4,20.8,68,68,,,Assembly,False,2021-01-11,2022-02-18,0.0,2021
+Bigelow,"Bigelow, Franklin E.",R,AD05,26,5,5,0,19.2,68,71,12.0,9.0,Assembly,False,2021-01-25,2022-02-18,0.0,2021
+Megan Dahle,"Dahle, Megan",R,AD01,27,6,5,1,18.5,68,72,12.0,10.0,Assembly,False,2021-01-25,2022-02-18,0.0,2021
+Smith,"Smith, Thurston ""Smitty""",R,AD33,28,5,5,0,17.9,68,75,12.0,12.0,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Wilson,"Wilson, Lori D.",D,AD11,6,5,4,1,66.7,74,3,,,Assembly,True,2021-02-18,2022-02-18,0.0,2021
+Mike Fong,"Fong, Mike",D,AD49,8,5,4,1,50.0,74,15,,,Assembly,True,2022-02-07,2022-02-18,0.0,2021
+Valladares,"Valladares, Suzette Martinez",R,AD38,25,6,4,2,16.0,74,77,15.0,14.0,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Lackey,"Lackey, Tom",R,AD36,29,5,4,1,13.8,74,79,15.0,16.0,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Nguyen,"Nguyen, Janet",R,AD72,32,4,4,0,12.5,74,80,15.0,17.0,Assembly,False,2021-01-12,2022-02-18,0.0,2021
+O'Donnell,"O'Donnell, Patrick",D,AD70,42,4,4,0,9.5,74,81,,,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Haney,"Haney, Matt",D,AD17,2,2,2,0,100.0,80,1,,,Assembly,True,2021-02-19,2022-02-14,0.0,2021
+McKinnor,"McKinnor, Tina",D,AD62,1,1,1,0,100.0,81,1,,,Assembly,True,2022-01-31,2022-01-31,0.0,2021
+Frazier,"Frazier, Jim",D,AD11,25,1,1,0,4.0,81,82,,,Assembly,True,2020-12-07,2021-02-19,0.0,2021
+Kiley,"Kiley, Kevin",R,AD06,36,1,1,0,2.8,81,83,18.0,18.0,Assembly,False,2020-12-07,2022-02-18,0.0,2021
+Bonta,"Bonta, Rob",D,AD18,6,0,0,0,0.0,84,84,,,Assembly,True,2020-12-07,2021-02-19,0.0,2021
+Rendon,"Rendon, Anthony",D,AD63,0,0,0,0,0.0,84,84,,,Assembly,False,,,0.0,2021
+Voepel,"Voepel, Randy",R,AD71,24,1,0,1,0.0,84,84,19.0,19.0,Assembly,False,2020-12-18,2022-02-17,0.0,2021
+Weber,"Weber, Shirley N.",D,AD79,0,0,0,0,0.0,84,84,,,Assembly,True,2020-12-11,2020-12-11,0.0,2021
+Laird,"Laird, John",D,SD17,38,30,29,1,76.3,1,2,,,Senate,False,2021-01-26,2022-02-18,0.0,2021
+Dodd,"Dodd, Bill",D,SD03,41,30,26,4,63.4,2,4,,,Senate,False,2020-12-07,2022-02-16,0.0,2021
+Portantino,"Portantino, Anthony J.",D,SD25,44,33,26,7,59.1,2,6,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Hertzberg,"Hertzberg, Robert M.",D,SD18,39,25,24,1,61.5,4,5,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Becker,"Becker, Josh",D,SD13,39,21,21,0,53.8,5,11,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Limón,"Limón, Monique",D,SD19,40,27,21,6,52.5,5,12,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Wiener,"Wiener, Scott D.",D,SD11,40,27,21,6,52.5,5,12,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Skinner,"Skinner, Nancy",D,SD09,36,21,20,1,55.6,8,8,,,Senate,False,2020-12-07,2022-02-18,13.0,2021
+Eggman,"Eggman, Susan Talamantes",D,SD05,37,23,20,3,54.1,8,10,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Hueso,"Hueso, Ben",D,SD40,39,22,20,2,51.3,8,14,,,Senate,False,2021-02-04,2022-02-18,0.0,2021
+Umberg,"Umberg, Thomas J.",D,SD34,39,21,19,2,48.7,11,15,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Roth,"Roth, Richard D.",D,SD31,27,19,18,1,66.7,12,3,,,Senate,False,2020-12-21,2022-02-18,0.0,2021
+Gonzalez,"Gonzalez, Lena A.",D,SD33,32,19,18,1,56.2,12,7,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Cortese,"Cortese, Dave",D,SD15,40,19,18,1,45.0,12,20,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Caballero,"Caballero, Anna M.",D,SD12,42,20,18,2,42.9,12,22,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Pan,"Pan, Richard",D,SD06,39,22,17,5,43.6,16,21,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Min,"Min, Dave",D,SD37,29,17,16,1,55.2,17,9,,,Senate,False,2020-12-16,2022-02-18,0.0,2021
+Wieckowski,"Wieckowski, Bob",D,SD10,35,18,16,2,45.7,17,18,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Allen,"Allen, Benjamin",D,SD26,40,19,16,3,40.0,17,24,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Newman,"Newman, Josh",D,SD29,32,17,15,2,46.9,20,16,,,Senate,False,2021-01-07,2022-02-18,0.0,2021
+Durazo,"Durazo, Maria Elena",D,SD24,33,18,15,3,45.5,20,19,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Archuleta,"Archuleta, Bob",D,SD32,38,16,15,1,39.5,20,25,,,Senate,False,2021-01-21,2022-02-18,0.0,2021
+Leyva,"Leyva, Connie M.",D,SD20,30,15,14,1,46.7,23,17,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+McGuire,"McGuire, Mike",D,SD02,33,14,14,0,42.4,23,23,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Hurtado,"Hurtado, Melissa",D,SD14,40,16,14,2,35.0,23,26,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Jones,"Jones, Brian W.",R,SD38,39,15,13,2,33.3,26,28,1.0,1.0,Senate,False,2021-01-13,2022-02-18,0.0,2021
+Rubio,"Rubio, Susan",D,SD22,35,15,12,3,34.3,27,27,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Stern,"Stern, Henry I.",D,SD27,39,14,12,2,30.8,27,29,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Bradford,"Bradford, Steven",D,SD35,41,15,12,3,29.3,27,30,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Glazer,"Glazer, Steven M.",D,SD07,35,17,10,7,28.6,30,31,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Atkins,"Atkins, Toni G.",D,SD39,11,9,9,0,81.8,31,1,,,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Ochoa Bogh,"Ochoa Bogh, Rosilicie",R,SD23,34,10,8,2,23.5,32,33,2.0,3.0,Senate,False,2021-01-21,2022-02-18,0.0,2021
+Bates,"Bates, Patricia C.",R,SD36,37,10,8,2,21.6,32,34,2.0,4.0,Senate,False,2020-12-15,2022-02-18,0.0,2021
+Wilk,"Wilk, Scott",R,SD21,18,5,5,0,27.8,34,32,4.0,2.0,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Dahle,"Dahle, Brian",R,SD01,26,5,5,0,19.2,34,35,4.0,5.0,Senate,False,2020-12-21,2022-02-18,0.0,2021
+Melendez,"Melendez, Melissa A.",R,SD28,40,5,5,0,12.5,34,36,4.0,6.0,Senate,False,2020-12-30,2022-02-18,0.0,2021
+Borgeas,"Borgeas, Andreas",R,SD08,26,4,3,1,11.5,37,37,7.0,7.0,Senate,False,2020-12-10,2022-02-18,0.0,2021
+Grove,"Grove, Shannon",R,SD16,27,3,3,0,11.1,37,38,7.0,8.0,Senate,False,2020-12-07,2022-02-18,0.0,2021
+Nielsen,"Nielsen, Jim",R,SD04,14,2,1,1,7.1,39,39,9.0,9.0,Senate,False,2020-12-15,2022-02-18,0.0,2021
+Berman,"Berman, Marc",D,AD23,55,38,38,0,69.1,1,3,,,Assembly,False,2023-01-23,2024-02-16,0.0,2023
+Maienschein,"Maienschein, Brian",D,AD76,50,37,34,3,68.0,2,4,,,Assembly,False,2023-01-19,2024-02-16,0.0,2023
+Ramos,"Ramos, James C.",D,AD45,46,27,25,2,54.3,3,8,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Bauer-Kahan,"Bauer-Kahan, Rebecca",D,AD16,47,27,25,2,53.2,3,10,,,Assembly,False,2023-01-12,2024-02-16,0.0,2023
+Pellerin,"Pellerin, Gail",D,AD28,36,26,23,3,63.9,5,5,,,Assembly,False,2023-01-25,2024-02-16,0.0,2023
+Grayson,"Grayson, Timothy S.",D,AD15,50,27,23,4,46.0,5,17,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Ting,"Ting, Philip Y.",D,AD19,43,25,22,3,51.2,7,12,,,Assembly,False,2023-01-09,2024-02-16,7.0,2023
+Ward,"Ward, Christopher M.",D,AD78,37,21,21,0,56.8,8,6,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Bryan,"Bryan, Isaac G.",D,AD55,45,27,21,6,46.7,8,16,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Friedman,"Friedman, Laura",D,AD44,47,23,21,2,44.7,8,19,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Kalra,"Kalra, Ash",D,AD25,50,24,21,3,42.0,8,23,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Mike Fong,"Fong, Mike",D,AD49,36,22,20,2,55.6,12,7,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Aguiar-Curry,"Aguiar-Curry, Cecilia M.",D,AD04,37,24,19,5,51.4,13,11,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Wendy Carrillo,"Carrillo, Wendy",D,AD52,47,24,19,5,40.4,13,28,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Gabriel,"Gabriel, Jesse",D,AD46,49,24,19,5,38.8,13,32,,,Assembly,False,2022-12-05,2024-02-16,8.0,2023
+Garcia,"Garcia, Eduardo",D,AD36,49,25,19,6,38.8,13,32,,,Assembly,False,2023-01-24,2024-02-16,0.0,2023
+McCarty,"McCarty, Kevin",D,AD06,49,21,19,2,38.8,13,32,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Quirk-Silva,"Quirk-Silva, Sharon",D,AD67,50,23,19,4,38.0,13,40,,,Assembly,False,2023-01-04,2024-02-16,0.0,2023
+Addis,"Addis, Dawn",D,AD30,37,21,18,3,48.6,19,14,,,Assembly,False,2022-12-15,2024-02-16,0.0,2023
+Bonta,"Bonta, Mia",D,AD18,47,22,18,4,38.3,19,36,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Haney,"Haney, Matt",D,AD17,47,24,18,6,38.3,19,36,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Weber,"Weber, M.D., Akilah",D,AD79,47,28,18,10,38.3,19,36,,,Assembly,False,2022-12-15,2024-02-16,0.0,2023
+Alvarez,"Alvarez, David",D,AD80,50,19,18,1,36.0,19,43,,,Assembly,False,2023-01-05,2024-02-16,0.0,2023
+Gipson,"Gipson, Mike A.",D,AD65,50,20,18,2,36.0,19,43,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Valencia,"Valencia, Avelino",D,AD68,23,18,17,1,73.9,25,2,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Wicks,"Wicks, Buffy",D,AD14,39,22,17,5,43.6,25,21,,,Assembly,False,2023-01-18,2024-02-16,0.0,2023
+Petrie-Norris,"Petrie-Norris, Cottie",D,AD73,41,19,17,2,41.5,25,25,,,Assembly,False,2023-01-05,2024-02-16,0.0,2023
+Irwin,"Irwin, Jacqui",D,AD42,43,21,17,4,39.5,25,30,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Lee,"Lee, Alex",D,AD24,43,19,17,2,39.5,25,30,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Wilson,"Wilson, Lori D.",D,AD11,47,19,17,2,36.2,25,42,,,Assembly,False,2023-01-11,2024-02-16,0.0,2023
+Wood,"Wood, Jim",D,AD02,30,20,16,4,53.3,31,9,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Juan Carrillo,"Carrillo, Juan",D,AD39,38,21,16,5,42.1,31,22,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Reyes,"Reyes, Eloise Gómez",D,AD50,40,19,16,3,40.0,31,29,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Lowenthal,"Lowenthal, Josh",D,AD69,42,18,16,2,38.1,31,39,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Alanis,"Alanis, Juan",R,AD22,46,17,16,1,34.8,31,48,1.0,2.0,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Schiavo,"Schiavo, Pilar",D,AD40,40,21,15,6,37.5,36,41,,,Assembly,False,2023-02-06,2024-02-16,0.0,2023
+Mathis,"Mathis, Devon J.",R,AD33,48,16,15,1,31.2,36,53,2.0,3.0,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Hart,"Hart, Gregg",D,AD37,39,15,14,1,35.9,38,45,,,Assembly,False,2023-02-06,2024-02-16,0.0,2023
+Santiago,"Santiago, Miguel",D,AD54,39,16,14,2,35.9,38,45,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+McKinnor,"McKinnor, Tina",D,AD61,44,20,14,6,31.8,38,52,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Papan,"Papan, Diane",D,AD21,45,18,14,4,31.1,38,54,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Chen,"Chen, Phillip",R,AD59,50,17,14,3,28.0,38,61,3.0,6.0,Assembly,False,2023-01-12,2024-02-16,0.0,2023
+Blanca Rubio,"Rubio, Blanca E.",D,AD48,32,16,13,3,40.6,43,27,,,Assembly,False,2023-01-10,2024-02-16,0.0,2023
+Rodriguez,"Rodriguez, Freddie",D,AD53,37,17,13,4,35.1,43,47,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Jones-Sawyer,"Jones-Sawyer, Sr., Reginald B.",D,AD57,44,15,13,2,29.5,43,60,,,Assembly,False,2023-01-04,2024-02-16,0.0,2023
+Rendon,"Rendon, Anthony",D,AD62,24,13,12,1,50.0,46,13,,,Assembly,False,2023-02-14,2024-02-16,0.0,2023
+Luz Rivas,"Rivas, Luz M.",D,AD43,25,14,12,2,48.0,46,15,,,Assembly,False,2023-01-18,2024-02-16,0.0,2023
+Zbur,"Zbur, Rick Chavez",D,AD51,27,15,12,3,44.4,46,20,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Holden,"Holden, Chris R.",D,AD41,29,19,12,7,41.4,46,26,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Arambula,"Arambula, Joaquin",D,AD31,39,13,12,1,30.8,46,56,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Connolly,"Connolly, Damon",D,AD12,39,17,12,5,30.8,46,56,,,Assembly,False,2023-01-05,2024-02-16,0.0,2023
+Boerner,"Boerner, Tasha",D,AD77,44,17,12,5,27.3,46,62,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Muratsuchi,"Muratsuchi, Al",D,AD66,50,12,12,0,24.0,46,68,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Stephanie Nguyen,"Nguyen, Stephanie",D,AD10,24,12,11,1,45.8,54,18,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Ortega,"Ortega, Liz",D,AD20,33,15,11,4,33.3,54,50,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Pacheco,"Pacheco, Blanca",D,AD64,24,12,10,2,41.7,56,24,,,Assembly,False,2022-12-14,2024-02-16,0.0,2023
+Bains,"Bains, Jasmeet",D,AD35,29,11,10,1,34.5,56,49,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Cervantes,"Cervantes, Sabrina",D,AD58,31,14,10,4,32.3,56,51,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Calderon,"Calderon, Lisa",D,AD56,39,15,10,5,25.6,56,64,,,Assembly,False,2023-02-02,2024-02-16,0.0,2023
+Dixon,"Dixon, Diane",R,AD72,39,10,10,0,25.6,56,64,4.0,8.0,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Jackson,"Jackson, Corey A.",D,AD60,42,15,10,5,23.8,56,69,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Low,"Low, Evan",D,AD26,46,14,10,4,21.7,56,72,,,Assembly,False,2023-01-19,2024-02-16,0.0,2023
+Joe Patterson,"Patterson, Joe",R,AD05,48,15,10,5,20.8,56,74,4.0,13.0,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Waldron,"Waldron, Marie",R,AD75,29,10,9,1,31.0,64,55,6.0,4.0,Assembly,False,2022-12-09,2024-02-16,0.0,2023
+Davies,"Davies, Laurie",R,AD74,35,10,9,1,25.7,64,63,6.0,7.0,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Hoover,"Hoover, Josh",R,AD07,42,10,9,1,21.4,64,73,6.0,12.0,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Flora,"Flora, Heath",R,AD09,49,9,9,0,18.4,64,75,6.0,14.0,Assembly,False,2023-02-09,2024-02-16,1.0,2023
+Soria,"Soria, Esmeralda",D,AD27,27,9,8,1,29.6,68,59,,,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Villapudua,"Villapudua, Carlos",D,AD13,32,10,8,2,25.0,68,66,,,Assembly,False,2023-01-26,2024-02-16,0.0,2023
+Jim Patterson,"Patterson, Jim",R,AD08,33,10,8,2,24.2,68,67,10.0,9.0,Assembly,False,2023-01-24,2024-02-16,0.0,2023
+Lackey,"Lackey, Tom",R,AD34,34,11,8,3,23.5,68,70,10.0,10.0,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Ta,"Ta, Tri",R,AD70,48,11,8,3,16.7,68,76,10.0,15.0,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Gallagher,"Gallagher, James",R,AD03,23,10,7,3,30.4,73,58,13.0,5.0,Assembly,False,2022-12-06,2024-02-16,0.0,2023
+Robert Rivas,"Rivas, Robert",D,AD29,8,6,6,0,75.0,74,1,,,Assembly,False,2023-01-18,2024-02-16,0.0,2023
+Sanchez,"Sanchez, Kate",R,AD71,26,8,6,2,23.1,74,71,14.0,11.0,Assembly,False,2023-01-04,2024-02-16,0.0,2023
+Megan Dahle,"Dahle, Megan",R,AD01,13,5,5,0,38.5,76,35,15.0,1.0,Assembly,False,2023-01-30,2024-02-16,0.0,2023
+Wallis,"Wallis, Greg",R,AD47,37,6,5,1,13.5,76,77,15.0,16.0,Assembly,False,2023-01-13,2024-02-16,0.0,2023
+Bennett,"Bennett, Steve",D,AD38,30,8,4,4,13.3,78,78,,,Assembly,False,2023-02-02,2024-02-16,0.0,2023
+Vince Fong,"Fong, Vince",R,AD32,28,5,3,2,10.7,79,79,17.0,17.0,Assembly,False,2022-12-05,2024-02-14,0.0,2023
+Essayli,"Essayli, Bill",R,AD63,37,0,0,0,0.0,80,80,18.0,18.0,Assembly,False,2022-12-05,2024-02-16,0.0,2023
+Laird,"Laird, John",D,SD17,39,29,29,0,74.4,1,2,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Dodd,"Dodd, Bill",D,SD03,43,29,27,2,62.8,2,5,,,Senate,False,2022-12-05,2024-03-12,0.0,2023
+Umberg,"Umberg, Thomas J.",D,SD34,40,28,26,2,65.0,3,4,,,Senate,False,2022-12-05,2024-01-17,0.0,2023
+Portantino,"Portantino, Anthony J.",D,SD25,41,33,25,8,61.0,4,6,,,Senate,False,2022-12-05,2024-02-14,0.0,2023
+Cortese,"Cortese, Dave",D,SD15,40,26,23,3,57.5,5,8,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Ashby,"Ashby, Angelique V.",D,SD08,39,24,22,2,56.4,6,9,,,Senate,False,2023-01-18,2024-02-16,0.0,2023
+Wahab,"Wahab, Aisha",D,SD10,41,26,22,4,53.7,6,11,,,Senate,False,2023-02-09,2024-02-16,0.0,2023
+Wiener,"Wiener, Scott D.",D,SD11,41,28,22,6,53.7,6,11,,,Senate,False,2022-12-05,2024-03-12,6.0,2023
+Caballero,"Caballero, Anna M.",D,SD14,38,26,20,6,52.6,9,14,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Allen,"Allen, Benjamin",D,SD24,40,25,20,5,50.0,9,17,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Skinner,"Skinner, Nancy",D,SD09,40,24,20,4,50.0,9,17,,,Senate,False,2022-12-05,2024-02-16,8.0,2023
+Roth,"Roth, Richard D.",D,SD31,36,21,19,2,52.8,12,13,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Blakespear,"Blakespear, Catherine",D,SD38,37,21,19,2,51.4,12,15,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Limón,"Limón, Monique",D,SD19,41,28,19,9,46.3,12,19,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Rubio,"Rubio, Susan",D,SD22,31,20,18,2,58.1,15,7,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Min,"Min, Dave",D,SD37,35,20,18,2,51.4,15,15,,,Senate,False,2023-01-25,2024-02-16,0.0,2023
+Newman,"Newman, Josh",D,SD29,40,20,18,2,45.0,15,20,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Becker,"Becker, Josh",D,SD13,39,21,17,4,43.6,18,21,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Bradford,"Bradford, Steven",D,SD35,40,23,17,6,42.5,18,22,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Eggman,"Eggman, Susan Talamantes",D,SD05,29,18,16,2,55.2,20,10,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Durazo,"Durazo, Maria Elena",D,SD26,36,20,15,5,41.7,21,23,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Menjivar,"Menjivar, Caroline",D,SD20,37,20,14,6,37.8,22,25,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Stern,"Stern, Henry I.",D,SD27,37,17,14,3,37.8,22,25,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Ochoa Bogh,"Ochoa Bogh, Rosilicie",R,SD23,40,18,14,4,35.0,22,28,1.0,2.0,Senate,False,2022-12-05,2024-02-16,0.0,2023
+McGuire,"McGuire, Mike",D,SD02,17,14,13,1,76.5,25,1,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Archuleta,"Archuleta, Bob",D,SD30,33,13,13,0,39.4,25,24,,,Senate,False,2023-02-08,2024-02-16,0.0,2023
+Padilla,"Padilla, Steve C.",D,SD18,39,16,13,3,33.3,25,29,,,Senate,False,2023-02-08,2024-02-16,0.0,2023
+Glazer,"Glazer, Steven M.",D,SD07,40,14,13,1,32.5,25,30,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Seyarto,"Seyarto, Kelly",R,SD32,37,13,12,1,32.4,29,31,2.0,3.0,Senate,False,2022-12-05,2024-02-15,0.0,2023
+Smallwood-Cuevas,"Smallwood-Cuevas, Lola",D,SD28,28,12,9,3,32.1,30,32,,,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Hurtado,"Hurtado, Melissa",D,SD16,29,11,9,2,31.0,30,33,,,Senate,False,2023-01-05,2024-02-16,0.0,2023
+Gonzalez,"Gonzalez, Lena A.",D,SD33,34,14,9,5,26.5,30,35,,,Senate,False,2022-12-16,2024-02-16,0.0,2023
+Grove,"Grove, Shannon",R,SD12,30,9,8,1,26.7,33,34,3.0,4.0,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Atkins,"Atkins, Toni G.",D,SD39,9,7,6,1,66.7,34,3,,,Senate,False,2023-02-09,2024-02-16,0.0,2023
+Jones,"Jones, Brian W.",R,SD40,16,7,6,1,37.5,34,27,4.0,1.0,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Dahle,"Dahle, Brian",R,SD01,23,10,6,4,26.1,34,36,4.0,5.0,Senate,False,2023-01-24,2024-02-16,0.0,2023
+Wilk,"Wilk, Scott",R,SD21,23,6,6,0,26.1,34,36,4.0,5.0,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Alvarado-Gil,"Alvarado-Gil, Marie",R,SD04,32,7,5,2,15.6,38,38,7.0,7.0,Senate,False,2023-01-19,2024-02-16,0.0,2023
+Nguyen,"Nguyen, Janet",R,SD36,38,5,5,0,13.2,38,40,7.0,9.0,Senate,False,2022-12-05,2024-02-16,0.0,2023
+Niello,"Niello, Roger W.",R,SD06,30,5,4,1,13.3,40,39,9.0,8.0,Senate,False,2023-01-24,2024-02-16,0.0,2023
+Berman,"Berman, Marc",D,AD23,42,30,29,1,69.0,1,3,,,Assembly,False,2024-12-02,2026-02-23,0.0,2025
+Bryan,"Bryan, Isaac G.",D,AD55,35,27,23,4,65.7,2,5,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Aguiar-Curry,"Aguiar-Curry, Cecilia M.",D,AD04,37,24,23,1,62.2,2,8,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Irwin,"Irwin, Jacqui",D,AD42,37,24,23,1,62.2,2,8,,,Assembly,False,2025-01-13,2026-03-05,0.0,2025
+Bonta,"Bonta, Mia",D,AD18,35,22,22,0,62.9,5,6,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Stefani,"Stefani, Catherine",D,AD19,35,24,22,2,62.9,5,6,,,Assembly,False,2025-02-03,2026-02-20,0.0,2025
+Mark González,"González, Mark",D,AD54,37,25,22,3,59.5,5,12,,,Assembly,False,2025-02-03,2026-02-20,0.0,2025
+Wicks,"Wicks, Buffy",D,AD14,29,21,21,0,72.4,8,2,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Valencia,"Valencia, Avelino",D,AD68,31,22,21,1,67.7,8,4,,,Assembly,False,2025-01-08,2026-02-20,0.0,2025
+Pellerin,"Pellerin, Gail",D,AD28,35,22,21,1,60.0,8,10,,,Assembly,False,2025-01-08,2026-02-20,0.0,2025
+Fong,"Fong, Mike",D,AD49,35,21,20,1,57.1,11,13,,,Assembly,False,2024-12-16,2026-02-20,0.0,2025
+Haney,"Haney, Matt",D,AD17,35,21,20,1,57.1,11,13,,,Assembly,False,2025-01-16,2026-02-20,0.0,2025
+Kalra,"Kalra, Ash",D,AD25,35,23,20,3,57.1,11,13,,,Assembly,False,2025-01-15,2026-02-20,0.0,2025
+Ramos,"Ramos, James C.",D,AD45,30,20,18,2,60.0,14,10,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Bauer-Kahan,"Bauer-Kahan, Rebecca",D,AD16,33,21,18,3,54.5,14,16,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Addis,"Addis, Dawn",D,AD30,35,19,18,1,51.4,14,17,,,Assembly,False,2025-01-23,2026-02-20,0.0,2025
+Pacheco,"Pacheco, Blanca",D,AD64,35,20,18,2,51.4,14,17,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Schiavo,"Schiavo, Pilar",D,AD40,36,19,18,1,50.0,14,19,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Connolly,"Connolly, Damon",D,AD12,35,19,17,2,48.6,19,21,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Ward,"Ward, Christopher M.",D,AD78,35,20,17,3,48.6,19,21,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Gipson,"Gipson, Mike A.",D,AD65,36,20,17,3,47.2,19,24,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Schultz,"Schultz, Nick",D,AD44,36,21,17,4,47.2,19,24,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Zbur,"Zbur, Rick Chavez",D,AD51,36,18,17,1,47.2,19,24,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Alvarez,"Alvarez, David",D,AD80,33,20,16,4,48.5,24,23,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Gabriel,"Gabriel, Jesse",D,AD46,34,16,16,0,47.1,24,27,,,Assembly,False,2025-01-08,2026-02-20,45.0,2025
+Dixon,"Dixon, Diane",R,AD72,35,16,16,0,45.7,24,28,1.0,1.0,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Rogers,"Rogers, Chris",D,AD02,35,23,16,7,45.7,24,28,,,Assembly,False,2025-01-16,2026-02-20,0.0,2025
+Nguyen,"Nguyen, Stephanie",D,AD10,30,16,15,1,50.0,28,19,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Quirk-Silva,"Quirk-Silva, Sharon",D,AD67,33,17,15,2,45.5,28,30,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Bennett,"Bennett, Steve",D,AD38,34,19,15,4,44.1,28,31,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Wilson,"Wilson, Lori D.",D,AD11,34,18,15,3,44.1,28,31,,,Assembly,False,2025-01-29,2026-02-19,0.0,2025
+Michelle Rodriguez,"Rodriguez, Michelle",D,AD53,35,17,15,2,42.9,28,33,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Carrillo,"Carrillo, Juan",D,AD39,35,18,14,4,40.0,33,36,,,Assembly,False,2025-01-16,2026-02-20,0.0,2025
+Hadwick,"Hadwick, Heather",R,AD01,35,16,14,2,40.0,33,36,2.0,2.0,Assembly,False,2025-01-14,2026-02-20,0.0,2025
+Ávila Farías,"Ávila Farías, Anamarie",D,AD15,35,16,14,2,40.0,33,36,,,Assembly,False,2025-02-14,2026-02-20,0.0,2025
+Soria,"Soria, Esmeralda",D,AD27,36,18,14,4,38.9,33,41,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Hoover,"Hoover, Josh",R,AD07,37,15,14,1,37.8,33,44,2.0,4.0,Assembly,False,2025-01-21,2026-02-20,0.0,2025
+Ransom,"Ransom, Rhodesia",D,AD13,32,17,13,4,40.6,38,35,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Davies,"Davies, Laurie",R,AD74,34,14,13,1,38.2,38,43,4.0,3.0,Assembly,False,2025-01-13,2026-02-20,0.0,2025
+Lee,"Lee, Alex",D,AD24,35,16,13,3,37.1,38,47,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Papan,"Papan, Diane",D,AD21,35,16,13,3,37.1,38,47,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Sharp-Collins,"Sharp-Collins, LaShae",D,AD79,35,16,13,3,37.1,38,47,,,Assembly,False,2025-02-03,2026-02-20,0.0,2025
+Solache,"Solache, Jr., José Luis",D,AD62,36,15,13,2,36.1,38,51,,,Assembly,False,2025-01-28,2026-02-20,0.0,2025
+Ahrens,"Ahrens, Patrick",D,AD26,37,15,13,2,35.1,38,53,,,Assembly,False,2025-01-14,2026-02-20,0.0,2025
+Celeste Rodriguez,"Rodriguez, Celeste",D,AD43,28,15,12,3,42.9,45,33,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Krell,"Krell, Maggy",D,AD06,30,12,12,0,40.0,45,36,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Lowenthal,"Lowenthal, Josh",D,AD69,30,12,12,0,40.0,45,36,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Elhawary,"Elhawary, Sade",D,AD57,31,16,12,4,38.7,45,42,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Harabedian,"Harabedian, John",D,AD41,32,17,12,5,37.5,45,45,,,Assembly,False,2025-01-06,2026-02-20,0.0,2025
+Hart,"Hart, Gregg",D,AD37,32,14,12,2,37.5,45,45,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Petrie-Norris,"Petrie-Norris, Cottie",D,AD73,34,15,12,3,35.3,45,52,,,Assembly,False,2025-01-21,2026-02-20,0.0,2025
+Patel,"Patel, Darshana R.",D,AD76,30,13,11,2,36.7,52,50,,,Assembly,False,2025-01-08,2026-02-20,0.0,2025
+Chen,"Chen, Phillip",R,AD59,33,11,11,0,33.3,52,54,5.0,5.0,Assembly,False,2024-12-18,2026-02-20,0.0,2025
+McKinnor,"McKinnor, Tina",D,AD61,33,15,11,4,33.3,52,54,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Alanis,"Alanis, Juan",R,AD22,35,12,11,1,31.4,52,57,5.0,6.0,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Muratsuchi,"Muratsuchi, Al",D,AD66,35,14,11,3,31.4,52,57,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Lackey,"Lackey, Tom",R,AD34,36,12,10,2,27.8,57,60,7.0,7.0,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Patterson,"Patterson, Joe",R,AD05,37,11,10,1,27.0,57,62,7.0,8.0,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Calderon,"Calderon, Lisa",D,AD56,28,10,9,1,32.1,59,56,,,Assembly,False,2024-12-10,2026-02-20,0.0,2025
+Blanca Rubio,"Rubio, Blanca E.",D,AD48,31,13,9,4,29.0,59,59,,,Assembly,False,2025-01-16,2026-02-20,0.0,2025
+Jackson,"Jackson, Corey A.",D,AD60,33,13,9,4,27.3,59,61,,,Assembly,False,2024-12-12,2026-02-20,0.0,2025
+Caloza,"Caloza, Jessica",D,AD52,34,13,9,4,26.5,59,64,,,Assembly,False,2025-01-16,2026-02-20,0.0,2025
+Wallis,"Wallis, Greg",R,AD47,30,9,8,1,26.7,63,63,9.0,9.0,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Arambula,"Arambula, Joaquin",D,AD31,35,9,8,1,22.9,63,68,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Ta,"Ta, Tri",R,AD70,35,11,8,3,22.9,63,68,9.0,10.0,Assembly,False,2024-12-19,2026-02-20,0.0,2025
+Garcia,"Garcia, Robert",D,AD50,28,9,7,2,25.0,66,65,,,Assembly,False,2024-12-20,2026-02-19,0.0,2025
+Boerner,"Boerner, Tasha",D,AD77,30,13,7,6,23.3,66,67,,,Assembly,False,2025-01-06,2026-02-20,0.0,2025
+Ortega,"Ortega, Liz",D,AD20,33,12,7,5,21.2,66,70,,,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Jeff Gonzalez,"Gonzalez, Jeff",R,AD36,35,7,7,0,20.0,66,71,11.0,11.0,Assembly,False,2025-02-10,2026-02-20,0.0,2025
+Bains,"Bains, Jasmeet",D,AD35,25,8,6,2,24.0,70,66,,,Assembly,False,2025-01-15,2026-02-20,0.0,2025
+Macedo,"Macedo, Alexandra",R,AD33,33,6,6,0,18.2,70,72,12.0,12.0,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Flora,"Flora, Heath",R,AD09,28,6,4,2,14.3,72,73,13.0,13.0,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Johnson,"Johnson, Natasha",R,AD63,28,4,4,0,14.3,72,73,13.0,13.0,Assembly,True,2026-01-26,2026-02-20,0.0,2025
+Tangipa,"Tangipa, David J.",R,AD08,32,4,3,1,9.4,74,76,15.0,16.0,Assembly,False,2024-12-03,2026-02-20,0.0,2025
+Rivas,"Rivas, Robert",D,AD29,2,2,2,0,100.0,75,1,,,Assembly,False,2025-01-15,2026-02-18,0.0,2025
+Ellis,"Ellis, Stan",R,AD32,16,3,2,1,12.5,75,75,16.0,15.0,Assembly,True,2025-02-19,2026-02-20,0.0,2025
+Sanchez,"Sanchez, Kate",R,AD71,18,1,1,0,5.6,77,77,17.0,17.0,Assembly,False,2025-01-06,2026-02-19,0.0,2025
+Castillo,"Castillo, Leticia",R,AD58,21,1,1,0,4.8,77,78,17.0,18.0,Assembly,False,2025-01-27,2026-02-20,0.0,2025
+Gallagher,"Gallagher, James",R,AD03,22,2,1,1,4.5,77,79,17.0,19.0,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+DeMaio,"DeMaio, Carl",R,AD75,31,1,1,0,3.2,77,80,17.0,20.0,Assembly,False,2024-12-02,2026-02-20,0.0,2025
+Essayli,"Essayli, Bill",R,AD63,17,0,0,0,0.0,81,81,21.0,21.0,Assembly,True,2024-12-02,2025-02-21,0.0,2025
+Laird,"Laird, John",D,SD17,34,30,30,0,88.2,1,1,,,Senate,False,2024-12-02,2026-02-20,11.0,2025
+Durazo,"Durazo, Maria Elena",D,SD26,35,26,25,1,71.4,2,3,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Umberg,"Umberg, Thomas J.",D,SD34,36,26,24,2,66.7,3,4,,,Senate,False,2024-12-02,2026-02-19,0.0,2025
+Arreguín,"Arreguín, Jesse",D,SD07,35,23,22,1,62.9,4,6,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Cortese,"Cortese, Dave",D,SD15,35,23,22,1,62.9,4,6,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Cabaldon,"Cabaldon, Christopher",D,SD03,33,22,21,1,63.6,6,5,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Grayson,"Grayson, Timothy S.",D,SD09,34,21,21,0,61.8,6,8,,,Senate,False,2025-01-23,2026-02-19,0.0,2025
+Allen,"Allen, Benjamin",D,SD24,35,23,21,2,60.0,6,9,,,Senate,False,2024-12-05,2026-02-20,0.0,2025
+Blakespear,"Blakespear, Catherine S.",D,SD38,35,22,21,1,60.0,6,9,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Reyes,"Reyes, Eloise Gómez",D,SD29,35,23,21,2,60.0,6,9,,,Senate,False,2025-01-30,2026-02-20,0.0,2025
+Weber Pierson,"Weber Pierson, M.D., Akilah",D,SD39,35,23,21,2,60.0,6,9,,,Senate,False,2024-12-02,2026-02-19,0.0,2025
+Wiener,"Wiener, Scott D.",D,SD11,35,22,21,1,60.0,6,9,,,Senate,False,2024-12-03,2026-02-20,7.0,2025
+Caballero,"Caballero, Anna M.",D,SD14,35,30,20,10,57.1,13,14,,,Senate,False,2025-01-15,2026-02-19,0.0,2025
+Padilla,"Padilla, Stephen C.",D,SD18,36,24,20,4,55.6,13,15,,,Senate,False,2024-12-02,2026-02-19,0.0,2025
+Archuleta,"Archuleta, Bob",D,SD30,35,20,19,1,54.3,15,16,,,Senate,False,2025-02-10,2026-02-20,0.0,2025
+Cervantes,"Cervantes, Sabrina",D,SD31,35,22,19,3,54.3,15,16,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Becker,"Becker, Josh",D,SD13,36,21,18,3,50.0,17,18,,,Senate,False,2025-01-30,2026-02-20,0.0,2025
+McNerney,"McNerney, Jerry",D,SD05,35,23,17,6,48.6,18,19,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Wahab,"Wahab, Aisha",D,SD10,35,19,17,2,48.6,18,19,,,Senate,False,2024-12-03,2026-02-20,0.0,2025
+Pérez,"Pérez, Sasha Renée",D,SD25,37,23,17,6,45.9,18,22,,,Senate,False,2024-12-20,2026-02-20,0.0,2025
+Richardson,"Richardson, Laura",D,SD35,34,21,16,5,47.1,21,21,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Stern,"Stern, Henry I.",D,SD27,35,18,16,2,45.7,21,23,,,Senate,False,2025-02-13,2026-02-20,0.0,2025
+Limón,"Limón, Monique",D,SD21,19,15,15,0,78.9,23,2,,,Senate,False,2025-02-11,2026-02-20,0.0,2025
+Ashby,"Ashby, Angelique V.",D,SD08,33,20,15,5,45.5,23,24,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Smallwood-Cuevas,"Smallwood-Cuevas, Lola",D,SD28,32,17,14,3,43.8,25,27,,,Senate,False,2024-12-03,2026-02-20,0.0,2025
+Menjivar,"Menjivar, Caroline",D,SD20,33,19,14,5,42.4,25,28,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Rubio,"Rubio, Susan",D,SD22,36,15,13,2,36.1,27,29,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Seyarto,"Seyarto, Kelly",R,SD32,35,14,12,2,34.3,28,30,1.0,1.0,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Gonzalez,"Gonzalez, Lena A.",D,SD33,25,13,11,2,44.0,29,26,,,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Niello,"Niello, Roger W.",R,SD06,35,11,11,0,31.4,29,31,2.0,2.0,Senate,False,2024-12-18,2026-02-20,0.0,2025
+Ochoa Bogh,"Ochoa Bogh, Rosilicie",R,SD19,35,10,10,0,28.6,31,32,3.0,3.0,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Hurtado,"Hurtado, Melissa",D,SD16,32,13,9,4,28.1,32,33,,,Senate,False,2025-01-27,2026-02-20,0.0,2025
+Grove,"Grove, Shannon",R,SD12,33,9,9,0,27.3,32,34,4.0,4.0,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Choi,"Choi, Steven S.",R,SD37,30,7,7,0,23.3,34,35,5.0,5.0,Senate,False,2025-02-03,2026-02-20,0.0,2025
+Jones,"Jones, Brian W.",R,SD40,28,6,6,0,21.4,35,36,6.0,6.0,Senate,False,2024-12-02,2026-02-20,0.0,2025
+McGuire,"McGuire, Mike",D,SD02,11,5,5,0,45.5,36,24,,,Senate,False,2025-02-20,2026-02-20,0.0,2025
+Valladares,"Valladares, Suzette Martinez",R,SD23,33,5,5,0,15.2,36,37,7.0,7.0,Senate,False,2024-12-02,2026-02-20,0.0,2025
+Strickland,"Strickland, Tony",R,SD36,18,2,2,0,11.1,38,38,8.0,8.0,Senate,True,2025-01-23,2026-02-20,0.0,2025
+Dahle,"Dahle, Megan",R,SD01,14,2,1,1,7.1,39,39,9.0,9.0,Senate,False,2025-02-20,2026-02-20,0.0,2025
+Alvarado-Gil,"Alvarado-Gil, Marie",R,SD04,30,1,1,0,3.3,39,40,9.0,10.0,Senate,False,2025-01-27,2026-02-20,0.0,2025
