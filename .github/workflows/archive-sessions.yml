@@ -1,0 +1,48 @@
+name: archive-sessions
+# Packs earlier sessions' leginfo exports into compact files on the session-archive branch.
+# Older sessions do not change, so this runs once (or when the packing script changes).
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/workflows/archive-sessions.yml", "scripts/archive_session.py"]
+permissions:
+  contents: write
+jobs:
+  pack:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix: {year: [2017, 2019, 2021, 2023]}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: {python-version: "3.12"}
+      - run: curl -fSL --retry 3 -o pubinfo_${{ matrix.year }}.zip https://downloads.leginfo.legislature.ca.gov/pubinfo_${{ matrix.year }}.zip
+      - run: sha256sum pubinfo_${{ matrix.year }}.zip | tee sha256.txt && ls -la pubinfo_${{ matrix.year }}.zip
+      - run: python scripts/archive_session.py pubinfo_${{ matrix.year }}.zip out/pubinfo_${{ matrix.year }}
+      - run: cp sha256.txt out/pubinfo_${{ matrix.year }}/SOURCE_SHA256.txt && date -u +%F > out/pubinfo_${{ matrix.year }}/DOWNLOADED.txt
+      - uses: actions/upload-artifact@v7
+        with: {name: "pubinfo_${{ matrix.year }}", path: out/}
+
+  publish:
+    needs: pack
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v7
+        with: {path: art, merge-multiple: true}
+      - name: Commit to session-archive branch
+        run: |
+          git init -q -b session-archive repo && cd repo
+          mkdir -p data/archive && cp -r ../art/* data/archive/
+          cat > README.md <<'MD'
+          Compact copies of earlier California legislative sessions from the leginfo bulk export
+          (downloads.leginfo.legislature.ca.gov), built by .github/workflows/archive-sessions.yml on main.
+          Each folder holds gzipped tables, veto message text and introduced-text statistics. SOURCE_SHA256.txt
+          records the checksum of the original download.
+          MD
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -qm "Archive sessions 2017-18 to 2023-24"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git push -f origin session-archive
+          du -sh data/archive/*
