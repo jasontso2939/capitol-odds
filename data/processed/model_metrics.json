@@ -24,39 +24,39 @@
     },
     {
       "band": "(0.2, 0.3]",
-      "bills": 3302,
+      "bills": 3314,
       "predicted": 0.253,
-      "actual": 0.263
+      "actual": 0.265
     },
     {
       "band": "(0.3, 0.4]",
-      "bills": 4445,
+      "bills": 4439,
       "predicted": 0.351,
-      "actual": 0.361
+      "actual": 0.36
     },
     {
       "band": "(0.4, 0.5]",
-      "bills": 4808,
+      "bills": 4796,
       "predicted": 0.448,
-      "actual": 0.437
+      "actual": 0.438
     },
     {
       "band": "(0.5, 0.6]",
-      "bills": 3085,
+      "bills": 3095,
       "predicted": 0.545,
-      "actual": 0.542
+      "actual": 0.54
     },
     {
       "band": "(0.6, 0.7]",
-      "bills": 1383,
-      "predicted": 0.642,
-      "actual": 0.629
+      "bills": 1374,
+      "predicted": 0.641,
+      "actual": 0.634
     },
     {
       "band": "(0.7, 1.0]",
-      "bills": 402,
+      "bills": 407,
       "predicted": 0.742,
-      "actual": 0.741
+      "actual": 0.732
     }
   ]
 }
