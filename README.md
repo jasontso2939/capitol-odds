@@ -1,6 +1,6 @@
 # California Legislative Scorecard
 
-A transparent, reproducible scorecard for every member of the California Legislature since the 2017-18 session, rebuilt from the Legislature's official bulk data. One command downloads the data, parses it, applies documented counting rules and publishes a searchable dashboard. A weekly job refreshes it, reports what moved, and rolls over to each new session on its own.
+A transparent, reproducible scorecard for every member of the California Legislature since the 2017-18 session, plus a statistical model that estimates a bill's chance of becoming law, step by step. Both are rebuilt from the Legislature's official bulk data. One command downloads the data, parses it, applies documented counting rules and publishes a searchable dashboard. A weekly job refreshes it, reports what moved, and rolls over to each new session on its own.
 
 **Dashboard:** https://jasontso2939.github.io/calleg-scorecard/
 
@@ -31,6 +31,18 @@ Most legislative rankings hide their counting decisions. Here each decision is a
 - **Partial terms.** Members who joined or left mid-session are flagged, with sources.
 
 Every number comes from small tested functions, and every bill links to its official history. Hand-checked reference files cover what the export gets wrong or leaves out: seat changes, legislators whose listed names changed, renamed committees, and a 148-message read-through of veto messages that checks the veto-reason labels.
+
+## The model
+
+The Bill outlook page estimates the chance a newly introduced bill clears each step to the Governor's signature, using only what is known at introduction: the committee it's referred to, the author's party, house and track record, coauthors, fiscal flags, timing, and whether it's a spot bill.
+
+- **One logistic regression per step** (policy committee, Appropriations, floor, second house, Governor), each fit only on bills that reached that step. The steps multiply out to exactly the bills that were signed, and a test checks it.
+- **Tested on a session it never saw.** Trained on 2017-18 through 2023-24 and tested on 2025-26: AUC 0.66, calibrated within 2 points in every band with 500+ bills. By step, the first committee is fairly predictable (AUC 0.78) and the second house is close to a coin flip (0.54).
+- **A likely range, not just a number.** 40 bootstrap refits, each scored at the level of a different past session, give a 10th to 90th percentile band.
+- **Runs in the browser.** Every coefficient is exported and the page computes each step by hand; a test checks the hand computation against scikit-learn.
+- **Trains only on finished sessions**, so bills still moving are never counted as failures.
+
+Features that didn't help are documented too (bill-subject text, committee party balance, members' past votes on the author). Full method, accuracy tables and limits: [docs/MODEL.md](docs/MODEL.md).
 
 ## Ten years at a glance (regular session, Assembly and Senate bills with a legislator author)
 
@@ -86,6 +98,15 @@ python3 -m http.server -d site   # open http://localhost:8000
 | `site/` | Static dashboard, no build step, no dependencies |
 | `docs/` | Methodology, data dictionary, committees, and the model (`MODEL.md`) |
 
+## Decisions and tradeoffs
+
+- **Official bulk data, not scraped pages.** Slower to set up, but every number traces back to the Legislature's own tables, and the build is reproducible from scratch.
+- **Show the counting rules as switches.** Rankings move when joint authors or budget bills are counted differently, so the reader gets the toggle instead of my choice.
+- **Staged model over a single one.** Both rank bills equally well; the staged one says where a bill's risk sits, which is what a reader can act on.
+- **Report accuracy honestly.** AUC 0.66 is useful for comparing scenarios and weak for any single bill, and the page says so.
+- **Static site, no server.** The dashboard is plain files with per-page data, so it's free to host, fast on a phone, and can't go down.
+- **Automate the boring part.** A weekly job rebuilds, tests and flags anything that moved, and rolls over to a new session without a code change.
+
 ## Limits, stated plainly
 
 - Counts measure output, not the quality or importance of a bill.
@@ -99,6 +120,10 @@ python3 -m http.server -d site   # open http://localhost:8000
 1. Sessions before 2017 (the export goes back further).
 2. Bill text and registered support and opposition as model inputs.
 3. An MCP server so an AI assistant can answer questions about the data with source links.
+
+## How it was built
+
+Built with Claude Code. I chose the questions, the counting rules and the model design, and directed and reviewed the implementation. Tests cover the rules, the data quality and the model.
 
 ## License and disclaimer
 
