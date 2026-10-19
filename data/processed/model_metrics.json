@@ -18,43 +18,43 @@
   "calibration": [
     {
       "band": "(0.0, 0.2]",
-      "bills": 2253,
+      "bills": 2250,
       "predicted": 0.138,
       "actual": 0.14
     },
     {
       "band": "(0.2, 0.3]",
-      "bills": 3306,
+      "bills": 3312,
       "predicted": 0.253,
       "actual": 0.265
     },
     {
       "band": "(0.3, 0.4]",
-      "bills": 4448,
+      "bills": 4437,
       "predicted": 0.351,
-      "actual": 0.359
+      "actual": 0.358
     },
     {
       "band": "(0.4, 0.5]",
-      "bills": 4795,
+      "bills": 4801,
       "predicted": 0.448,
-      "actual": 0.438
+      "actual": 0.439
     },
     {
       "band": "(0.5, 0.6]",
-      "bills": 3095,
+      "bills": 3108,
       "predicted": 0.545,
       "actual": 0.541
     },
     {
       "band": "(0.6, 0.7]",
-      "bills": 1370,
-      "predicted": 0.641,
-      "actual": 0.634
+      "bills": 1360,
+      "predicted": 0.642,
+      "actual": 0.635
     },
     {
       "band": "(0.7, 1.0]",
-      "bills": 408,
+      "bills": 407,
       "predicted": 0.742,
       "actual": 0.73
     }
@@ -78,7 +78,7 @@
         "bills_reaching": 3148,
         "actual_pass_rate": 0.812,
         "predicted_pass_rate": 0.812,
-        "auc": 0.636
+        "auc": 0.637
       },
       {
         "step": "floor",
@@ -86,7 +86,7 @@
         "bills_reaching": 2557,
         "actual_pass_rate": 0.978,
         "predicted_pass_rate": 0.98,
-        "auc": 0.593
+        "auc": 0.592
       },
       {
         "step": "second_house",
@@ -101,16 +101,16 @@
         "name": "Governor",
         "bills_reaching": 1888,
         "actual_pass_rate": 0.871,
-        "predicted_pass_rate": 0.838,
-        "auc": 0.62
+        "predicted_pass_rate": 0.839,
+        "auc": 0.621
       }
     ],
     "cv_auc": 0.673,
     "calibration": [
       {
         "band": "(0.0, 0.2]",
-        "bills": 2279,
-        "predicted": 0.125,
+        "bills": 2278,
+        "predicted": 0.124,
         "actual": 0.144
       },
       {
@@ -121,33 +121,33 @@
       },
       {
         "band": "(0.3, 0.4]",
-        "bills": 4487,
+        "bills": 4471,
         "predicted": 0.353,
-        "actual": 0.351
+        "actual": 0.352
       },
       {
         "band": "(0.4, 0.5]",
-        "bills": 5154,
+        "bills": 5167,
         "predicted": 0.449,
-        "actual": 0.439
+        "actual": 0.437
       },
       {
         "band": "(0.5, 0.6]",
-        "bills": 3285,
-        "predicted": 0.545,
-        "actual": 0.545
+        "bills": 3287,
+        "predicted": 0.544,
+        "actual": 0.546
       },
       {
         "band": "(0.6, 0.7]",
-        "bills": 1307,
+        "bills": 1306,
         "predicted": 0.639,
-        "actual": 0.647
+        "actual": 0.645
       },
       {
         "band": "(0.7, 1.0]",
-        "bills": 230,
+        "bills": 233,
         "predicted": 0.729,
-        "actual": 0.713
+        "actual": 0.712
       }
     ],
     "step_rates": [
