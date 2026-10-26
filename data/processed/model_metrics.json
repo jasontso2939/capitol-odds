@@ -18,45 +18,45 @@
   "calibration": [
     {
       "band": "(0.0, 0.2]",
-      "bills": 2250,
+      "bills": 2253,
       "predicted": 0.138,
-      "actual": 0.14
+      "actual": 0.141
     },
     {
       "band": "(0.2, 0.3]",
-      "bills": 3312,
+      "bills": 3306,
       "predicted": 0.253,
       "actual": 0.265
     },
     {
       "band": "(0.3, 0.4]",
-      "bills": 4437,
+      "bills": 4445,
       "predicted": 0.351,
-      "actual": 0.358
+      "actual": 0.357
     },
     {
       "band": "(0.4, 0.5]",
-      "bills": 4801,
+      "bills": 4800,
       "predicted": 0.448,
-      "actual": 0.439
+      "actual": 0.44
     },
     {
       "band": "(0.5, 0.6]",
-      "bills": 3108,
+      "bills": 3100,
       "predicted": 0.545,
-      "actual": 0.541
+      "actual": 0.539
     },
     {
       "band": "(0.6, 0.7]",
-      "bills": 1360,
+      "bills": 1366,
       "predicted": 0.642,
-      "actual": 0.635
+      "actual": 0.636
     },
     {
       "band": "(0.7, 1.0]",
-      "bills": 407,
+      "bills": 405,
       "predicted": 0.742,
-      "actual": 0.73
+      "actual": 0.733
     }
   ],
   "stages": {
@@ -78,7 +78,7 @@
         "bills_reaching": 3148,
         "actual_pass_rate": 0.812,
         "predicted_pass_rate": 0.812,
-        "auc": 0.637
+        "auc": 0.636
       },
       {
         "step": "floor",
@@ -102,52 +102,52 @@
         "bills_reaching": 1888,
         "actual_pass_rate": 0.871,
         "predicted_pass_rate": 0.839,
-        "auc": 0.621
+        "auc": 0.62
       }
     ],
     "cv_auc": 0.673,
     "calibration": [
       {
         "band": "(0.0, 0.2]",
-        "bills": 2278,
-        "predicted": 0.124,
-        "actual": 0.144
+        "bills": 2286,
+        "predicted": 0.125,
+        "actual": 0.145
       },
       {
         "band": "(0.2, 0.3]",
-        "bills": 2933,
-        "predicted": 0.254,
+        "bills": 2924,
+        "predicted": 0.255,
         "actual": 0.26
       },
       {
         "band": "(0.3, 0.4]",
-        "bills": 4471,
+        "bills": 4478,
         "predicted": 0.353,
         "actual": 0.352
       },
       {
         "band": "(0.4, 0.5]",
-        "bills": 5167,
+        "bills": 5171,
         "predicted": 0.449,
         "actual": 0.437
       },
       {
         "band": "(0.5, 0.6]",
-        "bills": 3287,
-        "predicted": 0.544,
-        "actual": 0.546
+        "bills": 3286,
+        "predicted": 0.545,
+        "actual": 0.547
       },
       {
         "band": "(0.6, 0.7]",
-        "bills": 1306,
+        "bills": 1300,
         "predicted": 0.639,
-        "actual": 0.645
+        "actual": 0.647
       },
       {
         "band": "(0.7, 1.0]",
-        "bills": 233,
+        "bills": 230,
         "predicted": 0.729,
-        "actual": 0.712
+        "actual": 0.709
       }
     ],
     "step_rates": [

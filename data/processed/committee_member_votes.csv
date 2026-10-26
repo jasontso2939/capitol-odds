@@ -260,7 +260,7 @@ Blanca Rubio,Assembly,Assembly Governmental Organization,11,0,368,379,1.0
 Blanca Rubio,Assembly,Assembly Higher Education,0,0,34,34,1.0
 Blanca Rubio,Assembly,Assembly Human Services,3,0,17,20,1.0
 Blanca Rubio,Assembly,Assembly Insurance,1,0,29,30,1.0
-Blanca Rubio,Assembly,Assembly Local Government,9,0,225,234,1.0
+Blanca Rubio,Assembly,Assembly Local Government,8,0,222,230,1.0
 Blanca Rubio,Assembly,Assembly Petroleum and Gasoline Supply,1,0,1,2,1.0
 Blanca Rubio,Assembly,Assembly Public Employment and Retirement,0,0,14,14,1.0
 Blanca Rubio,Assembly,Assembly Rules,60,0,486,546,1.0
@@ -424,7 +424,7 @@ Carrillo,Assembly,Assembly Health,20,0,1016,1036,1.0
 Carrillo,Assembly,Assembly Housing and Community Development,2,1,92,95,0.989
 Carrillo,Assembly,Assembly Judiciary,0,0,9,9,1.0
 Carrillo,Assembly,Assembly Labor and Employment,1,0,104,105,1.0
-Carrillo,Assembly,Assembly Local Government,1,0,233,234,1.0
+Carrillo,Assembly,Assembly Local Government,0,0,230,230,1.0
 Carrillo,Assembly,Assembly Military and Veterans Affairs,5,0,38,43,1.0
 Carrillo,Assembly,Assembly Privacy and Consumer Protection,2,0,53,55,1.0
 Carrillo,Assembly,Assembly Public Safety,2,28,221,251,0.888
@@ -1046,7 +1046,7 @@ Hoover,Assembly,"Assembly Economic Development, Growth, and Household Impact",1,
 Hoover,Assembly,Assembly Education,26,36,440,502,0.924
 Hoover,Assembly,Assembly Environmental Safety and Toxic Materials,18,24,49,91,0.671
 Hoover,Assembly,Assembly Governmental Organization,0,0,7,7,1.0
-Hoover,Assembly,Assembly Local Government,15,11,86,112,0.887
+Hoover,Assembly,Assembly Local Government,15,11,85,111,0.885
 Hoover,Assembly,Assembly Natural Resources,32,84,348,464,0.806
 Hoover,Assembly,Assembly Privacy and Consumer Protection,32,26,121,179,0.823
 Hoover,Assembly,Assembly Transportation,11,43,221,275,0.837
@@ -1127,7 +1127,7 @@ Johnson,Assembly,Assembly Business and Professions,8,4,61,73,0.938
 Johnson,Assembly,Assembly Elections,5,16,25,46,0.61
 Johnson,Assembly,Assembly Health,38,23,84,145,0.785
 Johnson,Assembly,Assembly Judiciary,2,3,18,23,0.857
-Johnson,Assembly,Assembly Local Government,14,23,72,109,0.758
+Johnson,Assembly,Assembly Local Government,14,21,71,106,0.772
 Jones,Senate,Senate Appropriations,356,1207,6403,7966,0.841
 Jones,Senate,Senate Budget and Fiscal Review,5,21,14,40,0.4
 Jones,Senate,"Senate Business, Professions and Economic Development",29,26,149,204,0.851
@@ -1704,7 +1704,7 @@ Pacheco,Assembly,Assembly Environmental Safety and Toxic Materials,0,0,43,43,1.0
 Pacheco,Assembly,Assembly Governmental Organization,3,0,157,160,1.0
 Pacheco,Assembly,Assembly Health,0,0,17,17,1.0
 Pacheco,Assembly,Assembly Judiciary,68,1,842,911,0.999
-Pacheco,Assembly,Assembly Local Government,17,1,436,454,0.998
+Pacheco,Assembly,Assembly Local Government,16,1,433,450,0.998
 Pacheco,Assembly,Assembly Revenue and Taxation,2,0,55,57,1.0
 Pacheco,Assembly,Assembly Rules,3,0,895,898,1.0
 Padilla,Senate,Senate Agriculture,8,0,68,76,1.0
@@ -1828,13 +1828,13 @@ Ramos,Assembly,Assembly Elections,0,0,4,4,1.0
 Ramos,Assembly,Assembly Governmental Organization,19,1,265,285,0.996
 Ramos,Assembly,Assembly Health,15,5,242,262,0.98
 Ramos,Assembly,Assembly Higher Education,1,0,25,26,1.0
-Ramos,Assembly,Assembly Local Government,29,8,714,751,0.989
+Ramos,Assembly,Assembly Local Government,29,8,710,747,0.989
 Ramos,Assembly,Assembly Military and Veterans Affairs,0,0,52,52,1.0
 Ramos,Assembly,Assembly Public Safety,43,17,314,374,0.949
 Ramos,Assembly,Assembly Rules,34,0,663,697,1.0
 Ransom,Assembly,Assembly Agriculture,0,0,39,39,1.0
 Ransom,Assembly,Assembly Emergency Management,0,0,92,92,1.0
-Ransom,Assembly,Assembly Local Government,17,0,217,234,1.0
+Ransom,Assembly,Assembly Local Government,16,0,214,230,1.0
 Ransom,Assembly,Assembly Transportation,6,3,176,185,0.983
 Reyes,Assembly,Assembly Accountability and Administrative Review,0,0,3,3,1.0
 Reyes,Assembly,Assembly Aging and Long Term Care,0,0,47,47,1.0
@@ -2058,7 +2058,7 @@ Stefani,Assembly,"Assembly Economic Development, Growth, and Household Impact",0
 Stefani,Assembly,Assembly Elections,3,6,103,112,0.945
 Stefani,Assembly,Assembly Health,7,1,287,295,0.997
 Stefani,Assembly,Assembly Judiciary,2,0,457,459,1.0
-Stefani,Assembly,Assembly Local Government,3,0,223,226,1.0
+Stefani,Assembly,Assembly Local Government,2,0,220,222,1.0
 Steinorth,Assembly,Assembly Banking and Finance,4,3,10,17,0.769
 Steinorth,Assembly,Assembly Business and Professions,25,3,78,106,0.963
 Steinorth,Assembly,"Assembly Economic Development, Growth, and Household Impact",1,0,34,35,1.0
@@ -2116,7 +2116,7 @@ Ta,Assembly,Assembly Governmental Organization,16,8,164,188,0.953
 Ta,Assembly,Assembly Higher Education,23,16,150,189,0.904
 Ta,Assembly,Assembly Housing and Community Development,36,26,150,212,0.852
 Ta,Assembly,Assembly Human Services,2,0,15,17,1.0
-Ta,Assembly,Assembly Local Government,40,36,158,234,0.814
+Ta,Assembly,Assembly Local Government,40,34,156,230,0.821
 Ta,Assembly,Assembly Military and Veterans Affairs,0,0,23,23,1.0
 Ta,Assembly,Assembly Revenue and Taxation,23,11,117,151,0.914
 Ta,Assembly,Assembly Rules,2,0,96,98,1.0
@@ -2261,7 +2261,7 @@ Ward,Assembly,Assembly Emergency Management,0,0,59,59,1.0
 Ward,Assembly,Assembly Housing and Community Development,3,4,380,387,0.99
 Ward,Assembly,Assembly Human Services,0,0,77,77,1.0
 Ward,Assembly,Assembly Labor and Employment,5,4,333,342,0.988
-Ward,Assembly,Assembly Local Government,6,1,334,341,0.997
+Ward,Assembly,Assembly Local Government,6,1,330,337,0.997
 Ward,Assembly,Assembly Natural Resources,3,1,120,124,0.992
 Ward,Assembly,Assembly Privacy and Consumer Protection,5,0,248,253,1.0
 Ward,Assembly,Assembly Rules,0,0,33,33,1.0
@@ -2344,7 +2344,7 @@ Wilson,Assembly,Assembly Business and Professions,0,0,12,12,1.0
 Wilson,Assembly,Assembly Education,2,0,2,4,1.0
 Wilson,Assembly,Assembly Housing and Community Development,38,6,270,314,0.978
 Wilson,Assembly,Assembly Judiciary,0,0,16,16,1.0
-Wilson,Assembly,Assembly Local Government,23,1,430,454,0.998
+Wilson,Assembly,Assembly Local Government,22,1,427,450,0.998
 Wilson,Assembly,Assembly Privacy and Consumer Protection,27,2,302,331,0.993
 Wilson,Assembly,Assembly Public Safety,33,5,204,242,0.976
 Wilson,Assembly,Assembly Transportation,6,8,294,308,0.974
