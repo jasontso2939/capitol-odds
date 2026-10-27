@@ -1,6 +1,6 @@
 # Capitol Odds
 
-What are a California bill's chances of becoming law? Capitol Odds estimates the chance a proposed bill clears each step to the Governor's signature, alongside a transparent, reproducible scorecard for every member of the California Legislature since the 2017-18 session, rebuilt from the Legislature's official bulk data. One command downloads the data, parses it, applies documented counting rules and publishes a searchable dashboard. A weekly job refreshes it, reports what moved, and rolls over to each new session on its own.
+What are a California bill's chances of becoming law? Capitol Odds estimates the chance a proposed bill clears each step to the Governor's signature, alongside a transparent, reproducible scorecard for every member of the California Legislature since the 2007-08 session, rebuilt from the Legislature's official bulk data. One command downloads the data, parses it, applies documented counting rules and publishes a searchable dashboard. A weekly job refreshes it, reports what moved, and rolls over to each new session on its own.
 
 **Dashboard:** https://jasontso2939.github.io/calleg-scorecard/
 
@@ -27,7 +27,7 @@ Most legislative rankings hide their counting decisions. Here each decision is a
 
 - **Joint lead authors.** The official record credits every lead author. Bulk exports list only the first. Flip the toggle and watch rankings move.
 - **Budget bills.** Budget Act bills are introduced under the budget chairs' names and would swamp their totals. They are excluded by default and can be included.
-- **Time period.** Any session since 2017-18, whole session or one year at a time.
+- **Time period.** Any session since 2007-08, whole session or one year at a time.
 - **Partial terms.** Members who joined or left mid-session are flagged, with sources.
 
 Every number comes from small tested functions, and every bill links to its official history. Hand-checked reference files cover what the export gets wrong or leaves out: seat changes, legislators whose listed names changed, renamed committees, and a 148-message read-through of veto messages that checks the veto-reason labels.
