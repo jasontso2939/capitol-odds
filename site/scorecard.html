@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Scorecard · Capitol Odds</title>
+<meta name="description" content="Nonpartisan scorecard for every California legislator since the 2017-18 session, rebuilt from official bulk data by a reproducible pipeline.">
+<link rel="stylesheet" href="common.css">
+<style>
+:root{--bg:#f6f7fa;--panel:#fff;--ink:#1b2333;--muted:#5d6678;--line:#dde1ea;--navy:#14213d;--gold:#f2a900;--d:#3a6ea5;--r:#b5483b;--hi:#fff4d6}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1521;--panel:#171f2f;--ink:#e8ecf4;--muted:#9aa4b8;--line:#2a3550;--navy:#e8ecf4;--hi:#3a3115;--d:#6f9fd4;--r:#d97a6c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{background:#14213d;color:#fff;padding:26px 16px 20px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}header .wrap{padding:0}
+h1{margin:0 0 6px;font:700 28px/1.2 Georgia,Cambria,serif}
+header p{margin:0;color:#c9d2e6;max-width:72ch}
+main{padding:18px 0 60px}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.ctl label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{background:var(--panel);color:var(--ink);border:0;padding:7px 12px;font:500 14px system-ui,sans-serif;cursor:pointer;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed=true]{background:var(--navy);color:var(--panel);font-weight:600}
+input[type=search]{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:500 14px system-ui,sans-serif;min-width:200px}
+.note{background:var(--hi);border:1px solid #e6c766;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:nth-child(-n+4),td:nth-child(-n+4){text-align:left}
+th{position:sticky;top:0;background:var(--panel);cursor:pointer;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+th[aria-sort]{color:var(--ink)}
+tbody tr{cursor:pointer}tbody tr:hover{background:var(--hi)}
+.D{color:var(--d);font-weight:700}.R{color:var(--r);font-weight:700}
+.rk{font-size:11px;color:var(--muted);font-weight:600}
+.muted{color:var(--muted)}.small{font-size:13px}
+.tag{font-size:11px;background:var(--hi);border:1px solid #e6c766;border-radius:999px;padding:1px 7px;margin-left:6px}
+dialog{max-width:900px;width:94vw;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);padding:18px}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog h2{margin:0 0 4px}.sub{color:var(--muted);margin:0 0 12px}
+dialog table td:nth-child(n){text-align:left;white-space:normal}
+.o-signed{color:#2f7d4f;font-weight:600}.o-vetoed{color:var(--r);font-weight:600}.o-not_enacted{color:var(--muted)}
+footer{color:var(--muted);font-size:13px;margin-top:16px}
+a{color:var(--d)}
+nav{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}
+nav a{color:#c9d2e6;text-decoration:none;font-size:14px;padding:4px 10px;border:1px solid #33456b;border-radius:999px}
+nav a[aria-current=page]{background:#fff;color:#14213d;font-weight:600;border-color:#fff}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Legislator Scorecard</h1>
+<p>Every legislator, <span id="range"></span> sessions. Bills authored, signed and vetoed, rebuilt from the Legislature's official bulk data. Ranks are within each chamber.</p>
+<nav></nav>
+</div></header>
+<main><div class="wrap">
+<div class="controls">
+ <div class="ctl"><label for="sess">Session</label><select id="sess"></select></div>
+ <div class="ctl"><label>Search</label><input id="q" type="search" placeholder="Name or district (e.g. SD10)"></div>
+ <div class="ctl"><label>Chamber</label><div class="seg" id="chamber"><button data-v="all" aria-pressed="true">All</button><button data-v="Assembly">Assembly</button><button data-v="Senate">Senate</button></div></div>
+ <div class="ctl"><label>Party</label><div class="seg" id="party"><button data-v="all" aria-pressed="true">All</button><button data-v="D">D</button><button data-v="R">R</button></div></div>
+ <div class="ctl"><label>Joint lead authors</label><div class="seg" id="method"><button data-v="all_leads" aria-pressed="true">Count each</button><button data-v="first_listed">First-listed only</button></div></div>
+ <div class="ctl"><label>Budget bills</label><div class="seg" id="budget"><button data-v="excl" aria-pressed="true">Excluded</button><button data-v="incl">Included</button></div></div>
+ <div class="ctl"><label>Period</label><div class="seg" id="scope"></div></div>
+</div>
+<div class="note">Ranks are within each chamber: the Assembly (80 members) and the Senate (40) are ranked separately, so with both chambers shown each rank appears twice, marked Asm or Sen. Tied members share a rank and the next rank is skipped. Success rate (signed / introduced) favors members who file fewer bills, so raw counts sit beside it. Members marked <span class="tag">partial</span> joined or left mid-session, so their record covers part of the term. Budget Act bills, which are introduced under the budget chairs' names, are left out of counts and ranks by default; use the Budget bills toggle to include them. The last column shows how many each member has. Year views count introductions by filing year and outcomes by the year of the Governor's action.</div>
+<div class="tools"><button class="btn" id="dl">Download CSV</button><button class="btn" id="share">Copy link</button><span class="small muted" id="count"></span></div>
+<div class="card"><table id="t"><thead></thead><tbody></tbody></table></div>
+<footer>Not affiliated with any office or legislator.<br>Source: California Legislative Information bulk export (leginfo). Pipeline, tests and methodology are in the repository. Not an endorsement of any legislator.</footer>
+</div></main>
+<dialog id="dlg"><div id="dbody"></div><form method="dialog"><button>Close</button></form></dialog>
+<script src="data/sessions.js"></script>
+<script src="common.js"></script>
+<script>
+CL.nav("scorecard.html");
+const {esc} = CL;
+let D = null;
+const DEF = {sess: SESSIONS[SESSIONS.length - 1].year, chamber: "all", party: "all", method: "all_leads", scope: "session", budget: "excl", q: "", sort: "rank_signed", dir: 1, m: ""};
+const st = CL.readState(DEF);
+const COLS = [["member","Member"],["party","Party"],["district","District"],["chamber","Chamber","hide-sm"],["introduced","Intro"],["signed","Signed"],["vetoed","Vetoed"],["rate","Rate %"],["rank_signed","Chamber rank: signed"],["rank_rate","Chamber rank: rate","hide-sm"],["budget_bills","Budget bills","hide-sm"]];
+document.getElementById("range").textContent = `${SESSIONS[0].label} through ${SESSIONS[SESSIONS.length - 1].label}`;
+const sel = document.getElementById("sess");
+sel.innerHTML = [...SESSIONS].reverse().map(x => `<option value="${x.year}">${x.label}${x.complete ? "" : " (in progress)"}</option>`).join("");
+if (!SESSIONS.some(x => x.year === +st.sess)) st.sess = DEF.sess;
+sel.value = st.sess;
+document.getElementById("q").value = st.q;
+function scopeButtons(y) {
+  document.getElementById("scope").innerHTML = [["session","Session"],[y,y],[y+1,y+1]].filter(([v]) => D.cards[`${st.method}|${v}|${st.budget}`]).map(([v,l]) =>
+    `<button data-v="${v}" aria-pressed="${String(v)===String(st.scope)}">${l}</button>`).join("");
+}
+function syncButtons() {
+  for (const g of ["chamber", "party", "method", "budget"])
+    document.querySelectorAll(`#${g} button`).forEach(b => b.setAttribute("aria-pressed", b.dataset.v === String(st[g])));
+}
+function load(y, first) {
+  y = +y;
+  CL.load(`data/scorecard_${y}.js`).then(() => {
+    D = window.ALLS[y];
+    if (st.scope !== "session" && !D.cards[`${st.method}|${st.scope}|${st.budget}`]) st.scope = "session";
+    scopeButtons(y); syncButtons(); render();
+    if (first && st.m) openMember(st.m);
+  });
+}
+sel.addEventListener("input", e => { st.sess = +e.target.value; st.m = ""; load(st.sess); });
+document.querySelectorAll(".seg").forEach(g => g.addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  g.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x===b));
+  st[g.id] = b.dataset.v; render();
+}));
+document.getElementById("q").addEventListener("input", e => { st.q = e.target.value; render(); });
+const key = () => st.method + "|" + st.scope + "|" + st.budget;
+function rows(){
+  const q = st.q.toLowerCase();
+  let r = D.cards[key()].filter(x =>
+    (st.chamber==="all" || x.chamber===st.chamber) && (st.party==="all" || x.party===st.party) &&
+    (!q || (x.member+" "+x.full_name+" "+x.district).toLowerCase().includes(q)));
+  const k = st.sort, d = +st.dir;
+  return r.sort((a,b) => (typeof a[k]==="string" ? a[k].localeCompare(b[k]) : (a[k]??1e9)-(b[k]??1e9))*d || a.member.localeCompare(b.member));
+}
+const ch = x => st.chamber === "all" ? ` <span class="rk">${x.chamber === "Senate" ? "Sen" : "Asm"}</span>` : "";
+function render(){
+  CL.writeState(st, DEF);
+  const th = COLS.map(([k,l,c]) => `<th data-k="${k}" class="${c||""}" ${st.sort===k?`aria-sort="${+st.dir>0?"ascending":"descending"}"`:""}>${l}${st.sort===k?(+st.dir>0?" ▲":" ▼"):""}</th>`).join("");
+  document.querySelector("#t thead").innerHTML = "<tr>"+th+"</tr>";
+  const R = rows();
+  document.getElementById("count").textContent = `${R.length} members`;
+  document.querySelector("#t tbody").innerHTML = R.map(x => `<tr data-m="${esc(x.member)}">
+   <td>${esc(x.member)}${x.partial_term?'<span class="tag">partial</span>':""}</td><td class="${x.party}">${x.party}</td><td>${x.district}</td><td class="hide-sm">${x.chamber}</td>
+   <td>${x.introduced}</td><td>${x.signed}</td><td>${x.vetoed}</td><td>${x.rate.toFixed(1)}</td><td>${x.rank_signed}${ch(x)}</td><td class="hide-sm">${x.rank_rate}${ch(x)}</td><td class="hide-sm">${x.budget_bills||""}</td></tr>`).join("");
+}
+document.querySelector("#t thead").addEventListener("click", e => {
+  const h = e.target.closest("th"); if(!h) return;
+  const k = h.dataset.k; st.dir = st.sort===k ? -st.dir : 1; st.sort = k; render();
+});
+document.querySelector("#t tbody").addEventListener("click", e => {
+  const tr = e.target.closest("tr"); if(tr) openMember(tr.dataset.m);
+});
+function openMember(m) {
+  const c = D.cards[key()].find(x => x.member === m);
+  if (!c) return;
+  st.m = m; CL.writeState(st, DEF);
+  const dlg = document.getElementById("dlg");
+  const head = `<h2>${esc(c.full_name)}</h2>
+   <p class="sub">${c.chamber} ${c.district} · ${c.party} · ${D.label}: ${c.introduced} introduced, ${c.signed} signed, ${c.vetoed} vetoed (${c.rate.toFixed(1)}%)${c.partial_term?" · partial term":""}</p>
+   <p><a href="legislator.html?p=${encodeURIComponent(c.slug)}">Ten-year record, committees and votes</a></p>`;
+  document.getElementById("dbody").innerHTML = head + '<p class="loading">Loading bills…</p>';
+  if (!dlg.open) dlg.showModal();
+  CL.load(`data/people/${c.slug}.js`).then(() => {
+    const P = window.PEOPLE[c.slug], I = Object.fromEntries(P.bill_cols.map((k, i) => [k, i]));
+    let b = P.bills.filter(x => x[I.session] === D.session && (st.method === "all_leads" || x[I.first_listed]) && (st.budget === "incl" || !x[I.budget]));
+    document.getElementById("dbody").innerHTML = head + `<table><thead><tr><th>Bill</th><th>Title</th><th>Introduced</th><th>Outcome</th><th>Date</th></tr></thead><tbody>` +
+      b.map(x => `<tr><td><a href="${CL.leginfo(D.session, x[I.bill_id])}" target="_blank" rel="noopener">${x[I.bill_id]}</a>${x[I.joint]?" (joint)":""}${x[I.budget]?" (budget)":""}</td><td>${esc(x[I.title])}</td><td>${x[I.introduced]}</td><td class="o-${x[I.outcome]}">${x[I.outcome].replace("_"," ")}</td><td>${x[I.action_date]}</td></tr>`).join("") + "</tbody></table>";
+  }).catch(() => { document.getElementById("dbody").innerHTML = head + "<p>Could not load this member's bills.</p>"; });
+}
+document.getElementById("dlg").addEventListener("close", () => { st.m = ""; CL.writeState(st, DEF); });
+document.getElementById("dl").addEventListener("click", () => {
+  const cols = ["member","full_name","party","district","chamber","introduced","sent","signed","vetoed","rate","rank_signed","rank_rate","partial_term","budget_bills"];
+  CL.csv(`ca-scorecard-${D.label}-${st.scope}-${st.method}-budget-${st.budget}.csv`, rows(), cols);
+});
+CL.shareButton(document.getElementById("share"));
+load(st.sess, true);
+</script>
+</body>
+</html>

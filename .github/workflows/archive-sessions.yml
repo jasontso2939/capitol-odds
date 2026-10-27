@@ -5,6 +5,10 @@ name: archive-sessions
 # by hand only to repack sessions, for example after changing scripts/archive_session.py.
 on:
   workflow_dispatch:
+    inputs:
+      years:
+        description: "Session start years as a JSON list, e.g. [2015, 2013]"
+        default: "[2017, 2019, 2021, 2023]"
 permissions:
   contents: write
 jobs:
@@ -12,7 +16,7 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
-      matrix: {year: [2017, 2019, 2021, 2023]}
+      matrix: {year: ${{ fromJSON(inputs.years) }}}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
@@ -26,6 +30,7 @@ jobs:
 
   publish:
     needs: pack
+    if: ${{ !cancelled() }}   # keep the sessions that packed even if an older one failed
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/download-artifact@v7
