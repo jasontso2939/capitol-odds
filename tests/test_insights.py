@@ -93,7 +93,7 @@ def test_every_model_category_has_a_coefficient(ins):
 
 
 def test_no_office_specific_content_in_site():
-    for f in ["index.html", "trends.html", "outlook.html", "committees.html", "legislator.html", "findings.html"]:
+    for f in ["index.html", "scorecard.html", "trends.html", "outlook.html", "committees.html", "legislator.html", "findings.html"]:
         assert "Not affiliated with any office or legislator" in (ROOT / "site" / f).read_text()
 
 

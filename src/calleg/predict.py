@@ -17,11 +17,23 @@ from sklearn.metrics import brier_score_loss, roc_auc_score
 from sklearn.model_selection import StratifiedKFold
 
 CATS = ["party", "origin", "policy_area", "filing_window"]
-BINS = ["appropriation", "urgency", "taxlevy", "local_program", "supermajority",
+BINS = ["appropriation", "urgency", "taxlevy", "local_program", "supermajority", "fiscal_committee",
         "cross_party_coauthor", "cross_party_joint_lead", "spot_bill"]
 REL = ["author_on_committee", "author_chairs_committee"]   # from committee roll calls (calleg.committees)
 SMOOTH_K = 8   # bills of "prior" weight when shrinking an author's record toward the party average
 C = 0.5
+# Words in the introduced bill's subject line (the Legislative Counsel's short title), as
+# TF-IDF unigrams and bigrams. The browser repeats the same steps (tokenize, idf, l2 norm).
+TEXT = dict(min_df=10, ngram_range=(1, 2), sublinear_tf=True, max_features=1500, token_pattern=r"(?u)\b[a-z][a-z]+\b")
+
+
+def subject_text(df: pd.DataFrame) -> pd.Series:
+    return df.intro_subject.fillna("").str.lower()
+
+
+def text_model(train: pd.DataFrame):
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    return TfidfVectorizer(**TEXT).fit(subject_text(train))
 
 
 def training_frame(m: pd.DataFrame) -> pd.DataFrame:
@@ -69,6 +81,10 @@ def design(train: pd.DataFrame, target: pd.DataFrame, columns: list[str] | None 
     if all(c in target for c in REL):
         for c in REL:
             X[c] = target[c].astype(float).values
+    if "intro_subject" in target and "intro_subject" in train:
+        vec = text_model(train)
+        T = vec.transform(subject_text(target)).toarray()
+        X = pd.concat([X, pd.DataFrame(T, columns=["w_" + w for w in vec.get_feature_names_out()], index=X.index)], axis=1)
     if columns is not None:
         X = X.reindex(columns=columns, fill_value=0.0)
     return X

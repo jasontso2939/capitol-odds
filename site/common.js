@@ -59,11 +59,11 @@ const CL = (() => {
     });
   }
 
-  const PAGES = [["index.html", "Scorecard"], ["legislator.html", "Legislators"], ["trends.html", "Trends"],
-                 ["committees.html", "Committees"], ["outlook.html", "Bill outlook"], ["findings.html", "Findings"]];
+  const PAGES = [["index.html", "Bill odds"], ["scorecard.html", "Scorecard"], ["legislator.html", "Legislators"],
+                 ["trends.html", "Trends"], ["committees.html", "Committees"], ["findings.html", "Findings"]];
   function nav(current) {
     const n = document.querySelector("header nav");
-    if (n) n.innerHTML = PAGES.map(([h, l]) => `<a href="${h}"${h === current ? ' aria-current="page"' : ""}>${l}</a>`).join("");
+    if (n) n.innerHTML = '<a class="brand" href="index.html" style="font-weight:700;letter-spacing:.02em;border-color:#f2a900;color:#f2a900">Capitol Odds</a>' + PAGES.map(([h, l]) => `<a href="${h}"${h === current ? ' aria-current="page"' : ""}>${l}</a>`).join("");
   }
 
   const pct = (a, b, d = 0) => b ? (100 * a / b).toFixed(d) + "%" : "–";

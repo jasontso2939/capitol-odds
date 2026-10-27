@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
-<title>Ten-Year Findings</title>
+<title>Ten-Year Findings · Capitol Odds</title>
 <meta name="description" content="What ten years of California bills show: where bills die, what goes with being signed, why the Governor vetoes, and how predictable it all is. Every figure is computed from the Legislature's bulk data.">
 <style>
 :root{--bg:#f6f7fa;--panel:#fff;--ink:#1b2333;--muted:#5d6678;--line:#dde1ea;--navy:#14213d;--gold:#f2a900;--d:#3a6ea5;--r:#b5483b;--hi:#fff4d6}
@@ -76,7 +76,7 @@ const add = (title, html, link) => F.push(`<article><h2>${esc(title)}</h2>${html
     `<p>Of ${total.toLocaleString()} bills referred to a policy committee in finished sessions, ${failed.toLocaleString()} were not signed. Where they stopped: ` +
     lost.map(x => `${esc(x.name.toLowerCase())} ${n(x.n.toLocaleString())}`).join(", ") +
     ` (the last figure is vetoes). ${esc(top.name)} accounts for ${p(100 * top.n / failed)} of the losses.${top.name === "Policy committee" ? " Appropriations gets the attention, but many bills never get a hearing or a passing vote in their first committee." : ""}</p>`,
-    "outlook.html");
+    "index.html");
 }
 // 3. Appropriations by party
 {
@@ -126,7 +126,7 @@ const add = (title, html, link) => F.push(`<article><h2>${esc(title)}</h2>${html
   const sm = MET.stages, steps = sm.steps || [], pol = steps.find(x => x.step === "policy");
   add("At introduction, a bill's fate is only partly predictable",
     `<p>A model using the author, party, first committee, timing, fiscal flags and coauthors ranked a signed bill above an unsigned one ${p(100 * sm.out_of_session_auc)} of the time on a session it had never seen (50% would be a coin flip). The first policy committee vote is the most predictable step${pol && pol.auc ? ` (${p(100 * pol.auc)})` : ""}; what happens in the second house and at the Governor's desk depends on things the data cannot see, such as amendments, negotiations and opposition.</p>`,
-    "outlook.html");
+    "index.html");
 }
 document.getElementById("out").innerHTML = F.join("");
 </script>

@@ -1,6 +1,6 @@
 # Bill outlook model
 
-The Bill outlook page (`site/outlook.html`) estimates the chance a proposed bill clears each step to the Governor's signature, using only what is known when it is introduced, and shows a likely range. The code is in `src/calleg/stages.py` (steps and ranges) and `src/calleg/predict.py` (inputs and the one-step model); features are in `src/calleg/features.py`.
+The Capitol Odds home page (`site/index.html`; the old `outlook.html` address redirects there) estimates the chance a proposed bill clears each step to the Governor's signature, using only what is known when it is introduced, and shows a likely range. The code is in `src/calleg/stages.py` (steps and ranges) and `src/calleg/predict.py` (inputs and the one-step model); features are in `src/calleg/features.py`.
 
 ## What it predicts
 
@@ -52,7 +52,7 @@ The two rank bills equally well; the staged model is shown because its steps say
 
 Earlier sessions tested the same way (train on all sessions before, test on the next): 2019-20 AUC 0.621, 2021-22 0.641, 2023-24 0.623, 2025-26 0.658. Ranking holds up across sessions; the overall level does not. Sessions differ: 2019-20 signed 24% of bills (the 2020 pandemic) against 37 to 42% in other sessions, so a model trained before it overestimated, and one anchored on it underestimated the next session. The model therefore includes a term for each session and scores new bills at the level of the latest session; the page says so.
 
-AUC 0.66 means the model ranks a signed bill above an unsigned one about 66% of the time. That is useful for comparing scenarios and spotting risk factors. It is not a forecast for any single bill. Adding subject-line text (TF-IDF) did not help in the one-session version (cross-validated 0.661, temporal 0.652), so the model leaves it out. Weighting an author's recent sessions more than older ones changed AUC by less than 0.002, so all sessions count equally.
+AUC 0.66 means the model ranks a signed bill above an unsigned one about 66% of the time. That is useful for comparing scenarios and spotting risk factors. It is not a forecast for any single bill. Two inputs were added in October 2026 once five sessions of training data were available: the words in the introduced bill's subject line (TF-IDF unigrams and bigrams, 1,500 terms, computed the same way in the browser) and whether the introduced bill is keyed to a fiscal committee. Together they raised the staged model's AUC on 2025-26 (trained on earlier sessions) from 0.659 to 0.675 and its cross-validated AUC from 0.673 to 0.687. The gain came mostly at Appropriations (0.636 to 0.667) and the Governor (0.620 to 0.653). The final version's title was tested too and helped more, but it is left out because it reflects amendments made after introduction. Bill length, the author's bill count, committee party balance and a party-by-committee interaction added nothing; gradient-boosted trees did worse than the logistic models on later sessions. Weighting an author's recent sessions more than older ones changed AUC by less than 0.002, so all sessions count equally.
 
 ## Known limits
 

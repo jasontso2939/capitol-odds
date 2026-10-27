@@ -1,8 +1,8 @@
 {
   "bills": 19675,
   "base_rate": 0.393,
-  "cv_auc": 0.674,
-  "cv_brier": 0.217,
+  "cv_auc": 0.686,
+  "cv_brier": 0.215,
   "base_brier": 0.239,
   "sessions": [
     2017,
@@ -11,57 +11,57 @@
     2023,
     2025
   ],
-  "within_session_auc": 0.657,
-  "out_of_session_auc": 0.662,
+  "within_session_auc": 0.662,
+  "out_of_session_auc": 0.674,
   "out_of_session_predicted_rate": 0.407,
   "out_of_session_actual_rate": 0.445,
   "calibration": [
     {
       "band": "(0.0, 0.2]",
-      "bills": 2253,
-      "predicted": 0.138,
-      "actual": 0.141
+      "bills": 3048,
+      "predicted": 0.132,
+      "actual": 0.149
     },
     {
       "band": "(0.2, 0.3]",
-      "bills": 3306,
-      "predicted": 0.253,
-      "actual": 0.265
+      "bills": 3361,
+      "predicted": 0.252,
+      "actual": 0.284
     },
     {
       "band": "(0.3, 0.4]",
-      "bills": 4445,
-      "predicted": 0.351,
-      "actual": 0.357
+      "bills": 3985,
+      "predicted": 0.35,
+      "actual": 0.366
     },
     {
       "band": "(0.4, 0.5]",
-      "bills": 4800,
-      "predicted": 0.448,
-      "actual": 0.44
+      "bills": 3723,
+      "predicted": 0.449,
+      "actual": 0.436
     },
     {
       "band": "(0.5, 0.6]",
-      "bills": 3100,
-      "predicted": 0.545,
-      "actual": 0.539
+      "bills": 2845,
+      "predicted": 0.547,
+      "actual": 0.522
     },
     {
       "band": "(0.6, 0.7]",
-      "bills": 1366,
-      "predicted": 0.642,
-      "actual": 0.636
+      "bills": 1791,
+      "predicted": 0.645,
+      "actual": 0.61
     },
     {
       "band": "(0.7, 1.0]",
-      "bills": 405,
-      "predicted": 0.742,
-      "actual": 0.733
+      "bills": 922,
+      "predicted": 0.76,
+      "actual": 0.716
     }
   ],
   "stages": {
-    "out_of_session_auc": 0.659,
-    "out_of_session_predicted_rate": 0.407,
+    "out_of_session_auc": 0.675,
+    "out_of_session_predicted_rate": 0.406,
     "out_of_session_actual_rate": 0.445,
     "steps": [
       {
@@ -69,24 +69,24 @@
         "name": "Policy committee",
         "bills_reaching": 3696,
         "actual_pass_rate": 0.852,
-        "predicted_pass_rate": 0.828,
-        "auc": 0.777
+        "predicted_pass_rate": 0.827,
+        "auc": 0.779
       },
       {
         "step": "appropriations",
         "name": "Appropriations",
         "bills_reaching": 3148,
         "actual_pass_rate": 0.812,
-        "predicted_pass_rate": 0.812,
-        "auc": 0.636
+        "predicted_pass_rate": 0.811,
+        "auc": 0.667
       },
       {
         "step": "floor",
         "name": "Floor of the first house",
         "bills_reaching": 2557,
         "actual_pass_rate": 0.978,
-        "predicted_pass_rate": 0.98,
-        "auc": 0.592
+        "predicted_pass_rate": 0.981,
+        "auc": 0.615
       },
       {
         "step": "second_house",
@@ -94,7 +94,7 @@
         "bills_reaching": 2500,
         "actual_pass_rate": 0.755,
         "predicted_pass_rate": 0.741,
-        "auc": 0.542
+        "auc": 0.548
       },
       {
         "step": "governor",
@@ -102,52 +102,52 @@
         "bills_reaching": 1888,
         "actual_pass_rate": 0.871,
         "predicted_pass_rate": 0.839,
-        "auc": 0.62
+        "auc": 0.653
       }
     ],
-    "cv_auc": 0.673,
+    "cv_auc": 0.687,
     "calibration": [
       {
         "band": "(0.0, 0.2]",
-        "bills": 2286,
-        "predicted": 0.125,
-        "actual": 0.145
+        "bills": 2759,
+        "predicted": 0.121,
+        "actual": 0.144
       },
       {
         "band": "(0.2, 0.3]",
-        "bills": 2924,
-        "predicted": 0.255,
-        "actual": 0.26
+        "bills": 3069,
+        "predicted": 0.253,
+        "actual": 0.264
       },
       {
         "band": "(0.3, 0.4]",
-        "bills": 4478,
-        "predicted": 0.353,
-        "actual": 0.352
+        "bills": 4106,
+        "predicted": 0.351,
+        "actual": 0.361
       },
       {
         "band": "(0.4, 0.5]",
-        "bills": 5171,
+        "bills": 4261,
         "predicted": 0.449,
-        "actual": 0.437
+        "actual": 0.427
       },
       {
         "band": "(0.5, 0.6]",
-        "bills": 3286,
-        "predicted": 0.545,
-        "actual": 0.547
+        "bills": 3305,
+        "predicted": 0.547,
+        "actual": 0.536
       },
       {
         "band": "(0.6, 0.7]",
-        "bills": 1300,
-        "predicted": 0.639,
-        "actual": 0.647
+        "bills": 1711,
+        "predicted": 0.642,
+        "actual": 0.645
       },
       {
         "band": "(0.7, 1.0]",
-        "bills": 230,
-        "predicted": 0.729,
-        "actual": 0.709
+        "bills": 464,
+        "predicted": 0.742,
+        "actual": 0.748
       }
     ],
     "step_rates": [

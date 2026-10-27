@@ -86,6 +86,9 @@ model["stages"] = STG.export(stage_models, list(Xs.columns))
 model["stage_names"] = dict(STG.STAGES)
 model["stage_draws"] = STG.bootstrap(train, lab, Xs)
 model["atypical_sessions"] = STG.ATYPICAL
+# Subject-line words: vocabulary and idf, so the browser builds the same TF-IDF features
+_vec = predict.text_model(train)
+model["text"] = {"vocab": list(_vec.get_feature_names_out()), "idf": [round(float(x), 4) for x in _vec.idf_]}
 metrics["stages"] = {**STG.evaluate(train, tv), **STG.cross_validate(train, lab),
                      "step_rates": [{"step": s, "name": n, "reached": int(lab[f"reached_{s}"].sum()),
                                      "passed": int(lab[f"passed_{s}"].sum())} for s, n in STG.STAGES],
