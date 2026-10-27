@@ -16,7 +16,8 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
-      matrix: {year: ${{ fromJSON(inputs.years) }}}
+      matrix:
+        year: ${{ fromJSON(inputs.years) }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
