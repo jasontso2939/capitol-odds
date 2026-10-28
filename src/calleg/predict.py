@@ -22,6 +22,14 @@ BINS = ["appropriation", "urgency", "taxlevy", "local_program", "supermajority",
 REL = ["author_on_committee", "author_chairs_committee"]   # from committee roll calls (calleg.committees)
 SMOOTH_K = 8   # bills of "prior" weight when shrinking an author's record toward the party average
 C = 0.5
+RECENCY = 0.3   # training weight exp(-RECENCY * sessions back): the Legislature of 2009 counts less than 2023's
+
+
+def recency_weights(train: pd.DataFrame, target_session: int | None = None) -> np.ndarray | None:
+    if "session" not in train or train.session.nunique() < 2:
+        return None
+    t = target_session if target_session is not None else int(train.session.max()) + 2
+    return np.exp(-RECENCY * (t - train.session.values) / 2)
 # Words in the introduced bill's subject line (the Legislative Counsel's short title), as
 # TF-IDF unigrams and bigrams. The browser repeats the same steps (tokenize, idf, l2 norm).
 TEXT = dict(min_df=10, ngram_range=(1, 2), sublinear_tf=True, max_features=1500, token_pattern=r"(?u)\b[a-z][a-z]+\b")
@@ -48,15 +56,28 @@ def _key(df: pd.DataFrame) -> pd.Series:
 
 
 def _author_logit(train: pd.DataFrame, target: pd.DataFrame, leave_one_out: bool) -> np.ndarray:
+    """An author's signed rate, shrunk toward the party average, as a logit.
+
+    leave_one_out (training rows): the bill's own session is left out of its author's record.
+    Leaving out only the bill itself leaks its outcome (the record of an author's signed bill
+    is lower than the record of the same author's failed bill), which a flexible model learns
+    backwards; leaving out the whole session matches how a new session is scored."""
     prior = train.groupby("party").signed.mean()
-    g = train.assign(_k=_key(train)).groupby("_k").signed.agg(["sum", "count"])
+    by_session = "session" in train and "session" in target and train.session.nunique() > 1
+    k = _key(train)
+    g = train.assign(_k=k).groupby("_k").signed.agg(["sum", "count"])
+    gs = train.assign(_k=k).groupby(["_k", "session"]).signed.agg(["sum", "count"]) if by_session else None
     out = []
-    for mem, p, s in zip(_key(target), target.party, target.signed):
+    sess = target.session if by_session else [None] * len(target)
+    for mem, p, s, ss in zip(_key(target), target.party, target.signed, sess):
         pr = prior.get(p, train.signed.mean())
         if mem in g.index:
             S, N = g.loc[mem, "sum"], g.loc[mem, "count"]
             if leave_one_out:
-                S, N = S - s, N - 1
+                if by_session and (mem, ss) in gs.index:
+                    S, N = S - gs.loc[(mem, ss), "sum"], N - gs.loc[(mem, ss), "count"]
+                elif not by_session:
+                    S, N = S - s, N - 1
             rate = (S + SMOOTH_K * pr) / (N + SMOOTH_K)
         else:
             rate = pr
@@ -81,6 +102,8 @@ def design(train: pd.DataFrame, target: pd.DataFrame, columns: list[str] | None 
     if all(c in target for c in REL):
         for c in REL:
             X[c] = target[c].astype(float).values
+    if "double_referred" in target:
+        X["double_referred"] = target.double_referred.fillna(False).astype(float).values
     if "intro_subject" in target and "intro_subject" in train:
         vec = text_model(train)
         T = vec.transform(subject_text(target)).toarray()
@@ -96,13 +119,13 @@ def evaluate(d: pd.DataFrame, folds: int = 5, seed: int = 0) -> dict:
     for tr, te in StratifiedKFold(folds, shuffle=True, random_state=seed).split(d, y):
         Xtr = design(d.iloc[tr], d.iloc[tr], leave_one_out=True)
         Xte = design(d.iloc[tr], d.iloc[te], columns=list(Xtr.columns))
-        clf = LogisticRegression(C=C, max_iter=5000).fit(Xtr.values, y[tr])
+        clf = LogisticRegression(C=C, max_iter=5000).fit(Xtr.values, y[tr], sample_weight=recency_weights(d.iloc[tr]))
         p[te] = clf.predict_proba(Xte.values)[:, 1]
     def holdout(a, b):
         if "session" in b:
             b = b.assign(session=b.session.where(b.session.isin(a.session), a.session.max()))
         Xa = design(a, a, leave_one_out=True)
-        q = LogisticRegression(C=C, max_iter=5000).fit(Xa.values, a.signed).predict_proba(
+        q = LogisticRegression(C=C, max_iter=5000).fit(Xa.values, a.signed, sample_weight=recency_weights(a)).predict_proba(
             design(a, b, columns=list(Xa.columns)).values)[:, 1]
         return round(float(roc_auc_score(b.signed, q)), 3), round(float(q.mean()), 3), round(float(b.signed.mean()), 3)
     last = d.session.max() if "session" in d else None
@@ -135,7 +158,7 @@ def fit_export(d: pd.DataFrame, members: pd.DataFrame | None = None, current: pd
     the committee list when it has enough of them. A new session is scored at the level of
     the latest session in d (the reference session)."""
     X = design(d, d, leave_one_out=True)
-    clf = LogisticRegression(C=C, max_iter=5000).fit(X.values, d.signed.astype(int))
+    clf = LogisticRegression(C=C, max_iter=5000).fit(X.values, d.signed.astype(int), sample_weight=recency_weights(d))
     coef = dict(zip(X.columns, clf.coef_[0].round(4)))
     ref = int(d.session.max()) if "session" in d else None
     last = d[d.session == ref] if ref is not None else d

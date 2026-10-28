@@ -1,8 +1,8 @@
 {
   "bills": 38333,
   "base_rate": 0.387,
-  "cv_auc": 0.682,
-  "cv_brier": 0.214,
+  "cv_auc": 0.676,
+  "cv_brier": 0.216,
   "base_brier": 0.237,
   "sessions": [
     2007,
@@ -16,57 +16,57 @@
     2023,
     2025
   ],
-  "within_session_auc": 0.662,
-  "out_of_session_auc": 0.678,
-  "out_of_session_predicted_rate": 0.409,
+  "within_session_auc": 0.661,
+  "out_of_session_auc": 0.681,
+  "out_of_session_predicted_rate": 0.408,
   "out_of_session_actual_rate": 0.445,
   "calibration": [
     {
       "band": "(0.0, 0.2]",
-      "bills": 5498,
-      "predicted": 0.138,
-      "actual": 0.147
+      "bills": 5063,
+      "predicted": 0.141,
+      "actual": 0.151
     },
     {
       "band": "(0.2, 0.3]",
-      "bills": 7016,
-      "predicted": 0.252,
-      "actual": 0.271
+      "bills": 7086,
+      "predicted": 0.253,
+      "actual": 0.272
     },
     {
       "band": "(0.3, 0.4]",
-      "bills": 8260,
+      "bills": 8572,
       "predicted": 0.35,
-      "actual": 0.359
+      "actual": 0.352
     },
     {
       "band": "(0.4, 0.5]",
-      "bills": 7563,
-      "predicted": 0.449,
-      "actual": 0.45
+      "bills": 7926,
+      "predicted": 0.448,
+      "actual": 0.451
     },
     {
       "band": "(0.5, 0.6]",
-      "bills": 5626,
+      "bills": 5775,
       "predicted": 0.546,
-      "actual": 0.527
+      "actual": 0.523
     },
     {
       "band": "(0.6, 0.7]",
-      "bills": 3054,
-      "predicted": 0.644,
-      "actual": 0.604
+      "bills": 2980,
+      "predicted": 0.642,
+      "actual": 0.624
     },
     {
       "band": "(0.7, 1.0]",
-      "bills": 1316,
-      "predicted": 0.754,
-      "actual": 0.72
+      "bills": 931,
+      "predicted": 0.747,
+      "actual": 0.723
     }
   ],
   "stages": {
-    "out_of_session_auc": 0.677,
-    "out_of_session_predicted_rate": 0.409,
+    "out_of_session_auc": 0.679,
+    "out_of_session_predicted_rate": 0.407,
     "out_of_session_actual_rate": 0.445,
     "steps": [
       {
@@ -74,15 +74,15 @@
         "name": "Policy committee",
         "bills_reaching": 3696,
         "actual_pass_rate": 0.852,
-        "predicted_pass_rate": 0.826,
-        "auc": 0.781
+        "predicted_pass_rate": 0.824,
+        "auc": 0.785
       },
       {
         "step": "appropriations",
         "name": "Appropriations",
         "bills_reaching": 3148,
         "actual_pass_rate": 0.812,
-        "predicted_pass_rate": 0.813,
+        "predicted_pass_rate": 0.814,
         "auc": 0.673
       },
       {
@@ -90,69 +90,69 @@
         "name": "Floor of the first house",
         "bills_reaching": 2557,
         "actual_pass_rate": 0.978,
-        "predicted_pass_rate": 0.981,
-        "auc": 0.603
+        "predicted_pass_rate": 0.979,
+        "auc": 0.717
       },
       {
         "step": "second_house",
         "name": "Second house",
         "bills_reaching": 2500,
         "actual_pass_rate": 0.755,
-        "predicted_pass_rate": 0.744,
-        "auc": 0.552
+        "predicted_pass_rate": 0.743,
+        "auc": 0.558
       },
       {
         "step": "governor",
         "name": "Governor",
         "bills_reaching": 1888,
         "actual_pass_rate": 0.871,
-        "predicted_pass_rate": 0.842,
-        "auc": 0.638
+        "predicted_pass_rate": 0.839,
+        "auc": 0.649
       }
     ],
-    "cv_auc": 0.648,
+    "cv_auc": 0.675,
     "calibration": [
       {
         "band": "(0.0, 0.2]",
-        "bills": 11761,
-        "predicted": 0.043,
-        "actual": 0.264
+        "bills": 4989,
+        "predicted": 0.133,
+        "actual": 0.156
       },
       {
         "band": "(0.2, 0.3]",
-        "bills": 4458,
+        "bills": 6504,
         "predicted": 0.254,
-        "actual": 0.262
+        "actual": 0.269
       },
       {
         "band": "(0.3, 0.4]",
-        "bills": 6239,
+        "bills": 8694,
         "predicted": 0.352,
-        "actual": 0.359
+        "actual": 0.349
       },
       {
         "band": "(0.4, 0.5]",
-        "bills": 6934,
-        "predicted": 0.45,
-        "actual": 0.448
+        "bills": 8930,
+        "predicted": 0.449,
+        "actual": 0.438
       },
       {
         "band": "(0.5, 0.6]",
-        "bills": 5454,
+        "bills": 6340,
         "predicted": 0.546,
-        "actual": 0.531
+        "actual": 0.543
       },
       {
         "band": "(0.6, 0.7]",
-        "bills": 2817,
-        "predicted": 0.641,
-        "actual": 0.645
+        "bills": 2507,
+        "predicted": 0.638,
+        "actual": 0.654
       },
       {
         "band": "(0.7, 1.0]",
-        "bills": 670,
-        "predicted": 0.737,
-        "actual": 0.755
+        "bills": 369,
+        "predicted": 0.732,
+        "actual": 0.756
       }
     ],
     "step_rates": [
@@ -160,33 +160,83 @@
         "step": "policy",
         "name": "Policy committee",
         "reached": 38333,
-        "passed": 23569
+        "passed": 28471
       },
       {
         "step": "appropriations",
         "name": "Appropriations",
-        "reached": 23569,
-        "passed": 19702
+        "reached": 28471,
+        "passed": 24604
       },
       {
         "step": "floor",
         "name": "Floor of the first house",
-        "reached": 19702,
-        "passed": 19159
+        "reached": 24604,
+        "passed": 24061
       },
       {
         "step": "second_house",
         "name": "Second house",
-        "reached": 19159,
-        "passed": 14383
+        "reached": 24061,
+        "passed": 18093
       },
       {
         "step": "governor",
         "name": "Governor",
-        "reached": 14383,
-        "passed": 12255
+        "reached": 18093,
+        "passed": 14836
       }
     ],
-    "sent_to_appropriations": 19807
-  }
+    "sent_to_appropriations": 22968
+  },
+  "tracking": [
+    {
+      "days": 0,
+      "auc": 0.681,
+      "predicted_rate": 0.408,
+      "actual_rate": 0.445
+    },
+    {
+      "days": 30,
+      "auc": 0.681,
+      "predicted_rate": 0.411,
+      "actual_rate": 0.445
+    },
+    {
+      "days": 60,
+      "auc": 0.698,
+      "predicted_rate": 0.422,
+      "actual_rate": 0.445
+    },
+    {
+      "days": 90,
+      "auc": 0.797,
+      "predicted_rate": 0.415,
+      "actual_rate": 0.445
+    },
+    {
+      "days": 120,
+      "auc": 0.851,
+      "predicted_rate": 0.404,
+      "actual_rate": 0.445
+    },
+    {
+      "days": 180,
+      "auc": 0.883,
+      "predicted_rate": 0.399,
+      "actual_rate": 0.445
+    },
+    {
+      "days": 270,
+      "auc": 0.937,
+      "predicted_rate": 0.417,
+      "actual_rate": 0.445
+    },
+    {
+      "days": 365,
+      "auc": 0.944,
+      "predicted_rate": 0.42,
+      "actual_rate": 0.445
+    }
+  ]
 }

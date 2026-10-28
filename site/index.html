@@ -57,6 +57,13 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute
 td.n{text-align:right;font-variant-numeric:tabular-nums}
 [hidden]{display:none!important}
 .grid2>div,.layout>div{min-width:0}
+.modes{display:flex;gap:6px;margin:0 0 14px}
+.modes button{font:600 15px system-ui,sans-serif;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+.modes button[aria-selected=true]{background:#14213d;color:#fff;border-color:#14213d}
+.tl{display:grid;grid-template-columns:110px 1fr 48px;gap:6px 10px;align-items:center;font-size:14px;margin-top:8px}
+.tl .track{background:var(--bg);border-radius:4px;height:14px}.tl .fill{height:100%;border-radius:4px;background:var(--navy)}
+.tl .val{text-align:right;font-variant-numeric:tabular-nums}
+.pick{cursor:pointer}.pick:hover td{background:var(--hi)}
 .tag-line{font-size:20px;color:#f2a900;margin:4px 0 0;font-weight:600}
 </style>
 <link rel="stylesheet" href="common.css">
@@ -65,11 +72,28 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
 <header><div class="wrap">
 <h1>Capitol Odds</h1>
 <p class="tag-line">What are a California bill's chances of becoming law?</p>
-<p>Estimate the chance a proposed bill clears each step to the Governor's signature, from what is known when it is introduced. A statistical model trained on every legislator's bills in <span id="trainrange"></span>.</p>
+<p>Two tools from one statistical model trained on every legislator's bills in <span id="trainrange"></span>: estimate a bill you are drafting, or track a bill already in print as its odds change.</p>
 <nav></nav>
 </div></header>
 <main><div class="wrap">
-<div class="note"><b>Read this as a rough guide.</b> Trained on earlier sessions and tested on <span id="testsess"></span>, a session it had not seen, the model ranked a signed bill above an unsigned one about <span id="aucpct"></span> of the time (AUC <span id="auc"></span>, where 0.5 is a coin flip). The range shows how much the estimate moves with the data it learned from and between typical sessions. It cannot see a bill's merits, the Governor's priorities, opposition, or deals made along the way.</div>
+<div class="modes" role="tablist"><button id="m-draft" role="tab" aria-selected="true">Drafting a bill</button><button id="m-track" role="tab" aria-selected="false">Track a filed bill</button></div>
+<section id="track" hidden>
+<div class="note" id="tnote"></div>
+<div class="layout">
+<div>
+<div class="panel"><h2>Find a bill</h2>
+ <div class="f"><input id="tq" type="search" placeholder="Bill number, author or words, e.g. AB 2437 or wildfire"></div>
+ <div id="tres" class="small"><p class="loading">Loading bills…</p></div>
+</div>
+</div>
+<div>
+<div class="panel" aria-live="polite"><h2>Odds over time</h2><div id="tbill" class="small">Pick a bill to see how its chance of being signed changed as it moved.</div></div>
+<div class="panel"><h2>How accurate is tracking?</h2><div class="small">Each checkpoint has its own model, trained on earlier sessions and tested on <span id="ttest"></span>. AUC: how often a signed bill ranks above an unsigned one (0.5 is a coin flip).</div><div id="tacc"></div></div>
+</div>
+</div>
+</section>
+<section id="draft">
+<div class="note"><b>Read this as a rough guide.</b> Trained on earlier sessions and tested on <span id="testsess"></span>, a session it had not seen, the model ranked a signed bill above an unsigned one about <span id="aucpct"></span> of the time (AUC <span id="auc"></span>, where 0.5 is a coin flip). The range shows how much the estimate moves with the data it learned from and between typical sessions. It cannot see a bill's merits, the Governor's priorities, opposition, or deals made along the way. <b>Bill already in print?</b> <a href="?v=track">Track it</a>: once a bill has two to three months of history, the odds are far sharper (AUC 0.80 by day 90).</div>
 <div class="tools"><button class="btn" id="share">Copy link to this estimate</button><button class="btn" id="reset">Start over</button></div>
 <div class="layout">
 <div>
@@ -98,6 +122,7 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
   <label><input type="checkbox" id="joint_lead">Joint lead author</label>
   <label><input type="checkbox" id="cross_party_joint_lead">Joint lead from the other party</label>
   <label><input type="checkbox" id="spot_bill">Introduced as a spot bill (intent language only)</label>
+  <label><input type="checkbox" id="double_referred">Referred to two policy committees</label>
  </div></div>
 </div>
 <div class="panel"><h2>Similar past bills</h2>
@@ -129,6 +154,7 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
 </div>
 </div>
 </div>
+</section>
 <footer>Not affiliated with any office or legislator. Not a forecast of any specific bill and not advice.<br>Source: California Legislative Information bulk export (leginfo). Model code, tests and methodology are in the repository.</footer>
 </div></main>
 <script>if(/[?&](sess|chamber|scope|method|budget|sort)=/.test(location.search))location.replace("scorecard.html"+location.search+location.hash);</script>
@@ -140,8 +166,8 @@ CL.nav("index.html");
 const M = MODEL, MET = INSIGHTS.metrics, SM = MET.stages, {esc, label} = CL;
 const $ = id => document.getElementById(id);
 const pc = p => (100 * p).toFixed(0) + "%";
-const BIN = ["fiscal_committee","appropriation","urgency","taxlevy","local_program","supermajority","cross_party_coauthor","cross_party_joint_lead","spot_bill"];
-const LABEL = {fiscal_committee:"Goes to a fiscal committee", appropriation:"Makes an appropriation", urgency:"Urgency clause", taxlevy:"Tax levy", local_program:"State-mandated local program", supermajority:"Two-thirds vote", cross_party_coauthor:"Coauthor from the other party", cross_party_joint_lead:"Joint lead from the other party", spot_bill:"Spot bill", joint_lead:"Joint lead author"};
+const BIN = ["double_referred","fiscal_committee","appropriation","urgency","taxlevy","local_program","supermajority","cross_party_coauthor","cross_party_joint_lead","spot_bill"];
+const LABEL = {double_referred:"Referred to two policy committees", fiscal_committee:"Goes to a fiscal committee", appropriation:"Makes an appropriation", urgency:"Urgency clause", taxlevy:"Tax levy", local_program:"State-mandated local program", supermajority:"Two-thirds vote", cross_party_coauthor:"Coauthor from the other party", cross_party_joint_lead:"Joint lead from the other party", spot_bill:"Spot bill", joint_lead:"Joint lead author"};
 const OUT = {signed:"Signed", vetoed:"Vetoed", not_enacted:"Did not pass"};
 const STEPS = Object.keys(M.stage_names);
 const REF = M.reference_session, COLS = M.stage_draws.columns, DRAWS = M.stage_draws.draws;
@@ -156,7 +182,7 @@ $("basepct").textContent = pc(M.base_rate); $("baselabel").textContent = label(R
 const drawSessions = [...new Set(DRAWS.map(d => d.session))].sort();
 const atyp = Object.entries(M.atypical_sessions || {});
 $("about").innerHTML = `It learns from ${TRAIN.length} finished sessions (${MET.bills.toLocaleString()} bills), one model per step: policy committee, Appropriations (or not sent there), the floor of the first house, the second house, and the Governor. ` +
-  `Inputs are the author's party, house and record across sessions, the first policy committee, the filing window, fiscal flags at introduction, coauthors, whether the author sits on or chairs the committee, and the words in the bill's subject line. ` +
+  `Inputs are the author's party, house and record across sessions, the first policy committee, the filing window, fiscal flags at introduction, coauthors, whether the author sits on or chairs the committee, double referral, and the words in the bill's subject line. Recent sessions count more than older ones, so the model follows how the Legislature works now. ` +
   `Estimates are set to the level of ${label(REF)}, the latest finished session. The range comes from ${DRAWS.length} refits on resampled bills, each scored at the level of one past session (${drawSessions.map(label).join(", ")})` +
   (atyp.length ? `; ${atyp.map(([s, why]) => `${label(s)} (${why})`).join(", ")} is left out as atypical.` : ".") +
   ` A single model fit to the final outcome ranks bills about as well (AUC ${MET.out_of_session_auc.toFixed(2)}); the steps show where the risk sits. Not yet included: bill text beyond the subject line, and support and opposition.`;
@@ -180,6 +206,7 @@ function applyState(s) {
   fillAreas(); if (s.c) $("area").value = s.c;
 }
 function saveState() {
+  if (!$("track").hidden) return;   // the tracking view keeps its own ?v=track&b= state
   CL.writeState({a: $("author").value, p: $("party").value, o: $("origin").value, c: $("area").value, w: $("window").value,
     n: +$("coauth").value || 0, f: [...BIN, "joint_lead"].filter(b => $(b).checked).join(","), k: $("kw").value}, DEF);
 }
@@ -241,7 +268,9 @@ const P = s => steps(s).reduce((a, b) => a * b, 1);
 function range(s) {
   const out = DRAWS.map(d => {
     const f = feats(s, d.session), v = COLS.map(c => f[c] || 0);
-    return STEPS.reduce((p, k) => { const w = d[k]; let z = w[0]; for (let j = 0; j < v.length; j++) if (v[j]) z += w[j + 1] * v[j]; return p * sig(z); }, 1);
+    // word weights are not in the draws; they come from the main fit
+    return STEPS.reduce((p, k) => { const w = d[k], mc = M.stages[k].coef; let z = w[0]; for (let j = 0; j < v.length; j++) if (v[j]) z += w[j + 1] * v[j];
+      for (const x in s.words || {}) z += (mc[x] || 0) * s.words[x]; return p * sig(z); }, 1);
   }).sort((a, b) => a - b);
   const q = t => out[Math.min(out.length - 1, Math.max(0, Math.round(t * (out.length - 1))))];
   return [q(0.1), q(0.9)];
@@ -337,6 +366,55 @@ document.querySelectorAll("select,input").forEach(e => e.addEventListener("input
 }));
 $("reset").addEventListener("click", () => { applyState(DEF); similar(); render(); });
 CL.shareButton($("share"));
+// Track a filed bill: precomputed odds at each checkpoint (data/tracking.js, loaded on first use)
+const TS = new URLSearchParams(location.search);
+let TR = null, trackSel = TS.get("b") || "";
+function setMode(m) {
+  $("m-draft").setAttribute("aria-selected", m === "draft"); $("m-track").setAttribute("aria-selected", m === "track");
+  $("draft").hidden = m !== "draft"; $("track").hidden = m !== "track";
+  const u = new URL(location.href);
+  if (m === "track") { u.searchParams.set("v", "track"); if (trackSel) u.searchParams.set("b", trackSel); } else { u.searchParams.delete("v"); u.searchParams.delete("b"); }
+  history.replaceState(null, "", u);
+  if (m === "track" && !TR) CL.load("data/tracking.js").then(initTrack).catch(() => { $("tres").innerHTML = "<p>Could not load bills.</p>"; });
+}
+const LBL = k => k === 0 ? "At introduction" : `Day ${k}`;
+function initTrack() {
+  const T = window.TRACKING, ci = Object.fromEntries(T.cols.map((c, i) => [c, i]));
+  TR = T.rows.map(r => ({bill: r[ci.bill_id], title: r[ci.title], member: r[ci.member], party: r[ci.party], area: r[ci.policy_area], intro: r[ci.introduced], outcome: r[ci.outcome],
+    p: T.checkpoints.map(k => r[ci["p" + k]])}));
+  const acc = T.accuracy, lab = label(T.session);
+  $("ttest").textContent = label(T.session);
+  $("tacc").innerHTML = "<table><thead><tr><th>When</th><th class='n'>AUC</th><th class='n'>Predicted signed</th><th class='n'>Actually signed</th></tr></thead><tbody>" +
+    acc.map(a => `<tr><td>${LBL(a.days)}</td><td class="n"><b>${a.auc.toFixed(2)}</b></td><td class="n">${pc(a.predicted_rate)}</td><td class="n">${pc(a.actual_rate)}</td></tr>`).join("") + "</tbody></table>";
+  const best = acc.find(a => a.auc >= 0.7);
+  $("tnote").innerHTML = T.complete
+    ? `<b>${lab} is finished</b>, so these are the odds the model would have given each bill at the time, from models trained only on earlier sessions, next to how each bill ended. Live odds start when the next session's bills are in print. ${best ? `From ${LBL(best.days).toLowerCase()} on, the model ranks bills with AUC ${best.auc.toFixed(2)} or better.` : ""}`
+    : `<b>Odds as of ${T.asof}</b> for every ${lab} bill, from what has happened to it so far: hearings set or canceled, amendments, committee votes, the suspense file. The odds update with each weekly data refresh.`;
+  trackSearch(); if (trackSel) showBill(trackSel);
+}
+function latest(b) { for (let i = b.p.length - 1; i >= 0; i--) if (b.p[i] != null) return [b.p[i], i]; return [null, -1]; }
+function trackSearch() {
+  if (!TR) return;
+  const q = $("tq").value.trim().toLowerCase(), qn = q.replace(/\s+/g, "");
+  let hits = !q ? [] : /^(ab|sb)\d+$/.test(qn) ? TR.filter(b => b.bill.toLowerCase() === qn)
+    : TR.filter(b => { const t = (b.title + " " + b.member + " " + b.bill).toLowerCase(); return q.split(/\s+/).every(w => t.includes(w)); });
+  if (!q) { $("tres").innerHTML = `${TR.length.toLocaleString()} bills from ${label(TRACKING.session)}. Search by bill number (AB 2437), author or words in the title.`; return; }
+  $("tres").innerHTML = hits.length ? `<p>${hits.length} bill${hits.length > 1 ? "s" : ""}${hits.length > 50 ? ", first 50 shown" : ""}.</p><table><thead><tr><th>Bill</th><th>Title</th><th class="n">Latest odds</th><th>Outcome</th></tr></thead><tbody>` +
+    hits.slice(0, 50).map(b => { const [p] = latest(b); return `<tr class="pick" data-b="${esc(b.bill)}"><td><b>${esc(b.bill)}</b><div class="small"><span class="${b.party}">${esc(b.member)}</span></div></td><td>${esc(b.title)}</td><td class="n">${p == null ? "–" : pc(p)}</td><td class="o-${b.outcome}">${OUT[b.outcome] || "Pending"}</td></tr>`; }).join("") + "</tbody></table>" : "<p>No matching bills.</p>";
+}
+function showBill(id) {
+  const b = TR && TR.find(x => x.bill === id); if (!b) return;
+  trackSel = id; const u = new URL(location.href); u.searchParams.set("b", id); history.replaceState(null, "", u);
+  const ks = TRACKING.checkpoints, [p, i] = latest(b);
+  $("tbill").innerHTML = `<p><b>${esc(b.bill)}</b>: ${esc(b.title)}<br><span class="${b.party}">${esc(b.member)} (${b.party})</span> · ${esc(b.area)} · introduced ${b.intro} · <a href="${CL.leginfo(TRACKING.session, b.bill)}" target="_blank" rel="noopener">Bill history</a></p>` +
+    `<div class="big">${p == null ? "–" : pc(p)}</div><div>${i >= 0 ? `Latest estimate (${LBL(ks[i]).toLowerCase()})` : ""} · Outcome: <span class="o-${b.outcome}">${OUT[b.outcome] || "Pending"}</span></div>` +
+    `<div class="tl">${ks.map((k, j) => b.p[j] == null ? "" : `<div>${LBL(k)}</div><div class="track"><div class="fill" style="width:${100 * b.p[j]}%"></div></div><div class="val">${pc(b.p[j])}</div>`).join("")}</div>`;
+}
+$("tq").addEventListener("input", trackSearch);
+$("tres").addEventListener("click", e => { const r = e.target.closest("tr.pick"); if (r) showBill(r.dataset.b); });
+$("m-draft").addEventListener("click", () => setMode("draft"));
+$("m-track").addEventListener("click", () => setMode("track"));
+if (TS.get("v") === "track") { setMode("track"); if (trackSel) $("tq").value = trackSel; }
 applyState(st0);
 if (!st0.c) { const a = M.policy_areas.find(x => x.startsWith($("origin").value)); if (a) $("area").value = a; }
 render(); similar();

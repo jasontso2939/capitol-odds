@@ -65,7 +65,12 @@ def _fit(X: pd.DataFrame, y: np.ndarray, w: np.ndarray | None = None) -> Logisti
 
 
 def fit_stages(d: pd.DataFrame, lab: pd.DataFrame, X: pd.DataFrame, w: np.ndarray | None = None) -> dict:
-    """One model per step, on bills that reached it. X is predict.design(d, d, leave_one_out=True)."""
+    """One model per step, on bills that reached it. X is predict.design(d, d, leave_one_out=True).
+
+    Recent sessions count more (predict.recency_weights); w, if given, multiplies those weights."""
+    rw = predict.recency_weights(d)
+    if rw is not None:
+        w = rw if w is None else w * rw
     models = {}
     for s, _ in STAGES:
         r = lab[f"reached_{s}"].values
@@ -122,17 +127,21 @@ def bootstrap(d: pd.DataFrame, lab: pd.DataFrame, X: pd.DataFrame, draws: int = 
     than ATYPICAL ones, and the browser scores the bill at that session's level. The spread of
     the results (10th to 90th percentile) is the range on the outlook page: it covers both how
     much the fit depends on which bills happened to be in the data and how much a typical
-    session differs from another."""
+    session differs from another.
+
+    Subject-line word weights (w_ columns) are left out of the draws to keep the download
+    small; the browser adds them from the main fit, so the range reflects every other input."""
     rng = np.random.default_rng(seed)
     cols = list(X.columns)
+    keep = [i for i, c in enumerate(cols) if not c.startswith("w_")]
     sess = [int(s) for s in sorted(d.session.unique()) if int(s) not in ATYPICAL]
     out = []
     for i in range(draws):
         w = rng.poisson(1.0, len(d)).astype(float)
         ms = fit_stages(d, lab, X, w)
         out.append({"session": sess[i % len(sess)],
-                    **{s: [round(float(m.intercept_[0]), 3)] + [round(float(c), 3) for c in m.coef_[0]] for s, m in ms.items()}})
-    return {"columns": cols, "draws": out}
+                    **{s: [round(float(m.intercept_[0]), 3)] + [round(float(m.coef_[0][i]), 3) for i in keep] for s, m in ms.items()}})
+    return {"columns": [cols[i] for i in keep], "draws": out}
 
 
 def cross_validate(d: pd.DataFrame, lab: pd.DataFrame, folds: int = 5, seed: int = 0) -> dict:
