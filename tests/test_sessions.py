@@ -38,7 +38,8 @@ def test_one_name_per_person_within_a_session():
 
 
 # Different people who share a seat's first name across sessions (not name changes)
-DIFFERENT_PEOPLE = {("AD06", "kevin")}   # Kevin Kiley, then Kevin McCarty after redistricting
+DIFFERENT_PEOPLE = {("AD06", "kevin"),   # Kevin Kiley, then Kevin McCarty after redistricting
+                   ("AD02", "jim")}     # Jim Nielsen (2008-12), then Jim Wood (2014-24)
 
 
 def test_name_changes_are_linked():

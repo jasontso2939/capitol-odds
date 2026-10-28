@@ -99,7 +99,16 @@ def build_features(raw: str | Path, zip_path: str | Path | None = None,
     first_pol = pol.groupby("BILL_ID").TERNARY_LOCATION.first()
     f["first_policy_code"] = first_pol
     f["policy_area"] = first_pol.map(name_of)
-    f["passed_origin"] = f.index.isin(h[h.a.str.contains(r"Passed\..*Ordered to the (?:Senate|Assembly)")].BILL_ID)
+    # Passing the house of origin. Wording changed around 2011: "Passed. Ordered to the Senate."
+    # now, "Read third time, passed, and to Senate." or "Passed and to Assembly." before.
+    # Rescinded passages ("Action rescinded whereby the bill was ... passed") do not count.
+    passed = h.a.str.contains(r"Passed\..*Ordered to the (?:Senate|Assembly)|passed,? and (?:ordered )?to (?:the )?(?:Senate|Assembly)"
+                              r"|Passed\.\s+To (?:Senate|Assembly)", case=False) & ~h.a.str.contains(r"^Action rescinded", case=False)
+    # Older exports often record only "Read third time. Passed." in the first house, so arriving
+    # in the second house ("In Senate." for an Assembly bill) also counts.
+    other = h.BILL_ID.str.extract(r"\d{9}(AB|SB)")[0].map({"AB": "Senate", "SB": "Assembly"})
+    arrived = h.a.str.match(r"^In (?:Senate|Assembly)\.") & (h.a.str[3:9].str.strip(". ") == other.str[:6].str.strip())
+    f["passed_origin"] = f.index.isin(h[passed | arrived].BILL_ID)
     f = f.reset_index()
 
     m = bt[["BILL_ID", "bill_id", "origin", "CURRENT_LOCATION"]].merge(f, on="BILL_ID", how="left")
