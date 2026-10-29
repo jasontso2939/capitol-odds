@@ -15,8 +15,13 @@ import sys
 import zipfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from calleg.digest import extract as digest_of  # noqa: E402
+# Load calleg/digest.py on its own: the workflow runs this script without the package's
+# dependencies (pandas), which importing calleg would pull in.
+import importlib.util  # noqa: E402
+_spec = importlib.util.spec_from_file_location("digest", Path(__file__).resolve().parents[1] / "src/calleg/digest.py")
+_digest = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_digest)
+digest_of = _digest.extract
 
 TABLES = ["BILL_TBL", "BILL_HISTORY_TBL", "BILL_VERSION_TBL", "BILL_VERSION_AUTHORS_TBL", "LEGISLATOR_TBL",
           "VETO_MESSAGE_TBL", "BILL_DETAIL_VOTE_TBL", "BILL_SUMMARY_VOTE_TBL", "BILL_MOTION_TBL", "LOCATION_CODE_TBL"]
