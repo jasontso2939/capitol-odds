@@ -20,5 +20,6 @@ people: committees
 	PYTHONPATH=src python3 scripts/build_people.py
 insights: committees
 	PYTHONPATH=src python3 scripts/build_insights.py
+	PYTHONPATH=src python3 scripts/build_events.py
 report:  # what moved since the last commit (writes data/processed/headline.json)
 	PYTHONPATH=src python3 scripts/change_report.py

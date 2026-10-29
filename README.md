@@ -8,7 +8,7 @@ What are a California bill's chances of becoming law? Capitol Odds estimates the
 
 | Page | What it shows |
 | --- | --- |
-| [Bill odds](https://jasontso2939.github.io/calleg-scorecard/) | Chance a proposed bill clears each step (policy committee, Appropriations, floor, second house, Governor), with a likely range and similar past bills. The home page. |
+| [Track and Draft](https://jasontso2939.github.io/calleg-scorecard/) | The home page. Search any bill in the current session to see its odds over time, with each committee vote, floor vote and Governor action marked, and keep a watchlist. Draft mode estimates a bill before introduction: the chance it clears each step, where it is likeliest to stall, and what moves the estimate. |
 | [Scorecard](https://jasontso2939.github.io/calleg-scorecard/scorecard.html) | Every member for any session: bills, signed, vetoed, rate, chamber ranks. Filters, sorting, per-member bill lists. |
 | [Legislators](https://jasontso2939.github.io/calleg-scorecard/legislator.html) | One page per person: record by session with ranks, committee seats and votes by year, every bill. Name changes stay on one page. |
 | [Trends](https://jasontso2939.github.io/calleg-scorecard/trends.html) | Where bills die, Appropriations by party, committee risk, fiscal flags, coauthors, timing, spot bills, veto reasons. |
@@ -111,7 +111,7 @@ python3 -m http.server -d site   # open http://localhost:8000
 - **Show the counting rules as switches.** Rankings move when joint authors or budget bills are counted differently, so the reader gets the toggle instead of my choice.
 - **Staged model over a single one.** Both rank bills equally well; the staged one says where a bill's risk sits, which is what a reader can act on.
 - **Report accuracy honestly.** AUC 0.70 is useful for comparing scenarios and weak for any single bill, and the page says so.
-- **Static site, no server.** The dashboard is plain files with per-page data, so it's free to host, fast on a phone, and can't go down.
+- **Static site, no server.** The dashboard is plain files with per-page data, so it's free to host, fast on a phone, and can't go down. One stylesheet (`site/common.css`) holds the design tokens every page uses.
 - **Automate the boring part.** A weekly job rebuilds, tests and flags anything that moved, and rolls over to a new session without a code change.
 
 ## Limits, stated plainly

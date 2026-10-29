@@ -5,158 +5,324 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
 <title>Capitol Odds: what are a California bill's chances?</title>
-<meta name="description" content="Estimate a proposed California bill's chance of clearing each step to the Governor's signature, from its author, first policy committee, fiscal features, coalition and timing. Trained on every legislator's bills since the 2007-08 session.">
-<style>
-:root{--bg:#f6f7fa;--panel:#fff;--ink:#1b2333;--muted:#5d6678;--line:#dde1ea;--navy:#14213d;--gold:#f2a900;--d:#3a6ea5;--r:#b5483b;--hi:#fff4d6}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1521;--panel:#171f2f;--ink:#e8ecf4;--muted:#9aa4b8;--line:#2a3550;--navy:#e8ecf4;--hi:#3a3115;--d:#6f9fd4;--r:#d97a6c}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-header{background:#14213d;color:#fff;padding:26px 16px 20px}
-.wrap{max-width:1100px;margin:0 auto;padding:0 16px}header .wrap{padding:0}
-h1{margin:0 0 6px;font:700 28px/1.2 Georgia,Cambria,serif}
-header p{margin:0;color:#c9d2e6;max-width:72ch}
-main{padding:18px 0 60px}
-input[type=search]{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:500 14px system-ui,sans-serif;min-width:200px}
-nav{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}
-nav a{color:#c9d2e6;text-decoration:none;font-size:14px;padding:4px 10px;border:1px solid #33456b;border-radius:999px}
-nav a[aria-current=page]{background:#fff;color:#14213d;font-weight:600;border-color:#fff}
-footer{color:var(--muted);font-size:13px;margin-top:16px}
-a{color:var(--d)}
-.D{color:var(--d);font-weight:700}.R{color:var(--r);font-weight:700}
-.o-signed{color:#2f7d4f;font-weight:600}.o-vetoed{color:var(--r);font-weight:600}.o-not_enacted{color:var(--muted)}
-.note{background:var(--hi);border:1px solid #e6c766;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:14px}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
-@media (max-width:820px){.layout{grid-template-columns:1fr}}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
-.panel h2{margin:0 0 10px;font:700 18px/1.3 Georgia,Cambria,serif}
-.f{margin-bottom:12px}
-.f label.h{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
-textarea{width:100%;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:500 14px system-ui,sans-serif;resize:vertical}
-select,input[type=number],input[type=search]{width:100%;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:500 14px system-ui,sans-serif}
-.chk{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:14px}
-@media (max-width:480px){.chk{grid-template-columns:1fr}}
-.chk label{display:flex;gap:8px;align-items:flex-start}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.big{font:700 52px/1 Georgia,Cambria,serif;margin:4px 0}
-.range{font-size:16px;margin:6px 0 2px}
-.band{display:inline-block;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--hi);border:1px solid #e6c766}
-.gauge{height:12px;background:var(--bg);border-radius:6px;position:relative;margin:14px 0 4px}
-.gauge .fill{height:100%;border-radius:6px;background:var(--navy)}
-.gauge .rng{position:absolute;top:0;bottom:0;background:rgba(242,169,0,.35);border-radius:6px}
-.gauge .base{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--gold)}
-.small{font-size:13px;color:var(--muted)}
-.fac{display:grid;grid-template-columns:1fr 70px;gap:4px 10px;font-size:14px;margin-top:6px}
-.fac .up{color:#2f7d4f;text-align:right;font-variant-numeric:tabular-nums}.fac .dn{color:var(--r);text-align:right;font-variant-numeric:tabular-nums}
-.steps{display:grid;grid-template-columns:minmax(120px,190px) 1fr 52px;gap:6px 10px;align-items:center;font-size:14px;margin-top:6px}
-.steps .track{background:var(--bg);border-radius:4px;height:14px}
-.steps .fill{height:100%;border-radius:4px;background:#8a96ad}
-.steps .fill.low{background:#c0703a}
-.steps .val{text-align:right;font-variant-numeric:tabular-nums}
-table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
-td.n{text-align:right;font-variant-numeric:tabular-nums}
-[hidden]{display:none!important}
-.grid2>div,.layout>div{min-width:0}
-.modes{display:flex;gap:6px;margin:0 0 14px}
-.modes button{font:600 15px system-ui,sans-serif;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
-.modes button[aria-selected=true]{background:#14213d;color:#fff;border-color:#14213d}
-.tl{display:grid;grid-template-columns:110px 1fr 48px;gap:6px 10px;align-items:center;font-size:14px;margin-top:8px}
-.tl .track{background:var(--bg);border-radius:4px;height:14px}.tl .fill{height:100%;border-radius:4px;background:var(--navy)}
-.tl .val{text-align:right;font-variant-numeric:tabular-nums}
-.pick{cursor:pointer}.pick:hover td{background:var(--hi)}
-.tag-line{font-size:20px;color:#f2a900;margin:4px 0 0;font-weight:600}
-</style>
+<meta name="description" content="A statistical forecast of which California bills will become law: search any bill to see its odds and what moved them, or estimate a bill you are drafting. Trained on every legislator's bills since the 2007-08 session.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
 <link rel="stylesheet" href="common.css">
+<style>
+/* Home page: tracking view (default) and drafting view */
+.odds{font-weight:700;font-stretch:125%;letter-spacing:-.03em;line-height:.88;color:var(--gold);font-variant-numeric:tabular-nums}
+.up{color:var(--up)}.down{color:var(--down)}
+.mv{font-weight:600;font-size:17px}
+
+/* Intro */
+.intro{display:flex;flex-wrap:wrap;gap:24px 56px;align-items:flex-end;padding:44px 0 32px}
+.intro h1{font-size:clamp(34px,5vw,54px);line-height:1.02;letter-spacing:-.03em;margin:0;max-width:14ch;font-stretch:108%}
+.intro .copy{flex:1 1 420px;min-width:0}
+.intro .copy p{margin:14px 0 0;color:var(--muted);font-size:18px;max-width:52ch}
+.facts{flex:1 1 380px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:0;padding:0;list-style:none}
+.facts li{border-top:1px solid var(--line-strong);padding-top:12px;font-size:14px;color:var(--muted);line-height:1.45}
+.facts b{display:block;color:var(--ink);font-size:20px;white-space:nowrap;font-stretch:112%;letter-spacing:-.01em;margin-bottom:4px;font-weight:700}
+
+/* Search */
+.search{position:relative;margin:8px 0 12px}
+.search .box{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line-strong);border-radius:var(--r-md);padding:0 18px;min-height:60px}
+.search .box:focus-within{box-shadow:var(--focus)}
+.search input{flex:1;min-width:0;border:0;background:transparent;font-size:18px;padding:16px 0;min-height:58px}
+.search input:focus-visible{box-shadow:none}
+.results{margin-top:8px;background:var(--panel);border-radius:var(--r-md);overflow:hidden}
+.results .meta{padding:12px 18px;font-size:14px;color:var(--muted);border-bottom:1px solid var(--line)}
+.results ul{list-style:none;margin:0;padding:0;max-height:420px;overflow:auto}
+.results li+li{border-top:1px solid var(--line)}
+.results button{display:grid;grid-template-columns:76px minmax(0,1fr) auto auto;gap:4px 16px;align-items:center;width:100%;text-align:left;background:none;border:0;color:var(--ink);font:inherit;padding:12px 18px;cursor:pointer;min-height:56px}
+.results button:hover,.results button:focus-visible{background:var(--raised)}
+.results .bn{font-weight:700}
+.results .tt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.results .au{font-size:13px;color:var(--muted);display:block}
+.results .pp{font-weight:700;font-stretch:115%;font-size:18px}
+.results .oc{font-size:13px;min-width:84px;text-align:right}
+.status{font-size:14px;color:var(--subtle);margin:0 0 28px}
+
+/* Featured bill */
+.featured{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:32px 48px;padding:28px 0 8px;border-top:1px solid var(--line)}
+.fhead{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:15px;color:var(--muted)}
+.fhead .tag{margin:0}
+.featured h2{font-size:clamp(24px,3vw,34px);line-height:1.15;margin:8px 0 0;letter-spacing:-.015em;font-weight:700}
+.quote{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 28px;margin-top:22px}
+.quote .odds{font-size:clamp(84px,13vw,140px)}
+.quote .sub{padding-bottom:10px}
+.quote .sub p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.factions{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chart{position:relative;margin-top:26px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .pt{cursor:pointer;outline:none}
+.chart .pt:focus-visible circle.ring{stroke:var(--ink);stroke-width:2.5}
+.chart .ev{cursor:pointer;outline:none}
+.chart .ev:focus-visible path{stroke:var(--ink);stroke-width:2}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;line-height:1.35;padding:7px 10px;border-radius:6px;white-space:nowrap;transform:translate(-50%,calc(-100% - 12px));font-weight:500;z-index:5}
+.tip b{font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted);margin-top:8px}
+.timeline h3,.panel-h{font-size:17px;margin:0 0 12px;font-weight:700}
+.timeline ol{list-style:none;margin:0;padding:0;position:relative}
+.timeline li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.4}
+.timeline li:last-child{border-bottom:1px solid var(--line)}
+.timeline .ar{font-size:12px;padding-top:3px}
+.timeline .dt{display:block;font-size:13px;color:var(--muted);margin-bottom:2px}
+.timeline .empty{color:var(--muted);font-size:15px}
+
+/* Watchlist */
+.block{margin-top:64px}
+.block-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:14px}
+.block-h h2{font-size:26px;margin:0;font-weight:700}
+.block-h p{margin:0;color:var(--muted);font-size:15px}
+.wl{position:relative;overflow-x:auto;background:var(--panel);border-radius:var(--r-lg)}
+.wl table{min-width:820px}
+.wl th{background:var(--panel);padding:14px 16px}
+.wl td{padding:14px 16px;vertical-align:middle}
+.wl tr.grp td{font-size:13px;color:var(--muted);padding:18px 16px 8px;border-bottom:1px solid var(--line-strong);background:var(--panel)}
+.wl tr.grp:hover{background:none}
+.wl tr.sel{background:var(--raised)}
+.wl .bill{background:none;border:0;color:var(--ink);font:700 15px var(--font);cursor:pointer;padding:8px 0;min-height:44px;text-align:left}
+.wl .bill:hover{color:var(--gold)}
+.wl .au{display:block;font-size:13px;color:var(--muted)}
+.wl .lt{font-weight:700;font-stretch:115%;font-size:17px}
+.wl .rm{background:none;border:0;color:var(--muted);font:500 13px var(--font);cursor:pointer;min-height:44px;padding:0 4px}
+.wl .rm:hover{color:var(--ink)}
+
+/* Accuracy */
+.acc{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:24px 56px;align-items:end}
+.acc p{color:var(--muted);font-size:15px;margin:10px 0 0;max-width:46ch}
+.accbars{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;align-items:end;height:190px}
+.accbars div{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%;text-align:center}
+.accbars b{font-size:15px;font-stretch:112%}
+.accbars i{display:block;border-radius:4px 4px 0 0;background:#3A5379}
+.accbars i.hi{background:#C9A33F}
+.accbars span{font-size:12px;color:var(--muted);line-height:1.2;min-height:30px}
+details.more{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}
+details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:44px;display:flex;align-items:center}
+
+/* Drafting */
+.dhead{padding:44px 0 28px;display:flex;flex-wrap:wrap;gap:16px 40px;align-items:flex-end;justify-content:space-between}
+.dhead h1{font-size:clamp(32px,4.4vw,48px);line-height:1.04;letter-spacing:-.025em;margin:0;max-width:20ch;font-stretch:106%}
+.dhead p{color:var(--muted);margin:12px 0 0;max-width:56ch;font-size:17px}
+.dgrid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px 48px;align-items:start}
+.sentence{font-size:clamp(22px,2.6vw,30px);line-height:1.75;font-weight:300;margin:0;letter-spacing:-.01em}
+.sentence select,.sentence input{font:600 1em/1.2 var(--font);color:var(--ink);background:transparent;border:0;border-bottom:2px solid var(--gold);border-radius:0;padding:0 4px 2px;min-height:0;letter-spacing:-.01em;vertical-align:baseline}
+.sentence select{padding-right:22px;background-position:calc(100% - 11px) 55%,calc(100% - 6px) 55%;field-sizing:content;max-width:100%}
+.sentence select option{font-size:16px;background:var(--panel)}
+.sentence input#kw{width:15ch;field-sizing:content;min-width:10ch;max-width:100%}
+.sentence input#coauth{width:2.6ch;field-sizing:content;min-width:1.4ch;text-align:center}
+.sentence select:focus-visible,.sentence input:focus-visible{box-shadow:none;outline:3px solid var(--gold);outline-offset:4px;border-radius:2px}
+.dgest{margin-top:28px}
+.dgest label{display:block;font-weight:600;font-size:16px;margin-bottom:4px}
+.dgest .hint{margin:0 0 10px;color:var(--muted);font-size:14px}
+.dgest textarea{min-height:150px;font-size:16px;background:var(--panel);border-color:var(--line-strong);padding:14px 16px}
+fieldset{border:0;padding:0;margin:24px 0 0;min-width:0}
+legend{font-weight:600;font-size:15px;padding:0;margin-bottom:8px}
+.chk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
+.chk label{display:flex;gap:10px;align-items:center;min-height:44px;font-size:15px;color:var(--ink);cursor:pointer}
+.dact{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.res{position:sticky;top:88px;background:var(--panel);border-radius:var(--r-lg);padding:28px}
+.res .lab{margin:0;color:var(--muted);font-size:15px}
+.res .odds{font-size:clamp(88px,11vw,128px);margin-top:10px}
+.res .band{display:inline-block;margin-top:14px;font-size:14px;font-weight:600;padding:4px 12px;border-radius:999px;background:var(--raised);color:var(--ink)}
+.res .rnginfo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
+.res .rnginfo div{font-size:13px;color:var(--muted)}
+.res .rnginfo b{display:block;font-size:22px;color:var(--ink);font-stretch:112%;margin-top:2px}
+.res .cmp{margin:16px 0 0;font-size:15px}
+.gauge{height:10px;background:var(--bg);border-radius:5px;position:relative;margin:18px 0 6px}
+.gauge .rng{position:absolute;top:0;bottom:0;background:rgba(242,193,78,.28);border-radius:5px;margin:0;padding:0;border:0;display:block}
+.gauge .fill{height:100%;border-radius:5px;background:var(--gold);max-width:100%}
+.gauge .base{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--ink)}
+.gscale{display:flex;justify-content:space-between;font-size:12px;color:var(--subtle)}
+
+.path{margin-top:72px}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:0;margin-top:28px;overflow-x:auto;padding-bottom:6px}
+.step{position:relative;padding:0 20px 0 0}
+.step .line{display:flex;align-items:center;height:20px}
+.step .dot{width:14px;height:14px;border-radius:50%;background:var(--ink);flex:none}
+.step .con{height:2px;flex:1;background:var(--line-strong)}
+.step.weak .dot{background:var(--down);box-shadow:0 0 0 5px rgba(245,162,93,.22)}
+.step.last .con{display:none}
+.step .pp{margin:16px 0 0;font-size:40px;font-weight:700;font-stretch:118%;letter-spacing:-.02em;line-height:1}
+.step.weak .pp{color:var(--down)}
+.step .nm{margin:6px 0 0;font-weight:600;font-size:15px}
+.step .of{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.step .wk{margin:8px 0 0;font-size:13px;font-weight:600;color:var(--down)}
+.pathnote{margin:20px 0 0;color:var(--muted);font-size:15px;max-width:80ch}
+
+.moves{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:24px 56px;margin-top:72px;align-items:start}
+.fac{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 84px;gap:12px 14px;align-items:center;font-size:15px}
+.fac .bar{position:relative;height:12px}
+.fac .bar::before{content:"";position:absolute;left:50%;top:-6px;bottom:-6px;width:1px;background:var(--line-strong)}
+.fac .bar i{position:absolute;top:0;height:12px;border-radius:3px}
+.fac .bar i.u{left:50%;background:var(--up)}.fac .bar i.d{right:50%;background:var(--down)}
+.fac .v{text-align:right;font-weight:600;white-space:nowrap}
+.side p{color:var(--muted);font-size:15px;margin:0 0 12px}
+.evidence{margin-top:56px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.evidence details{background:var(--panel);border-radius:var(--r-md);padding:0 20px}
+.evidence summary{cursor:pointer;font-weight:600;font-size:16px;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.evidence summary::after{content:"+";font-size:22px;color:var(--muted);font-weight:400}
+.evidence details[open] summary::after{content:"−"}
+.evidence details>div{padding:0 0 20px;font-size:15px;color:var(--muted)}
+.evidence details>div p{margin:0 0 10px}
+.evidence table{font-size:14px}
+
+@media (max-width:960px){
+  .featured,.dgrid,.moves,.acc{grid-template-columns:minmax(0,1fr)}
+  .res{position:static}
+}
+@media (max-width:640px){
+  .facts{grid-template-columns:1fr;gap:10px}
+  .intro{padding-top:28px}
+  .results button{grid-template-columns:64px minmax(0,1fr) auto;padding:12px 14px}
+  .results .oc{display:none}
+  .chk{grid-template-columns:1fr}
+  .accbars{height:160px;gap:4px}
+  .accbars span{font-size:11px}
+  .res{padding:20px}
+  .block{margin-top:48px}
+}
+</style>
 </head>
 <body>
-<header><div class="wrap">
-<h1>Capitol Odds</h1>
-<p class="tag-line">What are a California bill's chances of becoming law?</p>
-<p>Two tools from one statistical model trained on every legislator's bills in <span id="trainrange"></span>: estimate a bill you are drafting, or track a bill already in print as its odds change.</p>
-<nav></nav>
-</div></header>
 <main><div class="wrap">
-<div class="modes" role="tablist"><button id="m-draft" role="tab" aria-selected="true">Drafting a bill</button><button id="m-track" role="tab" aria-selected="false">Track a filed bill</button></div>
-<section id="track" hidden>
-<div class="note" id="tnote"></div>
-<div class="layout">
-<div>
-<div class="panel"><h2>Find a bill</h2>
- <div class="f"><input id="tq" type="search" placeholder="Bill number, author or words, e.g. AB 2437 or wildfire"></div>
- <div id="tres" class="small"><p class="loading">Loading bills…</p></div>
+
+<!-- Track a bill: the home view -->
+<div class="view" id="track" hidden>
+  <div class="intro">
+    <div class="copy">
+      <h1>Know the odds before the vote.</h1>
+      <p>A statistical forecast of which California bills will become law, built for the people who write, track and influence legislation.</p>
+    </div>
+    <ul class="facts" aria-label="About the model">
+      <li><b id="f-bills">38,333 bills</b>in the training data, every legislator's bills since <span id="f-first">2007-08</span>.</li>
+      <li><b>Tested blind</b>on the <span id="f-test">2025-26</span> session, which the model never saw.</li>
+      <li><b id="f-auc">AUC 0.70–0.95</b>from introduction to one year in, as a bill's history builds.</li>
+    </ul>
+  </div>
+
+  <div class="search" role="search">
+    <label for="tq" class="sr">Search bills</label>
+    <div class="box">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6.5" fill="none" stroke="#A9B6C9" stroke-width="2"></circle><path d="M14 14l4 4" stroke="#A9B6C9" stroke-width="2" stroke-linecap="round"></path></svg>
+      <input id="tq" type="search" placeholder="Search by bill number, author or subject…" autocomplete="off" aria-controls="tres" aria-describedby="tnote">
+    </div>
+    <div id="tres" class="results" hidden></div>
+  </div>
+  <p class="status" id="tnote">Loading bills…</p>
+
+  <div id="tbill" aria-live="polite"><p class="loading">Loading the featured bill…</p></div>
+
+  <div class="block" id="watch">
+    <div class="block-h"><h2>Watchlist</h2><p>Select a bill to chart it. Your bills stay in this browser.</p></div>
+    <div class="wl" id="wl"><p class="loading" style="padding:18px">Loading…</p></div>
+  </div>
+
+  <div class="block">
+    <div class="acc">
+      <div>
+        <h2 style="font-size:26px;margin:0">The odds sharpen as a bill moves</h2>
+        <p>AUC measures how often a signed bill ranks above an unsigned bill. 0.50 is equivalent to chance. Each checkpoint has its own model, trained on earlier sessions and tested on <span id="ttest"></span>.</p>
+        <p class="small">AUC ranks bills against each other. It is not the chance that any single forecast is right.</p>
+      </div>
+      <div id="tacc" class="accbars" role="img" aria-label="AUC by days after introduction"></div>
+    </div>
+    <details class="more"><summary>Predicted against actual, by checkpoint</summary><div id="taccT"></div></details>
+  </div>
+
+  <p style="margin-top:56px"><button class="btn" id="m-draft" type="button" aria-selected="false">Drafting a bill? Estimate it before introduction</button></p>
 </div>
+
+<!-- Draft a bill -->
+<div class="view" id="draft" hidden>
+  <div class="dhead">
+    <div>
+      <h1>Estimate a bill before it's introduced</h1>
+      <p>Describe the bill. The model compares it with every bill since <span id="trainrange"></span> and estimates its chance of clearing each step to the Governor's signature.</p>
+    </div>
+    <button class="btn" id="m-track" type="button" aria-selected="false">Bill already in print? Track it</button>
+  </div>
+
+  <div class="dgrid">
+    <div>
+      <p class="sentence">
+        <label for="author" class="sr">Lead author</label><select id="author"></select><span id="newrow">, a <label for="party" class="sr">Party</label><select id="party"><option value="D">Democrat</option><option value="R">Republican</option></select> in the <label for="origin" class="sr">House</label><select id="origin"><option>Assembly</option><option>Senate</option></select>,</span>
+        introduces a bill on <label for="kw" class="sr">Subject line</label><input id="kw" type="text" placeholder="subject" autocomplete="off">
+        with <label for="coauth" class="sr">Coauthors at introduction</label><input id="coauth" type="number" min="0" max="80" value="0" inputmode="numeric"> coauthors,
+        filed <label for="window" class="sr">Introduction window</label><select id="window"><option value="early (Dec-Jan)">early (Dec to Jan)</option><option value="Feb 1-14">Feb 1 to 14</option><option value="Feb 15-deadline">Feb 15 to the deadline</option></select>.
+        It goes first to <label for="area" class="sr">First policy committee</label><select id="area"></select><span id="apptail"></span>.
+      </p>
+
+      <div class="dgest">
+        <label for="dg">Legislative Counsel's Digest</label>
+        <p class="hint">The strongest single input. The model learned from the digest of every bill since 2007.</p>
+        <textarea id="dg" rows="6" placeholder="Paste the Legislative Counsel's Digest or describe what the proposed bill would change…"></textarea>
+      </div>
+
+      <fieldset><legend>Fiscal features</legend><div class="chk">
+        <label><input type="checkbox" id="fiscal_committee">Goes to a fiscal committee</label>
+        <label><input type="checkbox" id="appropriation">Makes an appropriation</label>
+        <label><input type="checkbox" id="local_program">State-mandated local program</label>
+        <label><input type="checkbox" id="taxlevy">Tax levy</label>
+        <label><input type="checkbox" id="urgency">Urgency clause</label>
+        <label><input type="checkbox" id="supermajority">Two-thirds vote required</label>
+      </div></fieldset>
+      <fieldset><legend>Coalition and form</legend><div class="chk">
+        <label><input type="checkbox" id="cross_party_coauthor">Coauthor from the other party</label>
+        <label><input type="checkbox" id="joint_lead">Joint lead author</label>
+        <label><input type="checkbox" id="cross_party_joint_lead">Joint lead from the other party</label>
+        <label><input type="checkbox" id="spot_bill">Spot bill (intent language only)</label>
+        <label><input type="checkbox" id="double_referred">Referred to two policy committees</label>
+      </div></fieldset>
+
+      <div class="dact">
+        <button class="btn primary" id="estimate" type="button">Estimate bill</button>
+        <button class="btn" id="share" type="button">Share this estimate</button>
+        <button class="btn" id="reset" type="button">Reset</button>
+      </div>
+    </div>
+
+    <aside class="res" aria-live="polite" aria-labelledby="res-h" tabindex="-1" id="result">
+      <p class="lab" id="res-h">Chance of being signed</p>
+      <div class="odds" id="p"></div>
+      <span class="band" id="band"></span>
+      <div class="gauge" aria-hidden="true"><div class="rng" id="grng"></div><div class="fill" id="gfill"></div><div class="base" id="gbase"></div></div>
+      <div class="gscale" aria-hidden="true"><span>0%</span><span>Typical bill</span><span>100%</span></div>
+      <div class="rnginfo">
+        <div>Likely range<b id="range"></b></div>
+        <div>Typical bill, <span id="baselabel"></span><b id="basepct"></b></div>
+      </div>
+      <p class="cmp" id="cmp"></p>
+    </aside>
+  </div>
+
+  <div class="path">
+    <div class="block-h"><h2>Where it could stall</h2><p>Chance of clearing each step, for a bill that reached it.</p></div>
+    <div class="steps" id="steps"></div>
+    <p class="pathnote" id="pathnote"></p>
+  </div>
+
+  <div class="moves">
+    <div>
+      <div class="block-h"><h2>What moves the estimate</h2></div>
+      <div class="fac" id="fac"></div>
+    </div>
+    <div class="side">
+      <p>Each line is the change in the estimate from that input, against a typical value: no flag, no coauthors, an average committee and filing window, and the party average for the author.</p>
+      <p>These are what the model has learned goes with success. They are not causal effects: a bill with coauthors may do better because it was already a consensus bill.</p>
+    </div>
+  </div>
+
+  <div class="evidence">
+    <details open><summary>Similar past bills</summary><div><p>Past bills whose titles share words with the subject.</p><div id="sim"></div></div></details>
+    <details><summary>Committee and author</summary><div><div id="ctx"></div><div id="rel"><p class="loading">Loading rosters…</p></div></div></details>
+    <details><summary>How well the model is calibrated</summary><div><p>Bills grouped by predicted chance, against the share that were actually signed (five-fold cross-validation).</p><div id="calib"></div></div></details>
+    <details><summary>Method and limits</summary><div><p>Trained on earlier sessions and tested on <span id="testsess"></span>, a session it had not seen, the model ranked a signed bill above an unsigned one about <span id="aucpct"></span> of the time (AUC <span id="auc"></span>, where 0.5 is chance). The range shows how much the estimate moves with the data it learned from and between typical sessions. It cannot see a bill's merits, the Governor's priorities, opposition, or deals made along the way.</p><p id="about"></p></div></details>
+  </div>
 </div>
-<div>
-<div class="panel" aria-live="polite"><h2>Odds over time</h2><div id="tbill" class="small">Pick a bill to see how its chance of being signed changed as it moved.</div></div>
-<div class="panel"><h2>How accurate is tracking?</h2><div class="small">Each checkpoint has its own model, trained on earlier sessions and tested on <span id="ttest"></span>. AUC: how often a signed bill ranks above an unsigned one (0.5 is a coin flip).</div><div id="tacc"></div></div>
-</div>
-</div>
-</section>
-<section id="draft">
-<div class="note"><b>Read this as a rough guide.</b> Trained on earlier sessions and tested on <span id="testsess"></span>, a session it had not seen, the model ranked a signed bill above an unsigned one about <span id="aucpct"></span> of the time (AUC <span id="auc"></span>, where 0.5 is a coin flip). The range shows how much the estimate moves with the data it learned from and between typical sessions. It cannot see a bill's merits, the Governor's priorities, opposition, or deals made along the way. <b>Bill already in print?</b> <a href="?v=track">Track it</a>: once a bill has two to three months of history, the odds are far sharper (AUC 0.80 by day 90).</div>
-<div class="tools"><button class="btn" id="share">Copy link to this estimate</button><button class="btn" id="reset">Start over</button></div>
-<div class="layout">
-<div>
-<div class="panel"><h2>The bill</h2>
- <div class="f"><label class="h" for="author">Lead author</label><select id="author"></select></div>
- <div class="row2" id="newrow" hidden>
-  <div class="f"><label class="h" for="party">Party</label><select id="party"><option value="D">Democrat</option><option value="R">Republican</option></select></div>
-  <div class="f"><label class="h" for="origin">House</label><select id="origin"><option>Assembly</option><option>Senate</option></select></div>
- </div>
- <div class="f"><label class="h" for="kw">Subject line</label><input id="kw" type="search" placeholder="e.g. Vehicles: registration services"><div class="small">Short title in the style of the Legislative Counsel.</div></div>
- <div class="f"><label class="h" for="dg">What the bill does</label><textarea id="dg" rows="4" placeholder="Paste the Legislative Counsel's Digest, or write a few sentences: existing law, then what this bill would do."></textarea><div class="small">The model reads the subject and this summary together. It learned from the digests of every bill since 2007.</div></div>
- <div class="f"><label class="h" for="area">First policy committee</label><select id="area"></select></div>
- <div class="row2">
-  <div class="f"><label class="h" for="window">Introduction window</label><select id="window"><option value="early (Dec-Jan)">Early (Dec to Jan)</option><option value="Feb 1-14">Feb 1 to 14</option><option value="Feb 15-deadline">Feb 15 to deadline</option></select></div>
-  <div class="f"><label class="h" for="coauth">Coauthors at introduction</label><input id="coauth" type="number" min="0" max="80" value="0"></div>
- </div>
- <div class="f"><label class="h">Fiscal features (from the Legislative Counsel's digest)</label><div class="chk">
-  <label><input type="checkbox" id="fiscal_committee">Goes to a fiscal committee</label>
-  <label><input type="checkbox" id="appropriation">Makes an appropriation</label>
-  <label><input type="checkbox" id="local_program">State-mandated local program</label>
-  <label><input type="checkbox" id="taxlevy">Tax levy</label>
-  <label><input type="checkbox" id="urgency">Urgency clause</label>
-  <label><input type="checkbox" id="supermajority">Two-thirds vote required</label>
- </div></div>
- <div class="f"><label class="h">Coalition and form</label><div class="chk">
-  <label><input type="checkbox" id="cross_party_coauthor">Coauthor from the other party</label>
-  <label><input type="checkbox" id="joint_lead">Joint lead author</label>
-  <label><input type="checkbox" id="cross_party_joint_lead">Joint lead from the other party</label>
-  <label><input type="checkbox" id="spot_bill">Introduced as a spot bill (intent language only)</label>
-  <label><input type="checkbox" id="double_referred">Referred to two policy committees</label>
- </div></div>
-</div>
-<div class="panel"><h2>Similar past bills</h2>
- <div class="small">Past bills whose titles share words with the subject line above.</div>
- <div id="sim" class="small"></div>
-</div>
-</div>
-<div>
-<div class="panel" aria-live="polite"><h2>Estimated chance of being signed</h2>
- <div class="big" id="p"></div><span class="band" id="band"></span>
- <div class="range" id="range"></div>
- <div class="gauge"><div class="rng" id="grng"></div><div class="fill" id="gfill"></div><div class="base" id="gbase" title="Average bill"></div></div>
- <div class="small">Bar: estimate. Shaded: likely range. Gold line: average bill in <span id="baselabel"></span> (<span id="basepct"></span> signed).</div>
- <h2 style="margin-top:16px">Step by step</h2>
- <div class="small">Chance of clearing each step, for a bill that reached it. The estimate above is these multiplied together. The weakest step is shaded.</div>
- <div class="steps" id="steps"></div>
- <h2 style="margin-top:16px">What moves this estimate</h2>
- <div class="small">Change in the estimate from each input, compared with a typical value (no flag, no coauthors, an average committee and window, the party average for the author).</div>
- <div class="fac" id="fac"></div>
-</div>
-<div class="panel"><h2>Context</h2><div id="ctx" class="small"></div></div>
-<div class="panel"><h2>The author and the committee</h2><div id="rel" class="small"><p class="loading">Loading rosters…</p></div></div>
-<div class="panel"><h2>How well the model is calibrated</h2>
- <div class="small">Bills grouped by predicted chance, against the share that were actually signed (five-fold cross-validation).</div>
- <div id="calib"></div>
-</div>
-<div class="panel"><h2>What the model can and cannot see</h2>
- <div class="small" id="about"></div>
-</div>
-</div>
-</div>
-</section>
+
 <footer>Not affiliated with any office or legislator. Not a forecast of any specific bill and not advice.<br>Source: California Legislative Information bulk export (leginfo). Model code, tests and methodology are in the repository.</footer>
 </div></main>
 <script>if(/[?&](sess|chamber|scope|method|budget|sort)=/.test(location.search))location.replace("scorecard.html"+location.search+location.hash);</script>
@@ -164,20 +330,22 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
 <script src="insights.js"></script>
 <script src="data/model.js"></script>
 <script>
-CL.nav("index.html");
 const M = MODEL, MET = INSIGHTS.metrics, SM = MET.stages, {esc, label} = CL;
 const $ = id => document.getElementById(id);
 const pc = p => (100 * p).toFixed(0) + "%";
 const BIN = ["double_referred","fiscal_committee","appropriation","urgency","taxlevy","local_program","supermajority","cross_party_coauthor","cross_party_joint_lead","spot_bill"];
 const LABEL = {double_referred:"Referred to two policy committees", fiscal_committee:"Goes to a fiscal committee", appropriation:"Makes an appropriation", urgency:"Urgency clause", taxlevy:"Tax levy", local_program:"State-mandated local program", supermajority:"Two-thirds vote", cross_party_coauthor:"Coauthor from the other party", cross_party_joint_lead:"Joint lead from the other party", spot_bill:"Spot bill", joint_lead:"Joint lead author"};
-const OUT = {signed:"Signed", vetoed:"Vetoed", not_enacted:"Did not pass"};
+const OUT = {signed:"Signed", vetoed:"Vetoed", not_enacted:"Did not pass", pending:"Pending"};
 const STEPS = Object.keys(M.stage_names);
+const STEP_NAME = {policy: "Policy committee", appropriations: "Appropriations", floor: "First-house floor", second_house: "Second house", governor: "Governor"};
 const REF = M.reference_session, COLS = M.stage_draws.columns, DRAWS = M.stage_draws.draws;
 const TRAIN = MET.sessions;
+const UP = '<span class="up" aria-hidden="true">▲</span>', DN = '<span class="down" aria-hidden="true">▼</span>';
 
-// Header and notes from the data, so they stay right after each refresh
-$("trainrange").textContent = `${label(TRAIN[0])} through ${label(TRAIN[TRAIN.length - 1])}`;
+// Text that follows the data, so it stays right after each refresh
+$("trainrange").textContent = label(TRAIN[0]);
 $("testsess").textContent = label(TRAIN[TRAIN.length - 1]);
+$("f-bills").textContent = MET.bills.toLocaleString() + " bills"; $("f-first").textContent = label(TRAIN[0]);
 const AUC = SM.out_of_session_auc;
 $("auc").textContent = AUC.toFixed(2); $("aucpct").textContent = Math.round(AUC * 100) + "%";
 $("basepct").textContent = pc(M.base_rate); $("baselabel").textContent = label(REF); $("gbase").style.left = (100 * M.base_rate) + "%";
@@ -190,14 +358,14 @@ $("about").innerHTML = `It learns from ${TRAIN.length} finished sessions (${MET.
   ` A single model fit to the final outcome ranks bills about as well (AUC ${MET.out_of_session_auc.toFixed(2)}); the steps show where the risk sits. Not yet included: the full bill text beyond the digest, and support and opposition.`;
 
 const authors = [...M.authors].sort((a, b) => a.member.localeCompare(b.member));
-$("author").innerHTML = '<option value="">New or unlisted member</option>' +
+$("author").innerHTML = '<option value="">A new member</option>' +
   authors.map(a => `<option value="${esc(a.member)}">${esc(a.member)} (${a.party}, ${a.origin})</option>`).join("");
-$("calib").innerHTML = "<table><thead><tr><th>Predicted</th><th class='n'>Bills</th><th class='n'>Predicted avg</th><th class='n'>Actually signed</th></tr></thead><tbody>" +
+$("calib").innerHTML = "<div class='scroll'><table><thead><tr><th>Predicted</th><th class='n'>Bills</th><th class='n'>Predicted avg</th><th class='n'>Actually signed</th></tr></thead><tbody>" +
   SM.calibration.map(c => { const [lo, hi] = c.band.replace(/[(\]]/g, "").split(", ").map(Number);
-    return `<tr><td>${pc(lo)} to ${pc(hi)}</td><td class="n">${c.bills.toLocaleString()}</td><td class="n">${pc(c.predicted)}</td><td class="n">${pc(c.actual)}</td></tr>`; }).join("") + "</tbody></table>";
+    return `<tr><td>${pc(lo)} to ${pc(hi)}</td><td class="n">${c.bills.toLocaleString()}</td><td class="n">${pc(c.predicted)}</td><td class="n">${pc(c.actual)}</td></tr>`; }).join("") + "</tbody></table></div>";
 
-// Page state in the URL: every input, so an estimate can be shared
-const DEF = {a: "", p: "D", o: "Assembly", c: "", w: "Feb 1-14", n: 0, f: "", k: "", g: ""};
+// Page state in the URL: every drafting input, so an estimate can be shared
+const DEF = {v: "", a: "", p: "D", o: "Assembly", c: "", w: "Feb 1-14", n: 0, f: "", k: "", g: ""};
 const st0 = CL.readState(DEF);
 function applyState(s) {
   $("author").value = authors.some(a => a.member === s.a) ? s.a : "";
@@ -208,8 +376,8 @@ function applyState(s) {
   fillAreas(); if (s.c) $("area").value = s.c;
 }
 function saveState() {
-  if (!$("track").hidden) return;   // the tracking view keeps its own ?v=track&b= state
-  CL.writeState({a: $("author").value, p: $("party").value, o: $("origin").value, c: $("area").value, w: $("window").value,
+  if (!$("track").hidden) return;   // the tracking view keeps its own ?b= state
+  CL.writeState({v: "draft", a: $("author").value, p: $("party").value, o: $("origin").value, c: $("area").value, w: $("window").value,
     n: +$("coauth").value || 0, f: [...BIN, "joint_lead"].filter(b => $(b).checked).join(","), k: $("kw").value, g: $("dg").value}, DEF);
 }
 
@@ -289,7 +457,7 @@ const avgP = (s, key, vals) => vals.reduce((t, v) => t + P({...s, [key]: v}), 0)
 function fillAreas() {
   const o = state().origin, cur = $("area").value;
   const areas = M.policy_areas.filter(x => x.startsWith(o));
-  $("area").innerHTML = areas.map(x => `<option${x === cur ? " selected" : ""}>${esc(x)}</option>`).join("");
+  $("area").innerHTML = areas.map(x => `<option value="${esc(x)}"${x === cur ? " selected" : ""}>${esc(x.replace(/^(Assembly|Senate) /, ""))}</option>`).join("");
 }
 function band(p) {
   return p < .25 ? "Long odds" : p < .38 ? "Below average" : p < .52 ? "About average" : p < .62 ? "Above average" : "Strong";
@@ -297,16 +465,26 @@ function band(p) {
 function render() {
   const s = state(), sp = steps(s), p = sp.reduce((a, b) => a * b, 1), [lo, hi] = range(s);
   $("p").textContent = pc(p); $("band").textContent = band(p); $("gfill").style.width = (100 * p) + "%";
-  $("range").innerHTML = `Likely range <b>${pc(lo)} to ${pc(hi)}</b>`;
+  $("range").textContent = Math.round(100 * lo) === Math.round(100 * hi) ? pc(lo) : `${Math.round(100 * lo)}–${pc(hi)}`;
   $("grng").style.left = (100 * lo) + "%"; $("grng").style.width = (100 * (hi - lo)) + "%";
+  const gap = Math.round(100 * (p - M.base_rate));
+  $("cmp").innerHTML = gap === 0 ? `In line with the typical ${label(REF)} bill.` :
+    `${gap > 0 ? UP : DN} ${Math.abs(gap)} points ${gap > 0 ? "above" : "below"} the typical ${label(REF)} bill.`;
+  $("apptail").textContent = s.fiscal_committee ? ", then to Appropriations" : "";
+  // Where it could stall: conditional chance at each step and how many of 100 such bills remain
   const low = sp.indexOf(Math.min(...sp));
-  $("steps").innerHTML = STEPS.map((k, i) => `<div>${esc(M.stage_names[k])}</div><div class="track"><div class="fill${i === low ? " low" : ""}" style="width:${100 * sp[i]}%"></div></div><div class="val">${pc(sp[i])}</div>`).join("");
+  let left = 100; const alive = sp.map(x => (left *= x));
+  $("steps").innerHTML = STEPS.map((k, i) => `<div class="step${i === low ? " weak" : ""}${i === STEPS.length - 1 ? " last" : ""}">` +
+    `<div class="line" aria-hidden="true"><span class="dot"></span><span class="con"></span></div>` +
+    `<p class="pp">${pc(sp[i])}</p><p class="nm">${esc(STEP_NAME[k] || M.stage_names[k])}</p>` +
+    `<p class="of">${Math.round(alive[i])} of 100 still in play</p>${i === low ? `<p class="wk">${DN} Weakest step</p>` : ""}</div>`).join("");
+  $("pathnote").textContent = `Of 100 comparable bills, about ${Math.round(alive[0])} clear policy committee, ${Math.round(alive[1])} clear Appropriations, ${Math.round(alive[2])} pass the first house, ${Math.round(alive[3])} clear the second house, and ${Math.round(alive[4])} are signed. Each percentage applies to bills that reached that step, so they multiply rather than stand alone.`;
   const f = [];
   const areas = M.policy_areas.filter(x => x.startsWith(s.origin));
   f.push([`Committee: ${s.policy_area.replace(/^(Assembly|Senate) /, "")}`, p - avgP(s, "policy_area", areas)]);
   f.push([`Author's track record${s.a ? "" : " (party average)"}`, p - P({...s, author_record: M.party_prior[s.party] ?? 0})]);
   f.push([`Introduced ${s.filing_window}`, p - avgP(s, "filing_window", M.filing_windows)]);
-  if (s.has_text && TXT) f.push([`What the bill does (subject and summary)`, p - P({...s, text_score: TYPICAL})]);
+  if (s.has_text && TXT) f.push([`What the bill does`, p - P({...s, text_score: TYPICAL})]);
   if (s.log1p_coauthors) f.push([`${$("coauth").value} coauthors`, p - P({...s, log1p_coauthors: 0})]);
   if (s.joint_lead) f.push([LABEL.joint_lead, p - P({...s, joint_lead: 0, cross_party_joint_lead: 0})]);
   for (const b of BIN) if (s[b] && b !== "cross_party_joint_lead") f.push([LABEL[b], p - P({...s, [b]: 0})]);
@@ -314,7 +492,10 @@ function render() {
   if (s.author_chairs_committee) f.push(["Author chairs the committee", p - P({...s, author_chairs_committee: 0})]);
   if (s.author_on_committee) f.push(["Author sits on the committee", p - P({...s, author_on_committee: 0, author_chairs_committee: 0})]);
   f.sort((x, y) => Math.abs(y[1]) - Math.abs(x[1]));
-  $("fac").innerHTML = f.map(([l, d]) => `<div>${esc(l)}</div><div class="${d >= 0 ? "up" : "dn"}">${d >= 0 ? "+" : "−"}${Math.abs(100 * d).toFixed(1)} pts</div>`).join("");
+  const big = Math.max(0.05, ...f.map(x => Math.abs(x[1])));
+  $("fac").innerHTML = f.map(([l, d]) => { const w = (50 * Math.abs(d) / big).toFixed(1), u = d >= 0;
+    return `<div>${esc(l)}</div><div class="bar" aria-hidden="true"><i class="${u ? "u" : "d"}" style="width:${w}%"></i></div>` +
+      (Math.abs(100 * d) < 0.05 ? `<div class="v muted">0.0 pts</div>` : `<div class="v ${u ? "up" : "down"}">${u ? "▲ +" : "▼ −"}${Math.abs(100 * d).toFixed(1)} pts</div>`); }).join("");
   const as = M.area_stats[s.policy_area] || [0, 0, 0, 0], cur = label(M.current_session);
   let ctx = `<p><b>${esc(s.policy_area)}</b>: ${as[0]} bills in ${cur} went here first; ${as[1]} (${as[0] ? pc(as[1] / as[0]) : "–"}) were signed. Since ${label(M.first_session)}: ${as[2]} bills, ${as[2] ? pc(as[3] / as[2]) : "–"} signed.${as[0] < 20 ? " Small sample this session, so the committee effect is uncertain." : ""}</p>`;
   if (s.a) { const n = s.a.lead_bills_current, sg = s.a.lead_signed_current, all = s.a.bills_all_sessions;
@@ -343,7 +524,7 @@ function relPanel(s) {
       const ty = rows.reduce((t, r) => t + r[iy], 0), tn = rows.reduce((t, r) => t + r[ino], 0);
       if (rows.length) {
         const party = Object.fromEntries(regs.map(m => [m[0], m[1]]));
-        h += `<p>Current members' committee votes on ${esc(s.a.member)}'s ${label(PAIRS.pairs_session)} bills (any committee): ${ty} yes, ${tn} no.</p><div style="max-height:220px;overflow:auto"><table><thead><tr><th>Member</th><th class="n">Yes</th><th class="n">No</th></tr></thead><tbody>` +
+        h += `<p>Current members' committee votes on ${esc(s.a.member)}'s ${label(PAIRS.pairs_session)} bills (any committee): ${ty} yes, ${tn} no.</p><div style="max-height:240px;overflow:auto"><table><thead><tr><th>Member</th><th class="n">Yes</th><th class="n">No</th></tr></thead><tbody>` +
           rows.map(r => `<tr><td><span class="${party[r[im]] || ""}">${esc(r[im])}</span></td><td class="n">${r[iy]}</td><td class="n">${r[ino]}</td></tr>`).join("") + "</tbody></table></div>";
       } else h += "<p>No recorded committee votes by these members on this author's bills.</p>";
     }
@@ -354,7 +535,7 @@ function relPanel(s) {
 let B = null, simHits = [];
 function similar() {
   const w = $("kw").value.toLowerCase().split(/\W+/).filter(x => x.length > 2);
-  if (!w.length) { $("sim").innerHTML = `Type a subject line to see bills since ${label(M.first_session)} with matching titles and how they ended.`; return; }
+  if (!w.length) { $("sim").innerHTML = `<p>Type a subject to see bills since ${label(M.first_session)} with matching titles and how they ended.</p>`; return; }
   if (!B) { $("sim").innerHTML = '<p class="loading">Loading the bill list…</p>';
     CL.load("data/bills_index.js").then(() => { const OC = {s: "signed", v: "vetoed", n: "not_enacted"};
       B = BILLS.rows.map(r => ({session: r[0], bill_id: r[1], title: r[2], member: BILLS.members[r[3]], party: r[4], policy_area: BILLS.areas[r[5]], outcome: OC[r[6]]})); similar(); }); return; }
@@ -363,78 +544,239 @@ function similar() {
   const top = hits.filter(x => x.n === w.length).length ? hits.filter(x => x.n === w.length) : hits;
   simHits = top.map(x => x.b);
   const sg = top.filter(x => x.b.outcome === "signed").length;
-  $("sim").innerHTML = top.length ? `<p>${top.length} bill${top.length > 1 ? "s match" : " matches"}${top.filter(x => x.n === w.length).length ? " every word" : " some words"}; ${sg} signed (${pc(sg / top.length)}). <button class="btn sm" id="simcsv">CSV</button></p><div style="max-height:340px;overflow:auto"><table><thead><tr><th>Bill</th><th>Title</th><th>Author</th><th>Outcome</th></tr></thead><tbody>` +
+  $("sim").innerHTML = top.length ? `<p>${top.length} bill${top.length > 1 ? "s match" : " matches"}${top.filter(x => x.n === w.length).length ? " every word" : " some words"}; ${sg} signed (${pc(sg / top.length)}). <button class="btn sm" id="simcsv" type="button">Download CSV</button></p><div style="max-height:360px;overflow:auto"><table><thead><tr><th>Bill</th><th>Title</th><th>Author</th><th>Outcome</th></tr></thead><tbody>` +
     top.slice(0, 60).map(({b}) => `<tr><td><a href="${CL.leginfo(b.session, b.bill_id)}" target="_blank" rel="noopener">${esc(b.bill_id)}</a><div class="small">${label(b.session)}</div></td><td>${esc(b.title)}</td><td><span class="${b.party}">${esc(b.member)}</span></td><td class="o-${b.outcome}">${OUT[b.outcome]}</td></tr>`).join("") + "</tbody></table></div>" : "<p>No matching titles.</p>";
 }
 $("sim").addEventListener("click", e => { if (e.target.id === "simcsv")
   CL.csv(`similar-bills-${$("kw").value.trim().replace(/\W+/g, "-").toLowerCase()}.csv`, simHits.map(b => ({session: label(b.session), ...b})), ["session", "bill_id", "title", "member", "party", "policy_area", "outcome"]); });
 let kwTimer;
-document.querySelectorAll("select,input,textarea").forEach(e => e.addEventListener("input", () => {
+document.querySelectorAll("#draft select, #draft input, #draft textarea").forEach(e => e.addEventListener("input", () => {
   if (e.id === "kw" || e.id === "dg") loadText();
   if (e.id === "kw") { clearTimeout(kwTimer); kwTimer = setTimeout(() => { similar(); render(); }, 200); return; }
   if (["author", "origin", "party"].includes(e.id)) fillAreas();
   render();
 }));
 $("reset").addEventListener("click", () => { applyState(DEF); similar(); render(); });
+$("estimate").addEventListener("click", () => { render(); $("result").focus(); $("result").scrollIntoView({block: "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); });
 CL.shareButton($("share"));
-// Track a filed bill: precomputed odds at each checkpoint (data/tracking.js, loaded on first use)
+
+// ---------- Track a bill ----------
+// Odds at each checkpoint come precomputed (data/tracking.js); what happened to each bill
+// comes from its history (data/events.js, loaded on first use). Nothing here is invented:
+// a checkpoint the bill has not reached yet is left off the chart.
 const TS = new URLSearchParams(location.search);
-let TR = null, trackSel = TS.get("b") || "";
+let TR = null, TRI = {}, trackSel = TS.get("b") || "", EV = null;
+const EXAMPLES = {2025: {featured: "SB40", list: ["SB1000", "AB1114", "AB539", "AB473", "AB271"]}};
+const WKEY = "capitolodds.watchlist";
+const getWatch = () => { try { return JSON.parse(localStorage.getItem(WKEY) || "[]").filter(x => typeof x === "string"); } catch (e) { return []; } };
+const setWatch = w => { try { localStorage.setItem(WKEY, JSON.stringify(w)); } catch (e) { /* storage blocked: list lasts for this visit */ } };
+let WATCH = getWatch();
+
 function setMode(m) {
   $("m-draft").setAttribute("aria-selected", m === "draft"); $("m-track").setAttribute("aria-selected", m === "track");
   $("draft").hidden = m !== "draft"; $("track").hidden = m !== "track";
-  const u = new URL(location.href);
-  if (m === "track") { u.searchParams.set("v", "track"); if (trackSel) u.searchParams.set("b", trackSel); } else { u.searchParams.delete("v"); u.searchParams.delete("b"); }
-  history.replaceState(null, "", u);
-  if (m === "track" && !TR) CL.load("data/tracking.js").then(initTrack).catch(() => { $("tres").innerHTML = "<p>Could not load bills.</p>"; });
+  CL.navCurrent(m);
+  document.title = m === "draft" ? "Estimate a bill · Capitol Odds" : "Capitol Odds: what are a California bill's chances?";
+  if (m === "track") { const u = new URL(location.href); u.search = trackSel ? "?b=" + encodeURIComponent(trackSel) : ""; history.replaceState(null, "", u); }
+  else { saveState(); }
+  if (m === "track" && !TR) CL.load("data/tracking.js").then(initTrack).catch(() => {
+    $("tnote").textContent = "Could not load the bill list. Check your connection and reload the page."; $("tbill").innerHTML = ""; });
+  if (m === "draft") { render(); similar(); }
 }
 const LBL = k => k === 0 ? "At introduction" : `Day ${k}`;
+const SHORT = k => k === 0 ? "Intro" : k === 365 ? "1 year" : `${k} days`;
+const fmtDate = d => d.toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric", timeZone: "UTC"});
+const addDays = (iso, n) => { const d = new Date(iso + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d; };
+const spaced = id => id.replace(/^([A-Z]+)(\d+)$/, "$1 $2");
+
 function initTrack() {
   const T = window.TRACKING, ci = Object.fromEntries(T.cols.map((c, i) => [c, i]));
   TR = T.rows.map(r => ({bill: r[ci.bill_id], title: r[ci.title], member: r[ci.member], party: r[ci.party], area: r[ci.policy_area], intro: r[ci.introduced], outcome: r[ci.outcome],
     p: T.checkpoints.map(k => r[ci["p" + k]])}));
+  TRI = Object.fromEntries(TR.map(b => [b.bill, b]));
   const acc = T.accuracy, lab = label(T.session);
-  $("ttest").textContent = label(T.session);
-  $("tacc").innerHTML = "<table><thead><tr><th>When</th><th class='n'>AUC</th><th class='n'>Predicted signed</th><th class='n'>Actually signed</th></tr></thead><tbody>" +
-    acc.map(a => `<tr><td>${LBL(a.days)}</td><td class="n"><b>${a.auc.toFixed(2)}</b></td><td class="n">${pc(a.predicted_rate)}</td><td class="n">${pc(a.actual_rate)}</td></tr>`).join("") + "</tbody></table>";
-  const best = acc.find(a => a.auc >= 0.7);
-  $("tnote").innerHTML = T.complete
-    ? `<b>${lab} is finished</b>, so these are the odds the model would have given each bill at the time, from models trained only on earlier sessions, next to how each bill ended. Live odds start when the next session's bills are in print. ${best ? `From ${LBL(best.days).toLowerCase()} on, the model ranks bills with AUC ${best.auc.toFixed(2)} or better.` : ""}`
-    : `<b>Odds as of ${T.asof}</b> for every ${lab} bill, from what has happened to it so far: hearings set or canceled, amendments, committee votes, the suspense file. The odds update with each weekly data refresh.`;
-  trackSearch(); if (trackSel) showBill(trackSel);
+  $("ttest").textContent = lab; $("f-test").textContent = lab;
+  if (acc.length) $("f-auc").textContent = `AUC ${acc[0].auc.toFixed(2)}–${acc[acc.length - 1].auc.toFixed(2)}`;
+  $("tacc").innerHTML = acc.map(a => `<div><b>${a.auc.toFixed(2)}</b><i class="${a.auc >= 0.8 ? "hi" : ""}" style="height:${Math.max(4, Math.round((a.auc - 0.5) * 260))}px"></i><span>${SHORT(a.days)}</span></div>`).join("");
+  $("tacc").setAttribute("aria-label", "AUC by time after introduction: " + acc.map(a => `${LBL(a.days).toLowerCase()} ${a.auc.toFixed(2)}`).join(", "));
+  $("taccT").innerHTML = "<div class='scroll'><table><thead><tr><th>When</th><th class='n'>AUC</th><th class='n'>Predicted signed</th><th class='n'>Actually signed</th></tr></thead><tbody>" +
+    acc.map(a => `<tr><td>${LBL(a.days)}</td><td class="n"><b>${a.auc.toFixed(2)}</b></td><td class="n">${pc(a.predicted_rate)}</td><td class="n">${pc(a.actual_rate)}</td></tr>`).join("") + "</tbody></table></div>";
+  $("tnote").textContent = T.complete
+    ? `${TR.length.toLocaleString()} bills from ${lab}, a finished session. Odds are what the model would have said at the time, from models trained only on earlier sessions, shown next to how each bill ended.`
+    : `${TR.length.toLocaleString()} bills from ${lab}, odds as of ${T.asof}. They update with each weekly data refresh.`;
+  const ex = EXAMPLES[T.session];
+  if (!trackSel || !TRI[trackSel]) trackSel = ex && TRI[ex.featured] ? ex.featured : biggestMovers(1)[0];
+  showBill(trackSel, true);
+  renderWatch();
+  CL.load("data/events.js").then(() => { EV = window.EVENTS && EVENTS.session === T.session ? EVENTS.events : {}; showBill(trackSel, true); })
+    .catch(() => { EV = false; showBill(trackSel, true); });
+}
+function biggestMovers(n) {
+  return TR.map(b => { const [p, i] = latest(b); return [b.bill, i > 0 ? Math.abs(p - b.p[0]) : 0]; }).sort((a, b) => b[1] - a[1]).slice(0, n).map(x => x[0]);
 }
 function latest(b) { for (let i = b.p.length - 1; i >= 0; i--) if (b.p[i] != null) return [b.p[i], i]; return [null, -1]; }
+
+// Search
 function trackSearch() {
   if (!TR) return;
   const q = $("tq").value.trim().toLowerCase(), qn = q.replace(/\s+/g, "");
-  let hits = !q ? [] : /^(ab|sb)\d+$/.test(qn) ? TR.filter(b => b.bill.toLowerCase() === qn)
-    : TR.filter(b => { const t = (b.title + " " + b.member + " " + b.bill).toLowerCase(); return q.split(/\s+/).every(w => t.includes(w)); });
-  if (!q) { $("tres").innerHTML = `${TR.length.toLocaleString()} bills from ${label(TRACKING.session)}. Search by bill number (AB 2437), author or words in the title.`; return; }
-  $("tres").innerHTML = hits.length ? `<p>${hits.length} bill${hits.length > 1 ? "s" : ""}${hits.length > 50 ? ", first 50 shown" : ""}.</p><table><thead><tr><th>Bill</th><th>Title</th><th class="n">Latest odds</th><th>Outcome</th></tr></thead><tbody>` +
-    hits.slice(0, 50).map(b => { const [p] = latest(b); return `<tr class="pick" data-b="${esc(b.bill)}"><td><b>${esc(b.bill)}</b><div class="small"><span class="${b.party}">${esc(b.member)}</span></div></td><td>${esc(b.title)}</td><td class="n">${p == null ? "–" : pc(p)}</td><td class="o-${b.outcome}">${OUT[b.outcome] || "Pending"}</td></tr>`; }).join("") + "</tbody></table>" : "<p>No matching bills.</p>";
-}
-function showBill(id) {
-  const b = TR && TR.find(x => x.bill === id); if (!b) return;
-  trackSel = id; const u = new URL(location.href); u.searchParams.set("b", id); history.replaceState(null, "", u);
-  const ks = TRACKING.checkpoints, [p, i] = latest(b);
-  $("tbill").innerHTML = `<p><b>${esc(b.bill)}</b>: ${esc(b.title)}<br><span class="${b.party}">${esc(b.member)} (${b.party})</span> · ${esc(b.area)} · introduced ${b.intro} · <a href="${CL.leginfo(TRACKING.session, b.bill)}" target="_blank" rel="noopener">Bill history</a></p>` +
-    `<div class="big">${p == null ? "–" : pc(p)}</div><div>${i >= 0 ? `Latest estimate (${LBL(ks[i]).toLowerCase()})` : ""} · Outcome: <span class="o-${b.outcome}">${OUT[b.outcome] || "Pending"}</span></div>` +
-    `<div class="tl">${ks.map((k, j) => b.p[j] == null ? "" : `<div>${LBL(k)}</div><div class="track"><div class="fill" style="width:${100 * b.p[j]}%"></div></div><div class="val">${pc(b.p[j])}</div>`).join("")}</div>`;
+  const box = $("tres");
+  if (!q) { box.hidden = true; box.innerHTML = ""; return; }
+  let hits;
+  if (/^(ab|sb)\d+$/.test(qn)) hits = TR.filter(b => b.bill.toLowerCase() === qn).concat(TR.filter(b => b.bill.toLowerCase() !== qn && b.bill.toLowerCase().startsWith(qn)));
+  else hits = TR.filter(b => { const t = (b.title + " " + b.member + " " + b.bill + " " + spaced(b.bill)).toLowerCase(); return q.split(/\s+/).every(w => t.includes(w)); });
+  box.hidden = false;
+  box.innerHTML = hits.length
+    ? `<p class="meta">${hits.length.toLocaleString()} bill${hits.length > 1 ? "s" : ""}${hits.length > 25 ? ", first 25 shown" : ""}</p><ul>` +
+      hits.slice(0, 25).map(b => { const [p] = latest(b); return `<li><button type="button" data-b="${esc(b.bill)}"><span class="bn">${esc(spaced(b.bill))}</span>` +
+        `<span class="tt">${esc(b.title)}<span class="au">${esc(b.member)} (${esc(b.party)})</span></span><span class="pp">${p == null ? "–" : pc(p)}</span><span class="oc o-${b.outcome}">${OUT[b.outcome] || "Pending"}</span></button></li>`; }).join("") + "</ul>"
+    : `<p class="meta">No bills match “${esc($("tq").value.trim())}”. Try a bill number like SB 40, an author's last name, or a word from the title.</p>`;
 }
 $("tq").addEventListener("input", trackSearch);
-$("tres").addEventListener("click", e => { const r = e.target.closest("tr.pick"); if (r) showBill(r.dataset.b); });
-$("m-draft").addEventListener("click", () => setMode("draft"));
-$("m-track").addEventListener("click", () => setMode("track"));
-if (TS.get("v") === "track") { setMode("track"); if (trackSel) $("tq").value = trackSel; }
+$("tq").addEventListener("keydown", e => { if (e.key === "Enter") { const f = $("tres").querySelector("button"); if (f) f.click(); } if (e.key === "Escape") { $("tq").value = ""; trackSearch(); } });
+$("tres").addEventListener("click", e => { const r = e.target.closest("button[data-b]"); if (r) { showBill(r.dataset.b); $("tres").hidden = true; $("tbill").scrollIntoView({block: "start"}); } });
+
+// Events: label each history milestone in the house where it happened
+const POS = new Set(["pc", "ap", "pa", "ps", "cc", "gv", "sg"]);
+function eventList(b) {
+  if (!EV || !EV[b.bill]) return [];
+  const origin = b.bill.startsWith("A") ? "Assembly" : "Senate", other = origin === "Assembly" ? "Senate" : "Assembly";
+  let house = origin;
+  return EV[b.bill].map(([day, code, ay, no]) => {
+    const vote = ay != null ? `, ${ay} to ${no}` : "";
+    const t = {pc: `Passed ${house} policy committee${vote}`, ap: `Out of ${house} Appropriations${vote}`, su: `Placed on the ${house} Appropriations suspense file`,
+      hd: `Held in ${house} committee`, pa: `Passed the Assembly${vote}`, ps: `Passed the Senate${vote}`, cc: `${origin} concurred in amendments${vote}`,
+      fl: `Failed passage${vote}`, gv: "Sent to the Governor", sg: "Signed by the Governor", vt: "Vetoed by the Governor", in: "Moved to the inactive file",
+      cn: "Hearing canceled at the author's request", dd: "Died under legislative deadlines"}[code] || code;
+    if ((code === "pa" && origin === "Assembly") || (code === "ps" && origin === "Senate")) house = other;
+    return {day, code, text: t, good: POS.has(code), date: addDays(b.intro, day)};
+  });
+}
+// Smooth line through the checkpoints that never overshoots them (monotone cubic)
+function monotone(pts) {
+  const n = pts.length; if (n < 2) return "";
+  if (n === 2) return `M${pts[0][0]},${pts[0][1]}L${pts[1][0]},${pts[1][1]}`;
+  const dx = [], s = [], m = [];
+  for (let i = 0; i < n - 1; i++) { dx[i] = pts[i + 1][0] - pts[i][0]; s[i] = (pts[i + 1][1] - pts[i][1]) / dx[i]; }
+  m[0] = s[0]; m[n - 1] = s[n - 2];
+  for (let i = 1; i < n - 1; i++) m[i] = s[i - 1] * s[i] <= 0 ? 0 : 3 * (dx[i - 1] + dx[i]) / ((2 * dx[i] + dx[i - 1]) / s[i - 1] + (dx[i] + 2 * dx[i - 1]) / s[i]);
+  let d = `M${pts[0][0]},${pts[0][1]}`;
+  for (let i = 0; i < n - 1; i++) { const h = dx[i] / 3;
+    d += `C${(pts[i][0] + h).toFixed(1)},${(pts[i][1] + m[i] * h).toFixed(1)} ${(pts[i + 1][0] - h).toFixed(1)},${(pts[i + 1][1] - m[i + 1] * h).toFixed(1)} ${pts[i + 1][0].toFixed(1)},${pts[i + 1][1].toFixed(1)}`; }
+  return d;
+}
+function chart(b, evs) {
+  const narrow = $("tbill").clientWidth < 600, ks = TRACKING.checkpoints, W = narrow ? 400 : 760, H = 320, L = 44, R = 16, Tp = 18, Bt = 262;
+  const xmax = Math.max(365, ...evs.map(e => e.day));
+  const X = d => L + (W - L - R) * Math.min(d, xmax) / xmax, Y = p => Bt - (Bt - Tp) * p;
+  const pts = ks.map((k, j) => b.p[j] == null ? null : [X(k), Y(b.p[j]), k, b.p[j]]).filter(Boolean);
+  const grid = [0, .25, .5, .75, 1].map(v => `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#22385A"></line><text x="${L - 10}" y="${Y(v) + 4}" text-anchor="end" fill="#8192AA" font-size="12">${v * 100}%</text>`).join("");
+  const xt = (narrow ? [0, 180, 365] : [0, 90, 180, 270, 365]).concat(xmax > 500 ? [Math.round(xmax / 30) * 30] : []).map(d => `<text x="${X(d)}" y="${Bt + 22}" text-anchor="${d === 0 ? "start" : d >= xmax ? "end" : "middle"}" fill="#8192AA" font-size="12">${d === 0 ? "Introduced" : "Day " + d}</text>`).join("");
+  const ev = evs.map((e, i) => `<g class="ev" tabindex="0" data-tip="${esc(fmtDate(e.date))}: ${esc(e.text)}" data-x="${X(e.day)}" data-y="${Bt}" aria-label="${esc(fmtDate(e.date))}: ${esc(e.text)}">` +
+    `<line x1="${X(e.day)}" x2="${X(e.day)}" y1="${Tp}" y2="${Bt}" stroke="#2E4A72" stroke-dasharray="2 5"></line>` +
+    `<path d="${e.good ? `M${X(e.day) - 6},${Bt + 2}L${X(e.day) + 6},${Bt + 2}L${X(e.day)},${Bt - 9}Z` : `M${X(e.day) - 6},${Bt - 9}L${X(e.day) + 6},${Bt - 9}L${X(e.day)},${Bt + 2}Z`}" fill="${e.good ? "#8CC4FF" : "#F5A25D"}"></path></g>`).join("");
+  const dots = pts.map(([x, y, k, p], i) => `<g class="pt" tabindex="0" data-tip="${LBL(k)}: ${pc(p)}" data-x="${x}" data-y="${y}" aria-label="${LBL(k)}: ${pc(p)} chance of being signed">` +
+    `<circle cx="${x}" cy="${y}" r="14" fill="transparent"></circle><circle class="ring" cx="${x}" cy="${y}" r="${i === pts.length - 1 ? 7 : 5}" fill="${i === pts.length - 1 ? "#F2C14E" : "#0F1D33"}" stroke="#F2C14E" stroke-width="2.5"></circle></g>`).join("");
+  return `<div class="chart"><svg data-w="${W}" viewBox="0 0 ${W} ${H}" role="group" aria-label="Chance of ${esc(spaced(b.bill))} being signed at each checkpoint, with history events marked on the time axis">` +
+    `<g aria-hidden="true">${grid}${xt}</g>${ev}<path d="${monotone(pts)}" fill="none" stroke="#F2C14E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></path>${dots}</svg><div class="tip" hidden></div></div>` +
+    `<div class="legend"><span>Gold dots: the model's estimate at each checkpoint</span><span>${UP} event that helped</span><span>${DN} event that hurt</span></div>`;
+}
+function showBill(id, quiet) {
+  const b = TRI[id]; if (!b) return;
+  trackSel = id;
+  if (!$("track").hidden) { const u = new URL(location.href); u.search = "?b=" + encodeURIComponent(id); history.replaceState(null, "", u); }
+  const ks = TRACKING.checkpoints, [p, i] = latest(b);
+  // Biggest move into the latest estimate, measured from an earlier checkpoint
+  let mv = "";
+  if (i > 0) { let j = 0; for (let k = 0; k < i; k++) if (b.p[k] != null && Math.abs(p - b.p[k]) > Math.abs(p - b.p[j])) j = k;
+    const d = Math.round(100 * (p - b.p[j]));
+    mv = d === 0 ? `<p class="mv">Unchanged since ${j === 0 ? "introduction" : "day " + ks[j]}</p>` :
+      `<p class="mv ${d > 0 ? "up" : "down"}"><span aria-hidden="true">${d > 0 ? "▲" : "▼"}</span> ${d > 0 ? "Up" : "Down"} ${Math.abs(d)} points since ${j === 0 ? "introduction" : "day " + ks[j]}</p>`; }
+  const evs = eventList(b);
+  const fin = evs.find(e => e.code === "sg" || e.code === "vt");
+  const outTxt = b.outcome === "signed" ? `Signed${fin ? " " + fmtDate(fin.date) : ""}` : b.outcome === "vetoed" ? `Vetoed${fin ? " " + fmtDate(fin.date) : ""}` : OUT[b.outcome] || "Pending";
+  const ex = EXAMPLES[TRACKING.session], isEx = ex && (id === ex.featured || ex.list.includes(id));
+  const watched = WATCH.includes(id);
+  const tl = EV === null ? '<p class="empty">Loading what happened…</p>' : EV === false ? '<p class="empty">Could not load bill histories. Reload the page to try again.</p>' : !evs.length ? '<p class="empty">No committee votes, floor votes or Governor action recorded for this bill.</p>' :
+    `<ol>${evs.map(e => `<li><span class="ar ${e.good ? "up" : "down"}" aria-hidden="true">${e.good ? "▲" : "▼"}</span><span><span class="dt">${fmtDate(e.date)}, day ${e.day}</span>${esc(e.text)}<span class="sr">${e.good ? " (helped)" : " (hurt)"}</span></span></li>`).join("")}</ol>`;
+  $("tbill").innerHTML = `<div class="featured">
+    <div>
+      <div class="fhead"><span>${esc(spaced(b.bill))} by <span class="${b.party}">${esc(b.member)} (${esc(b.party)})</span>, ${esc(b.area)}</span>${isEx ? `<span class="tag">Example from ${label(TRACKING.session)}</span>` : ""}</div>
+      <h2>${esc(b.title.replace(/\.$/, ""))}</h2>
+      <div class="quote"><div class="odds">${p == null ? "–" : pc(p)}</div><div class="sub">${mv}<p>Estimated chance of being signed${i >= 0 ? `, ${i === 0 ? "at introduction" : ks[i] === 365 ? "one year in" : `day ${ks[i]}`}` : ""}</p><p>Introduced ${fmtDate(addDays(b.intro, 0))}. Outcome: <span class="o-${b.outcome}">${esc(outTxt)}</span></p></div></div>
+      <div class="factions"><button class="btn primary" type="button" id="wbtn" aria-pressed="${watched}">${watched ? "Remove from watchlist" : "Watch this bill"}</button><a class="btn" href="${CL.leginfo(TRACKING.session, b.bill)}" target="_blank" rel="noopener">Official bill history</a><button class="btn" type="button" id="tshare">Copy link</button></div>
+      ${chart(b, evs)}
+    </div>
+    <div class="timeline" id="tev"><h3>What moved the odds</h3>${tl}</div>
+  </div>`;
+  $("wbtn").addEventListener("click", () => toggleWatch(id));
+  CL.shareButton($("tshare"));
+  wireChart();
+  document.querySelectorAll("#wl tr[data-b]").forEach(r => r.classList.toggle("sel", r.dataset.b === id));
+  if (!quiet) $("tbill").querySelector("h2").setAttribute("tabindex", "-1"), $("tbill").querySelector("h2").focus({preventScroll: true});
+}
+function wireChart() {
+  const c = $("tbill").querySelector(".chart"); if (!c) return;
+  const tip = c.querySelector(".tip"), svg = c.querySelector("svg");
+  const show = g => { const r = svg.getBoundingClientRect(), k = r.width / +svg.dataset.w;
+    tip.innerHTML = esc(g.dataset.tip); tip.hidden = false;
+    const x = Math.min(Math.max(+g.dataset.x * k, 70), r.width - 70);
+    tip.style.left = x + "px"; tip.style.top = (+g.dataset.y * k) + "px"; };
+  const hide = () => { tip.hidden = true; };
+  c.querySelectorAll(".pt,.ev").forEach(g => { g.addEventListener("mouseenter", () => show(g)); g.addEventListener("focus", () => show(g));
+    g.addEventListener("mouseleave", hide); g.addEventListener("blur", hide); });
+}
+
+// Watchlist: examples from the session plus the viewer's own bills (this browser only)
+function toggleWatch(id) {
+  WATCH = WATCH.includes(id) ? WATCH.filter(x => x !== id) : [...WATCH, id];
+  setWatch(WATCH); renderWatch(); showBill(trackSel, true);
+}
+function spark(b) {
+  const ks = TRACKING.checkpoints, pts = ks.map((k, j) => b.p[j] == null ? null : [(k / 365) * 116 + 2, 30 - b.p[j] * 26]).filter(Boolean);
+  const [p] = latest(b), up = p != null && p >= (b.p[0] ?? 0);
+  return `<svg width="120" height="34" viewBox="0 0 120 34" aria-hidden="true"><path d="${monotone(pts)}" fill="none" stroke="${up ? "#8CC4FF" : "#F5A25D"}" stroke-width="2"></path></svg>`;
+}
+function wrow(b, mine) {
+  const [p] = latest(b), up = p != null && b.p[0] != null && p >= b.p[0];
+  return `<tr data-b="${esc(b.bill)}"${b.bill === trackSel ? ' class="sel"' : ""}><td><button class="bill" type="button" data-b="${esc(b.bill)}" aria-label="Chart ${esc(spaced(b.bill))}">${esc(spaced(b.bill))}</button></td>` +
+    `<td>${esc(b.title.replace(/\.$/, ""))}<span class="au">${esc(b.member)} (${esc(b.party)})</span></td><td class="n">${b.p[0] == null ? "–" : pc(b.p[0])}</td><td>${spark(b)}</td>` +
+    `<td class="n lt ${up ? "up" : "down"}"><span aria-hidden="true">${up ? "▲" : "▼"}</span> ${p == null ? "–" : pc(p)}</td><td class="o-${b.outcome}">${OUT[b.outcome] || "Pending"}</td>` +
+    `<td>${mine ? `<button class="rm" type="button" data-rm="${esc(b.bill)}" aria-label="Remove ${esc(spaced(b.bill))} from watchlist">Remove</button>` : ""}</td></tr>`;
+}
+function renderWatch() {
+  const ex = EXAMPLES[TRACKING.session];
+  const exIds = (ex ? ex.list : biggestMovers(5)).filter(x => TRI[x]);
+  const mine = WATCH.filter(x => TRI[x]);
+  $("wl").innerHTML = `<table><thead><tr><th scope="col">Bill</th><th scope="col">Title</th><th scope="col" class="n">At introduction</th><th scope="col">Trend</th><th scope="col" class="n">Latest odds</th><th scope="col">Outcome</th><th scope="col"><span class="sr">Actions</span></th></tr></thead><tbody>` +
+    `<tr class="grp"><td colspan="7">Your bills</td></tr>` +
+    (mine.length ? mine.map(x => wrow(TRI[x], true)).join("") : `<tr class="grp"><td colspan="7" style="color:var(--subtle);border:0">No bills yet. Open any bill and choose Watch this bill to keep it here.</td></tr>`) +
+    `<tr class="grp"><td colspan="7">${ex ? `Examples from ${label(TRACKING.session)}` : `Biggest movers in ${label(TRACKING.session)}`}</td></tr>` +
+    exIds.map(x => wrow(TRI[x], false)).join("") + "</tbody></table>";
+}
+$("wl").addEventListener("click", e => {
+  const rm = e.target.closest("[data-rm]"); if (rm) { toggleWatch(rm.dataset.rm); return; }
+  const r = e.target.closest("tr[data-b]"); if (r) { showBill(r.dataset.b); $("tbill").scrollIntoView({block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); }
+});
+
+// Start: tracking is the home view; drafting when the link asks for it or carries an estimate
+const wantsDraft = st0.v === "draft" || ["a", "p", "o", "c", "w", "n", "f", "k", "g"].some(k => TS.has(k));
+CL.nav(wantsDraft ? "draft" : "track");
+document.querySelector(".topnav").addEventListener("click", e => {
+  const a = e.target.closest("a[data-k]"); if (!a || !["track", "draft"].includes(a.dataset.k) || e.metaKey || e.ctrlKey) return;
+  e.preventDefault(); setMode(a.dataset.k); window.scrollTo(0, 0);
+});
+$("m-draft").addEventListener("click", () => { setMode("draft"); window.scrollTo(0, 0); });
+$("m-track").addEventListener("click", () => { setMode("track"); window.scrollTo(0, 0); });
 applyState(st0);
 if (!st0.c) { const a = M.policy_areas.find(x => x.startsWith($("origin").value)); if (a) $("area").value = a; }
-render(); similar();
+setMode(wantsDraft ? "draft" : "track");
 if ($("kw").value.trim() || $("dg").value.trim()) loadText();
 // Rosters after first paint
 CL.load("data/committees_index.js").then(() => {
   const y = Object.keys(COMMITTEES.committees.reduce((o, c) => (Object.keys(c.years).forEach(k => o[k] = 1), o), {})).sort().pop();
   return CL.load(`data/committees_${y}.js`);
-}).then(() => { CMR.ready = true; render(); }).catch(() => { $("rel").innerHTML = "<p>Could not load committee rosters.</p>"; });
+}).then(() => { CMR.ready = true; if (!$("draft").hidden) render(); }).catch(() => { $("rel").innerHTML = "<p>Could not load committee rosters.</p>"; });
 </script>
 </body>
 </html>
