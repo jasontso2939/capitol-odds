@@ -30,18 +30,64 @@ def recency_weights(train: pd.DataFrame, target_session: int | None = None) -> n
         return None
     t = target_session if target_session is not None else int(train.session.max()) + 2
     return np.exp(-RECENCY * (t - train.session.values) / 2)
-# Words in the introduced bill's subject line (the Legislative Counsel's short title), as
-# TF-IDF unigrams and bigrams. The browser repeats the same steps (tokenize, idf, l2 norm).
-TEXT = dict(min_df=10, ngram_range=(1, 2), sublinear_tf=True, max_features=1500, token_pattern=r"(?u)\b[a-z][a-z]+\b")
+# What the bill does, in words: the introduced bill's subject line and its Legislative
+# Counsel's Digest, as TF-IDF unigrams and bigrams. A separate text model (regularized
+# logistic regression on the words alone) turns them into one score, the logit of the chance
+# of being signed, which enters the main models as the input text_score. The browser repeats
+# the same steps (tokenize, idf, unit length, weights) on the subject and summary a user types.
+TEXT = dict(min_df=3, ngram_range=(1, 2), sublinear_tf=True, max_features=30000, token_pattern=r"(?u)\b[a-z][a-z]+\b")
+TEXT_C = 1.0
+_TEXT_CACHE: dict = {}
 
 
 def subject_text(df: pd.DataFrame) -> pd.Series:
-    return df.intro_subject.fillna("").str.lower()
+    """The introduced bill's subject line and Legislative Counsel's Digest (what the bill would do)."""
+    dg = df.digest.fillna("") if "digest" in df else ""
+    return (df.intro_subject.fillna("") + " " + dg).str.lower()
+
+
+def _fit_text(train: pd.DataFrame):
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    vec = TfidfVectorizer(**TEXT).fit(subject_text(train))
+    clf = LogisticRegression(C=TEXT_C, max_iter=3000).fit(vec.transform(subject_text(train)), train.signed.astype(int),
+                                                           sample_weight=recency_weights(train))
+    return vec, clf
 
 
 def text_model(train: pd.DataFrame):
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    return TfidfVectorizer(**TEXT).fit(subject_text(train))
+    """Vectorizer and text classifier fit on `train` (cached for repeated calls on the same bills)."""
+    key = (len(train), hash(tuple(train.BILL_ID)) if "BILL_ID" in train else id(train))
+    if key not in _TEXT_CACHE:
+        _TEXT_CACHE.clear()
+        _TEXT_CACHE[key] = _fit_text(train)
+    return _TEXT_CACHE[key]
+
+
+def _logit(p: np.ndarray) -> np.ndarray:
+    p = np.clip(p, 1e-4, 1 - 1e-4)
+    return np.log(p / (1 - p))
+
+
+def text_scores(train: pd.DataFrame, target: pd.DataFrame, out_of_session: bool) -> np.ndarray:
+    """The text model's logit for each target bill. For training rows (out_of_session), each
+    bill is scored by a text model that never saw its session, so the main model learns how
+    much to trust the text score on bills the text model has not seen."""
+    if out_of_session and "session" in train and train.session.nunique() > 1:
+        out = np.zeros(len(target))
+        for s in target.session.unique():
+            rows = (target.session == s).values
+            vec, clf = _fit_text(train[train.session != s])
+            out[rows] = _logit(clf.predict_proba(vec.transform(subject_text(target[rows])))[:, 1])
+        return out
+    if out_of_session:   # one session: five folds, so no training bill is scored by a model that saw it
+        from sklearn.model_selection import KFold
+        out = np.zeros(len(target))
+        for tr, te in KFold(5, shuffle=True, random_state=0).split(target):
+            vec, clf = _fit_text(target.iloc[tr])
+            out[te] = _logit(clf.predict_proba(vec.transform(subject_text(target.iloc[te])))[:, 1])
+        return out
+    vec, clf = text_model(train)
+    return _logit(clf.predict_proba(vec.transform(subject_text(target)))[:, 1])
 
 
 def training_frame(m: pd.DataFrame) -> pd.DataFrame:
@@ -105,9 +151,7 @@ def design(train: pd.DataFrame, target: pd.DataFrame, columns: list[str] | None 
     if "double_referred" in target:
         X["double_referred"] = target.double_referred.fillna(False).astype(float).values
     if "intro_subject" in target and "intro_subject" in train:
-        vec = text_model(train)
-        T = vec.transform(subject_text(target)).toarray()
-        X = pd.concat([X, pd.DataFrame(T, columns=["w_" + w for w in vec.get_feature_names_out()], index=X.index)], axis=1)
+        X["text_score"] = text_scores(train, target, out_of_session=leave_one_out)
     if columns is not None:
         X = X.reindex(columns=columns, fill_value=0.0)
     return X

@@ -127,13 +127,10 @@ def bootstrap(d: pd.DataFrame, lab: pd.DataFrame, X: pd.DataFrame, draws: int = 
     than ATYPICAL ones, and the browser scores the bill at that session's level. The spread of
     the results (10th to 90th percentile) is the range on the outlook page: it covers both how
     much the fit depends on which bills happened to be in the data and how much a typical
-    session differs from another.
-
-    Subject-line word weights (w_ columns) are left out of the draws to keep the download
-    small; the browser adds them from the main fit, so the range reflects every other input."""
+    session differs from another."""
     rng = np.random.default_rng(seed)
     cols = list(X.columns)
-    keep = [i for i, c in enumerate(cols) if not c.startswith("w_")]
+    keep = list(range(len(cols)))
     sess = [int(s) for s in sorted(d.session.unique()) if int(s) not in ATYPICAL]
     out = []
     for i in range(draws):

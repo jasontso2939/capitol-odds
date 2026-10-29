@@ -91,9 +91,13 @@ model["stages"] = STG.export(stage_models, list(Xs.columns))
 model["stage_names"] = dict(STG.STAGES)
 model["stage_draws"] = STG.bootstrap(train, lab, Xs)
 model["atypical_sessions"] = STG.ATYPICAL
-# Subject-line words: vocabulary and idf, so the browser builds the same TF-IDF features
-_vec = predict.text_model(train)
-model["text"] = {"vocab": list(_vec.get_feature_names_out()), "idf": [round(float(x), 4) for x in _vec.idf_]}
+# Text model: vocabulary, idf and word weights, so the browser computes the same text_score.
+# Written to its own file (data/text.js), which the outlook page loads once something is typed.
+_vec, _tclf = predict.text_model(train)
+text_model = {"vocab": list(_vec.get_feature_names_out()), "idf": [round(float(x), 4) for x in _vec.idf_],
+              "coef": [round(float(x), 4) for x in _tclf.coef_[0]], "intercept": round(float(_tclf.intercept_[0]), 4)}
+(ROOT / "site/data/text.js").write_text("window.TEXTMODEL = " + json.dumps(text_model, separators=(",", ":")) + ";\n")
+model["text"] = {"typical_score": round(float(Xs.text_score.median()), 4)}   # used until something is typed
 metrics["stages"] = {**STG.evaluate(train, tv), **STG.cross_validate(train, lab),
                      "step_rates": [{"step": s, "name": n, "reached": int(lab[f"reached_{s}"].sum()),
                                      "passed": int(lab[f"passed_{s}"].sum())} for s, n in STG.STAGES],
