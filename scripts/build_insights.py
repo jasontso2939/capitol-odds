@@ -16,11 +16,12 @@ from calleg.trends import all_trends  # noqa: E402
 from calleg import predict  # noqa: E402
 from calleg import stages as STG  # noqa: E402
 from calleg import committees as C  # noqa: E402
+from calleg import tracking as TK  # noqa: E402
 from calleg.pipeline import slug  # noqa: E402
 from calleg.sessions import available, complete, raw_dir, intro_cache, zip_path, label, CURRENT  # noqa: E402
 
 membership = pd.read_csv(ROOT / "data/processed/committee_membership.csv")
-M, D, T, V = [], [], {}, []
+M, D, T, V, H = [], [], {}, [], []
 for year in available():
     raw = raw_dir(year)
     m = build_features(raw, zip_path(year), intro_cache(year))
@@ -29,9 +30,13 @@ for year in available():
     d = predict.training_frame(m)
     votes = C.committee_votes(raw)
     d = d.merge(C.relationship_features(d, raw, votes, membership), on="BILL_ID", how="left")
-    M.append(m), D.append(d), V.append(votes.assign(session=year))
+    hist = TK.read_history(raw)
+    hist = hist[hist.BILL_ID.isin(d.BILL_ID)]
+    d["double_referred"] = d.BILL_ID.map(TK.double_referred(hist)).fillna(False).astype(bool)
+    M.append(m), D.append(d), V.append(votes.assign(session=year)), H.append(TK.action_flags(hist))
     print(f"{label(year)}: {len(m)} bills, {len(d)} in model")
 m, d, votes = pd.concat(M, ignore_index=True), pd.concat(D, ignore_index=True), pd.concat(V, ignore_index=True)
+flags = pd.concat(H, ignore_index=True)
 
 # Trends for all sessions together. Veto reasons are summed from the per-session tables.
 from calleg import trends as TR  # noqa: E402
@@ -86,6 +91,13 @@ model["stages"] = STG.export(stage_models, list(Xs.columns))
 model["stage_names"] = dict(STG.STAGES)
 model["stage_draws"] = STG.bootstrap(train, lab, Xs)
 model["atypical_sessions"] = STG.ATYPICAL
+# Text model: vocabulary, idf and word weights, so the browser computes the same text_score.
+# Written to its own file (data/text.js), which the outlook page loads once something is typed.
+_vec, _tclf = predict.text_model(train)
+text_model = {"vocab": list(_vec.get_feature_names_out()), "idf": [round(float(x), 4) for x in _vec.idf_],
+              "coef": [round(float(x), 4) for x in _tclf.coef_[0]], "intercept": round(float(_tclf.intercept_[0]), 4)}
+(ROOT / "site/data/text.js").write_text("window.TEXTMODEL = " + json.dumps(text_model, separators=(",", ":")) + ";\n")
+model["text"] = {"typical_score": round(float(Xs.text_score.median()), 4)}   # used until something is typed
 metrics["stages"] = {**STG.evaluate(train, tv), **STG.cross_validate(train, lab),
                      "step_rates": [{"step": s, "name": n, "reached": int(lab[f"reached_{s}"].sum()),
                                      "passed": int(lab[f"passed_{s}"].sum())} for s, n in STG.STAGES],
@@ -117,6 +129,26 @@ compact = {"members": members_ix, "areas": areas_ix,
 (ROOT / "site/data/bills_index.js").write_text("window.BILLS = " + json.dumps(compact, separators=(",", ":")) + ";\n")
 (ROOT / "site/insights.js").write_text("window.INSIGHTS = " + json.dumps(out, separators=(",", ":"), default=str) + ";\n")
 (ROOT / "site/data/model.js").write_text("window.MODEL = " + json.dumps(model, separators=(",", ":"), default=str) + ";\n")
+
+# Track a filed bill: chance of being signed given its history so far, at each checkpoint
+dbl = d.set_index("BILL_ID").double_referred
+metrics["tracking"] = TK.evaluate(train, flags[flags.BILL_ID.isin(train.BILL_ID)], dbl)
+score = d[d.session == CURRENT]
+# A finished session is scored by models trained only on earlier sessions, so the page shows
+# what the model would have said at the time; a session under way uses every finished one.
+fit_on = train[train.session < CURRENT] if CURRENT in done else train
+tk = TK.fit_score(fit_on, score, flags, dbl, finished=CURRENT in done)
+tk = tk.merge(score[["BILL_ID", "bill_id", "member", "party", "policy_area", "intro_date"]], on="BILL_ID")
+tk = tk.merge(m[["BILL_ID", "title", "outcome"]], on="BILL_ID", how="left")
+pcols = [c for c in tk if c.startswith("p") and c[1:].isdigit()]
+asof = str(flags.d.max().date())
+tracking = {"asof": asof, "session": CURRENT, "complete": CURRENT in done, "checkpoints": [0] + TK.CHECKPOINTS,
+            "accuracy": metrics["tracking"],
+            "cols": ["bill_id", "title", "member", "party", "policy_area", "introduced", "outcome"] + pcols,
+            "rows": [[r.bill_id, (r.title or "").strip(), r.member, r.party, r.policy_area or "", str(r.intro_date)[:10],
+                      r.outcome if CURRENT in done or r.outcome in ("signed", "vetoed") else "pending"]
+                     + [None if pd.isna(getattr(r, c)) else float(getattr(r, c)) for c in pcols] for r in tk.itertuples()]}
+(ROOT / "site/data/tracking.js").write_text("window.TRACKING = " + json.dumps(tracking, separators=(",", ":"), default=str) + ";\n")
 (ROOT / "data/processed/model_metrics.json").write_text(json.dumps(metrics, indent=2))
 
 # Committee data for the Committees page and the outlook's relationship panel.

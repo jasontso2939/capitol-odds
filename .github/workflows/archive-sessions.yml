@@ -52,7 +52,7 @@ jobs:
           records the checksum of the original download.
           MD
           git add -A
-          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -qm "Archive sessions 2017-18 to 2023-24"
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -qm "Archive sessions (repacked: ${{ inputs.years }})"
           git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
           git push -f origin session-archive
           du -sh data/archive/*

@@ -17,11 +17,77 @@ from sklearn.metrics import brier_score_loss, roc_auc_score
 from sklearn.model_selection import StratifiedKFold
 
 CATS = ["party", "origin", "policy_area", "filing_window"]
-BINS = ["appropriation", "urgency", "taxlevy", "local_program", "supermajority",
+BINS = ["appropriation", "urgency", "taxlevy", "local_program", "supermajority", "fiscal_committee",
         "cross_party_coauthor", "cross_party_joint_lead", "spot_bill"]
 REL = ["author_on_committee", "author_chairs_committee"]   # from committee roll calls (calleg.committees)
 SMOOTH_K = 8   # bills of "prior" weight when shrinking an author's record toward the party average
 C = 0.5
+RECENCY = 0.3   # training weight exp(-RECENCY * sessions back): the Legislature of 2009 counts less than 2023's
+
+
+def recency_weights(train: pd.DataFrame, target_session: int | None = None) -> np.ndarray | None:
+    if "session" not in train or train.session.nunique() < 2:
+        return None
+    t = target_session if target_session is not None else int(train.session.max()) + 2
+    return np.exp(-RECENCY * (t - train.session.values) / 2)
+# What the bill does, in words: the introduced bill's subject line and its Legislative
+# Counsel's Digest, as TF-IDF unigrams and bigrams. A separate text model (regularized
+# logistic regression on the words alone) turns them into one score, the logit of the chance
+# of being signed, which enters the main models as the input text_score. The browser repeats
+# the same steps (tokenize, idf, unit length, weights) on the subject and summary a user types.
+TEXT = dict(min_df=3, ngram_range=(1, 2), sublinear_tf=True, max_features=30000, token_pattern=r"(?u)\b[a-z][a-z]+\b")
+TEXT_C = 1.0
+_TEXT_CACHE: dict = {}
+
+
+def subject_text(df: pd.DataFrame) -> pd.Series:
+    """The introduced bill's subject line and Legislative Counsel's Digest (what the bill would do)."""
+    dg = df.digest.fillna("") if "digest" in df else ""
+    return (df.intro_subject.fillna("") + " " + dg).str.lower()
+
+
+def _fit_text(train: pd.DataFrame):
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    vec = TfidfVectorizer(**TEXT).fit(subject_text(train))
+    clf = LogisticRegression(C=TEXT_C, max_iter=3000).fit(vec.transform(subject_text(train)), train.signed.astype(int),
+                                                           sample_weight=recency_weights(train))
+    return vec, clf
+
+
+def text_model(train: pd.DataFrame):
+    """Vectorizer and text classifier fit on `train` (cached for repeated calls on the same bills)."""
+    key = (len(train), hash(tuple(train.BILL_ID)) if "BILL_ID" in train else id(train))
+    if key not in _TEXT_CACHE:
+        _TEXT_CACHE.clear()
+        _TEXT_CACHE[key] = _fit_text(train)
+    return _TEXT_CACHE[key]
+
+
+def _logit(p: np.ndarray) -> np.ndarray:
+    p = np.clip(p, 1e-4, 1 - 1e-4)
+    return np.log(p / (1 - p))
+
+
+def text_scores(train: pd.DataFrame, target: pd.DataFrame, out_of_session: bool) -> np.ndarray:
+    """The text model's logit for each target bill. For training rows (out_of_session), each
+    bill is scored by a text model that never saw its session, so the main model learns how
+    much to trust the text score on bills the text model has not seen."""
+    if out_of_session and "session" in train and train.session.nunique() > 1:
+        out = np.zeros(len(target))
+        for s in target.session.unique():
+            rows = (target.session == s).values
+            vec, clf = _fit_text(train[train.session != s])
+            out[rows] = _logit(clf.predict_proba(vec.transform(subject_text(target[rows])))[:, 1])
+        return out
+    if out_of_session:   # one session: five folds, so no training bill is scored by a model that saw it
+        from sklearn.model_selection import KFold
+        out = np.zeros(len(target))
+        for tr, te in KFold(5, shuffle=True, random_state=0).split(target):
+            vec, clf = _fit_text(target.iloc[tr])
+            out[te] = _logit(clf.predict_proba(vec.transform(subject_text(target.iloc[te])))[:, 1])
+        return out
+    vec, clf = text_model(train)
+    return _logit(clf.predict_proba(vec.transform(subject_text(target)))[:, 1])
 
 
 def training_frame(m: pd.DataFrame) -> pd.DataFrame:
@@ -36,15 +102,28 @@ def _key(df: pd.DataFrame) -> pd.Series:
 
 
 def _author_logit(train: pd.DataFrame, target: pd.DataFrame, leave_one_out: bool) -> np.ndarray:
+    """An author's signed rate, shrunk toward the party average, as a logit.
+
+    leave_one_out (training rows): the bill's own session is left out of its author's record.
+    Leaving out only the bill itself leaks its outcome (the record of an author's signed bill
+    is lower than the record of the same author's failed bill), which a flexible model learns
+    backwards; leaving out the whole session matches how a new session is scored."""
     prior = train.groupby("party").signed.mean()
-    g = train.assign(_k=_key(train)).groupby("_k").signed.agg(["sum", "count"])
+    by_session = "session" in train and "session" in target and train.session.nunique() > 1
+    k = _key(train)
+    g = train.assign(_k=k).groupby("_k").signed.agg(["sum", "count"])
+    gs = train.assign(_k=k).groupby(["_k", "session"]).signed.agg(["sum", "count"]) if by_session else None
     out = []
-    for mem, p, s in zip(_key(target), target.party, target.signed):
+    sess = target.session if by_session else [None] * len(target)
+    for mem, p, s, ss in zip(_key(target), target.party, target.signed, sess):
         pr = prior.get(p, train.signed.mean())
         if mem in g.index:
             S, N = g.loc[mem, "sum"], g.loc[mem, "count"]
             if leave_one_out:
-                S, N = S - s, N - 1
+                if by_session and (mem, ss) in gs.index:
+                    S, N = S - gs.loc[(mem, ss), "sum"], N - gs.loc[(mem, ss), "count"]
+                elif not by_session:
+                    S, N = S - s, N - 1
             rate = (S + SMOOTH_K * pr) / (N + SMOOTH_K)
         else:
             rate = pr
@@ -69,6 +148,10 @@ def design(train: pd.DataFrame, target: pd.DataFrame, columns: list[str] | None 
     if all(c in target for c in REL):
         for c in REL:
             X[c] = target[c].astype(float).values
+    if "double_referred" in target:
+        X["double_referred"] = target.double_referred.fillna(False).astype(float).values
+    if "intro_subject" in target and "intro_subject" in train:
+        X["text_score"] = text_scores(train, target, out_of_session=leave_one_out)
     if columns is not None:
         X = X.reindex(columns=columns, fill_value=0.0)
     return X
@@ -80,13 +163,13 @@ def evaluate(d: pd.DataFrame, folds: int = 5, seed: int = 0) -> dict:
     for tr, te in StratifiedKFold(folds, shuffle=True, random_state=seed).split(d, y):
         Xtr = design(d.iloc[tr], d.iloc[tr], leave_one_out=True)
         Xte = design(d.iloc[tr], d.iloc[te], columns=list(Xtr.columns))
-        clf = LogisticRegression(C=C, max_iter=5000).fit(Xtr.values, y[tr])
+        clf = LogisticRegression(C=C, max_iter=5000).fit(Xtr.values, y[tr], sample_weight=recency_weights(d.iloc[tr]))
         p[te] = clf.predict_proba(Xte.values)[:, 1]
     def holdout(a, b):
         if "session" in b:
             b = b.assign(session=b.session.where(b.session.isin(a.session), a.session.max()))
         Xa = design(a, a, leave_one_out=True)
-        q = LogisticRegression(C=C, max_iter=5000).fit(Xa.values, a.signed).predict_proba(
+        q = LogisticRegression(C=C, max_iter=5000).fit(Xa.values, a.signed, sample_weight=recency_weights(a)).predict_proba(
             design(a, b, columns=list(Xa.columns)).values)[:, 1]
         return round(float(roc_auc_score(b.signed, q)), 3), round(float(q.mean()), 3), round(float(b.signed.mean()), 3)
     last = d.session.max() if "session" in d else None
@@ -119,7 +202,7 @@ def fit_export(d: pd.DataFrame, members: pd.DataFrame | None = None, current: pd
     the committee list when it has enough of them. A new session is scored at the level of
     the latest session in d (the reference session)."""
     X = design(d, d, leave_one_out=True)
-    clf = LogisticRegression(C=C, max_iter=5000).fit(X.values, d.signed.astype(int))
+    clf = LogisticRegression(C=C, max_iter=5000).fit(X.values, d.signed.astype(int), sample_weight=recency_weights(d))
     coef = dict(zip(X.columns, clf.coef_[0].round(4)))
     ref = int(d.session.max()) if "session" in d else None
     last = d[d.session == ref] if ref is not None else d

@@ -1,4 +1,615 @@
 member,full_name,party,district,introduced,sent,signed,vetoed,rate,rank_signed,rank_rate,rank_r_signed,rank_r_rate,chamber,partial_term,first_bill_date,last_bill_date,budget_bills,session
+Laird,"Laird, John",D,AD27,50,39,24,15,48.0,1,4,,,Assembly,False,2006-12-04,2008-02-22,1.0,2007
+Emmerson,"Emmerson, Bill",R,AD63,45,23,23,0,51.1,2,1,1.0,1.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Bass,"Bass, Karen",D,AD47,48,31,23,8,47.9,2,5,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Karnette,"Karnette, Betty",D,AD54,42,29,20,9,47.6,4,6,,,Assembly,False,2007-02-14,2008-02-22,0.0,2007
+Ma,"Ma, Fiona",D,AD12,49,31,20,11,40.8,4,13,,,Assembly,False,2006-12-04,2008-06-02,0.0,2007
+Jones,"Jones, Dave",D,AD09,56,40,20,20,35.7,4,21,,,Assembly,False,2006-12-04,2008-02-28,0.0,2007
+Wolk,"Wolk, Lois",D,AD08,44,23,19,4,43.2,7,9,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Blakeslee,"Blakeslee, Sam",R,AD33,40,19,18,1,45.0,8,8,2.0,5.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Krekorian,"Krekorian, Paul",D,AD43,45,22,18,4,40.0,8,16,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Huffman,"Huffman, Jared William",D,AD06,47,24,18,6,38.3,8,19,,,Assembly,False,2006-12-04,2008-03-13,0.0,2007
+Evans,"Evans, Noreen",D,AD07,43,29,17,12,39.5,11,18,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Price,"Price, Curren D.",D,AD51,49,26,17,9,34.7,11,24,,,Assembly,False,2007-01-09,2008-03-13,0.0,2007
+Caballero,"Caballero, Anna Marie",D,AD28,38,20,16,4,42.1,13,10,,,Assembly,False,2007-02-22,2008-02-21,0.0,2007
+Galgiani,"Galgiani, Cathleen",D,AD17,40,19,16,3,40.0,13,16,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Ruskin,"Ruskin, Ira",D,AD21,42,20,16,4,38.1,13,20,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Lieu,"Lieu, Ted",D,AD53,52,31,16,15,30.8,13,30,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Berg,"Berg, Patty",D,AD01,37,17,15,2,40.5,17,14,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Spitzer,"Spitzer, Todd",R,AD71,37,20,15,5,40.5,17,14,3.0,6.0,Assembly,False,2007-02-09,2008-02-22,0.0,2007
+Nava,"Nava, Pedro",D,AD35,43,25,15,10,34.9,17,23,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Feuer,"Feuer, Mike",D,AD42,44,23,15,8,34.1,17,25,,,Assembly,False,2006-12-20,2008-02-22,0.0,2007
+Hernandez,"Hernandez, Ed",D,AD57,34,16,14,2,41.2,21,11,,,Assembly,False,2007-02-14,2008-02-22,0.0,2007
+Nunez,"Nunez, Fabian",D,AD46,34,20,14,6,41.2,21,11,,,Assembly,False,2006-12-04,2008-03-06,0.0,2007
+Saldana,"Saldana, Lori",D,AD76,41,19,14,5,34.1,21,25,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Torrico,"Torrico, Alberto",D,AD20,41,22,14,8,34.1,21,25,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Leno,"Leno, Mark",D,AD13,50,29,14,15,28.0,21,40,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Silva,"Silva, Jim",R,AD67,27,14,13,1,48.1,26,3,4.0,3.0,Assembly,False,2007-02-09,2008-02-22,0.0,2007
+Mendoza,"Mendoza, Tony",D,AD56,39,27,13,14,33.3,26,28,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Salas,"Salas, Mary",D,AD79,41,24,13,11,31.7,26,29,,,Assembly,False,2007-02-09,2008-02-22,0.0,2007
+Beall,"Beall, Jim",D,AD24,43,22,13,9,30.2,26,33,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+DeSaulnier,"DeSaulnier, Mark James",D,AD11,46,26,13,13,28.3,26,39,,,Assembly,False,2007-01-31,2008-02-22,0.0,2007
+La Malfa,"La Malfa, Doug",R,AD02,34,15,12,3,35.3,31,22,5.0,7.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Eng,"Eng, Mike",D,AD49,42,20,12,8,28.6,31,36,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Solorio,"Solorio, Jose",D,AD69,43,19,12,7,27.9,31,41,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Aghazarian,"Aghazarian, Greg",R,AD26,22,11,11,0,50.0,34,2,6.0,2.0,Assembly,False,2007-01-09,2008-02-22,0.0,2007
+Maze,"Maze, Bill",R,AD34,37,15,11,4,29.7,34,34,6.0,10.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Mullin,"Mullin, Gene",D,AD19,38,22,11,11,28.9,34,35,,,Assembly,False,2006-12-21,2008-02-22,0.0,2007
+Duvall,"Duvall, Mike D.",R,AD72,41,12,11,1,26.8,34,43,6.0,13.0,Assembly,False,2007-02-15,2008-02-22,0.0,2007
+Sharon Runner,"Runner, Sharon",R,AD36,45,11,11,0,24.4,34,49,6.0,18.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Hancock,"Hancock, Loni",D,AD14,47,25,11,14,23.4,34,55,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Gaines,"Gaines, Ted",R,AD04,21,10,10,0,47.6,40,6,10.0,4.0,Assembly,False,2007-02-01,2008-02-22,0.0,2007
+Adams,"Adams, Anthony",R,AD59,33,12,10,2,30.3,40,32,10.0,9.0,Assembly,False,2007-02-05,2008-02-22,0.0,2007
+De La Torre,"De La Torre, Hector",D,AD50,35,17,10,7,28.6,40,36,,,Assembly,False,2007-02-09,2008-02-22,0.0,2007
+Tran,"Tran, Van",R,AD68,35,11,10,1,28.6,40,36,10.0,11.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Houston,"Houston, Guy S.",R,AD15,37,12,10,2,27.0,40,42,10.0,12.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Niello,"Niello, Roger",R,AD05,40,10,10,0,25.0,40,46,10.0,15.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+De Leon,"De Leon, Kevin",D,AD45,41,15,10,5,24.4,40,49,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Arambula,"Arambula, Juan",D,AD31,42,19,10,9,23.8,40,51,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Benoit,"Benoit, John J.",R,AD64,42,10,10,0,23.8,40,51,10.0,19.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Smyth,"Smyth, Cameron",R,AD38,44,10,10,0,22.7,40,57,10.0,21.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Lieber,"Lieber, Sally",D,AD22,63,20,10,10,15.9,40,71,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Jeffries,"Jeffries, Kevin D.",R,AD66,35,10,9,1,25.7,51,45,17.0,14.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Nakanishi,"Nakanishi, Alan",R,AD10,38,12,9,3,23.7,51,53,17.0,20.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Soto,"Soto, Nell",D,AD61,38,15,9,6,23.7,51,53,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Fuentes,"Fuentes, Felipe",D,AD39,39,17,9,8,23.1,51,56,,,Assembly,False,2007-01-25,2008-02-22,0.0,2007
+Coto,"Coto, Joe",D,AD23,41,18,9,9,22.0,51,58,,,Assembly,False,2007-01-17,2008-02-22,0.0,2007
+Brownley,"Brownley, Julia",D,AD41,45,23,9,14,20.0,51,61,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Portantino,"Portantino, Anthony",D,AD44,45,15,9,6,20.0,51,61,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Davis,"Davis, Mike",D,AD48,46,16,9,7,19.6,51,63,,,Assembly,False,2007-02-21,2008-02-22,0.0,2007
+Levine,"Levine, Lloyd E.",D,AD40,47,14,9,5,19.1,51,64,,,Assembly,False,2007-01-23,2008-02-22,0.0,2007
+Huff,"Huff, Robert",R,AD60,38,8,8,0,21.1,60,59,19.0,22.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Horton,"Horton, Shirley",R,AD78,23,7,7,0,30.4,61,31,20.0,8.0,Assembly,False,2007-01-09,2008-02-22,0.0,2007
+Berryhill,"Berryhill, Tom",R,AD25,28,9,7,2,25.0,61,46,20.0,15.0,Assembly,False,2007-01-17,2008-02-22,0.0,2007
+Charles Calderon,"Calderon, Charles M.",D,AD58,37,10,7,3,18.9,61,65,,,Assembly,False,2007-02-05,2008-02-22,0.0,2007
+Carter,"Carter, Wilmer Amina",D,AD62,39,18,7,11,17.9,61,66,,,Assembly,False,2007-02-14,2008-02-22,0.0,2007
+Cook,"Cook, Paul J.",R,AD65,39,8,7,1,17.9,61,66,20.0,24.0,Assembly,False,2006-12-04,2008-06-02,0.0,2007
+Plescia,"Plescia, George",R,AD75,42,11,7,4,16.7,61,69,20.0,26.0,Assembly,False,2007-01-17,2008-02-22,0.0,2007
+Anderson,"Anderson, Joel",R,AD77,24,8,6,2,25.0,67,46,24.0,15.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Garrick,"Garrick, Martin",R,AD74,37,6,6,0,16.2,67,70,24.0,27.0,Assembly,False,2007-02-22,2008-02-22,0.0,2007
+Hayashi,"Hayashi, Mary",D,AD18,40,16,6,10,15.0,67,72,,,Assembly,False,2007-02-09,2008-02-22,0.0,2007
+Garcia,"Garcia, Bonnie",R,AD80,43,7,6,1,14.0,67,73,24.0,28.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Richardson,"Richardson, Laura",D,AD55,19,7,5,2,26.3,71,44,,,Assembly,True,2006-12-04,2007-02-23,0.0,2007
+Fuller,"Fuller, Jean",R,AD32,28,6,5,1,17.9,71,66,27.0,24.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Parra,"Parra, Nicole",D,AD30,41,5,5,0,12.2,71,76,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Dymally,"Dymally, Mervyn M.",D,AD52,48,12,5,7,10.4,71,78,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Keene,"Keene, Richard",R,AD03,19,6,4,2,21.1,75,59,28.0,22.0,Assembly,False,2007-02-22,2008-02-22,0.0,2007
+Walters,"Walters, Mimi",R,AD73,31,4,4,0,12.9,75,74,28.0,29.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Swanson,"Swanson, Sandre R.",D,AD16,42,14,4,10,9.5,75,79,,,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Furutani,"Furutani, Warren T.",D,AD55,24,6,3,3,12.5,78,75,,,Assembly,True,2008-02-19,2008-02-22,0.0,2007
+Villines,"Villines, Michael N.",R,AD29,26,3,3,0,11.5,78,77,30.0,30.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+DeVore,"DeVore, Chuck",R,AD70,40,5,3,2,7.5,78,80,30.0,31.0,Assembly,False,2006-12-04,2008-02-22,0.0,2007
+Strickland,"Strickland, Audra",R,AD37,35,4,2,2,5.7,81,81,32.0,32.0,Assembly,False,2007-01-29,2008-02-22,0.0,2007
+Wiggins,"Wiggins, Patricia",D,SD02,50,39,27,12,54.0,1,2,,,Senate,False,2007-01-17,2008-02-22,0.0,2007
+Ducheny,"Ducheny, Denise Moreno",D,SD40,48,28,26,2,54.2,2,1,,,Senate,False,2007-01-08,2008-02-22,6.0,2007
+Scott,"Scott, Jack",D,SD21,47,32,25,7,53.2,3,3,,,Senate,False,2007-01-08,2008-02-22,0.0,2007
+Correa,"Correa, Lou",D,SD34,49,27,23,4,46.9,4,4,,,Senate,False,2007-02-06,2008-02-22,0.0,2007
+Simitian,"Simitian, S.",D,SD11,47,31,22,9,46.8,5,5,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Corbett,"Corbett, Ellen",D,SD10,53,29,21,8,39.6,6,9,,,Senate,False,2007-01-17,2008-02-28,0.0,2007
+Steinberg,"Steinberg, Darrell",D,SD06,61,36,21,15,34.4,6,18,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Cox,"Cox, Dave",R,SD01,47,21,20,1,42.6,8,7,1.0,1.0,Senate,False,2007-01-29,2008-02-22,0.0,2007
+Yee,"Yee, Leland",D,SD08,52,26,20,6,38.5,8,11,,,Senate,False,2007-01-22,2008-02-22,0.0,2007
+Padilla,"Padilla, Alex",D,SD20,49,29,19,10,38.8,10,10,,,Senate,False,2007-01-22,2008-02-22,0.0,2007
+Negrete McLeod,"Negrete McLeod, Gloria",D,SD32,51,26,18,8,35.3,11,15,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Migden,"Migden, Carole",D,SD03,52,32,18,14,34.6,11,17,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Runner,"Runner, George",R,SD17,60,22,18,4,30.0,11,23,2.0,6.0,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Lowenthal,"Lowenthal, Alan",D,SD27,37,28,17,11,45.9,14,6,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Machado,"Machado, Michael",D,SD05,40,24,17,7,42.5,14,8,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Alquist,"Alquist, Elaine",D,SD13,50,22,17,5,34.0,14,19,,,Senate,False,2007-01-03,2008-02-22,0.0,2007
+Aanestad,"Aanestad, Sam",R,SD04,42,17,16,1,38.1,17,12,3.0,2.0,Senate,False,2007-01-24,2008-02-22,0.0,2007
+Kehoe,"Kehoe, Christine",D,SD39,42,21,16,5,38.1,17,12,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Maldonado,"Maldonado, Abel",R,SD15,44,17,16,1,36.4,17,14,3.0,3.0,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Margett,"Margett, Bob",R,SD29,46,18,16,2,34.8,17,16,3.0,4.0,Senate,False,2007-01-23,2008-02-22,0.0,2007
+Torlakson,"Torlakson, Tom",D,SD07,50,26,16,10,32.0,17,21,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Calderon,"Calderon, Ron",D,SD30,56,19,16,3,28.6,17,25,,,Senate,False,2007-01-22,2008-02-28,0.0,2007
+Ridley-Thomas,"Ridley-Thomas, Mark",D,SD26,47,23,15,8,31.9,23,22,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Kuehl,"Kuehl, Sheila",D,SD23,53,32,15,17,28.3,23,26,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Romero,"Romero, Gloria",D,SD24,57,28,14,14,24.6,25,27,,,Senate,False,2006-12-20,2008-02-22,0.0,2007
+Harman,"Harman, Tom",R,SD35,58,14,14,0,24.1,25,28,6.0,7.0,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Cogdill,"Cogdill, Dave",R,SD14,50,12,12,0,24.0,27,29,7.0,8.0,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Battin,"Battin, James",R,SD37,33,12,11,1,33.3,28,20,8.0,5.0,Senate,False,2006-12-11,2008-02-22,0.0,2007
+Florez,"Florez, Dean",D,SD16,61,22,11,11,18.0,28,34,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Hollingsworth,"Hollingsworth, Dennis",R,SD36,44,10,10,0,22.7,30,31,9.0,10.0,Senate,False,2007-01-11,2008-02-22,0.0,2007
+Cedillo,"Cedillo, Gilbert",D,SD22,50,19,10,9,20.0,30,32,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Ashburn,"Ashburn, Roy",R,SD18,51,12,10,2,19.6,30,33,9.0,11.0,Senate,False,2007-01-11,2008-02-22,0.0,2007
+Oropeza,"Oropeza, Jenny",D,SD28,53,14,8,6,15.1,33,38,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Perata,"Perata, Don",D,SD09,55,27,8,19,14.5,33,39,,,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Wyland,"Wyland, Mark",R,SD38,44,7,7,0,15.9,35,36,11.0,13.0,Senate,False,2006-12-04,2008-02-22,0.0,2007
+Dutton,"Dutton, Robert",R,SD31,45,7,7,0,15.6,35,37,11.0,14.0,Senate,False,2007-01-17,2008-02-22,0.0,2007
+Ackerman,"Ackerman, Dick",R,SD33,26,6,6,0,23.1,37,30,13.0,9.0,Senate,False,2007-02-07,2008-02-22,0.0,2007
+Denham,"Denham, Jeff",R,SD12,34,9,6,3,17.6,37,35,13.0,12.0,Senate,False,2007-01-22,2008-02-22,0.0,2007
+Vincent,"Vincent, Edward",D,SD25,10,3,3,0,30.0,39,23,,,Senate,False,2007-02-15,2008-02-22,0.0,2007
+McClintock,"McClintock, Tom",R,SD19,14,2,1,1,7.1,40,40,15.0,15.0,Senate,False,2007-02-15,2008-02-22,0.0,2007
+Lieu,"Lieu, Ted",D,AD53,59,42,25,17,42.4,1,13,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Ma,"Ma, Fiona",D,AD12,53,37,23,14,43.4,2,9,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Cook,"Cook, Paul J.",R,AD65,47,25,22,3,46.8,3,8,1.0,3.0,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Evans,"Evans, Noreen",D,AD07,39,27,21,6,53.8,4,1,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Hayashi,"Hayashi, Mary",D,AD18,39,26,21,5,53.8,4,1,,,Assembly,False,2008-12-09,2010-02-19,0.0,2009
+Fletcher,"Fletcher, Nathan",R,AD75,50,22,21,1,42.0,4,15,2.0,5.0,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Portantino,"Portantino, Anthony",D,AD44,51,30,21,9,41.2,4,16,,,Assembly,False,2008-12-01,2010-03-09,0.0,2009
+John A. Perez,"Pérez, John A.",D,AD46,39,26,20,6,51.3,8,4,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Feuer,"Feuer, Mike",D,AD42,40,26,19,7,47.5,9,7,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Jones,"Jones, Dave",D,AD09,52,32,19,13,36.5,9,28,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Fuentes,"Fuentes, Felipe",D,AD39,49,30,18,12,36.7,11,27,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Bass,"Bass, Karen",D,AD47,40,24,17,7,42.5,12,11,,,Assembly,False,2008-12-01,2010-02-19,1.0,2009
+Eng,"Eng, Mike",D,AD49,40,26,17,9,42.5,12,11,,,Assembly,False,2009-01-23,2010-02-19,0.0,2009
+Hill,"Hill, Jerry",D,AD19,44,31,17,14,38.6,12,20,,,Assembly,False,2008-12-23,2010-02-19,0.0,2009
+Nava,"Nava, Pedro",D,AD35,47,24,17,7,36.2,12,29,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Ruskin,"Ruskin, Ira",D,AD21,30,19,16,3,53.3,16,3,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Emmerson,"Emmerson, Bill",R,AD63,33,17,16,1,48.5,16,5,3.0,1.0,Assembly,False,2009-01-27,2010-02-19,0.0,2009
+Smyth,"Smyth, Cameron",R,AD38,39,16,16,0,41.0,16,17,3.0,6.0,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Block,"Block, Marty",D,AD78,40,21,16,5,40.0,16,18,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Bonnie Lowenthal,"Lowenthal, Bonnie",D,AD54,42,24,16,8,38.1,16,21,,,Assembly,False,2009-02-02,2010-02-19,0.0,2009
+Brownley,"Brownley, Julia",D,AD41,42,25,16,9,38.1,16,21,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Beall,"Beall, Jim",D,AD24,48,24,16,8,33.3,16,33,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Chesbro,"Chesbro, Wesley",D,AD01,46,19,15,4,32.6,23,35,,,Assembly,False,2008-12-16,2010-02-19,0.0,2009
+Monning,"Monning, William W.",D,AD27,36,22,14,8,38.9,24,19,,,Assembly,False,2008-12-01,2010-03-09,0.0,2009
+Solorio,"Solorio, Jose",D,AD69,44,23,14,9,31.8,24,38,,,Assembly,False,2008-12-01,2010-03-03,0.0,2009
+Caballero,"Caballero, Anna Marie",D,AD28,30,15,13,2,43.3,26,10,,,Assembly,False,2009-02-02,2010-02-19,0.0,2009
+De Leon,"De Leon, Kevin",D,AD45,35,18,13,5,37.1,26,25,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Mendoza,"Mendoza, Tony",D,AD56,37,19,13,6,35.1,26,31,,,Assembly,False,2008-12-09,2010-02-19,0.0,2009
+Niello,"Niello, Roger",R,AD05,39,14,13,1,33.3,26,33,5.0,9.0,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Jeffries,"Jeffries, Kevin D.",R,AD66,40,14,13,1,32.5,26,36,5.0,10.0,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Silva,"Silva, Jim",R,AD67,25,13,12,1,48.0,31,6,7.0,2.0,Assembly,False,2009-01-20,2010-02-19,0.0,2009
+Skinner,"Skinner, Nancy",D,AD14,40,19,12,7,30.0,31,39,,,Assembly,False,2009-02-02,2010-02-19,0.0,2009
+Huffman,"Huffman, Jared William",D,AD06,43,19,12,7,27.9,31,43,,,Assembly,False,2008-12-01,2010-03-01,0.0,2009
+Galgiani,"Galgiani, Cathleen",D,AD17,41,15,11,4,26.8,34,46,,,Assembly,False,2009-01-12,2010-02-19,0.0,2009
+Hagman,"Hagman, Curt",R,AD60,42,11,11,0,26.2,34,47,8.0,13.0,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+V. Manuel Perez,"Perez, V. Manuel",D,AD80,48,20,11,9,22.9,34,55,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Conway,"Conway, Connie",R,AD34,27,11,10,1,37.0,37,26,9.0,8.0,Assembly,False,2009-01-12,2010-02-19,0.0,2009
+Hernandez,"Hernandez, Ed",D,AD57,29,14,10,4,34.5,37,32,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Yamada,"Yamada, Mariko",D,AD08,34,14,10,4,29.4,37,40,,,Assembly,False,2008-12-17,2010-02-19,0.0,2009
+Torres,"Torres, Norma J.",D,AD61,35,21,10,11,28.6,37,41,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Davis,"Davis, Mike",D,AD48,37,16,10,6,27.0,37,45,,,Assembly,False,2009-01-05,2010-02-19,0.0,2009
+Fong,"Fong, Paul",D,AD22,40,17,10,7,25.0,37,50,,,Assembly,False,2009-02-25,2010-02-19,0.0,2009
+Blumenfield,"Blumenfield, Bob",D,AD40,45,19,10,9,22.2,37,58,,,Assembly,False,2009-02-24,2010-02-19,1.0,2009
+Huber,"Huber, Alyson",D,AD10,24,12,9,3,37.5,44,24,,,Assembly,False,2009-02-05,2010-02-19,0.0,2009
+Salas,"Salas, Mary",D,AD79,35,15,9,6,25.7,44,49,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Hall,"Hall, Isadore",D,AD52,36,14,9,5,25.0,44,50,,,Assembly,False,2009-02-18,2010-02-19,0.0,2009
+Furutani,"Furutani, Warren T.",D,AD55,39,15,9,6,23.1,44,54,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+De La Torre,"De La Torre, Hector",D,AD50,40,19,9,10,22.5,44,57,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Gaines,"Gaines, Ted",R,AD04,19,9,8,1,42.1,49,14,10.0,4.0,Assembly,False,2009-02-11,2010-02-19,0.0,2009
+Tom Berryhill,"Berryhill, Tom",R,AD25,21,10,8,2,38.1,49,21,10.0,7.0,Assembly,False,2009-01-05,2010-02-19,0.0,2009
+Adams,"Adams, Anthony",R,AD59,25,11,8,3,32.0,49,37,10.0,11.0,Assembly,False,2008-12-23,2010-02-19,0.0,2009
+Tran,"Tran, Van",R,AD68,31,8,8,0,25.8,49,48,10.0,14.0,Assembly,False,2009-01-22,2010-02-19,0.0,2009
+Coto,"Coto, Joe",D,AD23,32,12,8,4,25.0,49,50,,,Assembly,False,2008-12-09,2010-02-19,0.0,2009
+Audra Strickland,"Strickland, Audra",R,AD37,33,9,8,1,24.2,49,53,10.0,15.0,Assembly,False,2008-12-22,2010-02-19,0.0,2009
+Arambula,"Arambula, Juan",D,AD31,35,15,8,7,22.9,49,55,,,Assembly,False,2008-12-10,2010-03-01,0.0,2009
+Blakeslee,"Blakeslee, Sam",R,AD33,38,11,8,3,21.1,49,60,10.0,17.0,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Saldana,"Saldana, Lori",D,AD76,34,21,7,14,20.6,57,63,,,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Carter,"Carter, Wilmer Amina",D,AD62,36,16,7,9,19.4,57,64,,,Assembly,False,2009-01-13,2010-02-19,0.0,2009
+Ammiano,"Ammiano, Tom",D,AD13,42,20,7,13,16.7,57,69,,,Assembly,False,2009-02-12,2010-02-19,0.0,2009
+Anderson,"Anderson, Joel",R,AD77,43,10,7,3,16.3,57,70,16.0,21.0,Assembly,False,2008-12-10,2010-02-19,0.0,2009
+Swanson,"Swanson, Sandre R.",D,AD16,43,14,7,7,16.3,57,70,,,Assembly,False,2008-12-01,2010-03-01,0.0,2009
+Fuller,"Fuller, Jean",R,AD32,21,8,6,2,28.6,62,41,17.0,12.0,Assembly,False,2009-02-11,2010-02-19,0.0,2009
+Buchanan,"Buchanan, Joan",D,AD15,22,7,6,1,27.3,62,44,,,Assembly,False,2009-02-02,2010-02-19,0.0,2009
+Torlakson,"Torlakson, Tom",D,AD11,32,12,6,6,18.8,62,66,,,Assembly,False,2009-01-05,2010-02-19,0.0,2009
+Bradford,"Bradford, Steven",D,AD51,14,7,5,2,35.7,65,30,,,Assembly,False,2009-02-27,2010-02-19,0.0,2009
+Harkey,"Harkey, Diane L. ",R,AD73,23,5,5,0,21.7,65,59,18.0,16.0,Assembly,False,2009-02-23,2010-02-19,0.0,2009
+Villines,"Villines, Michael N.",R,AD29,24,5,5,0,20.8,65,62,18.0,18.0,Assembly,False,2009-02-25,2010-02-19,0.0,2009
+Gilmore,"Gilmore, Danny D.",R,AD30,27,5,5,0,18.5,65,67,18.0,20.0,Assembly,False,2009-02-25,2010-02-19,0.0,2009
+Charles Calderon,"Calderon, Charles M.",D,AD58,29,9,5,4,17.2,65,68,,,Assembly,False,2009-01-08,2010-02-19,0.0,2009
+Garrick,"Garrick, Martin",R,AD74,31,6,5,1,16.1,65,72,18.0,22.0,Assembly,False,2009-02-12,2010-02-19,2.0,2009
+Krekorian,"Krekorian, Paul",D,AD43,19,7,4,3,21.1,71,60,,,Assembly,True,2008-12-01,2009-02-27,0.0,2009
+Nielsen,"Nielsen, Jim",R,AD02,21,4,4,0,19.0,71,65,22.0,19.0,Assembly,False,2009-02-23,2010-02-19,0.0,2009
+Miller,"Miller, Jeff",R,AD71,27,6,4,2,14.8,71,73,22.0,23.0,Assembly,False,2009-02-04,2010-02-19,0.0,2009
+Knight,"Knight, Steve",R,AD36,33,7,4,3,12.1,71,74,22.0,24.0,Assembly,False,2008-12-01,2010-02-19,0.0,2009
+Torrico,"Torrico, Alberto",D,AD20,37,9,4,5,10.8,71,75,,,Assembly,False,2009-02-02,2010-02-19,0.0,2009
+Duvall,"Duvall, Mike D.",R,AD72,20,2,2,0,10.0,76,76,25.0,25.0,Assembly,True,2008-12-12,2009-02-27,0.0,2009
+Bill Berryhill,"Berryhill, Bill",R,AD26,23,4,2,2,8.7,76,77,25.0,26.0,Assembly,False,2009-02-11,2010-02-19,0.0,2009
+Nestande,"Nestande, Brian",R,AD64,26,2,2,0,7.7,76,78,25.0,27.0,Assembly,False,2009-02-13,2010-02-19,0.0,2009
+Logue,"Logue, Dan",R,AD03,30,4,1,3,3.3,79,79,28.0,28.0,Assembly,False,2009-01-15,2010-02-19,0.0,2009
+DeVore,"DeVore, Chuck",R,AD70,4,0,0,0,0.0,80,80,29.0,29.0,Assembly,False,2009-02-26,2010-02-19,0.0,2009
+Gatto,"Gatto, Mike",D,AD43,1,0,0,0,0.0,80,80,,,Assembly,True,2009-02-02,2009-02-02,0.0,2009
+Norby,"Norby, Chris",R,AD72,9,0,0,0,0.0,80,80,29.0,29.0,Assembly,True,2008-12-12,2010-02-19,0.0,2009
+Correa,"Correa, Lou",D,SD34,43,23,19,4,44.2,1,3,,,Senate,False,2008-12-08,2010-02-19,0.0,2009
+Kehoe,"Kehoe, Christine",D,SD39,37,28,18,10,48.6,2,1,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Wright,"Wright, Roderick",D,SD25,41,23,18,5,43.9,2,4,,,Senate,False,2009-02-12,2010-03-08,0.0,2009
+Alquist,"Alquist, Elaine",D,SD13,42,23,18,5,42.9,2,6,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Leno,"Leno, Mark",D,SD03,43,25,18,7,41.9,2,7,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Pavley,"Pavley, Fran",D,SD23,39,21,17,4,43.6,6,5,,,Senate,False,2008-12-02,2010-02-19,0.0,2009
+Yee,"Yee, Leland",D,SD08,42,29,17,12,40.5,6,8,,,Senate,False,2009-01-20,2010-02-19,0.0,2009
+Padilla,"Padilla, Alex",D,SD20,42,20,16,4,38.1,8,11,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Ducheny,"Ducheny, Denise Moreno",D,SD40,39,22,15,7,38.5,9,10,,,Senate,False,2009-01-09,2010-02-19,2.0,2009
+Corbett,"Corbett, Ellen",D,SD10,40,29,15,14,37.5,9,12,,,Senate,False,2008-12-09,2010-02-19,0.0,2009
+Harman,"Harman, Tom",R,SD35,42,16,15,1,35.7,9,14,1.0,1.0,Senate,False,2009-01-27,2010-02-19,0.0,2009
+Wiggins,"Wiggins, Patricia",D,SD02,31,18,14,4,45.2,12,2,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Simitian,"Simitian, Joseph",D,SD11,39,21,14,7,35.9,12,13,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Calderon,"Calderon, Ron",D,SD30,40,18,14,4,35.0,12,16,,,Senate,False,2008-12-18,2010-02-19,0.0,2009
+Strickland,"Strickland, Tony",R,SD19,40,14,14,0,35.0,12,16,2.0,2.0,Senate,False,2008-12-18,2010-02-19,0.0,2009
+Price,"Price, Curren D.",D,SD26,41,17,13,4,31.7,16,20,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Steinberg,"Steinberg, Darrell",D,SD06,44,21,13,8,29.5,16,22,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Lowenthal,"Lowenthal, Alan",D,SD27,31,17,12,5,38.7,18,9,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+DeSaulnier,"DeSaulnier, Mark",D,SD07,44,23,12,11,27.3,18,27,,,Senate,False,2009-01-14,2010-02-19,0.0,2009
+Romero,"Romero, Gloria",D,SD24,47,13,12,1,25.5,18,29,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Cogdill,"Cogdill, Dave",R,SD14,32,11,11,0,34.4,21,18,3.0,3.0,Senate,False,2009-01-20,2010-02-19,0.0,2009
+Negrete McLeod,"Negrete McLeod, Gloria",D,SD32,33,15,11,4,33.3,21,19,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Huff,"Huff, Bob",R,SD29,38,11,11,0,28.9,21,23,3.0,4.0,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Runner,"Runner, George",R,SD17,39,13,11,2,28.2,21,25,3.0,5.0,Senate,False,2009-02-12,2010-02-19,0.0,2009
+Dutton,"Dutton, Robert",R,SD31,41,11,11,0,26.8,21,28,3.0,6.0,Senate,False,2009-01-13,2010-02-19,0.0,2009
+Wolk,"Wolk, Lois",D,SD05,28,17,10,7,35.7,26,14,,,Senate,False,2009-02-26,2010-02-19,0.0,2009
+Oropeza,"Oropeza, Jenny",D,SD28,32,18,10,8,31.2,26,21,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Hancock,"Hancock, Loni",D,SD09,35,18,10,8,28.6,26,24,,,Senate,False,2008-12-02,2010-02-19,0.0,2009
+Liu,"Liu, Carol",D,SD21,32,13,9,4,28.1,29,26,,,Senate,False,2009-01-28,2010-02-19,0.0,2009
+Ashburn,"Ashburn, Roy",R,SD18,41,9,9,0,22.0,29,33,7.0,10.0,Senate,False,2009-02-14,2010-02-19,0.0,2009
+Hollingsworth,"Hollingsworth, Dennis",R,SD36,43,9,9,0,20.9,29,36,7.0,12.0,Senate,False,2008-12-01,2010-02-19,2.0,2009
+Aanestad,"Aanestad, Sam",R,SD04,32,9,8,1,25.0,32,30,9.0,7.0,Senate,False,2009-01-20,2010-02-19,0.0,2009
+Denham,"Denham, Jeff",R,SD12,34,9,8,1,23.5,32,32,9.0,9.0,Senate,False,2008-12-02,2010-02-19,0.0,2009
+Benoit,"Benoit, John J.",R,SD37,29,7,7,0,24.1,34,31,11.0,8.0,Senate,False,2009-01-06,2009-02-27,0.0,2009
+Cedillo,"Cedillo, Gilbert",D,SD22,33,11,7,4,21.2,34,35,,,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Walters,"Walters, Mimi",R,SD33,37,7,7,0,18.9,34,38,11.0,14.0,Senate,False,2009-01-27,2010-02-19,0.0,2009
+Florez,"Florez, Dean",D,SD16,40,16,7,9,17.5,34,39,,,Senate,False,2009-02-10,2010-02-19,0.0,2009
+Maldonado,"Maldonado, Abel",R,SD15,28,6,6,0,21.4,38,34,13.0,11.0,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Cox,"Cox, Dave",R,SD01,25,5,5,0,20.0,39,37,14.0,13.0,Senate,False,2009-02-11,2010-02-19,0.0,2009
+Wyland,"Wyland, Mark",R,SD38,33,3,3,0,9.1,40,40,15.0,15.0,Senate,False,2008-12-01,2010-02-19,0.0,2009
+Blumenfield,"Blumenfield, Bob",D,AD40,49,33,30,3,61.2,1,3,,,Assembly,False,2010-12-06,2012-02-24,1.0,2011
+Gordon,"Gordon, Richard S.",D,AD21,36,28,27,1,75.0,2,1,,,Assembly,False,2011-02-15,2012-02-24,0.0,2011
+Hill,"Hill, Jerry",D,AD19,47,31,27,4,57.4,2,8,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Ma,"Ma, Fiona",D,AD12,52,28,27,1,51.9,2,14,,,Assembly,False,2010-12-21,2012-02-24,0.0,2011
+Block,"Block, Marty",D,AD78,39,26,26,0,66.7,5,2,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Chesbro,"Chesbro, Wesley",D,AD01,49,26,25,1,51.0,6,15,,,Assembly,False,2010-12-13,2012-03-05,0.0,2011
+Ammiano,"Ammiano, Tom",D,AD13,42,28,24,4,57.1,7,9,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Monning,"Monning, William W.",D,AD27,38,24,23,1,60.5,8,4,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Solorio,"Solorio, Jose",D,AD69,39,28,23,5,59.0,8,5,,,Assembly,False,2010-12-06,2012-02-24,1.0,2011
+Fuentes,"Fuentes, Felipe",D,AD39,40,27,23,4,57.5,8,7,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Lara,"Lara, Ricardo",D,AD50,43,26,23,3,53.5,8,12,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Wieckowski,"Wieckowski, Bob",D,AD20,46,26,23,3,50.0,8,16,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Gatto,"Gatto, Mike",D,AD43,37,25,21,4,56.8,13,10,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Buchanan,"Buchanan, Joan",D,AD15,42,20,20,0,47.6,14,19,,,Assembly,False,2011-01-27,2012-02-24,0.0,2011
+Mitchell,"Mitchell, Holly J.",D,AD47,33,20,19,1,57.6,15,6,,,Assembly,False,2011-02-08,2012-02-24,0.0,2011
+Skinner,"Skinner, Nancy",D,AD14,43,21,19,2,44.2,15,26,,,Assembly,False,2011-01-18,2012-02-24,0.0,2011
+Swanson,"Swanson, Sandré R.",D,AD16,47,23,19,4,40.4,15,30,,,Assembly,False,2010-12-06,2012-03-05,0.0,2011
+Atkins,"Atkins, Toni",D,AD76,32,20,18,2,56.2,18,11,,,Assembly,False,2011-02-10,2012-02-24,0.0,2011
+Huffman,"Huffman, Jared William",D,AD06,34,20,18,2,52.9,18,13,,,Assembly,False,2010-12-06,2012-02-29,0.0,2011
+Torres,"Torres, Norma J.",D,AD61,37,19,18,1,48.6,18,17,,,Assembly,False,2011-01-20,2012-02-24,0.0,2011
+John A. Pérez,"Pérez, John A.",D,AD46,38,22,18,4,47.4,18,20,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Bonilla,"Bonilla, Susan A.",D,AD11,40,21,18,3,45.0,18,24,,,Assembly,False,2011-02-02,2012-02-24,0.0,2011
+Perea,"Perea, Henry T.",D,AD31,50,19,18,1,36.0,18,37,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Dickinson,"Dickinson, Roger",D,AD09,51,22,18,4,35.3,18,40,,,Assembly,False,2011-01-12,2012-02-24,0.0,2011
+Butler,"Butler, Betsy",D,AD53,35,21,17,4,48.6,25,17,,,Assembly,False,2011-01-25,2012-02-24,0.0,2011
+Bonnie Lowenthal,"Lowenthal, Bonnie",D,AD54,37,20,17,3,45.9,25,22,,,Assembly,False,2011-02-09,2012-02-24,0.0,2011
+Fong,"Fong, Paul",D,AD22,45,22,17,5,37.8,25,34,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Carter,"Carter, Wilmer Amina",D,AD62,35,19,16,3,45.7,28,23,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Feuer,"Feuer, Mike",D,AD42,39,16,16,0,41.0,28,29,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Williams,"Williams, Das",D,AD35,44,17,16,1,36.4,28,36,,,Assembly,False,2010-12-06,2012-03-05,0.0,2011
+Cook,"Cook, Paul J.",R,AD65,45,16,16,0,35.6,28,39,1.0,3.0,Assembly,False,2011-01-20,2012-02-24,0.0,2011
+Hall,"Hall, Isadore",D,AD52,32,16,15,1,46.9,32,21,,,Assembly,False,2011-02-02,2012-02-24,0.0,2011
+Allen,"Allen, Michael",D,AD07,39,21,15,6,38.5,32,32,,,Assembly,False,2011-02-10,2012-02-29,0.0,2011
+Davis,"Davis, Mike",D,AD48,42,14,14,0,33.3,34,41,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Pan,"Pan, Richard",D,AD05,42,16,14,2,33.3,34,41,,,Assembly,False,2011-01-13,2012-02-24,0.0,2011
+Smyth,"Smyth, Cameron",R,AD38,42,14,14,0,33.3,34,41,2.0,4.0,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Alejo,"Alejo, Luis A.",D,AD28,51,18,14,4,27.5,34,54,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Achadjian,"Achadjian, Katcho",R,AD33,30,13,13,0,43.3,38,28,3.0,1.0,Assembly,False,2011-02-14,2012-02-24,0.0,2011
+Brownley,"Brownley, Julia",D,AD41,35,19,13,6,37.1,38,35,,,Assembly,False,2010-12-06,2012-02-23,0.0,2011
+Roger Hernández,"Hernández, Roger",D,AD57,40,17,13,4,32.5,38,44,,,Assembly,False,2011-01-25,2012-02-24,0.0,2011
+Bradford,"Bradford, Steven",D,AD51,41,15,13,2,31.7,38,46,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+V. Manuel Pérez,"Pérez, V. Manuel",D,AD80,45,16,13,3,28.9,38,50,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Campos,"Campos, Nora",D,AD23,27,14,12,2,44.4,43,25,,,Assembly,False,2011-02-15,2012-02-24,0.0,2011
+Furutani,"Furutani, Warren T.",D,AD55,39,13,12,1,30.8,43,47,,,Assembly,False,2011-02-08,2012-02-24,0.0,2011
+Yamada,"Yamada, Mariko",D,AD08,25,12,11,1,44.0,45,27,,,Assembly,False,2010-12-06,2012-02-23,0.0,2011
+Eng,"Eng, Mike",D,AD49,38,18,11,7,28.9,45,50,,,Assembly,False,2010-12-21,2012-02-24,0.0,2011
+Silva,"Silva, Jim",R,AD67,28,11,10,1,35.7,47,38,4.0,2.0,Assembly,False,2011-01-31,2012-02-24,0.0,2011
+Beall,"Beall, Jim",D,AD24,31,12,10,2,32.3,47,45,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Fletcher,"Fletcher, Nathan",Other,AD75,40,10,10,0,25.0,47,55,,,Assembly,False,2011-02-15,2012-02-24,0.0,2011
+Hueso,"Hueso, Ben",D,AD79,30,13,9,4,30.0,50,49,,,Assembly,False,2011-02-15,2012-02-24,0.0,2011
+Logue,"Logue, Dan",R,AD03,32,9,9,0,28.1,50,53,5.0,7.0,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Huber,"Huber, Alyson",D,AD10,37,12,9,3,24.3,50,57,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Galgiani,"Galgiani, Cathleen",D,AD17,44,10,9,1,20.5,50,61,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Hayashi,"Hayashi, Mary",D,AD18,20,9,8,1,40.0,54,31,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Charles Calderon,"Calderon, Charles M.",D,AD58,21,9,8,1,38.1,54,33,,,Assembly,False,2011-01-18,2012-03-05,0.0,2011
+Portantino,"Portantino, Anthony J.",D,AD44,39,13,8,5,20.5,54,61,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Olsen,"Olsen, Kristin",R,AD25,23,7,7,0,30.4,57,48,6.0,5.0,Assembly,False,2011-02-15,2012-02-24,0.0,2011
+Wagner,"Wagner, Donald P.",R,AD70,36,7,7,0,19.4,57,65,6.0,12.0,Assembly,False,2011-02-10,2012-02-24,0.0,2011
+Nielsen,"Nielsen, Jim",R,AD02,21,6,6,0,28.6,59,52,8.0,6.0,Assembly,False,2011-01-20,2012-02-24,0.0,2011
+Nestande,"Nestande, Brian",R,AD64,26,6,6,0,23.1,59,58,8.0,9.0,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Cedillo,"Cedillo, Gilbert",D,AD45,29,8,6,2,20.7,59,59,,,Assembly,False,2011-01-11,2012-02-24,0.0,2011
+Knight,"Knight, Steve",R,AD36,29,6,6,0,20.7,59,59,8.0,10.0,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Halderman,"Halderman, Linda",R,AD29,20,6,5,1,25.0,63,55,11.0,8.0,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Gorell,"Gorell, Jeff",R,AD37,25,5,5,0,20.0,63,63,11.0,11.0,Assembly,False,2010-12-06,2012-02-23,0.0,2011
+Jeffries,"Jeffries, Kevin D.",R,AD66,27,6,5,1,18.5,63,66,11.0,13.0,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Hagman,"Hagman, Curt",R,AD60,30,7,5,2,16.7,63,67,11.0,14.0,Assembly,False,2011-01-12,2012-02-24,0.0,2011
+Bill Berryhill,"Berryhill, Bill",R,AD26,33,5,5,0,15.2,63,68,11.0,15.0,Assembly,False,2011-01-26,2012-02-24,0.0,2011
+Mendoza,"Mendoza, Tony",D,AD56,20,5,4,1,20.0,68,63,,,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Garrick,"Garrick, Martin",R,AD74,38,7,4,3,10.5,68,74,16.0,21.0,Assembly,False,2011-02-07,2012-02-24,0.0,2011
+Valadao,"Valadao, David G.",R,AD30,22,4,3,1,13.6,70,70,17.0,17.0,Assembly,False,2011-01-12,2012-02-24,0.0,2011
+Morrell,"Morrell, Mike",R,AD63,26,3,3,0,11.5,70,72,17.0,19.0,Assembly,False,2011-02-14,2012-02-24,0.0,2011
+Miller,"Miller, Jeff",R,AD71,15,2,2,0,13.3,72,71,19.0,18.0,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Jones,"Jones, Brian W.",R,AD77,21,3,2,1,9.5,72,75,19.0,22.0,Assembly,False,2011-02-15,2012-02-24,0.0,2011
+Norby,"Norby, Chris",R,AD72,35,2,2,0,5.7,72,76,19.0,23.0,Assembly,False,2011-02-09,2012-02-24,0.0,2011
+Beth Gaines,"Gaines, Beth",R,AD04,7,1,1,0,14.3,75,69,22.0,16.0,Assembly,False,2012-02-22,2012-02-24,0.0,2011
+Conway,"Conway, Connie",R,AD34,9,1,1,0,11.1,75,73,22.0,20.0,Assembly,False,2011-01-26,2012-02-24,0.0,2011
+Mansoor,"Mansoor, Allan R.",R,AD68,19,1,1,0,5.3,75,77,22.0,24.0,Assembly,False,2011-02-17,2012-02-24,0.0,2011
+Harkey,"Harkey, Diane L. ",R,AD73,21,1,1,0,4.8,75,78,22.0,25.0,Assembly,False,2010-12-22,2012-02-24,0.0,2011
+Donnelly,"Donnelly, Tim",R,AD59,32,0,0,0,0.0,79,79,26.0,26.0,Assembly,False,2010-12-06,2012-02-24,0.0,2011
+Grove,"Grove, Shannon L.",R,AD32,21,0,0,0,0.0,79,79,26.0,26.0,Assembly,False,2011-02-10,2012-02-24,0.0,2011
+Kehoe,"Kehoe, Christine",D,SD39,41,32,29,3,70.7,1,1,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Padilla,"Padilla, Alex",D,SD20,42,30,28,2,66.7,2,2,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Corbett,"Corbett, Ellen",D,SD10,43,31,28,3,65.1,2,3,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Pavley,"Pavley, Fran",D,SD23,46,30,27,3,58.7,4,5,,,Senate,False,2010-12-22,2012-02-24,0.0,2011
+Negrete McLeod,"Negrete McLeod, Gloria",D,SD32,40,27,24,3,60.0,5,4,,,Senate,False,2011-02-09,2012-02-24,0.0,2011
+Price,"Price, Curren D.",D,SD26,45,29,24,5,53.3,5,7,,,Senate,False,2011-01-05,2012-02-23,0.0,2011
+Leno,"Leno, Mark",D,SD03,48,30,24,6,50.0,5,8,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Wolk,"Wolk, Lois",D,SD05,43,29,23,6,53.5,8,6,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Lieu,"Lieu, Ted W.",D,SD28,40,24,19,5,47.5,9,9,,,Senate,False,2011-02-15,2012-02-24,0.0,2011
+DeSaulnier,"DeSaulnier, Mark",D,SD07,43,26,19,7,44.2,9,13,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Rubio,"Rubio, Michael",D,SD16,46,20,19,1,41.3,9,16,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Calderon,"Calderon, Ron",D,SD30,39,21,18,3,46.2,12,10,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Simitian,"Simitian, Joseph",D,SD11,39,25,18,7,46.2,12,10,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Yee,"Yee, Leland",D,SD08,41,25,18,7,43.9,12,14,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Vargas,"Vargas, Juan",D,SD40,46,21,18,3,39.1,12,19,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Correa,"Correa, Lou",D,SD34,50,22,18,4,36.0,12,22,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Steinberg,"Steinberg, Darrell",D,SD06,51,23,18,5,35.3,12,23,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+De León,"De León, Kevin",D,SD22,40,19,16,3,40.0,18,17,,,Senate,False,2011-01-19,2012-02-24,0.0,2011
+Hernandez,"Hernandez, Ed",D,SD24,40,24,16,8,40.0,18,17,,,Senate,False,2011-01-31,2012-02-24,0.0,2011
+Liu,"Liu, Carol",D,SD21,33,16,15,1,45.5,20,12,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Hancock,"Hancock, Loni",D,SD09,37,18,14,4,37.8,21,20,,,Senate,False,2011-02-08,2012-02-24,0.0,2011
+Evans,"Evans, Noreen",D,SD02,40,15,14,1,35.0,21,24,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Alquist,"Alquist, Elaine",D,SD13,31,15,13,2,41.9,23,15,,,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Emmerson,"Emmerson, Bill",R,SD37,41,15,13,2,31.7,23,25,1.0,1.0,Senate,False,2011-01-26,2012-02-24,0.0,2011
+Wright,"Wright, Roderick",D,SD25,41,15,13,2,31.7,23,25,,,Senate,False,2010-12-08,2012-02-24,0.0,2011
+Lowenthal,"Lowenthal, Alan",D,SD27,33,16,12,4,36.4,26,21,,,Senate,False,2011-01-24,2012-02-24,0.0,2011
+Fuller,"Fuller, Jean",R,SD18,30,8,8,0,26.7,27,27,2.0,2.0,Senate,False,2011-02-14,2012-02-24,0.0,2011
+Harman,"Harman, Tom",R,SD35,37,9,7,2,18.9,28,28,3.0,3.0,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Blakeslee,"Blakeslee, Sam",R,SD15,36,7,6,1,16.7,29,30,4.0,5.0,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Cannella,"Cannella, Anthony",R,SD12,38,6,6,0,15.8,29,31,4.0,6.0,Senate,False,2011-02-08,2012-02-24,0.0,2011
+La Malfa,"La Malfa, Doug",R,SD04,39,9,6,3,15.4,29,33,4.0,8.0,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Wyland,"Wyland, Mark",R,SD38,40,7,6,1,15.0,29,34,4.0,9.0,Senate,False,2011-02-01,2012-02-24,0.0,2011
+Huff,"Huff, Bob",R,SD29,28,7,5,2,17.9,33,29,8.0,4.0,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Berryhill,"Berryhill, Tom",R,SD14,32,6,5,1,15.6,33,32,8.0,7.0,Senate,False,2011-02-08,2012-02-24,0.0,2011
+Runner,"Runner, Sharon",R,SD17,35,5,5,0,14.3,33,35,8.0,10.0,Senate,False,2010-12-16,2012-02-24,0.0,2011
+Strickland,"Strickland, Tony",R,SD19,29,4,4,0,13.8,36,36,11.0,11.0,Senate,False,2010-12-15,2012-02-24,0.0,2011
+Dutton,"Dutton, Robert",R,SD31,33,5,4,1,12.1,36,37,11.0,12.0,Senate,False,2011-02-10,2012-02-24,0.0,2011
+Walters,"Walters, Mimi",R,SD33,41,7,4,3,9.8,36,39,11.0,14.0,Senate,False,2011-02-17,2012-02-24,0.0,2011
+Gaines,"Gaines, Ted",R,SD01,26,5,3,2,11.5,39,38,14.0,13.0,Senate,False,2011-01-14,2012-02-24,0.0,2011
+Anderson,"Anderson, Joel",R,SD36,39,3,3,0,7.7,39,40,14.0,15.0,Senate,False,2010-12-06,2012-02-24,0.0,2011
+Chesbro,"Chesbro, Wesley",D,AD02,41,33,29,4,70.7,1,1,,,Assembly,False,2013-02-07,2014-02-21,0.0,2013
+Gordon,"Gordon, Richard S.",D,AD24,43,30,29,1,67.4,1,2,,,Assembly,False,2013-02-04,2014-02-21,0.0,2013
+Skinner,"Skinner, Nancy",D,AD15,50,32,29,3,58.0,1,10,,,Assembly,False,2012-12-03,2014-02-21,1.0,2013
+Dickinson,"Dickinson, Roger",D,AD07,50,32,28,4,56.0,4,11,,,Assembly,False,2012-12-19,2014-02-21,0.0,2013
+Hall,"Hall III, Isadore",D,AD64,38,25,24,1,63.2,5,5,,,Assembly,False,2013-01-14,2014-02-21,0.0,2013
+Bocanegra,"Bocanegra, Raul",D,AD39,50,25,24,1,48.0,5,23,,,Assembly,False,2012-12-03,2014-03-24,0.0,2013
+Gomez,"Gomez, Jimmy",D,AD51,42,23,23,0,54.8,7,12,,,Assembly,False,2013-02-05,2014-02-21,0.0,2013
+Levine,"Levine, Marc",D,AD10,49,29,23,6,46.9,7,24,,,Assembly,False,2013-01-22,2014-02-21,0.0,2013
+Bonta,"Bonta, Rob",D,AD18,51,30,23,7,45.1,7,34,,,Assembly,False,2013-01-07,2014-02-21,0.0,2013
+Maienschein,"Maienschein, Brian",R,AD77,35,23,22,1,62.9,10,6,1.0,1.0,Assembly,False,2013-01-09,2014-02-21,0.0,2013
+Lowenthal,"Lowenthal, Bonnie",D,AD70,37,24,22,2,59.5,10,8,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Williams,"Williams, Das",D,AD37,37,22,22,0,59.5,10,8,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Perea,"Perea, Henry T.",D,AD31,41,27,22,5,53.7,10,14,,,Assembly,False,2012-12-03,2014-02-25,0.0,2013
+Gatto,"Gatto, Mike",D,AD43,35,27,21,6,60.0,14,7,,,Assembly,False,2012-12-19,2014-02-21,0.0,2013
+Bonilla,"Bonilla, Susan A.",D,AD14,42,24,21,3,50.0,14,18,,,Assembly,False,2012-12-03,2014-02-26,0.0,2013
+Ting,"Ting, Philip Y.",D,AD19,45,26,21,5,46.7,14,25,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Mitchell,"Mitchell, Holly J.",D,AD54,31,21,20,1,64.5,17,4,,,Assembly,True,2013-02-07,2014-02-21,0.0,2013
+Cooley,"Cooley, Ken",D,AD08,38,25,20,5,52.6,17,16,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Bloom,"Bloom, Richard",D,AD50,43,21,20,1,46.5,17,26,,,Assembly,False,2013-02-07,2014-02-21,0.0,2013
+Pan,"Pan, Richard",D,AD09,45,28,20,8,44.4,17,35,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Chau,"Chau, Ed",D,AD49,37,24,19,5,51.4,21,17,,,Assembly,False,2013-02-04,2014-02-21,0.0,2013
+Ammiano,"Ammiano, Tom",D,AD17,42,20,19,1,45.2,21,30,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Eggman,"Eggman, Susan Talamantes",D,AD13,42,19,19,0,45.2,21,30,,,Assembly,False,2013-01-14,2014-02-24,0.0,2013
+Mullin,"Mullin, Kevin",D,AD22,42,22,19,3,45.2,21,30,,,Assembly,False,2013-02-14,2014-02-21,0.0,2013
+V. Manuel Pérez,"Pérez, V. Manuel",D,AD56,42,22,19,3,45.2,21,30,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Bradford,"Bradford, Steven",D,AD62,45,28,19,9,42.2,21,39,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Atkins,"Atkins, Toni G.",D,AD78,27,21,18,3,66.7,27,3,,,Assembly,False,2013-01-22,2014-02-21,0.0,2013
+Campos,"Campos, Nora",D,AD27,34,22,18,4,52.9,27,15,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Alejo,"Alejo, Luis",D,AD30,41,19,18,1,43.9,27,37,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Frazier,"Frazier, Jim",D,AD11,35,19,16,3,45.7,30,28,,,Assembly,False,2013-02-11,2014-02-21,0.0,2013
+John A. Pérez,"Pérez, John A.",D,AD53,35,23,16,7,45.7,30,28,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Buchanan,"Buchanan, Joan",D,AD16,37,18,16,2,43.2,30,38,,,Assembly,False,2012-12-03,2014-02-21,1.0,2013
+Stone,"Stone, Mark",D,AD29,39,16,16,0,41.0,30,40,,,Assembly,False,2013-01-29,2014-02-21,0.0,2013
+Jones-Sawyer,"Jones-Sawyer, Sr. Reginald B.",D,AD59,42,18,16,2,38.1,30,44,,,Assembly,False,2013-02-15,2014-02-21,0.0,2013
+Roger Hernández,"Hernández, Roger",D,AD48,46,19,16,3,34.8,30,48,,,Assembly,False,2012-12-03,2014-03-13,0.0,2013
+Daly,"Daly, Tom",D,AD69,30,17,15,2,50.0,36,18,,,Assembly,False,2013-02-15,2014-02-21,0.0,2013
+Garcia,"Garcia, Cristina",D,AD58,30,19,15,4,50.0,36,18,,,Assembly,False,2013-02-07,2014-02-21,0.0,2013
+Nazarian,"Nazarian, Adrin",D,AD46,41,15,15,0,36.6,36,46,,,Assembly,False,2013-02-11,2014-02-21,0.0,2013
+Salas,"Salas, Jr. Rudy",D,AD32,26,15,14,1,53.8,39,13,,,Assembly,False,2013-01-14,2014-02-21,0.0,2013
+Muratsuchi,"Muratsuchi, Al",D,AD66,35,14,14,0,40.0,39,41,,,Assembly,False,2013-01-07,2014-02-21,0.0,2013
+Wieckowski,"Wieckowski, Bob",D,AD25,41,17,14,3,34.1,39,50,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Torres,"Torres, Norma J.",D,AD52,42,18,14,4,33.3,39,51,,,Assembly,True,2013-02-15,2014-02-21,0.0,2013
+Weber,"Weber, Shirley N.",D,AD79,27,15,13,2,48.1,43,22,,,Assembly,False,2013-01-07,2014-02-21,0.0,2013
+Quirk-Silva,"Quirk-Silva, Sharon",D,AD65,28,16,13,3,46.4,43,27,,,Assembly,False,2013-02-04,2014-02-21,0.0,2013
+Holden,"Holden, Chris R.",D,AD41,41,16,13,3,31.7,43,53,,,Assembly,False,2012-12-03,2014-02-19,0.0,2013
+Hueso,"Hueso, Ben",D,AD80,52,16,13,3,25.0,43,64,,,Assembly,True,2012-12-03,2014-02-21,0.0,2013
+Achadjian,"Achadjian, K.H. ""Katcho""",R,AD35,27,12,12,0,44.4,47,35,2.0,2.0,Assembly,False,2013-01-07,2014-02-21,0.0,2013
+Fox,"Fox, Steve",D,AD36,40,13,12,1,30.0,47,56,,,Assembly,False,2013-02-15,2014-02-21,0.0,2013
+Hagman,"Hagman, Curt",R,AD55,41,12,12,0,29.3,47,57,2.0,5.0,Assembly,False,2013-01-16,2014-02-21,0.0,2013
+Fong,"Fong, Paul",D,AD28,28,15,11,4,39.3,50,43,,,Assembly,False,2013-02-15,2014-02-21,0.0,2013
+Quirk,"Quirk, Bill",D,AD20,31,12,11,1,35.5,50,47,,,Assembly,False,2013-02-11,2014-02-21,0.0,2013
+Wagner,"Wagner, Donald P.",R,AD68,40,13,11,2,27.5,50,62,4.0,7.0,Assembly,False,2013-02-06,2014-02-21,0.0,2013
+Olsen,"Olsen, Kristin",R,AD12,27,10,10,0,37.0,53,45,5.0,4.0,Assembly,False,2013-01-07,2014-02-21,0.0,2013
+Dahle,"Dahle, Brian",R,AD01,20,8,8,0,40.0,54,41,6.0,3.0,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Medina,"Medina, Jose",D,AD61,23,11,8,3,34.8,54,48,,,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Gonzalez,"Gonzalez, Lorena",D,AD80,26,10,8,2,30.8,54,55,,,Assembly,True,2013-02-21,2014-02-21,0.0,2013
+Rendon,"Rendon, Anthony",D,AD63,29,10,8,2,27.6,54,61,,,Assembly,False,2013-01-14,2014-02-21,0.0,2013
+Rodriguez,"Rodriguez, Freddie",D,AD52,14,8,7,1,50.0,58,18,,,Assembly,True,2014-01-29,2014-02-21,0.0,2013
+Dababneh,"Dababneh, Matthew",D,AD45,21,8,7,1,33.3,58,51,,,Assembly,True,2014-02-14,2014-02-21,0.0,2013
+Yamada,"Yamada, Mariko",D,AD04,24,7,7,0,29.2,58,58,,,Assembly,False,2013-01-07,2014-02-21,0.0,2013
+Linder,"Linder, Eric",R,AD60,25,8,7,1,28.0,58,60,7.0,6.0,Assembly,False,2013-01-07,2014-02-21,0.0,2013
+Melendez,"Melendez, Melissa A.",R,AD67,27,7,7,0,25.9,58,63,7.0,8.0,Assembly,False,2013-02-20,2014-02-21,0.0,2013
+Gray,"Gray, Adam C.",D,AD21,28,9,7,2,25.0,58,64,,,Assembly,False,2013-02-21,2014-02-21,0.0,2013
+Nestande,"Nestande, Brian",R,AD42,29,8,7,1,24.1,58,67,7.0,10.0,Assembly,False,2013-02-04,2014-02-21,0.0,2013
+Chávez,"Chávez, Rocky J.",R,AD76,30,7,7,0,23.3,58,68,7.0,11.0,Assembly,False,2013-01-07,2014-02-20,0.0,2013
+Jones,"Jones, Brian W.",R,AD71,31,8,7,1,22.6,58,69,7.0,12.0,Assembly,False,2013-02-21,2014-02-21,0.0,2013
+Brown,"Brown, Cheryl R.",D,AD47,38,10,7,3,18.4,58,74,,,Assembly,False,2013-02-11,2014-02-21,0.0,2013
+Ridley-Thomas,"Ridley-Thomas, Sebastian",D,AD54,19,7,6,1,31.6,68,54,,,Assembly,True,2014-02-19,2014-02-21,0.0,2013
+Ian Calderon,"Calderon, Ian C.",D,AD57,21,7,6,1,28.6,68,59,,,Assembly,False,2013-02-12,2014-02-21,0.0,2013
+Wilk,"Wilk, Scott",R,AD38,24,7,6,1,25.0,68,64,12.0,9.0,Assembly,False,2013-01-18,2014-02-21,0.0,2013
+Logue,"Logue, Dan",R,AD03,29,6,6,0,20.7,68,72,12.0,14.0,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Waldron,"Waldron, Marie",R,AD75,30,6,6,0,20.0,68,73,12.0,15.0,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Donnelly,"Donnelly, Tim",R,AD33,39,7,6,1,15.4,68,77,12.0,18.0,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Beth Gaines,"Gaines, Beth B.",R,AD06,23,9,5,4,21.7,74,70,16.0,13.0,Assembly,False,2013-01-23,2014-02-21,0.0,2013
+Patterson,"Patterson, Jim",R,AD23,31,5,5,0,16.1,74,76,16.0,17.0,Assembly,False,2013-01-07,2014-02-21,0.0,2013
+Blumenfield,"Blumenfield, Bob",D,AD45,14,4,3,1,21.4,76,71,,,Assembly,True,2012-12-03,2013-02-22,1.0,2013
+Bigelow,"Bigelow, Franklin E.",R,AD05,17,3,3,0,17.6,76,75,18.0,16.0,Assembly,False,2013-02-13,2014-02-21,0.0,2013
+Grove,"Grove, Shannon",R,AD34,25,3,3,0,12.0,76,78,18.0,19.0,Assembly,False,2013-02-06,2014-02-21,0.0,2013
+Conway,"Conway, Connie",R,AD26,27,3,3,0,11.1,76,80,18.0,21.0,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Allen,"Allen, Travis",R,AD72,29,4,3,1,10.3,76,81,18.0,22.0,Assembly,False,2013-02-11,2014-02-21,0.0,2013
+Morrell,"Morrell, Mike",R,AD40,39,3,3,0,7.7,76,82,18.0,23.0,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Harkey,"Harkey, Diane L.",R,AD73,17,2,2,0,11.8,82,79,23.0,20.0,Assembly,False,2013-02-20,2014-02-21,0.0,2013
+Gorell,"Gorell, Jeff",R,AD44,29,3,2,1,6.9,82,83,23.0,24.0,Assembly,False,2012-12-03,2014-02-21,0.0,2013
+Mansoor,"Mansoor, Allan R.",R,AD74,29,1,1,0,3.4,84,84,25.0,25.0,Assembly,False,2012-12-06,2014-02-21,0.0,2013
+Lieu,"Lieu, Ted W.",D,SD28,53,40,34,6,64.2,1,1,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Hill,"Hill, Jerry",D,SD13,53,39,33,6,62.3,2,4,,,Senate,False,2012-12-19,2014-02-21,0.0,2013
+Pavley,"Pavley, Fran",D,SD27,46,33,29,4,63.0,3,2,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Steinberg,"Steinberg, Darrell",D,SD06,49,34,27,7,55.1,4,6,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Monning,"Monning, Bill",D,SD17,40,27,25,2,62.5,5,3,,,Senate,False,2013-01-10,2014-02-21,0.0,2013
+Hernandez,"Hernandez, Ed",D,SD24,40,26,24,2,60.0,6,5,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Correa,"Correa, Lou",D,SD34,49,27,24,3,49.0,6,12,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+DeSaulnier,"DeSaulnier, Mark",D,SD07,44,29,23,6,52.3,8,9,,,Senate,False,2013-01-14,2014-02-21,0.0,2013
+Block,"Block, Marty",D,SD39,40,24,22,2,55.0,9,7,,,Senate,False,2013-02-19,2014-02-21,0.0,2013
+Leno,"Leno, Mark",D,SD11,44,29,22,7,50.0,9,10,,,Senate,False,2012-12-03,2014-02-21,2.0,2013
+Padilla,"Padilla, Alex",D,SD20,39,27,21,6,53.8,11,8,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Jackson,"Jackson, Hannah-Beth",D,SD19,42,23,21,2,50.0,11,10,,,Senate,False,2013-01-15,2014-02-21,0.0,2013
+Wolk,"Wolk, Lois",D,SD03,44,24,19,5,43.2,13,17,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Lara,"Lara, Ricardo",D,SD33,54,29,19,10,35.2,13,23,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Hancock,"Hancock, Loni",D,SD09,38,19,18,1,47.4,15,13,,,Senate,False,2012-12-21,2014-02-21,0.0,2013
+Liu,"Liu, Carol",D,SD25,38,18,18,0,47.4,15,13,,,Senate,False,2013-01-16,2014-02-21,0.0,2013
+De León,"De León, Kevin",D,SD22,41,25,18,7,43.9,15,16,,,Senate,False,2012-12-05,2014-02-21,0.0,2013
+Corbett,"Corbett, Ellen",D,SD10,35,21,16,5,45.7,18,15,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Galgiani,"Galgiani, Cathleen",D,SD05,41,18,16,2,39.0,18,20,,,Senate,False,2013-01-10,2014-02-21,0.0,2013
+Beall,"Beall, Jim",D,SD15,38,21,15,6,39.5,20,18,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Wright,"Wright, Roderick",D,SD35,33,16,13,3,39.4,21,19,,,Senate,False,2012-12-11,2014-02-21,0.0,2013
+Knight,"Knight, Steve",R,SD21,37,13,12,1,32.4,22,24,1.0,2.0,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Roth,"Roth, Richard",D,SD31,30,14,11,3,36.7,23,21,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Wyland,"Wyland, Mark",R,SD38,42,11,10,1,23.8,24,30,2.0,6.0,Senate,False,2013-02-12,2014-02-21,0.0,2013
+Evans,"Evans, Noreen",D,SD02,28,10,9,1,32.1,25,25,,,Senate,False,2013-01-07,2014-02-21,0.0,2013
+Emmerson,"Emmerson, Bill",R,SD23,22,9,8,1,36.4,26,22,3.0,1.0,Senate,False,2013-01-07,2013-02-22,0.0,2013
+Fuller,"Fuller, Jean",R,SD18,26,8,8,0,30.8,26,26,3.0,3.0,Senate,False,2013-01-30,2014-02-21,0.0,2013
+Huff,"Huff, Bob",R,SD29,30,9,8,1,26.7,26,28,3.0,4.0,Senate,False,2013-01-10,2014-02-21,0.0,2013
+Cannella,"Cannella, Anthony",R,SD12,33,9,8,1,24.2,26,29,3.0,5.0,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Yee,"Yee, Leland Y.",D,SD08,41,10,8,2,19.5,26,34,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Calderon,"Calderon, Ron",D,SD30,26,7,7,0,26.9,31,27,,,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Gaines,"Gaines, Ted",R,SD01,32,7,7,0,21.9,31,31,7.0,7.0,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Anderson,"Anderson, Joel",R,SD36,34,6,6,0,17.6,33,35,8.0,10.0,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Walters,"Walters, Mimi",R,SD37,35,6,6,0,17.1,33,36,8.0,11.0,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Berryhill,"Berryhill, Tom",R,SD14,24,5,5,0,20.8,35,32,10.0,8.0,Senate,False,2013-01-31,2014-02-21,0.0,2013
+Nielsen,"Nielsen, Jim",R,SD04,25,6,5,1,20.0,35,33,10.0,9.0,Senate,False,2012-12-03,2014-02-21,0.0,2013
+Price,"Price, Curren D.",D,SD26,15,1,1,0,6.7,37,37,,,Senate,False,2012-12-03,2013-02-22,0.0,2013
+Negrete McLeod,"Negrete McLeod, Gloria",D,SD32,0,0,0,0,0.0,38,38,,,Senate,False,,,0.0,2013
+Rubio,"Rubio, Michael J.",D,SD16,1,0,0,0,0.0,38,38,,,Senate,True,2013-02-01,2013-02-01,0.0,2013
+Vargas,"Vargas, Juan",D,SD40,0,0,0,0,0.0,38,38,,,Senate,False,,,0.0,2013
+Vidak,"Vidak, Andy",R,SD16,13,0,0,0,0.0,38,38,12.0,12.0,Senate,True,2014-01-16,2014-02-20,0.0,2013
+Gonzalez,"Gonzalez, Lorena",D,AD80,54,44,35,9,64.8,1,2,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Levine,"Levine, Marc",D,AD10,50,33,31,2,62.0,2,5,,,Assembly,False,2014-12-01,2016-03-09,0.0,2015
+Irwin,"Irwin, Jacqui",D,AD44,43,29,27,2,62.8,3,4,,,Assembly,False,2015-01-22,2016-02-19,0.0,2015
+Bonta,"Bonta, Rob",D,AD18,57,32,27,5,47.4,3,21,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Gordon,"Gordon, Richard S.",D,AD24,43,30,26,4,60.5,5,7,,,Assembly,False,2015-02-04,2016-02-19,0.0,2015
+Mark Stone,"Stone, Mark",D,AD29,45,28,26,2,57.8,5,8,,,Assembly,False,2014-12-01,2016-02-25,0.0,2015
+Wood,"Wood, Jim",D,AD02,39,28,25,3,64.1,7,3,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Bonilla,"Bonilla, Susan A.",D,AD14,48,31,25,6,52.1,7,12,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Chiu,"Chiu, David",D,AD17,49,28,25,3,51.0,7,16,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Santiago,"Santiago, Miguel",D,AD53,44,27,24,3,54.5,10,10,,,Assembly,False,2014-12-18,2016-02-19,0.0,2015
+Eggman,"Eggman, Susan Talamantes",D,AD13,54,28,24,4,44.4,10,25,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Bloom,"Bloom, Richard",D,AD50,45,24,23,1,51.1,12,15,,,Assembly,False,2015-01-27,2016-02-19,0.0,2015
+Gomez,"Gomez, Jimmy",D,AD51,49,27,23,4,46.9,12,22,,,Assembly,False,2015-01-07,2016-02-19,0.0,2015
+Williams,"Williams, Das",D,AD37,49,30,23,7,46.9,12,22,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Dodd,"Dodd, Bill",D,AD04,36,26,22,4,61.1,15,6,,,Assembly,False,2014-12-01,2016-02-29,0.0,2015
+Maienschein,"Maienschein, Brian",R,AD77,43,27,22,5,51.2,15,14,1.0,1.0,Assembly,False,2014-12-18,2016-02-19,0.0,2015
+Low,"Low, Evan",D,AD28,53,29,22,7,41.5,15,35,,,Assembly,False,2015-02-23,2016-02-29,0.0,2015
+Chau,"Chau, Ed",D,AD49,38,24,21,3,55.3,18,9,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Atkins,"Atkins, Toni",D,AD78,39,25,20,5,51.3,19,13,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Dababneh,"Dababneh, Matt",D,AD45,41,22,20,2,48.8,19,18,,,Assembly,False,2015-01-15,2016-02-19,0.0,2015
+Ridley-Thomas,"Ridley-Thomas, Sebastian",D,AD54,41,24,20,4,48.8,19,18,,,Assembly,False,2015-02-02,2016-02-19,0.0,2015
+Quirk,"Quirk, Bill",D,AD20,44,23,20,3,45.5,19,24,,,Assembly,False,2014-12-01,2016-02-19,1.0,2015
+Cooley,"Cooley, Ken",D,AD08,45,24,20,4,44.4,19,25,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Eduardo Garcia,"Garcia, Eduardo",D,AD56,47,21,20,1,42.6,19,33,,,Assembly,False,2014-12-01,2016-03-17,0.0,2015
+Holden,"Holden, Chris R.",D,AD41,40,27,19,8,47.5,25,20,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+O'Donnell,"O'Donnell, Patrick",D,AD70,43,21,19,2,44.2,25,27,,,Assembly,False,2015-01-20,2016-02-19,0.0,2015
+Obernolte,"Obernolte, Jay",R,AD33,43,20,19,1,44.2,25,27,2.0,2.0,Assembly,False,2015-01-29,2016-02-19,0.0,2015
+Cooper,"Cooper, Jim",D,AD09,44,22,19,3,43.2,25,31,,,Assembly,False,2015-02-18,2016-02-19,0.0,2015
+Alejo,"Alejo, Luis",D,AD30,55,26,19,7,34.5,25,49,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Nazarian,"Nazarian, Adrin",D,AD46,42,20,18,2,42.9,30,32,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Salas,"Salas, Jr. Rudy",D,AD32,42,19,17,2,40.5,31,37,,,Assembly,False,2015-02-05,2016-02-19,0.0,2015
+Rodriguez,"Rodriguez, Freddie",D,AD52,42,17,16,1,38.1,32,42,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Cristina Garcia,"Garcia, Cristina",D,AD58,43,22,16,6,37.2,32,43,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Weber,"Weber, Shirley N.",D,AD79,44,21,16,5,36.4,32,44,,,Assembly,False,2014-12-17,2016-02-19,2.0,2015
+Achadjian,"Achadjian, K.H. ""Katcho""",R,AD35,34,15,15,0,44.1,35,29,3.0,3.0,Assembly,False,2015-02-02,2016-02-19,0.0,2015
+Frazier,"Frazier, Jim",D,AD11,34,19,15,4,44.1,35,29,,,Assembly,False,2015-01-28,2016-02-19,0.0,2015
+Gipson,"Gipson, Mike A.",D,AD64,37,21,15,6,40.5,35,37,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+McCarty,"McCarty, Kevin",D,AD07,39,21,15,6,38.5,35,40,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Roger Hernández,"Hernández, Roger",D,AD48,43,22,15,7,34.9,35,48,,,Assembly,False,2015-01-26,2016-03-01,0.0,2015
+Gatto,"Gatto, Mike",D,AD43,44,20,15,5,34.1,35,51,,,Assembly,False,2014-12-01,2016-03-03,0.0,2015
+Mullin,"Mullin, Kevin",D,AD22,39,18,14,4,35.9,41,46,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Ting,"Ting, Philip Y.",D,AD19,39,16,14,2,35.9,41,46,,,Assembly,False,2014-12-01,2016-02-19,1.0,2015
+Jones-Sawyer,"Jones-Sawyer, Sr. Reginald B.",D,AD59,46,22,14,8,30.4,41,53,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Thurmond,"Thurmond, Tony",D,AD15,47,16,14,2,29.8,41,54,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Daly,"Daly, Tom",D,AD69,24,14,13,1,54.2,45,11,,,Assembly,False,2015-02-02,2016-02-19,0.0,2015
+Burke,"Burke, Autumn R.",D,AD62,34,19,13,6,38.2,45,41,,,Assembly,False,2015-02-23,2016-02-19,0.0,2015
+Dahle,"Dahle, Brian",R,AD01,33,13,12,1,36.4,47,44,4.0,7.0,Assembly,False,2014-12-18,2016-02-19,1.0,2015
+Gallagher,"Gallagher, James",R,AD03,35,12,12,0,34.3,47,50,4.0,8.0,Assembly,False,2015-02-05,2016-02-19,0.0,2015
+Bigelow,"Bigelow, Franklin E.",R,AD05,27,12,11,1,40.7,49,36,6.0,5.0,Assembly,False,2015-01-12,2016-02-19,0.0,2015
+Lopez,"Lopez, Patty",D,AD39,33,15,11,4,33.3,49,52,,,Assembly,False,2015-02-04,2016-02-19,0.0,2015
+Linder,"Linder, Eric",R,AD60,37,12,11,1,29.7,49,55,6.0,9.0,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Gray,"Gray, Adam C.",D,AD21,46,12,11,1,23.9,49,64,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Beth Gaines,"Gaines, Beth B.",R,AD06,24,10,10,0,41.7,53,34,8.0,4.0,Assembly,False,2015-01-22,2016-02-19,0.0,2015
+Calderon,"Calderon, Ian C.",D,AD57,35,16,10,6,28.6,53,57,,,Assembly,False,2015-01-05,2016-02-19,0.0,2015
+Baker,"Baker, Catharine B.",R,AD16,37,10,10,0,27.0,53,59,8.0,11.0,Assembly,False,2015-02-23,2016-02-19,0.0,2015
+Lackey,"Lackey, Tom",R,AD36,40,12,10,2,25.0,53,62,8.0,13.0,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Waldron,"Waldron, Marie",R,AD75,40,13,10,3,25.0,53,62,8.0,13.0,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Medina,"Medina, Jose",D,AD61,31,11,9,2,29.0,58,56,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Campos,"Campos, Nora",D,AD27,35,14,9,5,25.7,58,61,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Perea,"Perea, Henry T.",D,AD31,16,10,8,2,50.0,60,17,,,Assembly,True,2015-01-08,2015-02-27,0.0,2015
+Olsen,"Olsen, Kristin",R,AD12,20,9,8,1,40.0,60,39,12.0,6.0,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Steinorth,"Steinorth, Marc",R,AD40,29,9,8,1,27.6,60,58,12.0,10.0,Assembly,False,2015-01-29,2016-02-19,0.0,2015
+Chang,"Chang, Ling Ling",R,AD55,30,11,8,3,26.7,60,60,12.0,12.0,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Jones,"Jones, Brian W.",R,AD71,38,8,8,0,21.1,60,65,12.0,15.0,Assembly,False,2015-02-12,2016-02-19,0.0,2015
+Brown,"Brown, Cheryl R.",D,AD47,41,9,8,1,19.5,60,67,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Wilk,"Wilk, Scott",R,AD38,42,10,8,2,19.0,60,69,12.0,17.0,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Chu,"Chu, Kansen",D,AD25,36,9,7,2,19.4,67,68,,,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Melendez,"Melendez, Melissa A.",R,AD67,39,7,6,1,15.4,68,72,17.0,19.0,Assembly,False,2015-01-15,2016-02-19,0.0,2015
+Hadley,"Hadley, David",R,AD66,19,5,4,1,21.1,69,65,18.0,15.0,Assembly,False,2015-02-12,2016-02-19,0.0,2015
+Brough,"Brough, William P.",R,AD73,23,5,4,1,17.4,69,71,18.0,18.0,Assembly,False,2015-01-29,2016-02-19,0.0,2015
+Wagner,"Wagner, Donald P.",R,AD68,27,4,4,0,14.8,69,73,18.0,20.0,Assembly,False,2015-02-19,2016-02-19,0.0,2015
+Chávez,"Chávez, Rocky J.",R,AD76,33,5,4,1,12.1,69,74,18.0,21.0,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Mathis,"Mathis, Devon J.",R,AD26,40,8,4,4,10.0,69,75,18.0,22.0,Assembly,False,2015-01-05,2016-02-19,0.0,2015
+Rendon,"Rendon, Anthony",D,AD63,16,6,3,3,18.8,74,70,,,Assembly,False,2015-01-26,2015-02-27,0.0,2015
+Patterson,"Patterson, Jim",R,AD23,36,5,3,2,8.3,74,77,23.0,24.0,Assembly,False,2014-12-01,2016-02-19,0.0,2015
+Mayes,"Mayes, Chad",R,AD42,22,2,2,0,9.1,76,76,24.0,23.0,Assembly,False,2015-02-24,2016-02-19,0.0,2015
+Grove,"Grove, Shannon",R,AD34,34,2,2,0,5.9,76,78,24.0,25.0,Assembly,False,2015-01-29,2016-02-19,0.0,2015
+Harper,"Harper, Matthew",R,AD74,36,2,2,0,5.6,76,79,24.0,26.0,Assembly,False,2015-01-27,2016-02-19,0.0,2015
+Travis Allen,"Allen, Travis",R,AD72,37,3,2,1,5.4,76,80,24.0,27.0,Assembly,False,2014-12-12,2016-02-19,0.0,2015
+Arambula,"Arambula, Joaquin",D,AD31,1,1,1,0,100.0,80,1,,,Assembly,True,2016-02-19,2016-02-19,0.0,2015
+Kim,"Kim, Young O.",R,AD65,16,0,0,0,0.0,81,81,28.0,28.0,Assembly,False,2014-12-01,2016-02-17,0.0,2015
+Hill,"Hill, Jerry",D,SD13,53,39,35,4,66.0,1,2,,,Senate,False,2014-12-01,2016-02-18,0.0,2015
+Lara,"Lara, Ricardo",D,SD33,48,40,32,8,66.7,2,1,,,Senate,False,2014-12-01,2016-02-19,1.0,2015
+Jackson,"Jackson, Hannah-Beth",D,SD19,46,32,24,8,52.2,3,8,,,Senate,False,2015-01-15,2016-02-19,0.0,2015
+Hertzberg,"Hertzberg, Robert M.",D,SD18,42,24,23,1,54.8,4,5,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Hernandez,"Hernandez, Ed",D,SD22,43,25,23,2,53.5,4,7,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Wolk,"Wolk, Lois",D,SD03,43,25,22,3,51.2,6,11,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Monning,"Monning, Bill",D,SD17,34,23,21,2,61.8,7,3,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Pavley,"Pavley, Fran",D,SD27,38,22,21,1,55.3,7,4,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Hueso,"Hueso, Ben",D,SD40,39,25,20,5,51.3,9,10,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Hancock,"Hancock, Loni",D,SD09,40,21,20,1,50.0,9,12,,,Senate,False,2015-02-09,2016-02-19,0.0,2015
+Beall,"Beall, Jim",D,SD15,37,21,19,2,51.4,11,9,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Leno,"Leno, Mark",D,SD11,43,22,19,3,44.2,11,16,,,Senate,False,2014-12-01,2016-02-19,3.0,2015
+Wieckowski,"Wieckowski, Bob",D,SD10,36,18,18,0,50.0,13,12,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Mendoza,"Mendoza, Tony",D,SD32,39,22,18,4,46.2,13,15,,,Senate,False,2014-12-12,2016-02-19,0.0,2015
+Pan,"Pan, Richard",D,SD06,42,21,18,3,42.9,13,17,,,Senate,False,2015-01-27,2016-02-19,0.0,2015
+Allen,"Allen, Benjamin",D,SD26,44,19,18,1,40.9,13,20,,,Senate,False,2015-02-18,2016-02-19,0.0,2015
+De León,"De León, Kevin",D,SD24,31,18,17,1,54.8,17,5,,,Senate,False,2014-12-01,2016-02-19,1.0,2015
+Block,"Block, Marty",D,SD39,40,21,16,5,40.0,18,21,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+McGuire,"McGuire, Mike",D,SD02,40,18,16,2,40.0,18,21,,,Senate,False,2015-01-07,2016-02-19,0.0,2015
+Hall,"Hall III, Isadore",D,SD35,30,17,15,2,50.0,20,12,,,Senate,False,2015-01-05,2016-02-19,0.0,2015
+Galgiani,"Galgiani, Cathleen",D,SD05,41,19,15,4,36.6,20,25,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Mitchell,"Mitchell, Holly J.",D,SD30,31,17,13,4,41.9,22,19,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Liu,"Liu, Carol",D,SD25,41,16,13,3,31.7,22,26,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Leyva,"Leyva, Connie M.",D,SD20,28,14,12,2,42.9,24,17,,,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Huff,"Huff, Bob",R,SD29,41,12,11,1,26.8,25,27,1.0,1.0,Senate,False,2014-12-19,2016-02-19,0.0,2015
+Roth,"Roth, Richard",D,SD31,27,15,10,5,37.0,26,24,,,Senate,False,2014-12-01,2016-02-17,0.0,2015
+Morrell,"Morrell, Mike",R,SD23,38,10,10,0,26.3,26,28,2.0,2.0,Senate,False,2015-02-10,2016-02-19,0.0,2015
+Anderson,"Anderson, Joel",R,SD38,41,9,9,0,22.0,28,31,3.0,5.0,Senate,False,2014-12-01,2016-02-18,0.0,2015
+Vidak,"Vidak, Andy",R,SD14,33,10,8,2,24.2,29,29,4.0,3.0,Senate,False,2014-12-01,2016-02-18,0.0,2015
+Bates,"Bates, Patricia C.",R,SD36,36,10,8,2,22.2,29,30,4.0,4.0,Senate,False,2015-02-17,2016-02-19,0.0,2015
+Cannella,"Cannella, Anthony",R,SD12,40,8,8,0,20.0,29,32,4.0,6.0,Senate,False,2014-12-01,2016-02-19,0.0,2015
+Glazer,"Glazer, Steven M.",D,SD07,16,7,6,1,37.5,32,23,,,Senate,False,2015-02-25,2016-02-19,0.0,2015
+Nielsen,"Nielsen, Jim",R,SD04,36,8,6,2,16.7,32,33,7.0,7.0,Senate,False,2015-02-03,2016-02-19,0.0,2015
+Gaines,"Gaines, Ted",R,SD01,39,9,6,3,15.4,32,34,7.0,8.0,Senate,False,2014-12-01,2016-02-18,0.0,2015
+Nguyen,"Nguyen, Janet",R,SD34,38,8,5,3,13.2,35,36,9.0,10.0,Senate,False,2015-01-29,2016-02-19,0.0,2015
+Stone,"Stone, Jeff",R,SD28,42,4,4,0,9.5,36,38,10.0,12.0,Senate,False,2015-01-27,2016-02-19,0.0,2015
+Moorlach,"Moorlach, John M. W.",R,SD37,14,3,2,1,14.3,37,35,11.0,9.0,Senate,True,2016-02-18,2016-02-19,0.0,2015
+Fuller,"Fuller, Jean",R,SD16,20,4,2,2,10.0,37,37,11.0,11.0,Senate,False,2015-01-09,2016-02-19,0.0,2015
+Berryhill,"Berryhill, Tom",R,SD08,31,3,2,1,6.5,37,39,11.0,13.0,Senate,False,2015-01-22,2016-02-19,0.0,2015
+Knight,"Knight, Steve",R,SD21,5,0,0,0,0.0,40,40,14.0,14.0,Senate,True,2014-12-19,2014-12-19,0.0,2015
+Runner,"Runner, Sharon",R,SD21,19,2,0,2,0.0,40,40,14.0,14.0,Senate,True,2014-12-19,2016-02-19,0.0,2015
+Walters,"Walters, Mimi",R,SD37,4,0,0,0,0.0,40,40,14.0,14.0,Senate,True,2014-12-19,2014-12-19,0.0,2015
 Low,"Low, Evan",D,AD28,66,49,40,9,60.6,1,5,,,Assembly,False,2017-01-19,2018-04-02,0.0,2017
 Gonzalez Fletcher,"Gonzalez, Lorena",D,AD80,82,56,39,17,47.6,2,22,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017
 Santiago,"Santiago, Miguel",D,AD53,66,38,33,5,50.0,3,12,,,Assembly,False,2016-12-05,2018-02-16,0.0,2017

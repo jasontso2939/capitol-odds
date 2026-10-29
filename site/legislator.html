@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
-<title>Legislator Records</title>
-<meta name="description" content="Every California legislator since the 2017-18 session: bills by session with chamber ranks, committee seats and committee votes, from official bulk data.">
+<title>Legislator Records · Capitol Odds</title>
+<meta name="description" content="Every California legislator since the 2007-08 session: bills by session with chamber ranks, committee seats and committee votes, from official bulk data.">
 <style>
 :root{--bg:#f6f7fa;--panel:#fff;--ink:#1b2333;--muted:#5d6678;--line:#dde1ea;--navy:#14213d;--gold:#f2a900;--d:#3a6ea5;--r:#b5483b;--hi:#fff4d6}
 @media (prefers-color-scheme:dark){:root{--bg:#0f1521;--panel:#171f2f;--ink:#e8ecf4;--muted:#9aa4b8;--line:#2a3550;--navy:#e8ecf4;--hi:#3a3115;--d:#6f9fd4;--r:#d97a6c}}
@@ -107,7 +107,7 @@ function profile(P) {
   $("sub").innerHTML = `<span class="${P.party}" style="color:inherit">${P.party === "D" ? "Democrat" : P.party === "R" ? "Republican" : P.party}</span> · ${esc(seats.join(", then "))}` +
     (P.names.length > 1 ? ` · listed as ${P.names.map(esc).join(", then ")}` : "") + ` · <a href="legislator.html" style="color:#c9d2e6">All legislators</a>`;
   const yesT = P.committees.reduce((t, c) => t + c[K.yes], 0), noT = P.committees.reduce((t, c) => t + c[K.no], 0);
-  const outlook = P.current ? `<a class="btn" href="outlook.html?a=${encodeURIComponent(P.member)}">Bill outlook for ${esc(P.member)}</a>` : "";
+  const outlook = P.current ? `<a class="btn" href="index.html?a=${encodeURIComponent(P.member)}">Bill outlook for ${esc(P.member)}</a>` : "";
   const maxRate = Math.max(...rec.map(r => r.rate), 1);
   let h = `<div class="tools">${outlook}<button class="btn" id="share">Copy link</button></div>
    <section><h2>At a glance</h2><div class="stats">
@@ -118,7 +118,7 @@ function profile(P) {
     <div class="stat"><b>${yesT + noT ? CL.pct(yesT, yesT + noT) : "–"}</b><span>yes votes in committee (${(yesT + noT).toLocaleString()} cast)</span></div></div>
     <p class="lede" style="margin-top:10px">Bills count every bill with this member as a lead author, including joint lead authors; Budget Act bills are left out. Ranks are within the member's chamber that session; tied members share a rank.</p></section>
    <section><h2>Record by session</h2><div class="tools"><button class="btn sm" id="dlr">CSV</button></div><div class="scroll"><table><thead><tr><th>Session</th><th>Seat</th><th class="n">Bills</th><th class="n">Signed</th><th class="n">Vetoed</th><th>Signed rate</th><th class="n">Chamber rank: signed</th><th class="n hide-sm">Chamber rank: rate</th></tr></thead><tbody>` +
-    rec.map(r => `<tr><td><a href="index.html?sess=${r.session}&q=${encodeURIComponent(r.member)}&m=${encodeURIComponent(r.member)}">${label(r.session)}</a>${r.partial_term ? '<span class="tag">partial</span>' : ""}${SESSIONS.find(s => s.year === r.session && !s.complete) ? '<span class="tag">in progress</span>' : ""}</td>
+    rec.map(r => `<tr><td><a href="scorecard.html?sess=${r.session}&q=${encodeURIComponent(r.member)}&m=${encodeURIComponent(r.member)}">${label(r.session)}</a>${r.partial_term ? '<span class="tag">partial</span>' : ""}${SESSIONS.find(s => s.year === r.session && !s.complete) ? '<span class="tag">in progress</span>' : ""}</td>
       <td>${r.chamber} ${r.district}${r.party !== P.party ? ` (${r.party})` : ""}</td><td class="n">${r.introduced}</td><td class="n">${r.signed}</td><td class="n">${r.vetoed}</td>
       <td><span class="mini" style="width:${60 * r.rate / maxRate}px"></span>${r.rate.toFixed(1)}%</td><td class="n">${r.rank_signed} of ${r.chamber_size}</td><td class="n hide-sm">${r.rank_rate} of ${r.chamber_size}</td></tr>`).join("") +
     `</tbody></table></div></section>`;

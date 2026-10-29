@@ -10,7 +10,7 @@ test:
 all: fetch extract archive build site committees people insights test
 extract:
 	bash scripts/extract_raw.sh
-archive:  # earlier sessions (2017-18 to 2023-24), packed by .github/workflows/archive-sessions.yml
+archive:  # earlier sessions (2007-08 to 2023-24; 1989-2005 are archived but not yet used), packed by .github/workflows/archive-sessions.yml
 	git fetch --depth 1 origin session-archive && git archive FETCH_HEAD data/archive | tar x
 site:
 	PYTHONPATH=src python3 scripts/build_site.py

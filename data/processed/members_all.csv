@@ -1,4 +1,615 @@
 member,full_name,party,district,chamber,ACTIVE_FLG,person,session,partial_term,first_bill_date,last_bill_date
+Cox,"Cox, Dave",R,SD01,Senate,Y,cox|dave,2007,False,2007-01-29,2008-02-22
+Wiggins,"Wiggins, Patricia",D,SD02,Senate,Y,wiggins|patricia,2007,False,2007-01-17,2008-02-22
+Migden,"Migden, Carole",D,SD03,Senate,Y,migden|carole,2007,False,2006-12-04,2008-02-22
+Aanestad,"Aanestad, Sam",R,SD04,Senate,Y,aanestad|sam,2007,False,2007-01-24,2008-02-22
+Machado,"Machado, Michael",D,SD05,Senate,Y,machado|michael,2007,False,2006-12-04,2008-02-22
+Steinberg,"Steinberg, Darrell",D,SD06,Senate,Y,steinberg|darrell,2007,False,2006-12-04,2008-02-22
+Torlakson,"Torlakson, Tom",D,SD07,Senate,Y,torlakson|tom,2007,False,2006-12-04,2008-02-22
+Yee,"Yee, Leland",D,SD08,Senate,Y,yee|leland,2007,False,2007-01-22,2008-02-22
+Perata,"Perata, Don",D,SD09,Senate,Y,perata|don,2007,False,2006-12-04,2008-02-22
+Corbett,"Corbett, Ellen",D,SD10,Senate,Y,corbett|ellen,2007,False,2007-01-17,2008-02-28
+Cogdill,"Cogdill, Dave",R,SD14,Senate,Y,cogdill|dave,2007,False,2006-12-04,2008-02-22
+Maldonado,"Maldonado, Abel",R,SD15,Senate,Y,maldonado|abel,2007,False,2006-12-04,2008-02-22
+Runner,"Runner, George",R,SD17,Senate,Y,runner|george,2007,False,2006-12-04,2008-02-22
+Ashburn,"Ashburn, Roy",R,SD18,Senate,Y,ashburn|roy,2007,False,2007-01-11,2008-02-22
+McClintock,"McClintock, Tom",R,SD19,Senate,Y,mcclintock|tom,2007,False,2007-02-15,2008-02-22
+Scott,"Scott, Jack",D,SD21,Senate,Y,scott|jack,2007,False,2007-01-08,2008-02-22
+Cedillo,"Cedillo, Gilbert",D,SD22,Senate,Y,cedillo|gilbert,2007,False,2006-12-04,2008-02-22
+Kuehl,"Kuehl, Sheila",D,SD23,Senate,Y,kuehl|sheila,2007,False,2006-12-04,2008-02-22
+Romero,"Romero, Gloria",D,SD24,Senate,Y,romero|gloria,2007,False,2006-12-20,2008-02-22
+Lowenthal,"Lowenthal, Alan",D,SD27,Senate,Y,lowenthal|alan,2007,False,2006-12-04,2008-02-22
+Oropeza,"Oropeza, Jenny",D,SD28,Senate,Y,oropeza|jenny,2007,False,2006-12-04,2008-02-22
+Margett,"Margett, Bob",R,SD29,Senate,Y,margett|bob,2007,False,2007-01-23,2008-02-22
+Dutton,"Dutton, Robert",R,SD31,Senate,Y,dutton|robert,2007,False,2007-01-17,2008-02-22
+Negrete McLeod,"Negrete McLeod, Gloria",D,SD32,Senate,Y,negrete|gloria,2007,False,2006-12-04,2008-02-22
+Ackerman,"Ackerman, Dick",R,SD33,Senate,Y,ackerman|dick,2007,False,2007-02-07,2008-02-22
+Harman,"Harman, Tom",R,SD35,Senate,Y,harman|tom,2007,False,2006-12-04,2008-02-22
+Hollingsworth,"Hollingsworth, Dennis",R,SD36,Senate,Y,hollingsworth|dennis,2007,False,2007-01-11,2008-02-22
+Wyland,"Wyland, Mark",R,SD38,Senate,Y,wyland|mark,2007,False,2006-12-04,2008-02-22
+Battin,"Battin, James",R,SD37,Senate,Y,battin|james,2007,False,2006-12-11,2008-02-22
+Kehoe,"Kehoe, Christine",D,SD39,Senate,Y,kehoe|christine,2007,False,2006-12-04,2008-02-22
+Simitian,"Simitian, S.",D,SD11,Senate,Y,simitian|s.,2007,False,2006-12-04,2008-02-22
+Denham,"Denham, Jeff",R,SD12,Senate,Y,denham|jeff,2007,False,2007-01-22,2008-02-22
+Florez,"Florez, Dean",D,SD16,Senate,Y,florez|dean,2007,False,2006-12-04,2008-02-22
+Padilla,"Padilla, Alex",D,SD20,Senate,Y,padilla|alex,2007,False,2007-01-22,2008-02-22
+Vincent,"Vincent, Edward",D,SD25,Senate,Y,vincent|edward,2007,False,2007-02-15,2008-02-22
+Calderon,"Calderon, Ron",D,SD30,Senate,Y,calderon|ron,2007,False,2007-01-22,2008-02-28
+Correa,"Correa, Lou",D,SD34,Senate,Y,correa|lou,2007,False,2007-02-06,2008-02-22
+Ducheny,"Ducheny, Denise Moreno",D,SD40,Senate,Y,ducheny|denise,2007,False,2007-01-08,2008-02-22
+Alquist,"Alquist, Elaine",D,SD13,Senate,Y,alquist|elaine,2007,False,2007-01-03,2008-02-22
+Ridley-Thomas,"Ridley-Thomas, Mark",D,SD26,Senate,Y,ridley-thomas|mark,2007,False,2006-12-04,2008-02-22
+Keene,"Keene, Richard",R,AD03,Assembly,Y,keene|richard,2007,False,2007-02-22,2008-02-22
+Huffman,"Huffman, Jared William",D,AD06,Assembly,Y,huffman|jared,2007,False,2006-12-04,2008-03-13
+Horton,"Horton, Shirley",R,AD78,Assembly,Y,horton|shirley,2007,False,2007-01-09,2008-02-22
+Walters,"Walters, Mimi",R,AD73,Assembly,Y,walters|mimi,2007,False,2006-12-04,2008-02-22
+Charles Calderon,"Calderon, Charles M.",D,AD58,Assembly,Y,calderon|charles,2007,False,2007-02-05,2008-02-22
+DeVore,"DeVore, Chuck",R,AD70,Assembly,Y,devore|chuck,2007,False,2006-12-04,2008-02-22
+DeSaulnier,"DeSaulnier, Mark James",D,AD11,Assembly,Y,desaulnier|mark,2007,False,2007-01-31,2008-02-22
+Hernandez,"Hernandez, Ed",D,AD57,Assembly,Y,hernandez|ed,2007,False,2007-02-14,2008-02-22
+Eng,"Eng, Mike",D,AD49,Assembly,Y,eng|mike,2007,False,2006-12-04,2008-02-22
+Beall,"Beall, Jim",D,AD24,Assembly,Y,beall|jim,2007,False,2006-12-04,2008-02-22
+Solorio,"Solorio, Jose",D,AD69,Assembly,Y,solorio|jose,2007,False,2006-12-04,2008-02-22
+Niello,"Niello, Roger",R,AD05,Assembly,Y,niello|roger,2007,False,2006-12-04,2008-02-22
+Coto,"Coto, Joe",D,AD23,Assembly,Y,coto|joe,2007,False,2007-01-17,2008-02-22
+Emmerson,"Emmerson, Bill",R,AD63,Assembly,Y,emmerson|bill,2007,False,2006-12-04,2008-02-22
+De La Torre,"De La Torre, Hector",D,AD50,Assembly,Y,de|hector,2007,False,2007-02-09,2008-02-22
+De Leon,"De Leon, Kevin",D,AD45,Assembly,Y,de|kevin,2007,False,2006-12-04,2008-02-22
+Hancock,"Hancock, Loni",D,AD14,Assembly,Y,hancock|loni,2007,False,2006-12-04,2008-02-22
+Houston,"Houston, Guy S.",R,AD15,Assembly,Y,houston|guy,2007,False,2006-12-04,2008-02-22
+Nava,"Nava, Pedro",D,AD35,Assembly,Y,nava|pedro,2007,False,2006-12-04,2008-02-22
+Carter,"Carter, Wilmer Amina",D,AD62,Assembly,Y,carter|wilmer,2007,False,2007-02-14,2008-02-22
+Galgiani,"Galgiani, Cathleen",D,AD17,Assembly,Y,galgiani|cathleen,2007,False,2006-12-04,2008-02-22
+Nakanishi,"Nakanishi, Alan",R,AD10,Assembly,Y,nakanishi|alan,2007,False,2006-12-04,2008-02-22
+Parra,"Parra, Nicole",D,AD30,Assembly,Y,parra|nicole,2007,False,2006-12-04,2008-02-22
+Sharon Runner,"Runner, Sharon",R,AD36,Assembly,Y,runner|sharon,2007,False,2006-12-04,2008-02-22
+Caballero,"Caballero, Anna Marie",D,AD28,Assembly,Y,caballero|anna,2007,False,2007-02-22,2008-02-21
+Strickland,"Strickland, Audra",R,AD37,Assembly,Y,strickland|audra,2007,False,2007-01-29,2008-02-22
+Bass,"Bass, Karen",D,AD47,Assembly,Y,bass|karen,2007,False,2006-12-04,2008-02-22
+Garrick,"Garrick, Martin",R,AD74,Assembly,Y,garrick|martin,2007,False,2007-02-22,2008-02-22
+Ma,"Ma, Fiona",D,AD12,Assembly,Y,ma|fiona,2007,False,2006-12-04,2008-06-02
+Portantino,"Portantino, Anthony",D,AD44,Assembly,Y,portantino|anthony,2007,False,2006-12-04,2008-02-22
+Lieu,"Lieu, Ted",D,AD53,Assembly,Y,lieu|ted,2007,False,2006-12-04,2008-02-22
+Richardson,"Richardson, Laura",D,AD55,Assembly,Y,richardson|laura,2007,True,2006-12-04,2007-02-23
+Smyth,"Smyth, Cameron",R,AD38,Assembly,Y,smyth|cameron,2007,False,2006-12-04,2008-02-22
+Villines,"Villines, Michael N.",R,AD29,Assembly,Y,villines|michael,2007,False,2006-12-04,2008-02-22
+Jones,"Jones, Dave",D,AD09,Assembly,Y,jones|dave,2007,False,2006-12-04,2008-02-28
+Evans,"Evans, Noreen",D,AD07,Assembly,Y,evans|noreen,2007,False,2006-12-04,2008-02-22
+Torrico,"Torrico, Alberto",D,AD20,Assembly,Y,torrico|alberto,2007,False,2006-12-04,2008-02-22
+Ruskin,"Ruskin, Ira",D,AD21,Assembly,Y,ruskin|ira,2007,False,2006-12-04,2008-02-22
+Karnette,"Karnette, Betty",D,AD54,Assembly,Y,karnette|betty,2007,False,2007-02-14,2008-02-22
+Benoit,"Benoit, John J.",R,AD64,Assembly,Y,benoit|john,2007,False,2006-12-04,2008-02-22
+Plescia,"Plescia, George",R,AD75,Assembly,Y,plescia|george,2007,False,2007-01-17,2008-02-22
+Mullin,"Mullin, Gene",D,AD19,Assembly,Y,mullin|gene,2007,False,2006-12-21,2008-02-22
+Lieber,"Lieber, Sally",D,AD22,Assembly,Y,lieber|sally,2007,False,2006-12-04,2008-02-22
+Berryhill,"Berryhill, Tom",R,AD25,Assembly,Y,berryhill|tom,2007,False,2007-01-17,2008-02-22
+Arambula,"Arambula, Juan",D,AD31,Assembly,Y,arambula|juan,2007,False,2006-12-04,2008-02-22
+Fuller,"Fuller, Jean",R,AD32,Assembly,Y,fuller|jean,2007,False,2006-12-04,2008-02-22
+Levine,"Levine, Lloyd E.",D,AD40,Assembly,Y,levine|lloyd,2007,False,2007-01-23,2008-02-22
+Nunez,"Nunez, Fabian",D,AD46,Assembly,Y,nunez|fabian,2007,False,2006-12-04,2008-03-06
+Davis,"Davis, Mike",D,AD48,Assembly,Y,davis|mike,2007,False,2007-02-21,2008-02-22
+Mendoza,"Mendoza, Tony",D,AD56,Assembly,Y,mendoza|tony,2007,False,2006-12-04,2008-02-22
+Huff,"Huff, Robert",R,AD60,Assembly,Y,huff|bob,2007,False,2006-12-04,2008-02-22
+Jeffries,"Jeffries, Kevin D.",R,AD66,Assembly,Y,jeffries|kevin,2007,False,2006-12-04,2008-02-22
+Silva,"Silva, Jim",R,AD67,Assembly,Y,silva|jim,2007,False,2007-02-09,2008-02-22
+Spitzer,"Spitzer, Todd",R,AD71,Assembly,Y,spitzer|todd,2007,False,2007-02-09,2008-02-22
+Duvall,"Duvall, Mike D.",R,AD72,Assembly,Y,duvall|mike,2007,False,2007-02-15,2008-02-22
+Salas,"Salas, Mary",D,AD79,Assembly,Y,salas|mary,2007,False,2007-02-09,2008-02-22
+Garcia,"Garcia, Bonnie",R,AD80,Assembly,Y,garcia|bonnie,2007,False,2006-12-04,2008-02-22
+Wolk,"Wolk, Lois",D,AD08,Assembly,Y,wolk|lois,2007,False,2006-12-04,2008-02-22
+Krekorian,"Krekorian, Paul",D,AD43,Assembly,Y,krekorian|paul,2007,False,2006-12-04,2008-02-22
+Berg,"Berg, Patty",D,AD01,Assembly,Y,berg|patty,2007,False,2006-12-04,2008-02-22
+Gaines,"Gaines, Ted",R,AD04,Assembly,Y,gaines|ted,2007,False,2007-02-01,2008-02-22
+La Malfa,"La Malfa, Doug",R,AD02,Assembly,Y,la|doug,2007,False,2006-12-04,2008-02-22
+Leno,"Leno, Mark",D,AD13,Assembly,Y,leno|mark,2007,False,2006-12-04,2008-02-22
+Swanson,"Swanson, Sandre R.",D,AD16,Assembly,Y,swanson|sandre,2007,False,2006-12-04,2008-02-22
+Aghazarian,"Aghazarian, Greg",R,AD26,Assembly,Y,aghazarian|greg,2007,False,2007-01-09,2008-02-22
+Laird,"Laird, John",D,AD27,Assembly,Y,laird|john,2007,False,2006-12-04,2008-02-22
+Maze,"Maze, Bill",R,AD34,Assembly,Y,maze|bill,2007,False,2006-12-04,2008-02-22
+Brownley,"Brownley, Julia",D,AD41,Assembly,Y,brownley|julia,2007,False,2006-12-04,2008-02-22
+Feuer,"Feuer, Mike",D,AD42,Assembly,Y,feuer|mike,2007,False,2006-12-20,2008-02-22
+Price,"Price, Curren D.",D,AD51,Assembly,Y,price|curren,2007,False,2007-01-09,2008-03-13
+Dymally,"Dymally, Mervyn M.",D,AD52,Assembly,Y,dymally|mervyn,2007,False,2006-12-04,2008-02-22
+Soto,"Soto, Nell",D,AD61,Assembly,Y,soto|nell,2007,False,2006-12-04,2008-02-22
+Cook,"Cook, Paul J.",R,AD65,Assembly,Y,cook|paul,2007,False,2006-12-04,2008-06-02
+Saldana,"Saldana, Lori",D,AD76,Assembly,Y,saldana|lori,2007,False,2006-12-04,2008-02-22
+Anderson,"Anderson, Joel",R,AD77,Assembly,Y,anderson|joel,2007,False,2006-12-04,2008-02-22
+Hayashi,"Hayashi, Mary",D,AD18,Assembly,Y,hayashi|mary,2007,False,2007-02-09,2008-02-22
+Blakeslee,"Blakeslee, Sam",R,AD33,Assembly,Y,blakeslee|sam,2007,False,2006-12-04,2008-02-22
+Adams,"Adams, Anthony",R,AD59,Assembly,Y,adams|anthony,2007,False,2007-02-05,2008-02-22
+Tran,"Tran, Van",R,AD68,Assembly,Y,tran|van,2007,False,2006-12-04,2008-02-22
+Fuentes,"Fuentes, Felipe",D,AD39,Assembly,Y,fuentes|felipe,2007,False,2007-01-25,2008-02-22
+Furutani,"Furutani, Warren T.",D,AD55,Assembly,Y,furutani|warren,2007,True,2008-02-19,2008-02-22
+Cox,"Cox, Dave",R,SD01,Senate,Y,cox|dave,2009,False,2009-02-11,2010-02-19
+Wiggins,"Wiggins, Patricia",D,SD02,Senate,Y,wiggins|patricia,2009,False,2008-12-01,2010-02-19
+Leno,"Leno, Mark",D,SD03,Senate,Y,leno|mark,2009,False,2008-12-01,2010-02-19
+Aanestad,"Aanestad, Sam",R,SD04,Senate,Y,aanestad|sam,2009,False,2009-01-20,2010-02-19
+Wolk,"Wolk, Lois",D,SD05,Senate,Y,wolk|lois,2009,False,2009-02-26,2010-02-19
+Steinberg,"Steinberg, Darrell",D,SD06,Senate,Y,steinberg|darrell,2009,False,2008-12-01,2010-02-19
+DeSaulnier,"DeSaulnier, Mark",D,SD07,Senate,Y,desaulnier|mark,2009,False,2009-01-14,2010-02-19
+Yee,"Yee, Leland",D,SD08,Senate,Y,yee|leland,2009,False,2009-01-20,2010-02-19
+Hancock,"Hancock, Loni",D,SD09,Senate,Y,hancock|loni,2009,False,2008-12-02,2010-02-19
+Corbett,"Corbett, Ellen",D,SD10,Senate,Y,corbett|ellen,2009,False,2008-12-09,2010-02-19
+Cogdill,"Cogdill, Dave",R,SD14,Senate,Y,cogdill|dave,2009,False,2009-01-20,2010-02-19
+Maldonado,"Maldonado, Abel",R,SD15,Senate,Y,maldonado|abel,2009,False,2008-12-01,2010-02-19
+Runner,"Runner, George",R,SD17,Senate,Y,runner|george,2009,False,2009-02-12,2010-02-19
+Ashburn,"Ashburn, Roy",R,SD18,Senate,Y,ashburn|roy,2009,False,2009-02-14,2010-02-19
+Strickland,"Strickland, Tony",R,SD19,Senate,Y,strickland|tony,2009,False,2008-12-18,2010-02-19
+Liu,"Liu, Carol",D,SD21,Senate,Y,liu|carol,2009,False,2009-01-28,2010-02-19
+Cedillo,"Cedillo, Gilbert",D,SD22,Senate,Y,cedillo|gilbert,2009,False,2008-12-01,2010-02-19
+Pavley,"Pavley, Fran",D,SD23,Senate,Y,pavley|fran,2009,False,2008-12-02,2010-02-19
+Romero,"Romero, Gloria",D,SD24,Senate,Y,romero|gloria,2009,False,2008-12-01,2010-02-19
+Lowenthal,"Lowenthal, Alan",D,SD27,Senate,Y,lowenthal|alan,2009,False,2008-12-01,2010-02-19
+Oropeza,"Oropeza, Jenny",D,SD28,Senate,Y,oropeza|jenny,2009,False,2008-12-01,2010-02-19
+Huff,"Huff, Bob",R,SD29,Senate,Y,huff|bob,2009,False,2008-12-01,2010-02-19
+Dutton,"Dutton, Robert",R,SD31,Senate,Y,dutton|robert,2009,False,2009-01-13,2010-02-19
+Negrete McLeod,"Negrete McLeod, Gloria",D,SD32,Senate,Y,negrete|gloria,2009,False,2008-12-01,2010-02-19
+Walters,"Walters, Mimi",R,SD33,Senate,Y,walters|mimi,2009,False,2009-01-27,2010-02-19
+Harman,"Harman, Tom",R,SD35,Senate,Y,harman|tom,2009,False,2009-01-27,2010-02-19
+Hollingsworth,"Hollingsworth, Dennis",R,SD36,Senate,Y,hollingsworth|dennis,2009,False,2008-12-01,2010-02-19
+Wyland,"Wyland, Mark",R,SD38,Senate,Y,wyland|mark,2009,False,2008-12-01,2010-02-19
+Benoit,"Benoit, John J.",R,SD37,Senate,Y,benoit|john,2009,False,2009-01-06,2009-02-27
+Kehoe,"Kehoe, Christine",D,SD39,Senate,Y,kehoe|christine,2009,False,2008-12-01,2010-02-19
+Simitian,"Simitian, Joseph",D,SD11,Senate,Y,simitian|joseph,2009,False,2008-12-01,2010-02-19
+Denham,"Denham, Jeff",R,SD12,Senate,Y,denham|jeff,2009,False,2008-12-02,2010-02-19
+Florez,"Florez, Dean",D,SD16,Senate,Y,florez|dean,2009,False,2009-02-10,2010-02-19
+Padilla,"Padilla, Alex",D,SD20,Senate,Y,padilla|alex,2009,False,2008-12-01,2010-02-19
+Wright,"Wright, Roderick",D,SD25,Senate,Y,wright|roderick,2009,False,2009-02-12,2010-03-08
+Calderon,"Calderon, Ron",D,SD30,Senate,Y,calderon|ron,2009,False,2008-12-18,2010-02-19
+Correa,"Correa, Lou",D,SD34,Senate,Y,correa|lou,2009,False,2008-12-08,2010-02-19
+Ducheny,"Ducheny, Denise Moreno",D,SD40,Senate,Y,ducheny|denise,2009,False,2009-01-09,2010-02-19
+Alquist,"Alquist, Elaine",D,SD13,Senate,Y,alquist|elaine,2009,False,2008-12-01,2010-02-19
+Price,"Price, Curren D.",D,SD26,Senate,Y,price|curren,2009,False,2008-12-01,2010-02-19
+Logue,"Logue, Dan",R,AD03,Assembly,Y,logue|dan,2009,False,2009-01-15,2010-02-19
+Huffman,"Huffman, Jared William",D,AD06,Assembly,Y,huffman|jared,2009,False,2008-12-01,2010-03-01
+Block,"Block, Marty",D,AD78,Assembly,Y,block|marty,2009,False,2008-12-01,2010-02-19
+Harkey,"Harkey, Diane L. ",R,AD73,Assembly,Y,harkey|diane,2009,False,2009-02-23,2010-02-19
+Charles Calderon,"Calderon, Charles M.",D,AD58,Assembly,Y,calderon|charles,2009,False,2009-01-08,2010-02-19
+DeVore,"DeVore, Chuck",R,AD70,Assembly,Y,devore|chuck,2009,False,2009-02-26,2010-02-19
+Torlakson,"Torlakson, Tom",D,AD11,Assembly,Y,torlakson|tom,2009,False,2009-01-05,2010-02-19
+Hernandez,"Hernandez, Ed",D,AD57,Assembly,Y,hernandez|ed,2009,False,2008-12-01,2010-02-19
+Eng,"Eng, Mike",D,AD49,Assembly,Y,eng|mike,2009,False,2009-01-23,2010-02-19
+Beall,"Beall, Jim",D,AD24,Assembly,Y,beall|jim,2009,False,2008-12-01,2010-02-19
+Solorio,"Solorio, Jose",D,AD69,Assembly,Y,solorio|jose,2009,False,2008-12-01,2010-03-03
+Niello,"Niello, Roger",R,AD05,Assembly,Y,niello|roger,2009,False,2008-12-01,2010-02-19
+Coto,"Coto, Joe",D,AD23,Assembly,Y,coto|joe,2009,False,2008-12-09,2010-02-19
+Emmerson,"Emmerson, Bill",R,AD63,Assembly,Y,emmerson|bill,2009,False,2009-01-27,2010-02-19
+De La Torre,"De La Torre, Hector",D,AD50,Assembly,Y,de|hector,2009,False,2008-12-01,2010-02-19
+De Leon,"De Leon, Kevin",D,AD45,Assembly,Y,de|kevin,2009,False,2008-12-01,2010-02-19
+Skinner,"Skinner, Nancy",D,AD14,Assembly,Y,skinner|nancy,2009,False,2009-02-02,2010-02-19
+Buchanan,"Buchanan, Joan",D,AD15,Assembly,Y,buchanan|joan,2009,False,2009-02-02,2010-02-19
+Nava,"Nava, Pedro",D,AD35,Assembly,Y,nava|pedro,2009,False,2008-12-01,2010-02-19
+Carter,"Carter, Wilmer Amina",D,AD62,Assembly,Y,carter|wilmer,2009,False,2009-01-13,2010-02-19
+Galgiani,"Galgiani, Cathleen",D,AD17,Assembly,Y,galgiani|cathleen,2009,False,2009-01-12,2010-02-19
+Huber,"Huber, Alyson",D,AD10,Assembly,Y,huber|alyson,2009,False,2009-02-05,2010-02-19
+Gilmore,"Gilmore, Danny D.",R,AD30,Assembly,Y,gilmore|danny,2009,False,2009-02-25,2010-02-19
+Knight,"Knight, Steve",R,AD36,Assembly,Y,knight|steve,2009,False,2008-12-01,2010-02-19
+Caballero,"Caballero, Anna Marie",D,AD28,Assembly,Y,caballero|anna,2009,False,2009-02-02,2010-02-19
+Audra Strickland,"Strickland, Audra",R,AD37,Assembly,Y,strickland|audra,2009,False,2008-12-22,2010-02-19
+Bass,"Bass, Karen",D,AD47,Assembly,Y,bass|karen,2009,False,2008-12-01,2010-02-19
+Garrick,"Garrick, Martin",R,AD74,Assembly,Y,garrick|martin,2009,False,2009-02-12,2010-02-19
+Ma,"Ma, Fiona",D,AD12,Assembly,Y,ma|fiona,2009,False,2008-12-01,2010-02-19
+Portantino,"Portantino, Anthony",D,AD44,Assembly,Y,portantino|anthony,2009,False,2008-12-01,2010-03-09
+Lieu,"Lieu, Ted",D,AD53,Assembly,Y,lieu|ted,2009,False,2008-12-01,2010-02-19
+Furutani,"Furutani, Warren T.",D,AD55,Assembly,Y,furutani|warren,2009,False,2008-12-01,2010-02-19
+Smyth,"Smyth, Cameron",R,AD38,Assembly,Y,smyth|cameron,2009,False,2008-12-01,2010-02-19
+Villines,"Villines, Michael N.",R,AD29,Assembly,Y,villines|michael,2009,False,2009-02-25,2010-02-19
+Jones,"Jones, Dave",D,AD09,Assembly,Y,jones|dave,2009,False,2008-12-01,2010-02-19
+Evans,"Evans, Noreen",D,AD07,Assembly,Y,evans|noreen,2009,False,2008-12-01,2010-02-19
+Torrico,"Torrico, Alberto",D,AD20,Assembly,Y,torrico|alberto,2009,False,2009-02-02,2010-02-19
+Ruskin,"Ruskin, Ira",D,AD21,Assembly,Y,ruskin|ira,2009,False,2008-12-01,2010-02-19
+Bonnie Lowenthal,"Lowenthal, Bonnie",D,AD54,Assembly,Y,lowenthal|bonnie,2009,False,2009-02-02,2010-02-19
+Nestande,"Nestande, Brian",R,AD64,Assembly,Y,nestande|brian,2009,False,2009-02-13,2010-02-19
+Fletcher,"Fletcher, Nathan",R,AD75,Assembly,Y,fletcher|nathan,2009,False,2008-12-01,2010-02-19
+Hill,"Hill, Jerry",D,AD19,Assembly,Y,hill|jerry,2009,False,2008-12-23,2010-02-19
+Fong,"Fong, Paul",D,AD22,Assembly,Y,fong|paul,2009,False,2009-02-25,2010-02-19
+Tom Berryhill,"Berryhill, Tom",R,AD25,Assembly,Y,berryhill|tom,2009,False,2009-01-05,2010-02-19
+Arambula,"Arambula, Juan",D,AD31,Assembly,Y,arambula|juan,2009,False,2008-12-10,2010-03-01
+Fuller,"Fuller, Jean",R,AD32,Assembly,Y,fuller|jean,2009,False,2009-02-11,2010-02-19
+Blumenfield,"Blumenfield, Bob",D,AD40,Assembly,Y,blumenfield|bob,2009,False,2009-02-24,2010-02-19
+John A. Perez,"Pérez, John A.",D,AD46,Assembly,Y,perez|john,2009,False,2008-12-01,2010-02-19
+Davis,"Davis, Mike",D,AD48,Assembly,Y,davis|mike,2009,False,2009-01-05,2010-02-19
+Mendoza,"Mendoza, Tony",D,AD56,Assembly,Y,mendoza|tony,2009,False,2008-12-09,2010-02-19
+Hagman,"Hagman, Curt",R,AD60,Assembly,Y,hagman|curt,2009,False,2008-12-01,2010-02-19
+Jeffries,"Jeffries, Kevin D.",R,AD66,Assembly,Y,jeffries|kevin,2009,False,2008-12-01,2010-02-19
+Silva,"Silva, Jim",R,AD67,Assembly,Y,silva|jim,2009,False,2009-01-20,2010-02-19
+Miller,"Miller, Jeff",R,AD71,Assembly,Y,miller|jeff,2009,False,2009-02-04,2010-02-19
+Norby,"Norby, Chris",R,AD72,Assembly,Y,norby|chris,2009,True,2008-12-12,2010-02-19
+Salas,"Salas, Mary",D,AD79,Assembly,Y,salas|mary,2009,False,2008-12-01,2010-02-19
+V. Manuel Perez,"Perez, V. Manuel",D,AD80,Assembly,Y,perez|v.,2009,False,2008-12-01,2010-02-19
+Yamada,"Yamada, Mariko",D,AD08,Assembly,Y,yamada|mariko,2009,False,2008-12-17,2010-02-19
+Krekorian,"Krekorian, Paul",D,AD43,Assembly,Y,krekorian|paul,2009,True,2008-12-01,2009-02-27
+Chesbro,"Chesbro, Wesley",D,AD01,Assembly,Y,chesbro|wesley,2009,False,2008-12-16,2010-02-19
+Gaines,"Gaines, Ted",R,AD04,Assembly,Y,gaines|ted,2009,False,2009-02-11,2010-02-19
+Nielsen,"Nielsen, Jim",R,AD02,Assembly,Y,nielsen|jim,2009,False,2009-02-23,2010-02-19
+Ammiano,"Ammiano, Tom",D,AD13,Assembly,Y,ammiano|tom,2009,False,2009-02-12,2010-02-19
+Swanson,"Swanson, Sandre R.",D,AD16,Assembly,Y,swanson|sandre,2009,False,2008-12-01,2010-03-01
+Bill Berryhill,"Berryhill, Bill",R,AD26,Assembly,Y,berryhill|bill,2009,False,2009-02-11,2010-02-19
+Monning,"Monning, William W.",D,AD27,Assembly,Y,monning|william,2009,False,2008-12-01,2010-03-09
+Conway,"Conway, Connie",R,AD34,Assembly,Y,conway|connie,2009,False,2009-01-12,2010-02-19
+Brownley,"Brownley, Julia",D,AD41,Assembly,Y,brownley|julia,2009,False,2008-12-01,2010-02-19
+Feuer,"Feuer, Mike",D,AD42,Assembly,Y,feuer|mike,2009,False,2008-12-01,2010-02-19
+Bradford,"Bradford, Steven",D,AD51,Assembly,Y,bradford|steven,2009,False,2009-02-27,2010-02-19
+Hall,"Hall, Isadore",D,AD52,Assembly,Y,hall|isadore,2009,False,2009-02-18,2010-02-19
+Torres,"Torres, Norma J.",D,AD61,Assembly,Y,torres|norma,2009,False,2008-12-01,2010-02-19
+Cook,"Cook, Paul J.",R,AD65,Assembly,Y,cook|paul,2009,False,2008-12-01,2010-02-19
+Saldana,"Saldana, Lori",D,AD76,Assembly,Y,saldana|lori,2009,False,2008-12-01,2010-02-19
+Anderson,"Anderson, Joel",R,AD77,Assembly,Y,anderson|joel,2009,False,2008-12-10,2010-02-19
+Hayashi,"Hayashi, Mary",D,AD18,Assembly,Y,hayashi|mary,2009,False,2008-12-09,2010-02-19
+Blakeslee,"Blakeslee, Sam",R,AD33,Assembly,Y,blakeslee|sam,2009,False,2008-12-01,2010-02-19
+Adams,"Adams, Anthony",R,AD59,Assembly,Y,adams|anthony,2009,False,2008-12-23,2010-02-19
+Tran,"Tran, Van",R,AD68,Assembly,Y,tran|van,2009,False,2009-01-22,2010-02-19
+Fuentes,"Fuentes, Felipe",D,AD39,Assembly,Y,fuentes|felipe,2009,False,2008-12-01,2010-02-19
+Duvall,"Duvall, Mike D.",R,AD72,Assembly,Y,duvall|mike,2009,True,2008-12-12,2009-02-27
+Gatto,"Gatto, Mike",D,AD43,Assembly,Y,gatto|mike,2009,True,2009-02-02,2009-02-02
+Anderson,"Anderson, Joel",R,SD36,Senate,Y,anderson|joel,2011,False,2010-12-06,2012-02-24
+Wyland,"Wyland, Mark",R,SD38,Senate,Y,wyland|mark,2011,False,2011-02-01,2012-02-24
+Kehoe,"Kehoe, Christine",D,SD39,Senate,Y,kehoe|christine,2011,False,2010-12-06,2012-02-24
+Simitian,"Simitian, Joseph",D,SD11,Senate,Y,simitian|joseph,2011,False,2010-12-06,2012-02-24
+Cannella,"Cannella, Anthony",R,SD12,Senate,Y,cannella|anthony,2011,False,2011-02-08,2012-02-24
+Rubio,"Rubio, Michael",D,SD16,Senate,Y,rubio|michael,2011,False,2010-12-06,2012-02-24
+Padilla,"Padilla, Alex",D,SD20,Senate,Y,padilla|alex,2011,False,2010-12-06,2012-02-24
+Wright,"Wright, Roderick",D,SD25,Senate,Y,wright|roderick,2011,False,2010-12-08,2012-02-24
+Calderon,"Calderon, Ron",D,SD30,Senate,Y,calderon|ron,2011,False,2010-12-06,2012-02-24
+Correa,"Correa, Lou",D,SD34,Senate,Y,correa|lou,2011,False,2010-12-06,2012-02-24
+Vargas,"Vargas, Juan",D,SD40,Senate,Y,vargas|juan,2011,False,2010-12-06,2012-02-24
+Alquist,"Alquist, Elaine",D,SD13,Senate,Y,alquist|elaine,2011,False,2010-12-06,2012-02-24
+Price,"Price, Curren D.",D,SD26,Senate,Y,price|curren,2011,False,2011-01-05,2012-02-23
+Logue,"Logue, Dan",R,AD03,Assembly,Y,logue|dan,2011,False,2010-12-06,2012-02-24
+Huffman,"Huffman, Jared William",D,AD06,Assembly,Y,huffman|jared,2011,False,2010-12-06,2012-02-29
+Block,"Block, Marty",D,AD78,Assembly,Y,block|marty,2011,False,2010-12-06,2012-02-24
+Harkey,"Harkey, Diane L. ",R,AD73,Assembly,Y,harkey|diane,2011,False,2010-12-22,2012-02-24
+Charles Calderon,"Calderon, Charles M.",D,AD58,Assembly,Y,calderon|charles,2011,False,2011-01-18,2012-03-05
+Wagner,"Wagner, Donald P.",R,AD70,Assembly,Y,wagner|donald,2011,False,2011-02-10,2012-02-24
+Bonilla,"Bonilla, Susan A.",D,AD11,Assembly,Y,bonilla|susan,2011,False,2011-02-02,2012-02-24
+Roger Hernández,"Hernández, Roger",D,AD57,Assembly,Y,hernandez|roger,2011,False,2011-01-25,2012-02-24
+Eng,"Eng, Mike",D,AD49,Assembly,Y,eng|mike,2011,False,2010-12-21,2012-02-24
+Beall,"Beall, Jim",D,AD24,Assembly,Y,beall|jim,2011,False,2010-12-06,2012-02-24
+Solorio,"Solorio, Jose",D,AD69,Assembly,Y,solorio|jose,2011,False,2010-12-06,2012-02-24
+Campos,"Campos, Nora",D,AD23,Assembly,Y,campos|nora,2011,False,2011-02-15,2012-02-24
+Morrell,"Morrell, Mike",R,AD63,Assembly,Y,morrell|mike,2011,False,2011-02-14,2012-02-24
+Lara,"Lara, Ricardo",D,AD50,Assembly,Y,lara|ricardo,2011,False,2010-12-06,2012-02-24
+Cedillo,"Cedillo, Gilbert",D,AD45,Assembly,Y,cedillo|gilbert,2011,False,2011-01-11,2012-02-24
+Skinner,"Skinner, Nancy",D,AD14,Assembly,Y,skinner|nancy,2011,False,2011-01-18,2012-02-24
+Buchanan,"Buchanan, Joan",D,AD15,Assembly,Y,buchanan|joan,2011,False,2011-01-27,2012-02-24
+Williams,"Williams, Das",D,AD35,Assembly,Y,williams|das,2011,False,2010-12-06,2012-03-05
+Carter,"Carter, Wilmer Amina",D,AD62,Assembly,Y,carter|wilmer,2011,False,2010-12-06,2012-02-24
+Galgiani,"Galgiani, Cathleen",D,AD17,Assembly,Y,galgiani|cathleen,2011,False,2010-12-06,2012-02-24
+Huber,"Huber, Alyson",D,AD10,Assembly,Y,huber|alyson,2011,False,2010-12-06,2012-02-24
+Valadao,"Valadao, David G.",R,AD30,Assembly,Y,valadao|david,2011,False,2011-01-12,2012-02-24
+Knight,"Knight, Steve",R,AD36,Assembly,Y,knight|steve,2011,False,2010-12-06,2012-02-24
+Alejo,"Alejo, Luis A.",D,AD28,Assembly,Y,alejo|lius,2011,False,2010-12-06,2012-02-24
+Gorell,"Gorell, Jeff",R,AD37,Assembly,Y,gorell|jeff,2011,False,2010-12-06,2012-02-23
+Mitchell,"Mitchell, Holly J.",D,AD47,Assembly,Y,mitchell|holly,2011,False,2011-02-08,2012-02-24
+Garrick,"Garrick, Martin",R,AD74,Assembly,Y,garrick|martin,2011,False,2011-02-07,2012-02-24
+Ma,"Ma, Fiona",D,AD12,Assembly,Y,ma|fiona,2011,False,2010-12-21,2012-02-24
+Portantino,"Portantino, Anthony J.",D,AD44,Assembly,Y,portantino|anthony,2011,False,2010-12-06,2012-02-24
+Butler,"Butler, Betsy",D,AD53,Assembly,Y,butler|betsy,2011,False,2011-01-25,2012-02-24
+Furutani,"Furutani, Warren T.",D,AD55,Assembly,Y,furutani|warren,2011,False,2011-02-08,2012-02-24
+Smyth,"Smyth, Cameron",R,AD38,Assembly,Y,smyth|cameron,2011,False,2010-12-06,2012-02-24
+Halderman,"Halderman, Linda",R,AD29,Assembly,Y,halderman|linda,2011,False,2010-12-06,2012-02-24
+Dickinson,"Dickinson, Roger",D,AD09,Assembly,Y,dickinson|roger,2011,False,2011-01-12,2012-02-24
+Allen,"Allen, Michael",D,AD07,Assembly,Y,allen|michael,2011,False,2011-02-10,2012-02-29
+Wieckowski,"Wieckowski, Bob",D,AD20,Assembly,Y,wieckowski|bob,2011,False,2010-12-06,2012-02-24
+Gaines,"Gaines, Ted",R,SD01,Senate,Y,gaines|ted,2011,False,2011-01-14,2012-02-24
+Runner,"Runner, Sharon",R,SD17,Senate,Y,runner|sharon,2011,False,2010-12-16,2012-02-24
+Lieu,"Lieu, Ted W.",D,SD28,Senate,Y,lieu|ted,2011,False,2011-02-15,2012-02-24
+Gordon,"Gordon, Richard S.",D,AD21,Assembly,Y,gordon|richard,2011,False,2011-02-15,2012-02-24
+Bonnie Lowenthal,"Lowenthal, Bonnie",D,AD54,Assembly,Y,lowenthal|bonnie,2011,False,2011-02-09,2012-02-24
+Nestande,"Nestande, Brian",R,AD64,Assembly,Y,nestande|brian,2011,False,2010-12-06,2012-02-24
+Fletcher,"Fletcher, Nathan",Other,AD75,Assembly,Y,fletcher|nathan,2011,False,2011-02-15,2012-02-24
+Hill,"Hill, Jerry",D,AD19,Assembly,Y,hill|jerry,2011,False,2010-12-06,2012-02-24
+Fong,"Fong, Paul",D,AD22,Assembly,Y,fong|paul,2011,False,2010-12-06,2012-02-24
+Olsen,"Olsen, Kristin",R,AD25,Assembly,Y,olsen|kristin,2011,False,2011-02-15,2012-02-24
+Perea,"Perea, Henry T.",D,AD31,Assembly,Y,perea|henry,2011,False,2010-12-06,2012-02-24
+Grove,"Grove, Shannon L.",R,AD32,Assembly,Y,grove|shannon,2011,False,2011-02-10,2012-02-24
+Blumenfield,"Blumenfield, Bob",D,AD40,Assembly,Y,blumenfield|bob,2011,False,2010-12-06,2012-02-24
+John A. Pérez,"Pérez, John A.",D,AD46,Assembly,Y,perez|john,2011,False,2010-12-06,2012-02-24
+Davis,"Davis, Mike",D,AD48,Assembly,Y,davis|mike,2011,False,2010-12-06,2012-02-24
+Mendoza,"Mendoza, Tony",D,AD56,Assembly,Y,mendoza|tony,2011,False,2010-12-06,2012-02-24
+Hagman,"Hagman, Curt",R,AD60,Assembly,Y,hagman|curt,2011,False,2011-01-12,2012-02-24
+Jeffries,"Jeffries, Kevin D.",R,AD66,Assembly,Y,jeffries|kevin,2011,False,2010-12-06,2012-02-24
+Silva,"Silva, Jim",R,AD67,Assembly,Y,silva|jim,2011,False,2011-01-31,2012-02-24
+Miller,"Miller, Jeff",R,AD71,Assembly,Y,miller|jeff,2011,False,2010-12-06,2012-02-24
+Norby,"Norby, Chris",R,AD72,Assembly,Y,norby|chris,2011,False,2011-02-09,2012-02-24
+Hueso,"Hueso, Ben",D,AD79,Assembly,Y,hueso|ben,2011,False,2011-02-15,2012-02-24
+V. Manuel Pérez,"Pérez, V. Manuel",D,AD80,Assembly,Y,perez|v.,2011,False,2010-12-06,2012-02-24
+Yamada,"Yamada, Mariko",D,AD08,Assembly,Y,yamada|mariko,2011,False,2010-12-06,2012-02-23
+Gatto,"Gatto, Mike",D,AD43,Assembly,Y,gatto|mike,2011,False,2010-12-06,2012-02-24
+Chesbro,"Chesbro, Wesley",D,AD01,Assembly,Y,chesbro|wesley,2011,False,2010-12-13,2012-03-05
+Beth Gaines,"Gaines, Beth",R,AD04,Assembly,Y,gaines|beth,2011,False,2012-02-22,2012-02-24
+Nielsen,"Nielsen, Jim",R,AD02,Assembly,Y,nielsen|jim,2011,False,2011-01-20,2012-02-24
+Ammiano,"Ammiano, Tom",D,AD13,Assembly,Y,ammiano|tom,2011,False,2010-12-06,2012-02-24
+Swanson,"Swanson, Sandré R.",D,AD16,Assembly,Y,swanson|sandre,2011,False,2010-12-06,2012-03-05
+Bill Berryhill,"Berryhill, Bill",R,AD26,Assembly,Y,berryhill|bill,2011,False,2011-01-26,2012-02-24
+Monning,"Monning, William W.",D,AD27,Assembly,Y,monning|william,2011,False,2010-12-06,2012-02-24
+Conway,"Conway, Connie",R,AD34,Assembly,Y,conway|connie,2011,False,2011-01-26,2012-02-24
+Brownley,"Brownley, Julia",D,AD41,Assembly,Y,brownley|julia,2011,False,2010-12-06,2012-02-23
+Feuer,"Feuer, Mike",D,AD42,Assembly,Y,feuer|mike,2011,False,2010-12-06,2012-02-24
+Bradford,"Bradford, Steven",D,AD51,Assembly,Y,bradford|steven,2011,False,2010-12-06,2012-02-24
+Hall,"Hall, Isadore",D,AD52,Assembly,Y,hall|isadore,2011,False,2011-02-02,2012-02-24
+Torres,"Torres, Norma J.",D,AD61,Assembly,Y,torres|norma,2011,False,2011-01-20,2012-02-24
+Cook,"Cook, Paul J.",R,AD65,Assembly,Y,cook|paul,2011,False,2011-01-20,2012-02-24
+Atkins,"Atkins, Toni",D,AD76,Assembly,Y,atkins|toni,2011,False,2011-02-10,2012-02-24
+Jones,"Jones, Brian W.",R,AD77,Assembly,Y,jones|brian,2011,False,2011-02-15,2012-02-24
+Hayashi,"Hayashi, Mary",D,AD18,Assembly,Y,hayashi|mary,2011,False,2010-12-06,2012-02-24
+Achadjian,"Achadjian, Katcho",R,AD33,Assembly,Y,achadjian|katcho,2011,False,2011-02-14,2012-02-24
+Donnelly,"Donnelly, Tim",R,AD59,Assembly,Y,donnelly|tim,2011,False,2010-12-06,2012-02-24
+Mansoor,"Mansoor, Allan R.",R,AD68,Assembly,Y,mansoor|allan,2011,False,2011-02-17,2012-02-24
+Fuentes,"Fuentes, Felipe",D,AD39,Assembly,Y,fuentes|felipe,2011,False,2010-12-06,2012-02-24
+Emmerson,"Emmerson, Bill",R,SD37,Senate,Y,emmerson|bill,2011,False,2011-01-26,2012-02-24
+Pan,"Pan, Richard",D,AD05,Assembly,Y,pan|richard,2011,False,2011-01-13,2012-02-24
+Blakeslee,"Blakeslee, Sam",R,SD15,Senate,Y,blakeslee|sam,2011,False,2010-12-06,2012-02-24
+Evans,"Evans, Noreen",D,SD02,Senate,Y,evans|noreen,2011,False,2010-12-06,2012-02-24
+Leno,"Leno, Mark",D,SD03,Senate,Y,leno|mark,2011,False,2010-12-06,2012-02-24
+La Malfa,"La Malfa, Doug",R,SD04,Senate,Y,la|doug,2011,False,2010-12-06,2012-02-24
+Wolk,"Wolk, Lois",D,SD05,Senate,Y,wolk|lois,2011,False,2010-12-06,2012-02-24
+Steinberg,"Steinberg, Darrell",D,SD06,Senate,Y,steinberg|darrell,2011,False,2010-12-06,2012-02-24
+DeSaulnier,"DeSaulnier, Mark",D,SD07,Senate,Y,desaulnier|mark,2011,False,2010-12-06,2012-02-24
+Yee,"Yee, Leland",D,SD08,Senate,Y,yee|leland,2011,False,2010-12-06,2012-02-24
+Hancock,"Hancock, Loni",D,SD09,Senate,Y,hancock|loni,2011,False,2011-02-08,2012-02-24
+Corbett,"Corbett, Ellen",D,SD10,Senate,Y,corbett|ellen,2011,False,2010-12-06,2012-02-24
+Berryhill,"Berryhill, Tom",R,SD14,Senate,Y,berryhill|tom,2011,False,2011-02-08,2012-02-24
+Fuller,"Fuller, Jean",R,SD18,Senate,Y,fuller|jean,2011,False,2011-02-14,2012-02-24
+Strickland,"Strickland, Tony",R,SD19,Senate,Y,strickland|tony,2011,False,2010-12-15,2012-02-24
+Liu,"Liu, Carol",D,SD21,Senate,Y,liu|carol,2011,False,2010-12-06,2012-02-24
+De León,"De León, Kevin",D,SD22,Senate,Y,de|kevin,2011,False,2011-01-19,2012-02-24
+Pavley,"Pavley, Fran",D,SD23,Senate,Y,pavley|fran,2011,False,2010-12-22,2012-02-24
+Hernandez,"Hernandez, Ed",D,SD24,Senate,Y,hernandez|ed,2011,False,2011-01-31,2012-02-24
+Lowenthal,"Lowenthal, Alan",D,SD27,Senate,Y,lowenthal|alan,2011,False,2011-01-24,2012-02-24
+Huff,"Huff, Bob",R,SD29,Senate,Y,huff|bob,2011,False,2010-12-06,2012-02-24
+Dutton,"Dutton, Robert",R,SD31,Senate,Y,dutton|robert,2011,False,2011-02-10,2012-02-24
+Negrete McLeod,"Negrete McLeod, Gloria",D,SD32,Senate,Y,negrete|gloria,2011,False,2011-02-09,2012-02-24
+Walters,"Walters, Mimi",R,SD33,Senate,Y,walters|mimi,2011,False,2011-02-17,2012-02-24
+Harman,"Harman, Tom",R,SD35,Senate,Y,harman|tom,2011,False,2010-12-06,2012-02-24
+Anderson,"Anderson, Joel",R,SD36,Senate,Y,anderson|joel,2013,False,2012-12-03,2014-02-21
+Wyland,"Wyland, Mark",R,SD38,Senate,Y,wyland|mark,2013,False,2013-02-12,2014-02-21
+Block,"Block, Marty",D,SD39,Senate,Y,block|marty,2013,False,2013-02-19,2014-02-21
+Leno,"Leno, Mark",D,SD11,Senate,Y,leno|mark,2013,False,2012-12-03,2014-02-21
+Cannella,"Cannella, Anthony",R,SD12,Senate,Y,cannella|anthony,2013,False,2012-12-03,2014-02-21
+Rubio,"Rubio, Michael J.",D,SD16,Senate,Y,rubio|michael,2013,True,2013-02-01,2013-02-01
+Padilla,"Padilla, Alex",D,SD20,Senate,Y,padilla|alex,2013,False,2012-12-03,2014-02-21
+Liu,"Liu, Carol",D,SD25,Senate,Y,liu|carol,2013,False,2013-01-16,2014-02-21
+Calderon,"Calderon, Ron",D,SD30,Senate,Y,calderon|ron,2013,False,2012-12-03,2014-02-21
+Correa,"Correa, Lou",D,SD34,Senate,Y,correa|lou,2013,False,2012-12-03,2014-02-21
+Vargas,"Vargas, Juan",D,SD40,Senate,Y,vargas|juan,2013,False,,
+Hill,"Hill, Jerry",D,SD13,Senate,Y,hill|jerry,2013,False,2012-12-19,2014-02-21
+Ridley-Thomas,"Ridley-Thomas, Sebastian",D,AD54,Assembly,Y,ridley-thomas|sebastian,2013,True,2014-02-19,2014-02-21
+Nielsen,"Nielsen, Jim",R,SD04,Senate,Y,nielsen|jim,2013,False,2012-12-03,2014-02-21
+Rodriguez,"Rodriguez, Freddie",D,AD52,Assembly,Y,rodriguez|freddie,2013,True,2014-01-29,2014-02-21
+Price,"Price, Curren D.",D,SD26,Senate,Y,price|curren,2013,False,2012-12-03,2013-02-22
+Yamada,"Yamada, Mariko",D,AD04,Assembly,Y,yamada|mariko,2013,False,2013-01-07,2014-02-21
+Chesbro,"Chesbro, Wesley",D,AD02,Assembly,Y,chesbro|wesley,2013,False,2013-02-07,2014-02-21
+Eggman,"Eggman, Susan Talamantes",D,AD13,Assembly,Y,eggman|susan,2013,False,2013-01-14,2014-02-24
+Buchanan,"Buchanan, Joan",D,AD16,Assembly,Y,buchanan|joan,2013,False,2012-12-03,2014-02-21
+Conway,"Conway, Connie",R,AD26,Assembly,Y,conway|connie,2013,False,2012-12-03,2014-02-21
+Campos,"Campos, Nora",D,AD27,Assembly,Y,campos|nora,2013,False,2012-12-03,2014-02-21
+Grove,"Grove, Shannon",R,AD34,Assembly,Y,grove|shannon,2013,False,2013-02-06,2014-02-21
+Holden,"Holden, Chris R.",D,AD41,Assembly,Y,holden|chris,2013,False,2012-12-03,2014-02-19
+Nestande,"Nestande, Brian",R,AD42,Assembly,Y,nestande|brian,2013,False,2013-02-04,2014-02-21
+Gomez,"Gomez, Jimmy",D,AD51,Assembly,Y,gomez|jimmy,2013,False,2013-02-05,2014-02-21
+Torres,"Torres, Norma J.",D,AD52,Assembly,Y,torres|norma,2013,True,2013-02-15,2014-02-21
+Medina,"Medina, Jose",D,AD61,Assembly,Y,medina|jose,2013,False,2012-12-03,2014-02-21
+Quirk-Silva,"Quirk-Silva, Sharon",D,AD65,Assembly,Y,quirk-silva|sharon,2013,False,2013-02-04,2014-02-21
+Chávez,"Chávez, Rocky J.",R,AD76,Assembly,Y,chavez|rocky,2013,False,2013-01-07,2014-02-20
+Maienschein,"Maienschein, Brian",R,AD77,Assembly,Y,maienschein|brian,2013,False,2013-01-09,2014-02-21
+Bonta,"Bonta, Rob",D,AD18,Assembly,Y,bonta|rob,2013,False,2013-01-07,2014-02-21
+Donnelly,"Donnelly, Tim",R,AD33,Assembly,Y,donnelly|tim,2013,False,2012-12-03,2014-02-21
+Jones-Sawyer,"Jones-Sawyer, Sr. Reginald B.",D,AD59,Assembly,Y,jones-sawyer|reginald,2013,False,2013-02-15,2014-02-21
+Wagner,"Wagner, Donald P.",R,AD68,Assembly,Y,wagner|donald,2013,False,2013-02-06,2014-02-21
+Bocanegra,"Bocanegra, Raul",D,AD39,Assembly,Y,bocanegra|raul,2013,False,2012-12-03,2014-03-24
+Walters,"Walters, Mimi",R,SD37,Senate,Y,walters|mimi,2013,False,2012-12-03,2014-02-21
+Bigelow,"Bigelow, Franklin E.",R,AD05,Assembly,Y,bigelow|franklin,2013,False,2013-02-13,2014-02-21
+Beall,"Beall, Jim",D,SD15,Senate,Y,beall|jim,2013,False,2012-12-03,2014-02-21
+Evans,"Evans, Noreen",D,SD02,Senate,Y,evans|noreen,2013,False,2013-01-07,2014-02-21
+Wolk,"Wolk, Lois",D,SD03,Senate,Y,wolk|lois,2013,False,2012-12-03,2014-02-21
+Galgiani,"Galgiani, Cathleen",D,SD05,Senate,Y,galgiani|cathleen,2013,False,2013-01-10,2014-02-21
+Steinberg,"Steinberg, Darrell",D,SD06,Senate,Y,steinberg|darrell,2013,False,2012-12-03,2014-02-21
+DeSaulnier,"DeSaulnier, Mark",D,SD07,Senate,Y,desaulnier|mark,2013,False,2013-01-14,2014-02-21
+Yee,"Yee, Leland Y.",D,SD08,Senate,Y,yee|leland,2013,False,2012-12-03,2014-02-21
+Hancock,"Hancock, Loni",D,SD09,Senate,Y,hancock|loni,2013,False,2012-12-21,2014-02-21
+Corbett,"Corbett, Ellen",D,SD10,Senate,Y,corbett|ellen,2013,False,2012-12-03,2014-02-21
+Berryhill,"Berryhill, Tom",R,SD14,Senate,Y,berryhill|tom,2013,False,2013-01-31,2014-02-21
+Fuller,"Fuller, Jean",R,SD18,Senate,Y,fuller|jean,2013,False,2013-01-30,2014-02-21
+Jackson,"Jackson, Hannah-Beth",D,SD19,Senate,Y,jackson|hannah-beth,2013,False,2013-01-15,2014-02-21
+Knight,"Knight, Steve",R,SD21,Senate,Y,knight|steve,2013,False,2012-12-03,2014-02-21
+De León,"De León, Kevin",D,SD22,Senate,Y,de|kevin,2013,False,2012-12-05,2014-02-21
+Emmerson,"Emmerson, Bill",R,SD23,Senate,Y,emmerson|bill,2013,False,2013-01-07,2013-02-22
+Hernandez,"Hernandez, Ed",D,SD24,Senate,Y,hernandez|ed,2013,False,2012-12-03,2014-02-21
+Pavley,"Pavley, Fran",D,SD27,Senate,Y,pavley|fran,2013,False,2012-12-03,2014-02-21
+Huff,"Huff, Bob",R,SD29,Senate,Y,huff|bob,2013,False,2013-01-10,2014-02-21
+Roth,"Roth, Richard",D,SD31,Senate,Y,roth|richard,2013,False,2012-12-03,2014-02-21
+Negrete McLeod,"Negrete McLeod, Gloria",D,SD32,Senate,Y,negrete|gloria,2013,False,,
+Lara,"Lara, Ricardo",D,SD33,Senate,Y,lara|ricardo,2013,False,2012-12-03,2014-02-21
+Wright,"Wright, Roderick",D,SD35,Senate,Y,wright|roderick,2013,False,2012-12-11,2014-02-21
+Logue,"Logue, Dan",R,AD03,Assembly,Y,logue|dan,2013,False,2012-12-03,2014-02-21
+Beth Gaines,"Gaines, Beth B.",R,AD06,Assembly,Y,gaines|beth,2013,False,2013-01-23,2014-02-21
+Atkins,"Atkins, Toni G.",D,AD78,Assembly,Y,atkins|toni,2013,False,2013-01-22,2014-02-21
+Harkey,"Harkey, Diane L.",R,AD73,Assembly,Y,harkey|diane,2013,False,2013-02-20,2014-02-21
+Garcia,"Garcia, Cristina",D,AD58,Assembly,Y,garcia|cristina,2013,False,2013-02-07,2014-02-21
+Lowenthal,"Lowenthal, Bonnie",D,AD70,Assembly,Y,lowenthal|bonnie,2013,False,2012-12-03,2014-02-21
+Frazier,"Frazier, Jim",D,AD11,Assembly,Y,frazier|jim,2013,False,2013-02-11,2014-02-21
+Ian Calderon,"Calderon, Ian C.",D,AD57,Assembly,Y,calderon|ian,2013,False,2013-02-12,2014-02-21
+Chau,"Chau, Ed",D,AD49,Assembly,Y,chau|ed,2013,False,2013-02-04,2014-02-21
+Gordon,"Gordon, Richard S.",D,AD24,Assembly,Y,gordon|richard,2013,False,2013-02-04,2014-02-21
+Daly,"Daly, Tom",D,AD69,Assembly,Y,daly|tom,2013,False,2013-02-15,2014-02-21
+Patterson,"Patterson, Jim",R,AD23,Assembly,Y,patterson|jim,2013,False,2013-01-07,2014-02-21
+Rendon,"Rendon, Anthony",D,AD63,Assembly,Y,rendon|anthony,2013,False,2013-01-14,2014-02-21
+Bloom,"Bloom, Richard",D,AD50,Assembly,Y,bloom|richard,2013,False,2013-02-07,2014-02-21
+Blumenfield,"Blumenfield, Bob",D,AD45,Assembly,Y,blumenfield|bob,2013,True,2012-12-03,2013-02-22
+Bonilla,"Bonilla, Susan A.",D,AD14,Assembly,Y,bonilla|susan,2013,False,2012-12-03,2014-02-26
+Skinner,"Skinner, Nancy",D,AD15,Assembly,Y,skinner|nancy,2013,False,2012-12-03,2014-02-21
+Achadjian,"Achadjian, K.H. ""Katcho""",R,AD35,Assembly,Y,achadjian|k.h.,2013,False,2013-01-07,2014-02-21
+Bradford,"Bradford, Steven",D,AD62,Assembly,Y,bradford|steven,2013,False,2012-12-03,2014-02-21
+Ammiano,"Ammiano, Tom",D,AD17,Assembly,Y,ammiano|tom,2013,False,2012-12-03,2014-02-21
+Levine,"Levine, Marc",D,AD10,Assembly,Y,levine|marc,2013,False,2013-01-22,2014-02-21
+Alejo,"Alejo, Luis",D,AD30,Assembly,Y,alejo|luis,2013,False,2012-12-03,2014-02-21
+Fox,"Fox, Steve",D,AD36,Assembly,Y,fox|steve,2013,False,2013-02-15,2014-02-21
+Fong,"Fong, Paul",D,AD28,Assembly,Y,fong|paul,2013,False,2013-02-15,2014-02-21
+Williams,"Williams, Das",D,AD37,Assembly,Y,williams|das,2013,False,2012-12-03,2014-02-21
+Brown,"Brown, Cheryl R.",D,AD47,Assembly,Y,brown|cheryl,2013,False,2013-02-11,2014-02-21
+Mansoor,"Mansoor, Allan R.",R,AD74,Assembly,Y,mansoor|allan,2013,False,2012-12-06,2014-02-21
+Olsen,"Olsen, Kristin",R,AD12,Assembly,Y,olsen|kristin,2013,False,2013-01-07,2014-02-21
+Gorell,"Gorell, Jeff",R,AD44,Assembly,Y,gorell|jeff,2013,False,2012-12-03,2014-02-21
+John A. Pérez,"Pérez, John A.",D,AD53,Assembly,Y,perez|john,2013,False,2012-12-03,2014-02-21
+Hagman,"Hagman, Curt",R,AD55,Assembly,Y,hagman|curt,2013,False,2013-01-16,2014-02-21
+Wilk,"Wilk, Scott",R,AD38,Assembly,Y,wilk|scott,2013,False,2013-01-18,2014-02-21
+Stone,"Stone, Mark",D,AD29,Assembly,Y,stone|mark,2013,False,2013-01-29,2014-02-21
+Pan,"Pan, Richard",D,AD09,Assembly,Y,pan|richand,2013,False,2012-12-03,2014-02-21
+Dickinson,"Dickinson, Roger",D,AD07,Assembly,Y,dickinson|roger,2013,False,2012-12-19,2014-02-21
+Quirk,"Quirk, Bill",D,AD20,Assembly,Y,quirk|bill,2013,False,2013-02-11,2014-02-21
+Gaines,"Gaines, Ted",R,SD01,Senate,Y,gaines|ted,2013,False,2012-12-03,2014-02-21
+Monning,"Monning, Bill",D,SD17,Senate,Y,monning|bill,2013,False,2013-01-10,2014-02-21
+Lieu,"Lieu, Ted W.",D,SD28,Senate,Y,lieu|ted,2013,False,2012-12-03,2014-02-21
+Gray,"Gray, Adam C.",D,AD21,Assembly,Y,gray|adam,2013,False,2013-02-21,2014-02-21
+Mitchell,"Mitchell, Holly J.",D,AD54,Assembly,Y,mitchell|holly,2013,True,2013-02-07,2014-02-21
+Hall,"Hall III, Isadore",D,AD64,Assembly,Y,hall|isadore,2013,False,2013-01-14,2014-02-21
+Waldron,"Waldron, Marie",R,AD75,Assembly,Y,waldron|marie,2013,False,2012-12-03,2014-02-21
+Ting,"Ting, Philip Y.",D,AD19,Assembly,Y,ting|philip,2013,False,2012-12-03,2014-02-21
+Mullin,"Mullin, Kevin",D,AD22,Assembly,Y,mullin|kevin,2013,False,2013-02-14,2014-02-21
+Wieckowski,"Wieckowski, Bob",D,AD25,Assembly,Y,wieckowski|bob,2013,False,2012-12-03,2014-02-21
+Perea,"Perea, Henry T.",D,AD31,Assembly,Y,perea|henry,2013,False,2012-12-03,2014-02-25
+Salas,"Salas, Jr. Rudy",D,AD32,Assembly,Y,salas|rudy,2013,False,2013-01-14,2014-02-21
+Morrell,"Morrell, Mike",R,AD40,Assembly,Y,morrell|mike,2013,False,2012-12-03,2014-02-21
+Nazarian,"Nazarian, Adrin",D,AD46,Assembly,Y,nazarian|adrin,2013,False,2013-02-11,2014-02-21
+Roger Hernández,"Hernández, Roger",D,AD48,Assembly,Y,hernandez|roger,2013,False,2012-12-03,2014-03-13
+V. Manuel Pérez,"Pérez, V. Manuel",D,AD56,Assembly,Y,perez|v.,2013,False,2012-12-03,2014-02-21
+Linder,"Linder, Eric",R,AD60,Assembly,Y,linder|eric,2013,False,2013-01-07,2014-02-21
+Muratsuchi,"Muratsuchi, Al",D,AD66,Assembly,Y,muratsuchi|al,2013,False,2013-01-07,2014-02-21
+Melendez,"Melendez, Melissa A.",R,AD67,Assembly,Y,melendez|melissa,2013,False,2013-02-20,2014-02-21
+Jones,"Jones, Brian W.",R,AD71,Assembly,Y,jones|brian,2013,False,2013-02-21,2014-02-21
+Allen,"Allen, Travis",R,AD72,Assembly,Y,allen|travis,2013,False,2013-02-11,2014-02-21
+Weber,"Weber, Shirley N.",D,AD79,Assembly,Y,weber|shirley,2013,False,2013-01-07,2014-02-21
+Hueso,"Hueso, Ben",D,AD80,Assembly,Y,hueso|ben,2013,True,2012-12-03,2014-02-21
+Cooley,"Cooley, Ken",D,AD08,Assembly,Y,cooley|ken,2013,False,2012-12-03,2014-02-21
+Gatto,"Gatto, Mike",D,AD43,Assembly,Y,gatto|mike,2013,False,2012-12-19,2014-02-21
+Dahle,"Dahle, Brian",R,AD01,Assembly,Y,dahle|brian,2013,False,2012-12-03,2014-02-21
+Vidak,"Vidak, Andy",R,SD16,Senate,Y,vidak|andy,2013,True,2014-01-16,2014-02-20
+Dababneh,"Dababneh, Matthew",D,AD45,Assembly,Y,dababneh|matthew,2013,True,2014-02-14,2014-02-21
+Gonzalez,"Gonzalez, Lorena",D,AD80,Assembly,Y,gonzalez|lorena,2013,True,2013-02-21,2014-02-21
+Glazer,"Glazer, Steven M.",D,SD07,Senate,Y,glazer|steven,2015,False,2015-02-25,2016-02-19
+Hall,"Hall III, Isadore",D,SD35,Senate,Y,hall|isadore,2015,False,2015-01-05,2016-02-19
+Runner,"Runner, Sharon",R,SD21,Senate,Y,runner|sharon,2015,True,2014-12-19,2016-02-19
+Arambula,"Arambula, Joaquin",D,AD31,Assembly,Y,arambula|joaquin,2015,True,2016-02-19,2016-02-19
+Bloom,"Bloom, Richard",D,AD50,Assembly,Y,bloom|richard,2015,False,2015-01-27,2016-02-19
+Bonilla,"Bonilla, Susan A.",D,AD14,Assembly,Y,bonilla|susan,2015,False,2014-12-01,2016-02-19
+Thurmond,"Thurmond, Tony",D,AD15,Assembly,Y,thurmond|tony,2015,False,2014-12-01,2016-02-19
+Achadjian,"Achadjian, K.H. ""Katcho""",R,AD35,Assembly,Y,achadjian|k.h.,2015,False,2015-02-02,2016-02-19
+Burke,"Burke, Autumn R.",D,AD62,Assembly,Y,burke|autumn,2015,False,2015-02-23,2016-02-19
+Chiu,"Chiu, David",D,AD17,Assembly,Y,chiu|david,2015,False,2014-12-01,2016-02-19
+Levine,"Levine, Marc",D,AD10,Assembly,Y,levine|marc,2015,False,2014-12-01,2016-03-09
+Alejo,"Alejo, Luis",D,AD30,Assembly,Y,alejo|luis,2015,False,2014-12-01,2016-02-19
+Lackey,"Lackey, Tom",R,AD36,Assembly,Y,lackey|tom,2015,False,2014-12-01,2016-02-19
+Low,"Low, Evan",D,AD28,Assembly,Y,low|evan,2015,False,2015-02-23,2016-02-29
+Williams,"Williams, Das",D,AD37,Assembly,Y,williams|das,2015,False,2014-12-01,2016-02-19
+Brown,"Brown, Cheryl R.",D,AD47,Assembly,Y,brown|cheryl,2015,False,2014-12-01,2016-02-19
+Harper,"Harper, Matthew",R,AD74,Assembly,Y,harper|matthew,2015,False,2015-01-27,2016-02-19
+Olsen,"Olsen, Kristin",R,AD12,Assembly,Y,olsen|kristin,2015,False,2014-12-01,2016-02-19
+Irwin,"Irwin, Jacqui",D,AD44,Assembly,Y,irwin|jacqui,2015,False,2015-01-22,2016-02-19
+Santiago,"Santiago, Miguel",D,AD53,Assembly,Y,santiago|miguel,2015,False,2014-12-18,2016-02-19
+Chang,"Chang, Ling Ling",R,AD55,Assembly,Y,chang|ling,2015,False,2014-12-01,2016-02-19
+Wilk,"Wilk, Scott",R,AD38,Assembly,Y,wilk|scott,2015,False,2014-12-01,2016-02-19
+Mark Stone,"Stone, Mark",D,AD29,Assembly,Y,stone|mark,2015,False,2014-12-01,2016-02-25
+Cooper,"Cooper, Jim",D,AD09,Assembly,Y,cooper|jim,2015,False,2015-02-18,2016-02-19
+McCarty,"McCarty, Kevin",D,AD07,Assembly,Y,mccarty|kevin,2015,False,2014-12-01,2016-02-19
+Quirk,"Quirk, Bill",D,AD20,Assembly,Y,quirk|bill,2015,False,2014-12-01,2016-02-19
+Gaines,"Gaines, Ted",R,SD01,Senate,Y,gaines|ted,2015,False,2014-12-01,2016-02-18
+Monning,"Monning, Bill",D,SD17,Senate,Y,monning|bill,2015,False,2014-12-01,2016-02-19
+Stone,"Stone, Jeff",R,SD28,Senate,Y,stone|jeff,2015,False,2015-01-27,2016-02-19
+Gray,"Gray, Adam C.",D,AD21,Assembly,Y,gray|adam,2015,False,2014-12-01,2016-02-19
+Gipson,"Gipson, Mike A.",D,AD64,Assembly,Y,gipson|mike,2015,False,2014-12-01,2016-02-19
+Waldron,"Waldron, Marie",R,AD75,Assembly,Y,waldron|marie,2015,False,2014-12-01,2016-02-19
+Ting,"Ting, Philip Y.",D,AD19,Assembly,Y,ting|philip,2015,False,2014-12-01,2016-02-19
+Mullin,"Mullin, Kevin",D,AD22,Assembly,Y,mullin|kevin,2015,False,2014-12-01,2016-02-19
+Chu,"Chu, Kansen",D,AD25,Assembly,Y,chu|kansen,2015,False,2014-12-01,2016-02-19
+Perea,"Perea, Henry T.",D,AD31,Assembly,Y,perea|henry,2015,True,2015-01-08,2015-02-27
+Salas,"Salas, Jr. Rudy",D,AD32,Assembly,Y,salas|rudy,2015,False,2015-02-05,2016-02-19
+Steinorth,"Steinorth, Marc",R,AD40,Assembly,Y,steinorth|marc,2015,False,2015-01-29,2016-02-19
+Nazarian,"Nazarian, Adrin",D,AD46,Assembly,Y,nazarian|adrin,2015,False,2014-12-01,2016-02-19
+Roger Hernández,"Hernández, Roger",D,AD48,Assembly,Y,hernandez|roger,2015,False,2015-01-26,2016-03-01
+Eduardo Garcia,"Garcia, Eduardo",D,AD56,Assembly,Y,garcia|eduardo,2015,False,2014-12-01,2016-03-17
+Linder,"Linder, Eric",R,AD60,Assembly,Y,linder|eric,2015,False,2014-12-01,2016-02-19
+Hadley,"Hadley, David",R,AD66,Assembly,Y,hadley|david,2015,False,2015-02-12,2016-02-19
+Melendez,"Melendez, Melissa A.",R,AD67,Assembly,Y,melendez|melissa,2015,False,2015-01-15,2016-02-19
+Jones,"Jones, Brian W.",R,AD71,Assembly,Y,jones|brian,2015,False,2015-02-12,2016-02-19
+Travis Allen,"Allen, Travis",R,AD72,Assembly,Y,allen|travis,2015,False,2014-12-12,2016-02-19
+Weber,"Weber, Shirley N.",D,AD79,Assembly,Y,weber|shirley,2015,False,2014-12-17,2016-02-19
+Cooley,"Cooley, Ken",D,AD08,Assembly,Y,cooley|ken,2015,False,2014-12-01,2016-02-19
+Gatto,"Gatto, Mike",D,AD43,Assembly,Y,gatto|mike,2015,False,2014-12-01,2016-03-03
+Dahle,"Dahle, Brian",R,AD01,Assembly,Y,dahle|brian,2015,False,2014-12-18,2016-02-19
+Hueso,"Hueso, Ben",D,SD40,Senate,Y,hueso|ben,2015,False,2014-12-01,2016-02-19
+Fuller,"Fuller, Jean",R,SD16,Senate,Y,fuller|jean,2015,False,2015-01-09,2016-02-19
+Dababneh,"Dababneh, Matt",D,AD45,Assembly,Y,dababneh|matthew,2015,False,2015-01-15,2016-02-19
+Morrell,"Morrell, Mike",R,SD23,Senate,Y,morrell|mike,2015,False,2015-02-10,2016-02-19
+Mendoza,"Mendoza, Tony",D,SD32,Senate,Y,mendoza|tony,2015,False,2014-12-12,2016-02-19
+Gonzalez,"Gonzalez, Lorena",D,AD80,Assembly,Y,gonzalez|lorena,2015,False,2014-12-01,2016-02-19
+Berryhill,"Berryhill, Tom",R,SD08,Senate,Y,berryhill|tom,2015,False,2015-01-22,2016-02-19
+Wieckowski,"Wieckowski, Bob",D,SD10,Senate,Y,wieckowski|bob,2015,False,2014-12-01,2016-02-19
+Vidak,"Vidak, Andy",R,SD14,Senate,Y,vidak|andy,2015,False,2014-12-01,2016-02-18
+Anderson,"Anderson, Joel",R,SD38,Senate,Y,anderson|joel,2015,False,2014-12-01,2016-02-18
+Bates,"Bates, Patricia C.",R,SD36,Senate,Y,bates|patricia,2015,False,2015-02-17,2016-02-19
+Block,"Block, Marty",D,SD39,Senate,Y,block|marty,2015,False,2014-12-01,2016-02-19
+Leno,"Leno, Mark",D,SD11,Senate,Y,leno|mark,2015,False,2014-12-01,2016-02-19
+Cannella,"Cannella, Anthony",R,SD12,Senate,Y,cannella|anthony,2015,False,2014-12-01,2016-02-19
+Leyva,"Leyva, Connie M.",D,SD20,Senate,Y,leyva|connie,2015,False,2014-12-01,2016-02-19
+Liu,"Liu, Carol",D,SD25,Senate,Y,liu|carol,2015,False,2014-12-01,2016-02-19
+Mitchell,"Mitchell, Holly J.",D,SD30,Senate,Y,mitchell|holly,2015,False,2014-12-01,2016-02-19
+Nguyen,"Nguyen, Janet",R,SD34,Senate,Y,nguyen|janet,2015,False,2015-01-29,2016-02-19
+Hill,"Hill, Jerry",D,SD13,Senate,Y,hill|jerry,2015,False,2014-12-01,2016-02-18
+Ridley-Thomas,"Ridley-Thomas, Sebastian",D,AD54,Assembly,Y,ridley-thomas|sebastian,2015,False,2015-02-02,2016-02-19
+Nielsen,"Nielsen, Jim",R,SD04,Senate,Y,nielsen|jim,2015,False,2015-02-03,2016-02-19
+Rodriguez,"Rodriguez, Freddie",D,AD52,Assembly,Y,rodriguez|freddie,2015,False,2014-12-01,2016-02-19
+Allen,"Allen, Benjamin",D,SD26,Senate,Y,allen|benjamin,2015,False,2015-02-18,2016-02-19
+Dodd,"Dodd, Bill",D,AD04,Assembly,Y,dodd|bill,2015,False,2014-12-01,2016-02-29
+Wood,"Wood, Jim",D,AD02,Assembly,Y,wood|jim,2015,False,2014-12-01,2016-02-19
+Eggman,"Eggman, Susan Talamantes",D,AD13,Assembly,Y,eggman|susan,2015,False,2014-12-01,2016-02-19
+Baker,"Baker, Catharine B.",R,AD16,Assembly,Y,baker|catharine,2015,False,2015-02-23,2016-02-19
+Mathis,"Mathis, Devon J.",R,AD26,Assembly,Y,mathis|devon,2015,False,2015-01-05,2016-02-19
+Campos,"Campos, Nora",D,AD27,Assembly,Y,campos|nora,2015,False,2014-12-01,2016-02-19
+Grove,"Grove, Shannon",R,AD34,Assembly,Y,grove|shannon,2015,False,2015-01-29,2016-02-19
+Holden,"Holden, Chris R.",D,AD41,Assembly,Y,holden|chris,2015,False,2014-12-01,2016-02-19
+Mayes,"Mayes, Chad",R,AD42,Assembly,Y,mayes|chad,2015,False,2015-02-24,2016-02-19
+Gomez,"Gomez, Jimmy",D,AD51,Assembly,Y,gomez|jimmy,2015,False,2015-01-07,2016-02-19
+Medina,"Medina, Jose",D,AD61,Assembly,Y,medina|jose,2015,False,2014-12-01,2016-02-19
+Kim,"Kim, Young O.",R,AD65,Assembly,Y,kim|young,2015,False,2014-12-01,2016-02-17
+Chávez,"Chávez, Rocky J.",R,AD76,Assembly,Y,chavez|rocky,2015,False,2014-12-01,2016-02-19
+Maienschein,"Maienschein, Brian",R,AD77,Assembly,Y,maienschein|brian,2015,False,2014-12-18,2016-02-19
+Bonta,"Bonta, Rob",D,AD18,Assembly,Y,bonta|rob,2015,False,2014-12-01,2016-02-19
+Obernolte,"Obernolte, Jay",R,AD33,Assembly,Y,obernolte|jay,2015,False,2015-01-29,2016-02-19
+Jones-Sawyer,"Jones-Sawyer, Sr. Reginald B.",D,AD59,Assembly,Y,jones-sawyer|reginald,2015,False,2014-12-01,2016-02-19
+Wagner,"Wagner, Donald P.",R,AD68,Assembly,Y,wagner|donald,2015,False,2015-02-19,2016-02-19
+Lopez,"Lopez, Patty",D,AD39,Assembly,Y,lopez|patty,2015,False,2015-02-04,2016-02-19
+Walters,"Walters, Mimi",R,SD37,Senate,Y,walters|mimi,2015,True,2014-12-19,2014-12-19
+Bigelow,"Bigelow, Franklin E.",R,AD05,Assembly,Y,bigelow|franklin,2015,False,2015-01-12,2016-02-19
+Beall,"Beall, Jim",D,SD15,Senate,Y,beall|jim,2015,False,2014-12-01,2016-02-19
+McGuire,"McGuire, Mike",D,SD02,Senate,Y,mcguire|mike,2015,False,2015-01-07,2016-02-19
+Wolk,"Wolk, Lois",D,SD03,Senate,Y,wolk|lois,2015,False,2014-12-01,2016-02-19
+Galgiani,"Galgiani, Cathleen",D,SD05,Senate,Y,galgiani|cathleen,2015,False,2014-12-01,2016-02-19
+Pan,"Pan, Richard",D,SD06,Senate,Y,pan|richard,2015,False,2015-01-27,2016-02-19
+Hancock,"Hancock, Loni",D,SD09,Senate,Y,hancock|loni,2015,False,2015-02-09,2016-02-19
+Hertzberg,"Hertzberg, Robert M.",D,SD18,Senate,Y,hertzberg|robert,2015,False,2014-12-01,2016-02-19
+Jackson,"Jackson, Hannah-Beth",D,SD19,Senate,Y,jackson|hannah-beth,2015,False,2015-01-15,2016-02-19
+Knight,"Knight, Steve",R,SD21,Senate,Y,knight|steve,2015,True,2014-12-19,2014-12-19
+De León,"De León, Kevin",D,SD24,Senate,Y,de|kevin,2015,False,2014-12-01,2016-02-19
+Hernandez,"Hernandez, Ed",D,SD22,Senate,Y,hernandez|ed,2015,False,2014-12-01,2016-02-19
+Pavley,"Pavley, Fran",D,SD27,Senate,Y,pavley|fran,2015,False,2014-12-01,2016-02-19
+Huff,"Huff, Bob",R,SD29,Senate,Y,huff|bob,2015,False,2014-12-19,2016-02-19
+Roth,"Roth, Richard",D,SD31,Senate,Y,roth|richard,2015,False,2014-12-01,2016-02-17
+Lara,"Lara, Ricardo",D,SD33,Senate,Y,lara|ricardo,2015,False,2014-12-01,2016-02-19
+Gallagher,"Gallagher, James",R,AD03,Assembly,Y,gallagher|james,2015,False,2015-02-05,2016-02-19
+Beth Gaines,"Gaines, Beth B.",R,AD06,Assembly,Y,gaines|beth,2015,False,2015-01-22,2016-02-19
+Atkins,"Atkins, Toni",D,AD78,Assembly,Y,atkins|toni,2015,False,2014-12-01,2016-02-19
+Brough,"Brough, William P.",R,AD73,Assembly,Y,brough|william,2015,False,2015-01-29,2016-02-19
+Cristina Garcia,"Garcia, Cristina",D,AD58,Assembly,Y,garcia|cristina,2015,False,2014-12-01,2016-02-19
+O'Donnell,"O'Donnell, Patrick",D,AD70,Assembly,Y,o'donnell|patrick,2015,False,2015-01-20,2016-02-19
+Frazier,"Frazier, Jim",D,AD11,Assembly,Y,frazier|jim,2015,False,2015-01-28,2016-02-19
+Calderon,"Calderon, Ian C.",D,AD57,Assembly,Y,calderon|ian,2015,False,2015-01-05,2016-02-19
+Chau,"Chau, Ed",D,AD49,Assembly,Y,chau|ed,2015,False,2014-12-01,2016-02-19
+Gordon,"Gordon, Richard S.",D,AD24,Assembly,Y,gordon|richard,2015,False,2015-02-04,2016-02-19
+Daly,"Daly, Tom",D,AD69,Assembly,Y,daly|tom,2015,False,2015-02-02,2016-02-19
+Patterson,"Patterson, Jim",R,AD23,Assembly,Y,patterson|jim,2015,False,2014-12-01,2016-02-19
+Rendon,"Rendon, Anthony",D,AD63,Assembly,Y,rendon|anthony,2015,False,2015-01-26,2015-02-27
+Moorlach,"Moorlach, John M. W.",R,SD37,Senate,Y,moorlach|john,2015,True,2016-02-18,2016-02-19
 Carrillo,"Carrillo, Wendy",D,AD51,Assembly,Y,carrillo|wendy,2017,True,2018-01-04,2018-02-16
 Gonzalez Fletcher,"Gonzalez, Lorena",D,AD80,Assembly,Y,gonzalez|lorena,2017,False,2016-12-05,2018-02-16
 Delgado,"Delgado, Vanessa",D,SD32,Senate,Y,delgado|vanessa,2017,True,2017-02-17,2018-02-06

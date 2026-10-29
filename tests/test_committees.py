@@ -24,7 +24,9 @@ def chk():
 
 
 def test_every_committee_year_has_one_regular_chair_at_a_time(mem):
-    reg = mem[mem.status == "regular member"]
+    # The 2007-08 export has no roll order (MEMBER_ORDER is empty), so chairs cannot be read
+    # from roll calls for those two years; every later year must have one.
+    reg = mem[(mem.status == "regular member") & (mem.year >= 2009)]
     for (code, year), g in reg.groupby(["committee_code", "year"]):
         assert (g.role == "Chair").sum() >= 1, (code, year)
 

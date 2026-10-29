@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-FIRST = 2017   # first session covered (2017-18)
+FIRST = 2007   # first session covered (2007-08). Earlier archives lack committee locations (1999-2005) or bill histories (1989-97)
 
 
 def label(year: int) -> str:

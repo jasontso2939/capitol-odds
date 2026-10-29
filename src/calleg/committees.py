@@ -104,7 +104,7 @@ def hearing_rosters(votes: pd.DataFrame) -> pd.DataFrame:
 
     A member's position is the order most often printed that day (chair 1, vice chair 2)."""
     g = (votes.groupby(["committee_code", "committee", "name_then", "house", "vote_date", "member"])
-         .roll_order.agg(lambda s: s.mode().iloc[0]).reset_index())
+         .roll_order.agg(lambda s: s.mode().iloc[0] if s.notna().any() else pd.NA).reset_index())
     g["role"] = g.roll_order.map({1: "Chair", 2: "Vice Chair"}).fillna("Member")
     return g
 
