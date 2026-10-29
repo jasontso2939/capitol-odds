@@ -6,48 +6,17 @@
 <link rel="icon" href="data:,">
 <title>Legislator Records · Capitol Odds</title>
 <meta name="description" content="Every California legislator since the 2007-08 session: bills by session with chamber ranks, committee seats and committee votes, from official bulk data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<link rel="stylesheet" href="common.css">
 <style>
-:root{--bg:#f6f7fa;--panel:#fff;--ink:#1b2333;--muted:#5d6678;--line:#dde1ea;--navy:#14213d;--gold:#f2a900;--d:#3a6ea5;--r:#b5483b;--hi:#fff4d6}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1521;--panel:#171f2f;--ink:#e8ecf4;--muted:#9aa4b8;--line:#2a3550;--navy:#e8ecf4;--hi:#3a3115;--d:#6f9fd4;--r:#d97a6c}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-header{background:#14213d;color:#fff;padding:26px 16px 20px}
-.wrap{max-width:1100px;margin:0 auto;padding:0 16px}header .wrap{padding:0}
-h1{margin:0 0 6px;font:700 28px/1.2 Georgia,Cambria,serif}
-header p{margin:0;color:#c9d2e6;max-width:72ch}
-main{padding:18px 0 60px}
-nav{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap}
-nav a{color:#c9d2e6;text-decoration:none;font-size:14px;padding:4px 10px;border:1px solid #33456b;border-radius:999px}
-nav a[aria-current=page]{background:#fff;color:#14213d;font-weight:600;border-color:#fff}
-footer{color:var(--muted);font-size:13px;margin-top:16px}
-a{color:var(--d)}
-.D{color:var(--d);font-weight:700}.R{color:var(--r);font-weight:700}
-.o-signed{color:#2f7d4f;font-weight:600}.o-vetoed{color:var(--r);font-weight:600}.o-not_enacted{color:var(--muted)}
-.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
-.ctl label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
-input[type=search]{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:500 14px system-ui,sans-serif;min-width:240px}
-section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
-section h2{margin:0 0 6px;font:700 19px/1.3 Georgia,Cambria,serif}
-.lede{color:var(--muted);margin:0 0 12px;font-size:14px;max-width:80ch}
-.stats{display:flex;flex-wrap:wrap;gap:10px}
-.stat{background:var(--bg);border-radius:10px;padding:10px 14px;min-width:120px}
-.stat b{display:block;font:700 24px/1.1 Georgia,Cambria,serif}.stat span{font-size:13px;color:var(--muted)}
 .scroll{overflow:auto}
-table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);white-space:nowrap}
+th,td{text-align:left;vertical-align:top}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
 tbody tr.link{cursor:pointer}tbody tr.link:hover{background:var(--hi)}
-.tag{font-size:11px;background:var(--hi);border:1px solid #e6c766;border-radius:999px;padding:1px 7px;margin-left:6px;white-space:nowrap}
-.muted{color:var(--muted)}.small{font-size:13px}
-.mini{display:inline-block;height:10px;background:#8a96ad;border-radius:3px;vertical-align:middle;margin-right:6px}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.seg button{background:var(--panel);color:var(--ink);border:0;padding:7px 12px;font:500 14px system-ui,sans-serif;cursor:pointer;border-right:1px solid var(--line)}
-.seg button:last-child{border-right:0}
-.seg button[aria-pressed=true]{background:var(--navy);color:var(--panel);font-weight:600}
-[hidden]{display:none!important}
+.mini{display:inline-block;height:10px;background:#5C7399;border-radius:3px;vertical-align:middle;margin-right:6px}
 </style>
-<link rel="stylesheet" href="common.css">
 </head>
 <body>
 <header><div class="wrap">
@@ -105,9 +74,9 @@ function profile(P) {
   const tot = rec.reduce((t, r) => ({i: t.i + r.introduced, s: t.s + r.signed, v: t.v + r.vetoed}), {i: 0, s: 0, v: 0});
   const seats = [...new Set(rec.map(r => `${r.chamber} ${r.district}`))];
   $("sub").innerHTML = `<span class="${P.party}" style="color:inherit">${P.party === "D" ? "Democrat" : P.party === "R" ? "Republican" : P.party}</span> · ${esc(seats.join(", then "))}` +
-    (P.names.length > 1 ? ` · listed as ${P.names.map(esc).join(", then ")}` : "") + ` · <a href="legislator.html" style="color:#c9d2e6">All legislators</a>`;
+    (P.names.length > 1 ? ` · listed as ${P.names.map(esc).join(", then ")}` : "") + ` · <a href="legislator.html">All legislators</a>`;
   const yesT = P.committees.reduce((t, c) => t + c[K.yes], 0), noT = P.committees.reduce((t, c) => t + c[K.no], 0);
-  const outlook = P.current ? `<a class="btn" href="index.html?a=${encodeURIComponent(P.member)}">Bill outlook for ${esc(P.member)}</a>` : "";
+  const outlook = P.current ? `<a class="btn" href="index.html?v=draft&a=${encodeURIComponent(P.member)}">Estimate a bill by ${esc(P.member)}</a>` : "";
   const maxRate = Math.max(...rec.map(r => r.rate), 1);
   let h = `<div class="tools">${outlook}<button class="btn" id="share">Copy link</button></div>
    <section><h2>At a glance</h2><div class="stats">
@@ -131,7 +100,7 @@ function profile(P) {
         <td>${esc(c[K.role])}</td><td class="n">${c[K.yes]}</td><td class="n">${c[K.no]}</td><td class="n hide-sm">${c[K.absent]}</td><td class="n">${CL.pct(c[K.yes], c[K.yes] + c[K.no])}</td></tr>`).join("")).join("") +
     `</tbody></table></div>` : "<p>No committee roll calls list this member.</p>") + `</section>`;
   // Bills
-  h += `<section><h2>Bills as lead author</h2><div class="controls" style="padding:0;border:0;margin-bottom:10px">
+  h += `<section><h2>Bills as lead author</h2><div class="controls">
     <div class="ctl"><label for="bs">Session</label><select id="bs"><option value="all">All sessions</option>${[...new Set(P.bills.map(b => b[I.session]))].sort().reverse().map(s => `<option value="${s}">${label(s)}</option>`).join("")}</select></div>
     <div class="ctl"><label for="bo">Outcome</label><select id="bo"><option value="all">All</option><option value="signed">Signed</option><option value="vetoed">Vetoed</option><option value="not_enacted">Did not pass</option></select></div>
     <div class="ctl"><button class="btn" id="dlb">Download CSV</button></div></div><div id="bills"></div></section>`;

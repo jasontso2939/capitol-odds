@@ -52,22 +52,39 @@ const CL = (() => {
 
   // "Copy link" button: copies the current URL, which carries the page state.
   function shareButton(el) {
+    const label = el.textContent;
     el.addEventListener("click", async () => {
       try { await navigator.clipboard.writeText(location.href); el.textContent = "Link copied"; }
       catch (e) { prompt("Copy this link", location.href); }
-      setTimeout(() => { el.textContent = "Copy link"; }, 1800);
+      setTimeout(() => { el.textContent = label; }, 1800);
     });
   }
 
-  const PAGES = [["index.html", "Bill odds"], ["scorecard.html", "Scorecard"], ["legislator.html", "Legislators"],
-                 ["trends.html", "Trends"], ["committees.html", "Committees"], ["findings.html", "Findings"]];
+  // Top bar on every page. current: a file name, or "track" / "draft" for the two home views.
+  const PAGES = [["track", "index.html", "Track"], ["draft", "index.html?v=draft", "Draft"], ["scorecard.html", "scorecard.html", "Scorecard"],
+                 ["legislator.html", "legislator.html", "Legislators"], ["trends.html", "trends.html", "Trends"],
+                 ["committees.html", "committees.html", "Committees"], ["findings.html", "findings.html", "Findings"]];
+  const MARK = '<svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="6" fill="#172A47"></rect><path d="M6 18.5l4.5-5 3.5 3 6-8" fill="none" stroke="#F2C14E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
   function nav(current) {
-    const n = document.querySelector("header nav");
-    if (n) n.innerHTML = '<a class="brand" href="index.html" style="font-weight:700;letter-spacing:.02em;border-color:#f2a900;color:#f2a900">Capitol Odds</a>' + PAGES.map(([h, l]) => `<a href="${h}"${h === current ? ' aria-current="page"' : ""}>${l}</a>`).join("");
+    if (current === "index.html") current = "track";
+    const old = document.querySelector("header nav");
+    if (old) old.remove();
+    let bar = document.querySelector(".topbar");
+    if (!bar) {
+      bar = document.createElement("div");
+      bar.className = "topbar";
+      document.body.prepend(bar);
+    }
+    bar.innerHTML = `<div class="topbar-in"><a class="brand" href="index.html">${MARK}<span>CAPITOL ODDS</span></a>` +
+      `<nav class="topnav" aria-label="Main">${PAGES.map(([k, h, l]) => `<a href="${h}" data-k="${k}"${k === current ? ' aria-current="page"' : ""}>${l}</a>`).join("")}</nav></div>`;
+  }
+  function navCurrent(k) {
+    document.querySelectorAll(".topnav a").forEach(a => a.toggleAttribute("aria-current", a.dataset.k === k));
+    document.querySelectorAll(".topnav a[aria-current]").forEach(a => a.setAttribute("aria-current", "page"));
   }
 
   const pct = (a, b, d = 0) => b ? (100 * a / b).toFixed(d) + "%" : "–";
   const leginfo = (session, billId) =>
     `https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=${session}${+session + 1}0${billId}`;
-  return {esc, label, readState, writeState, csv, load, shareButton, nav, pct, leginfo};
+  return {esc, label, readState, writeState, csv, load, shareButton, nav, navCurrent, pct, leginfo};
 })();

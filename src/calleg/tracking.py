@@ -136,3 +136,58 @@ def fit_score(d: pd.DataFrame, score: pd.DataFrame, flags: pd.DataFrame, dbl: pd
         p = _fit(with_checkpoint(Xa, d, cp), d.signed, w).predict_proba(with_checkpoint(Xs, score, cp))[:, 1]
         out[f"p{k}"] = np.where(age >= k, p.round(3), np.nan)
     return out
+
+
+# Milestones shown on the tracking chart: what happened to a bill and when. Codes:
+# pc passed policy committee, ap out of Appropriations, su suspense file, hd held in committee,
+# pa passed the Assembly, ps passed the Senate, cc amendments concurred in, fl failed passage,
+# gv sent to the Governor, sg signed, vt vetoed, in moved to the inactive file, cn hearing canceled
+# at the author's request, dd died.
+EVENT_PATTERNS = [
+    ("sg", r"^Approved by the Governor|^Approved by Governor"),
+    ("vt", r"^Vetoed by (?:the )?Governor"),
+    ("gv", r"^Enrolled and presented to the Governor"),
+    ("cc", r"amendments concurred in"),
+    ("fl", r"failed passage|^Failed"),
+    ("su", r"suspense file"),
+    ("hd", r"Held in committee|held under submission"),
+    ("in", r"inactive file"),
+    ("cn", r"canceled at the request of author"),
+    ("dd", r"^Died|Filed with the Chief Clerk pursuant to Joint Rule 56|Returned to Secretary of Senate pursuant to Joint Rule 56"),
+]
+VOTE = r"\(Ayes (\d+)\. Noes (\d+)\."
+
+
+def bill_events(h: pd.DataFrame) -> dict:
+    """{BILL_ID: [[date, code, ayes, noes], ...]} from history rows (BILL_ID, d, a) in action order."""
+    import re
+    pats = [(c, re.compile(p, re.I)) for c, p in EVENT_PATTERNS]
+    vote = re.compile(VOTE)
+    out: dict = {}
+    for bid, g in h.groupby("BILL_ID", sort=False):
+        ev, where = [], "policy"
+        for d, a in zip(g.d, g.a):
+            v = vote.search(a)
+            ay, no = (int(v.group(1)), int(v.group(2))) if v else (None, None)
+            code = None
+            if a.startswith("From committee") and re.search(r"Do pass|Be ordered to second reading|Be adopted", a, re.I):
+                code = "ap" if where == "appr" else "pc"
+            elif re.search(r"Passed\.?.*Ordered to the (Senate|Assembly)", a) or re.search(r"^Read third time\.? Passed.*To (?:the )?(Senate|Assembly)", a):
+                code = "pa" if re.search(r"Ordered to the Senate|To (?:the )?Senate", a) else "ps"
+            else:
+                for c, p in pats:
+                    if p.search(a):
+                        code = c
+                        break
+            if re.search(r"(?:Re-)?[Rr]eferred to Coms?\. on|To Coms?\. on", a):
+                where = "appr" if re.search(r"Com\. on APPR", a) and not re.search(r"re-refer to Com\. on APPR", a) else where
+                if re.search(r"(?:Re-)?[Rr]eferred to Coms?\. on (?!APPR)", a) and "APPR" not in a.split("on", 1)[-1][:6]:
+                    where = "policy"
+            if re.search(r"(?:Re-)?[Rr]eferred to Com\. on APPR|re-refer to Com\. on APPR", a):
+                where = "appr"
+            once = code in ("dd", "gv", "sg", "vt")
+            if code and not (ev and ev[-1][1] == code and (once or ev[-1][0] == d)):
+                ev.append([d, code, ay, no])
+        if ev:
+            out[bid] = ev
+    return out
