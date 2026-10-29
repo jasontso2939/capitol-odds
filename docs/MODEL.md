@@ -100,7 +100,7 @@ Once a bill is in print its history says a lot: whether the author set it for a 
 
 | Days after introduction | 0 | 30 | 60 | 90 | 120 | 180 | 270 | 365 |
 |---|---|---|---|---|---|---|---|---|
-| AUC | 0.68 | 0.68 | 0.70 | 0.80 | 0.85 | 0.88 | 0.94 | 0.94 |
+| AUC | 0.70 | 0.70 | 0.72 | 0.81 | 0.86 | 0.89 | 0.94 | 0.95 |
 
 The same pattern holds when testing on each session from 2013-14 on (day 90: 0.79 to 0.83). The jump between day 60 and day 90 is the first round of policy committee hearings. On the site, the "Track a filed bill" view shows each bill's odds at every checkpoint. For a finished session the odds come from models trained only on earlier sessions, so they show what the model would have said at the time.
 
