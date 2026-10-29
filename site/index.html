@@ -169,6 +169,26 @@ legend{font-weight:600;font-size:15px;padding:0;margin-bottom:8px}
 .evidence details>div p{margin:0 0 10px}
 .evidence table{font-size:14px}
 
+/* Pickers: the sentence's choices open a menu; long lists can be searched */
+.pk{position:relative;display:inline}
+.pkb{font:600 1em/1.2 var(--font);color:var(--ink);background:transparent;border:0;border-bottom:2px solid var(--gold);padding:0 4px 2px;cursor:pointer;letter-spacing:-.01em;display:inline-flex;align-items:baseline;gap:8px;max-width:100%;text-align:left}
+.pkb:hover{color:var(--gold)}
+.pkb:focus-visible{box-shadow:none;outline:3px solid var(--gold);outline-offset:4px;border-radius:2px}
+.pkb svg{flex:none;align-self:center;opacity:.7}
+.pkb .pm{font-weight:400;color:var(--muted);font-size:.6em}
+.pop{position:fixed;z-index:50;width:min(380px,calc(100vw - 32px));background:var(--raised);border:1px solid var(--line-strong);border-radius:var(--r-md);box-shadow:0 18px 50px rgba(3,8,18,.55);font-size:15px;line-height:1.35;overflow:hidden;letter-spacing:0;font-weight:400}
+.pop .pq{display:flex;align-items:center;gap:10px;padding:0 14px;border-bottom:1px solid var(--line-strong)}
+.pop .pq input{flex:1;min-width:0;border:0;background:transparent;font:500 15px var(--font);padding:14px 0;min-height:48px;color:var(--ink)}
+.pop .pq input:focus-visible{box-shadow:none}
+.pop ul{list-style:none;margin:0;padding:6px;max-height:min(360px,55vh);overflow:auto}
+.pop li.g{padding:12px 10px 6px;font-size:13px;color:var(--subtle);cursor:default}
+.pop li.o{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 10px;min-height:44px;border-radius:6px;cursor:pointer;color:var(--ink)}
+.pop li.o .d{font-size:13px;color:var(--muted);white-space:nowrap}
+.pop li.o[aria-selected=true]{color:var(--gold);font-weight:600}
+.pop li.o.act{background:var(--line-strong)}
+.pop .none{padding:16px 12px;color:var(--muted)}
+@media (max-width:640px){.pop{left:16px!important;right:16px;width:auto;top:auto!important;bottom:16px;max-height:70vh}.pop ul{max-height:50vh}}
+
 @media (max-width:960px){
   .featured,.dgrid,.moves,.acc{grid-template-columns:minmax(0,1fr)}
   .res{position:static}
@@ -463,6 +483,7 @@ function band(p) {
   return p < .25 ? "Long odds" : p < .38 ? "Below average" : p < .52 ? "About average" : p < .62 ? "Above average" : "Strong";
 }
 function render() {
+  syncPickers();
   const s = state(), sp = steps(s), p = sp.reduce((a, b) => a * b, 1), [lo, hi] = range(s);
   $("p").textContent = pc(p); $("band").textContent = band(p); $("gfill").style.width = (100 * p) + "%";
   $("range").textContent = Math.round(100 * lo) === Math.round(100 * hi) ? pc(lo) : `${Math.round(100 * lo)}–${pc(hi)}`;
@@ -559,6 +580,104 @@ document.querySelectorAll("#draft select, #draft input, #draft textarea").forEac
 $("reset").addEventListener("click", () => { applyState(DEF); similar(); render(); });
 $("estimate").addEventListener("click", () => { render(); $("result").focus(); $("result").scrollIntoView({block: "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); });
 CL.shareButton($("share"));
+
+
+// ---------- Pickers ----------
+// Each <select> in the sentence stays as the source of truth (the model code reads it) and is
+// hidden; a button shows its value and opens a menu. Author and committee lists can be searched.
+const PICK = {
+  author: {search: "Search 120 legislators", groups: o => o.value ? (o.textContent.includes("Senate") ? "Senate" : "Assembly") : "",
+           main: o => o.value ? o.value : "A new member", desc: o => { if (!o.value) return "Choose party and house"; const m = o.textContent.match(/\((D|R), (\w+)\)/); return m ? (m[1] === "D" ? "Democrat" : "Republican") : ""; }},
+  party: {}, origin: {}, window: {},
+  area: {search: "Search committees"}
+};
+let openPick = null;
+function closePick(focusBack) {
+  if (!openPick) return;
+  const {pop, btn} = openPick; pop.remove(); btn.setAttribute("aria-expanded", "false"); openPick = null;
+  if (focusBack) btn.focus();
+}
+function syncPickers() {
+  for (const id in PICK) { const sel = $(id), b = sel && sel.nextElementSibling; if (!b || !b.classList.contains("pkb")) continue;
+    const o = sel.options[sel.selectedIndex]; const cfg = PICK[id];
+    b.querySelector(".pv").textContent = o ? (cfg.main ? cfg.main(o) : o.textContent) : ""; }
+}
+function openPicker(id) {
+  const sel = $(id), btn = sel.nextElementSibling, cfg = PICK[id];
+  if (openPick && openPick.id === id) { closePick(true); return; }
+  closePick(false);
+  const pop = document.createElement("div"); pop.className = "pop"; pop.id = "pop-" + id;
+  const lid = "pl-" + id;
+  pop.innerHTML = (cfg.search ? `<div class="pq"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6.5" fill="none" stroke="#A9B6C9" stroke-width="2"></circle><path d="M14 14l4 4" stroke="#A9B6C9" stroke-width="2" stroke-linecap="round"></path></svg><input type="text" role="combobox" aria-expanded="true" aria-controls="${lid}" aria-autocomplete="list" aria-label="${esc(cfg.search)}" placeholder="${esc(cfg.search)}…" autocomplete="off"></div>` : "") +
+    `<ul role="listbox" id="${lid}" tabindex="-1" aria-label="${esc(btn.getAttribute("aria-label"))}"></ul>`;
+  document.body.appendChild(pop);
+  const ul = pop.querySelector("ul"), q = pop.querySelector("input");
+  let items = [], act = 0;
+  function draw() {
+    const t = q ? q.value.trim().toLowerCase() : "";
+    const opts = [...sel.options].map((o, i) => ({o, i})).filter(({o}) => !t || o.textContent.toLowerCase().includes(t) || (cfg.main && cfg.main(o).toLowerCase().includes(t)));
+    if (cfg.groups) { const ord = g => g === "" ? 0 : g === "Assembly" ? 1 : 2; opts.sort((x, y) => ord(cfg.groups(x.o)) - ord(cfg.groups(y.o)) || x.i - y.i); }
+    items = opts; let h = "", g0 = null;
+    opts.forEach(({o, i}, k) => {
+      const g = cfg.groups ? cfg.groups(o) : "";
+      if (g && g !== g0) { h += `<li class="g" role="presentation">${esc(g)}</li>`; g0 = g; }
+      h += `<li class="o" role="option" id="${lid}-${k}" data-k="${k}" aria-selected="${i === sel.selectedIndex}"><span>${esc(cfg.main ? cfg.main(o) : o.textContent)}</span>${cfg.desc ? `<span class="d">${esc(cfg.desc(o))}</span>` : ""}</li>`;
+    });
+    ul.innerHTML = h || `<li class="none" role="presentation">No matches for “${esc(q.value.trim())}”</li>`;
+    if (!t) act = Math.max(0, opts.findIndex(x => x.i === sel.selectedIndex));
+    else act = 0;
+    mark();
+  }
+  function mark() {
+    ul.querySelectorAll("li.o").forEach(li => li.classList.toggle("act", +li.dataset.k === act));
+    const a = ul.querySelector(`li.o[data-k="${act}"]`);
+    if (a) { a.scrollIntoView({block: "nearest"}); (q || ul).setAttribute("aria-activedescendant", a.id); }
+  }
+  function choose(k) {
+    const it = items[k]; if (!it) return;
+    sel.selectedIndex = it.i; sel.dispatchEvent(new Event("input", {bubbles: true}));
+    closePick(true); syncPickers();
+  }
+  function key(e) {
+    if (e.key === "ArrowDown") { e.preventDefault(); act = Math.min(items.length - 1, act + 1); mark(); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); act = Math.max(0, act - 1); mark(); }
+    else if (e.key === "Home" && !q) { e.preventDefault(); act = 0; mark(); }
+    else if (e.key === "End" && !q) { e.preventDefault(); act = items.length - 1; mark(); }
+    else if (e.key === "Enter") { e.preventDefault(); choose(act); }
+    else if (e.key === "Escape") { e.preventDefault(); closePick(true); }
+    else if (e.key === "Tab") { closePick(false); }
+  }
+  ul.addEventListener("click", e => { const li = e.target.closest("li.o"); if (li) choose(+li.dataset.k); });
+  ul.addEventListener("mousemove", e => { const li = e.target.closest("li.o"); if (li && +li.dataset.k !== act) { act = +li.dataset.k; mark(); } });
+  (q || ul).addEventListener("keydown", key);
+  if (q) q.addEventListener("input", draw);
+  // Place under the button, flipping above when there is no room
+  const r = btn.getBoundingClientRect(), w = Math.min(380, innerWidth - 32);
+  pop.style.left = Math.max(16, Math.min(r.left, innerWidth - w - 16)) + "px";
+  draw();
+  const ph = pop.offsetHeight;
+  pop.style.top = (r.bottom + 8 + ph > innerHeight && r.top - 8 - ph > 0 ? r.top - 8 - ph : r.bottom + 8) + "px";
+  btn.setAttribute("aria-expanded", "true");
+  openPick = {id, pop, btn};
+  (q || ul).focus();
+}
+for (const id in PICK) {
+  const sel = $(id); if (!sel) continue;
+  const lab = document.querySelector(`label[for="${id}"]`);
+  const btn = document.createElement("button");
+  btn.type = "button"; btn.className = "pkb"; btn.id = "pk-" + id;
+  btn.setAttribute("aria-haspopup", "listbox"); btn.setAttribute("aria-expanded", "false");
+  btn.setAttribute("aria-label", lab ? lab.textContent : id);
+  btn.innerHTML = '<span class="pv"></span><svg width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+  sel.after(btn);
+  sel.classList.add("sr"); sel.tabIndex = -1; sel.setAttribute("aria-hidden", "true");
+  if (lab) lab.htmlFor = btn.id;
+  btn.addEventListener("click", () => openPicker(id));
+  btn.addEventListener("keydown", e => { if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); openPicker(id); } });
+}
+document.addEventListener("pointerdown", e => { if (openPick && !openPick.pop.contains(e.target) && !openPick.btn.contains(e.target)) closePick(false); });
+addEventListener("resize", () => closePick(false));
+addEventListener("scroll", () => { if (openPick && innerWidth > 640) closePick(false); }, {passive: true});
 
 // ---------- Track a bill ----------
 // Odds at each checkpoint come precomputed (data/tracking.js); what happened to each bill
