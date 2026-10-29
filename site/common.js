@@ -64,7 +64,7 @@ const CL = (() => {
   const PAGES = [["track", "index.html", "Track"], ["draft", "index.html?v=draft", "Draft"], ["scorecard.html", "scorecard.html", "Scorecard"],
                  ["legislator.html", "legislator.html", "Legislators"], ["trends.html", "trends.html", "Trends"],
                  ["committees.html", "committees.html", "Committees"], ["findings.html", "findings.html", "Findings"]];
-  const MARK = '<svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="6" fill="#172A47"></rect><path d="M6 18.5l4.5-5 3.5 3 6-8" fill="none" stroke="#F2C14E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+  const MARK = '<svg width="30" height="26" viewBox="0 0 30 26" aria-hidden="true"><path d="M15 2v3M6 15a9 9 0 0 1 18 0" fill="none" stroke="#24573F" stroke-width="2.4" stroke-linecap="round"></path><path d="M3 15h24M5 15v8M10 15v8M15 15v8M20 15v8M25 15v8M2 24h26" fill="none" stroke="#18201C" stroke-width="2" stroke-linecap="round"></path></svg>';
   function nav(current) {
     if (current === "index.html") current = "track";
     const old = document.querySelector("header nav");
@@ -75,7 +75,7 @@ const CL = (() => {
       bar.className = "topbar";
       document.body.prepend(bar);
     }
-    bar.innerHTML = `<div class="topbar-in"><a class="brand" href="index.html">${MARK}<span>CAPITOL ODDS</span></a>` +
+    bar.innerHTML = `<div class="topbar-in"><a class="brand" href="index.html">${MARK}<span>Capitol Odds</span></a>` +
       `<nav class="topnav" aria-label="Main">${PAGES.map(([k, h, l]) => `<a href="${h}" data-k="${k}"${k === current ? ' aria-current="page"' : ""}>${l}</a>`).join("")}</nav></div>`;
   }
   function navCurrent(k) {

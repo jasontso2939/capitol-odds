@@ -1,26 +1,28 @@
 /* Capitol Odds design system. Every page loads this first; page styles only add layout.
-   Tokens: navy ground, one gold accent for odds, blue for rising and orange for falling
-   (always paired with an arrow), Archivo for type with expanded figures for odds. */
+   Colors come from the Capitol: Assembly green is the accent, Senate garnet marks risk and
+   falling odds, dome gold marks the typical bill and keyboard focus. Rising and falling odds
+   always carry an arrow too. Archivo for type, with expanded figures for odds. */
 :root{
-  --bg:#0F1D33;--panel:#172A47;--raised:#1C3252;--line:#22385A;--line-strong:#2E4A72;
-  --ink:#EEF2F8;--muted:#A9B6C9;--subtle:#8192AA;
-  --gold:#F2C14E;--gold-ink:#0F1D33;--up:#8CC4FF;--down:#F5A25D;
-  --d:#9DB8F0;--r:#F2A3A0;
-  --navy:#F2C14E;--hi:#1C3252;
+  --bg:#F4F6F3;--panel:#FFFFFF;--raised:#E9EEEA;--line:#DCE2DC;--line-strong:#B8C2B9;
+  --ink:#18201C;--muted:#55605A;--subtle:#646E68;
+  --accent:#24573F;--accent-hover:#173B2A;--accent-ink:#FFFFFF;--accent-soft:#E3EAE4;
+  --gold:#9A7424;--gold-text:#7A5B14;--up:#24573F;--down:#8A2A36;
+  --d:#2B5797;--r:#A3352F;
+  --navy:#24573F;--hi:#EEF2EE;
   --font:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --fs-xs:12px;--fs-sm:14px;--fs-md:16px;--fs-lg:20px;--fs-xl:28px;--fs-2xl:40px;
   --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:32px;--sp-7:48px;--sp-8:72px;
-  --r-sm:6px;--r-md:10px;--r-lg:16px;
-  --max:1240px;--focus:0 0 0 3px var(--bg),0 0 0 5px var(--gold);
-  color-scheme:dark;
+  --r-sm:6px;--r-md:10px;--r-lg:14px;
+  --max:1240px;--focus:0 0 0 2px var(--bg),0 0 0 5px var(--gold);
+  color-scheme:light;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--fs-md)/1.55 var(--font);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
-a{color:var(--gold);text-underline-offset:3px}
-a:hover{color:#FFD97A}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{color:var(--accent-hover)}
 :focus-visible{outline:none;box-shadow:var(--focus);border-radius:4px}
-::selection{background:#3A5379}
+::selection{background:#CFE0D4}
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -28,13 +30,13 @@ a:hover{color:#FFD97A}
 /* Top bar, built by CL.nav */
 .topbar{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:20}
 .topbar-in{max-width:var(--max);margin:0 auto;padding:12px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px}
-.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:800;font-size:17px;font-stretch:118%;letter-spacing:.06em;min-height:44px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.01em;min-height:44px}
 .brand:hover{color:var(--ink)}
 .brand svg{flex:none}
 .topnav{display:flex;flex-wrap:wrap;gap:2px;margin-left:auto}
 .topnav a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;padding:10px 12px;border-radius:var(--r-sm);min-height:44px;display:flex;align-items:center}
-.topnav a:hover{color:var(--ink);background:var(--panel)}
-.topnav a[aria-current=page]{color:var(--ink);font-weight:600;box-shadow:inset 0 -2px 0 var(--gold);border-radius:0}
+.topnav a:hover{color:var(--ink);background:var(--raised)}
+.topnav a[aria-current=page]{color:var(--accent-hover);font-weight:600;background:var(--accent-soft)}
 
 /* Page shell */
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
@@ -47,7 +49,7 @@ main{padding:24px 0 72px}
 footer{color:var(--subtle);font-size:13px;line-height:1.6;margin-top:56px;padding-top:20px;border-top:1px solid var(--line)}
 
 /* Surfaces */
-section,.panel,article,.card{background:var(--panel);border:0;border-radius:var(--r-lg);padding:24px;margin-bottom:16px}
+section,.panel,article,.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;margin-bottom:16px}
 .card{padding:0;overflow:auto}
 section h2,.panel h2,article h2{margin:0 0 6px;font:700 var(--fs-lg)/1.3 var(--font)}
 .lede,section .lede{color:var(--muted);margin:0 0 16px;font-size:15px;max-width:76ch}
@@ -58,26 +60,27 @@ section h2,.panel h2,article h2{margin:0 0 6px;font:700 var(--fs-lg)/1.3 var(--f
 .loading{color:var(--muted);font-size:var(--fs-sm)}
 
 /* Controls */
-.controls{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:flex-end;background:var(--panel);border:0;border-radius:var(--r-lg);padding:18px 20px;margin-bottom:16px}
+.controls{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:flex-end;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 20px;margin-bottom:16px}
 .ctl{min-width:0}
 .ctl label,label.h{display:block;font-size:var(--fs-sm);font-weight:500;color:var(--muted);text-transform:none;letter-spacing:0;margin-bottom:6px}
-select,input[type=search],input[type=number],input[type=text],textarea{background:var(--bg);color:var(--ink);border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:10px 12px;font:500 15px var(--font);min-height:44px;max-width:100%}
+select,input[type=search],input[type=number],input[type=text],textarea{background:var(--panel);color:var(--ink);border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:10px 12px;font:500 15px var(--font);min-height:44px;max-width:100%}
 textarea{width:100%;resize:vertical;line-height:1.55}
 select{padding-right:32px;appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 17px) 50%,calc(100% - 12px) 50%;background-size:5px 5px;background-repeat:no-repeat}
 input::placeholder,textarea::placeholder{color:var(--subtle)}
-input[type=checkbox]{width:18px;height:18px;accent-color:var(--gold);margin:0;flex:none}
+input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);margin:0;flex:none}
 .seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:var(--r-sm);overflow:hidden}
 .seg button{background:transparent;color:var(--muted);border:0;padding:10px 14px;min-height:42px;font:500 var(--fs-sm) var(--font);cursor:pointer;border-right:1px solid var(--line-strong)}
 .seg button:last-child{border-right:0}
 .seg button:hover{color:var(--ink)}
-.seg button[aria-pressed=true]{background:var(--gold);color:var(--gold-ink);font-weight:600}
+.seg button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);font-weight:600}
 
 /* Buttons */
 .tools{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:var(--r-sm);border:1px solid var(--line-strong);background:transparent;color:var(--ink);font:600 var(--fs-sm) var(--font);cursor:pointer;text-decoration:none}
+.btn{background:var(--panel)}
 .btn:hover{background:var(--raised);color:var(--ink)}
-.btn.primary{background:var(--gold);border-color:var(--gold);color:var(--gold-ink)}
-.btn.primary:hover{background:#FFD97A}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{background:var(--accent-hover);color:var(--accent-ink)}
 .btn.sm{min-height:32px;padding:0 10px;font-size:13px}
 
 /* Tables */
@@ -97,7 +100,7 @@ tbody tr:hover{background:var(--hi)}
 .stat b{display:block;font:700 28px/1.1 var(--font);font-stretch:112%;letter-spacing:-.01em}
 .stat span{font-size:13px;color:var(--muted)}
 dialog{max-width:900px;width:94vw;border:1px solid var(--line-strong);border-radius:var(--r-lg);background:var(--panel);color:var(--ink);padding:24px}
-dialog::backdrop{background:rgba(5,12,24,.7)}
+dialog::backdrop{background:rgba(24,32,28,.45)}
 
 @media (max-width:640px){
   body{font-size:15px}
