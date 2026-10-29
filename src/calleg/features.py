@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 
 from .pipeline import read_table, build
+from .digest import extract as digest_extract
 
 def committee_codes(raw: Path) -> pd.DataFrame:
     """Committee codes for one session with full names, from that session's LOCATION_CODE_TBL.
@@ -34,14 +35,14 @@ def intro_text_stats(raw: Path, zip_path: Path, out_csv: Path) -> pd.DataFrame:
     Reads only the introduced versions from the session zip. Cached to out_csv.
     """
     # Reuse the cache unless a newer download is present (the current session keeps adding bills)
-    if out_csv.exists() and not (zip_path and Path(zip_path).exists()
-                                 and Path(zip_path).stat().st_mtime > out_csv.stat().st_mtime):
+    fresh = not (zip_path and Path(zip_path).exists() and Path(zip_path).stat().st_mtime > out_csv.stat().st_mtime) if out_csv.exists() else False
+    if fresh and (digest_path(out_csv).exists() or not (zip_path and Path(zip_path).exists())):
         return pd.read_csv(out_csv)
     v = read_table(raw, "BILL_VERSION_TBL", ["BILL_ID", "BILL_VERSION_ACTION", "BILL_XML"])
     v = v[v.BILL_ID.str.match(r"^\d{9}(AB|SB)\d+$") & (v.BILL_VERSION_ACTION == "Introduced")]
     z = zipfile.ZipFile(zip_path)
     names = set(z.namelist())
-    rows = []
+    rows, digests = [], []
     for bid, lob in zip(v.BILL_ID, v.BILL_XML):
         if lob not in names:
             continue
@@ -49,9 +50,24 @@ def intro_text_stats(raw: Path, zip_path: Path, out_csv: Path) -> pd.DataFrame:
         body = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", x)).strip()
         intent = bool(re.search(r"intent of the Legislature to (enact|subsequently enact)", body, re.I))
         rows.append((bid, len(body), int(intent)))
+        digests.append((bid, digest_extract(x)))
     df = pd.DataFrame(rows, columns=["BILL_ID", "body_chars", "intent_only"])
     df.to_csv(out_csv, index=False)
+    pd.DataFrame(digests, columns=["BILL_ID", "digest"]).to_csv(digest_path(out_csv), index=False, compression="gzip")
     return df
+
+
+def digest_path(intro_csv: Path) -> Path:
+    """Where the introduced bills' digests sit next to their text statistics."""
+    p = Path(intro_csv)
+    return p.parent / ("intro_digest.csv.gz" if p.name == "intro_text.csv" else p.name.replace("intro_text", "intro_digest") + ".gz")
+
+
+def load_digests(intro_csv: Path | None) -> pd.DataFrame:
+    """BILL_ID and the Legislative Counsel's Digest of the introduced version, if packed."""
+    if intro_csv is None or not digest_path(intro_csv).exists():
+        return pd.DataFrame(columns=["BILL_ID", "digest"])
+    return pd.read_csv(digest_path(intro_csv), keep_default_na=False)
 
 
 def filing_window(d: pd.Timestamp) -> str:
@@ -180,6 +196,8 @@ def build_features(raw: str | Path, zip_path: str | Path | None = None,
         it = intro_text_stats(raw, Path(zip_path) if zip_path else None, Path(intro_cache))
         m = m.merge(it, on="BILL_ID", how="left")
         m["spot_bill"] = (m.intent_only == 1) & (m.body_chars < 3000)
+        dg = load_digests(Path(intro_cache)) if intro_cache else load_digests(None)
+        m["digest"] = m.BILL_ID.map(dg.set_index("BILL_ID").digest).fillna("") if len(dg) else ""
     else:
         m["spot_bill"] = False
     return m.drop(columns=["CURRENT_LOCATION"])

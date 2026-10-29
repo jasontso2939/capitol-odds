@@ -15,6 +15,9 @@ import sys
 import zipfile
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from calleg.digest import extract as digest_of  # noqa: E402
+
 TABLES = ["BILL_TBL", "BILL_HISTORY_TBL", "BILL_VERSION_TBL", "BILL_VERSION_AUTHORS_TBL", "LEGISLATOR_TBL",
           "VETO_MESSAGE_TBL", "BILL_DETAIL_VOTE_TBL", "BILL_SUMMARY_VOTE_TBL", "BILL_MOTION_TBL", "LOCATION_CODE_TBL"]
 INTENT = re.compile(r"intent of the Legislature to (enact|subsequently enact)", re.I)
@@ -47,7 +50,7 @@ def main(zip_path: str, out_dir: str) -> None:
         w.writerows(rows)
 
     # Introduced text length and intent-only flag (spot bills)
-    stats = []
+    stats, digests = [], []
     reader = csv.reader(io.TextIOWrapper(z.open("BILL_VERSION_TBL.dat"), encoding="utf-8", errors="replace"),
                         delimiter="\t", quotechar="`")
     for f in reader:
@@ -56,13 +59,23 @@ def main(zip_path: str, out_dir: str) -> None:
         bid, action, lob = f[1], f[4], f[14]
         if action != "Introduced" or not re.match(r"^\d{9}(AB|SB)\d+$", bid) or lob not in names:
             continue
-        body = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", z.read(lob).decode("utf-8", "replace"))).strip()
+        xml = z.read(lob).decode("utf-8", "replace")
+        body = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", xml)).strip()
         stats.append((bid, len(body), int(bool(INTENT.search(body)))))
+        digests.append((bid, digest_of(xml)))
+        if len(digests) == 1:   # one sample of the raw XML, to check the digest parser against
+            (out / "sample_introduced.xml").write_text(xml[:6000], encoding="utf-8")
     with open(out / "intro_text.csv", "w", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["BILL_ID", "body_chars", "intent_only"])
         w.writerows(stats)
-    print(f"[archive] {out}: {len(rows)} veto messages, {len(stats)} introduced bills")
+    # The Legislative Counsel's Digest of each introduced bill (what the bill would do)
+    with gzip.open(out / "intro_digest.csv.gz", "wt", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["BILL_ID", "digest"])
+        w.writerows(digests)
+    found = sum(1 for _, t in digests if t)
+    print(f"[archive] {out}: {len(rows)} veto messages, {len(stats)} introduced bills, {found} digests")
 
 
 if __name__ == "__main__":
