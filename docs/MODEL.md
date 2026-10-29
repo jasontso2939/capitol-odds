@@ -30,7 +30,7 @@ The steps multiply out to exactly the signed bills (7,730), which `tests/test_in
 | Session | One term per session (2019-20 was far below the others). New bills are scored at the level of the latest finished session |
 | Author on the committee | Whether the lead author is a regular member of the first policy committee that year, and whether they chair it, from committee roll calls (`docs/COMMITTEES.md`) |
 | Author's track record | Signed rate on the author's bills in every finished session, shrunk toward the party average with a weight of 8 bills. In training, the bill's whole session is left out of its author's record (see below) |
-| Subject line | Words in the introduced bill's subject line (TF-IDF unigrams and bigrams, 1,500 terms) |
+| What the bill does | One text score from the introduced bill's subject line and Legislative Counsel's Digest (see below) |
 | Fiscal committee | Whether the introduced bill is keyed to a fiscal committee |
 | Double referral | Whether the first referral names two policy committees (known within days of introduction) |
 
@@ -46,17 +46,17 @@ One regularized logistic regression per step (scikit-learn, C = 0.5), each fit o
 
 | Check | Staged model (on the page) | One-step model |
 |---|---|---|
-| Train on 2007-08 to 2023-24, test on 2025-26 (a session it never saw) | AUC 0.679; predicted 40.7% signed, actual 44.5% | AUC 0.681 |
-| Five-fold cross-validated AUC, all sessions | 0.675 | 0.676 |
+| Train on 2007-08 to 2023-24, test on 2025-26 (a session it never saw) | AUC 0.700; predicted 42.5% signed, actual 44.5% | AUC 0.701 |
+| Five-fold cross-validated AUC, all sessions | 0.699 | 0.701 |
 | Calibration (cross-validated) | Within 3 points in every band with 500+ bills | |
 
-Before October 2026 (2017-18 to 2025-26 only, no subject line, fiscal-committee flag, double referral or recency weights) the staged model scored 0.659 on 2025-26.
+Before October 2026 (2017-18 to 2025-26 only, no subject line, fiscal-committee flag, double referral or recency weights) the staged model scored 0.659 on 2025-26. Before the digest was added it scored 0.679.
 
-The two rank bills equally well; the staged model is shown because its steps say where a bill's risk sits. Accuracy by step on 2025-26 (trained on earlier sessions): policy committee AUC 0.79, Appropriations 0.67, floor 0.72, second house 0.56, Governor 0.65. Whether a bill gets out of its first committee is fairly predictable from who carries it and where it goes; what happens in the second house is close to a coin flip on this information.
+The two rank bills equally well; the staged model is shown because its steps say where a bill's risk sits. Accuracy by step on 2025-26 (trained on earlier sessions): policy committee AUC 0.78, Appropriations 0.69, floor 0.72, second house 0.60, Governor 0.69. Whether a bill gets out of its first committee is fairly predictable from who carries it and where it goes; what happens in the second house is close to a coin flip on this information.
 
 Earlier sessions tested the same way (train on all sessions before, test on the next): 2019-20 AUC 0.621, 2021-22 0.641, 2023-24 0.623, 2025-26 0.658. Ranking holds up across sessions; the overall level does not. Sessions differ: 2019-20 signed 24% of bills (the 2020 pandemic) against 37 to 42% in other sessions, so a model trained before it overestimated, and one anchored on it underestimated the next session. The model therefore includes a term for each session and scores new bills at the level of the latest session; the page says so.
 
-AUC 0.66 means the model ranks a signed bill above an unsigned one about 66% of the time. That is useful for comparing scenarios and spotting risk factors. It is not a forecast for any single bill. Two inputs were added in October 2026 once five sessions of training data were available: the words in the introduced bill's subject line (TF-IDF unigrams and bigrams, 1,500 terms, computed the same way in the browser) and whether the introduced bill is keyed to a fiscal committee. Together they raised the staged model's AUC on 2025-26 (trained on earlier sessions) from 0.659 to 0.675 and its cross-validated AUC from 0.673 to 0.687. The gain came mostly at Appropriations (0.636 to 0.667) and the Governor (0.620 to 0.653). The final version's title was tested too and helped more, but it is left out because it reflects amendments made after introduction. Bill length, the author's bill count, committee party balance and a party-by-committee interaction added nothing; gradient-boosted trees did worse than the logistic models on later sessions. Weighting an author's recent sessions more than older ones changed AUC by less than 0.002, so all sessions count equally.
+AUC 0.70 means the model ranks a signed bill above an unsigned one about 70% of the time. That is useful for comparing scenarios and spotting risk factors. It is not a forecast for any single bill. Two inputs were added in October 2026 once five sessions of training data were available: the words in the introduced bill's subject line (TF-IDF unigrams and bigrams, 1,500 terms; since replaced by the digest text score below) and whether the introduced bill is keyed to a fiscal committee. Together they raised the staged model's AUC on 2025-26 (trained on earlier sessions) from 0.659 to 0.675 and its cross-validated AUC from 0.673 to 0.687. The gain came mostly at Appropriations (0.636 to 0.667) and the Governor (0.620 to 0.653). The final version's title was tested too and helped more, but it is left out because it reflects amendments made after introduction. Bill length, the author's bill count, committee party balance and a party-by-committee interaction added nothing; gradient-boosted trees did worse than the logistic models on later sessions. Weighting an author's recent sessions more than older ones changed AUC by less than 0.002, so all sessions count equally.
 
 ## Time and political climate (October 2026, ten sessions)
 
@@ -81,7 +81,18 @@ Political climate moves how many bills pass in a session far more than which bil
 
 **Older sessions in the data.** The 2007-10 histories word first-house passage differently ("Read third time, passed, and to Senate."), so `features.py` also counts a bill's arrival in the second house. The 2007-08 roll calls have no member order, so committee chairs are unknown for those two years.
 
-**At introduction, about 0.68 is the ceiling with this data.** Every combination tested stayed between 0.67 and 0.69 on 2025-26. What the model cannot see at introduction (what the bill does, who supports and opposes it) is what decides most bills.
+**What the bill does: the Legislative Counsel's Digest.** Without text, every combination above stayed between 0.67 and 0.69 on 2025-26. The digest is the plain summary at the top of every introduced bill (existing law, then what the bill would change). `scripts/archive_session.py` keeps it for each bill in the archive (`intro_digest.csv.gz`; `src/calleg/digest.py` reads it from the bill XML). A separate text model turns the subject line and digest into one number:
+
+- TF-IDF of words and word pairs (30,000 terms seen in at least 3 bills, sublinear counts), then a logistic regression (C = 1) with the same recency weights. Settings were chosen on 2021-22 to 2025-26 from a small grid; a larger vocabulary or word triples added under 0.002.
+- That score enters the drafting model as one input. In training, each session's bills are scored by a text model fit without that session, so the drafting model learns how much to trust the text on bills the text model never saw.
+- The browser computes the same score from `site/data/text.js` (about 850 KB, loaded only when something is typed in the subject or summary box). `tests/test_text_score.py` checks the page's function against scikit-learn.
+
+| Test session (trained on all earlier sessions) | 2021-22 | 2023-24 | 2025-26 |
+|---|---|---|---|
+| One-step model, without text | | | 0.681 |
+| One-step model, with digest text | 0.694 | 0.681 | 0.701 |
+
+An earlier setting (10,000 terms, C = 0.3) scored 0.702 on 2017-18 and 0.684 on 2019-20, so the gain holds across sessions. It shows up in the later steps (Appropriations 0.67 to 0.69, second house 0.56 to 0.60, Governor 0.65 to 0.69), where who carries the bill says less and what it does says more. Short text gives milder scores than a full digest, not more extreme ones: on a sample of 2023-24 bills the score's spread was 0.35 from the subject line alone and 0.58 with the digest. Using the digest assumes the person drafting has one, or can write a few sentences in its style; with nothing typed the page uses the typical score.
 
 ## Tracking a filed bill (`src/calleg/tracking.py`)
 

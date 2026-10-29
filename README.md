@@ -13,7 +13,7 @@ What are a California bill's chances of becoming law? Capitol Odds estimates the
 | [Legislators](https://jasontso2939.github.io/calleg-scorecard/legislator.html) | One page per person: record by session with ranks, committee seats and votes by year, every bill. Name changes stay on one page. |
 | [Trends](https://jasontso2939.github.io/calleg-scorecard/trends.html) | Where bills die, Appropriations by party, committee risk, fiscal flags, coauthors, timing, spot bills, veto reasons. |
 | [Committees](https://jasontso2939.github.io/calleg-scorecard/committees.html) | Rosters by year, chairs and vice chairs with dates, each member's votes, from the official roll calls. Renamed committees keep one history. |
-| [Findings](https://jasontso2939.github.io/calleg-scorecard/findings.html) | Eight plain findings from ten years of bills, recomputed on every rebuild. |
+| [Findings](https://jasontso2939.github.io/calleg-scorecard/findings.html) | Eight plain findings from twenty years of bills, recomputed on every rebuild. |
 
 Every page keeps its state in the URL, so any view can be shared, and every table has a CSV download. Pages load only the data they need (a legislator page is about 50 KB), so they work on a phone.
 
@@ -34,27 +34,34 @@ Every number comes from small tested functions, and every bill links to its offi
 
 ## The model
 
-The Bill outlook page estimates the chance a newly introduced bill clears each step to the Governor's signature, using only what is known at introduction: the committee it's referred to, the author's party, house and track record, coauthors, fiscal flags, timing, and whether it's a spot bill.
+The Bill odds page (the home page) estimates the chance a newly introduced bill clears each step to the Governor's signature, using only what is known at introduction: what the bill does (its subject line and Legislative Counsel's Digest), the committee it's referred to, the author's party, house and track record, coauthors, fiscal flags, timing, double referral, and whether it's a spot bill. A second view, Track a filed bill, updates the odds as a bill's history builds up.
 
 - **One logistic regression per step** (policy committee, Appropriations, floor, second house, Governor), each fit only on bills that reached that step. The steps multiply out to exactly the bills that were signed, and a test checks it.
-- **Tested on a session it never saw.** Trained on 2017-18 through 2023-24 and tested on 2025-26: AUC 0.66, calibrated within 2 points in every band with 500+ bills. By step, the first committee is fairly predictable (AUC 0.78) and the second house is close to a coin flip (0.54).
+- **Tested on a session it never saw.** Trained on 2007-08 through 2023-24 and tested on 2025-26: AUC 0.70 at introduction. By step, the first committee is the most predictable (AUC 0.78) and the second house the least (0.60). Tracking a filed bill reaches AUC 0.80 by 90 days after introduction, once the first committee hearings have happened.
+- **Reads what the bill does.** A text model scores the subject line and digest; the drafting model uses that one score, and the browser computes the same number (a test checks it against scikit-learn).
+- **Follows the Legislature as it is now.** Nineteen years of bills, with recent sessions counting more and a term for each session, so the 2020 pandemic session or an older era doesn't set today's odds.
 - **A likely range, not just a number.** 40 bootstrap refits, each scored at the level of a different past session, give a 10th to 90th percentile band.
 - **Runs in the browser.** Every coefficient is exported and the page computes each step by hand; a test checks the hand computation against scikit-learn.
 - **Trains only on finished sessions**, so bills still moving are never counted as failures.
 
-Features that didn't help are documented too (bill-subject text, committee party balance, members' past votes on the author). Full method, accuracy tables and limits: [docs/MODEL.md](docs/MODEL.md).
+Features that didn't help are documented too (political climate terms, committee party balance, members' past votes on the author, gradient-boosted trees). Full method, accuracy tables and limits: [docs/MODEL.md](docs/MODEL.md).
 
-## Ten years at a glance (regular session, Assembly and Senate bills with a legislator author)
+## Twenty years at a glance (regular session, Assembly and Senate bills with a legislator author)
 
 | Session | Bills | Signed | Vetoed |
 | --- | --- | --- | --- |
+| 2007-08 | 4,636 | 1,384 | 607 |
+| 2009-10 | 4,037 | 1,236 | 525 |
+| 2011-12 | 4,037 | 1,454 | 240 |
+| 2013-14 | 3,956 | 1,559 | 235 |
+| 2015-16 | 4,124 | 1,548 | 289 |
 | 2017-18 | 4,479 | 1,702 | 318 |
 | 2019-20 | 4,576 | 1,103 | 228 |
 | 2021-22 | 4,188 | 1,571 | 234 |
 | 2023-24 | 4,522 | 1,771 | 344 |
 | 2025-26 | 3,956 | 1,664 | 243 |
 
-2019-20 is the outlier: the 2020 pandemic cut the calendar short. About 8% of bills have more than one lead author, which is why the counting method matters.
+2019-20 is the outlier: the 2020 pandemic cut the calendar short. Vetoes ran about twice as high in 2007-10, when a Republican Governor faced a Democratic Legislature. About 8% of bills have more than one lead author, which is why the counting method matters.
 
 ## Quick start
 
@@ -103,7 +110,7 @@ python3 -m http.server -d site   # open http://localhost:8000
 - **Official bulk data, not scraped pages.** Slower to set up, but every number traces back to the Legislature's own tables, and the build is reproducible from scratch.
 - **Show the counting rules as switches.** Rankings move when joint authors or budget bills are counted differently, so the reader gets the toggle instead of my choice.
 - **Staged model over a single one.** Both rank bills equally well; the staged one says where a bill's risk sits, which is what a reader can act on.
-- **Report accuracy honestly.** AUC 0.66 is useful for comparing scenarios and weak for any single bill, and the page says so.
+- **Report accuracy honestly.** AUC 0.70 is useful for comparing scenarios and weak for any single bill, and the page says so.
 - **Static site, no server.** The dashboard is plain files with per-page data, so it's free to host, fast on a phone, and can't go down.
 - **Automate the boring part.** A weekly job rebuilds, tests and flags anything that moved, and rolls over to a new session without a code change.
 
