@@ -1,4 +1,5 @@
 /* Capitol Odds design system. Every page loads this first; page styles only add layout.
+   When this file or common.js changes, bump the ?v= tag in every page (tests/test_assets.py).
    Colors come from the Capitol: Assembly green is the accent, Senate garnet marks risk and
    falling odds, dome gold marks the typical bill and keyboard focus. Rising and falling odds
    always carry an arrow too. Archivo for type, with expanded figures for odds. */
