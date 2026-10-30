@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="common.css?v=2026-10-29d">
+<link rel="stylesheet" href="common.css?v=2026-10-29e">
 <style>
 /* Home page: tracking view (default) and drafting view */
 .odds{font-weight:800;font-stretch:125%;letter-spacing:-.03em;line-height:.88;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -208,6 +208,28 @@ details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:
 .pop .none{padding:16px 12px;color:var(--muted)}
 @media (max-width:640px){.pop{left:16px!important;right:16px;width:auto;top:auto!important;bottom:16px;max-height:70vh}.pop ul{max-height:50vh}}
 
+/* Motion: quick, transform and opacity only */
+.btn,.chip,.topnav a,.segs .sg button,.pkb,.results button,.pop li.o,.wl .bill,.step-n button,details summary{transition:background-color .12s,color .12s,border-color .12s,box-shadow .12s}
+.wl tbody tr{transition:background-color .12s}
+@keyframes co-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes co-fade{from{opacity:0}to{opacity:1}}
+@keyframes co-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes co-pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
+.view:not([hidden]){animation:co-fade .16s ease-out}
+.results:not([hidden]),.pop{animation:co-in .14s ease-out}
+.featured.enter .quote,.featured.enter .factions{animation:co-in .24s ease-out both}
+.featured.enter .timeline li{animation:co-in .24s ease-out both;animation-delay:.25s}
+.chart .ln{stroke-dasharray:1;animation:co-draw .7s cubic-bezier(.3,.7,.2,1) both}
+.chart .ring{transform-box:fill-box;transform-origin:center;animation:co-pop .22s ease-out both;animation-delay:calc(.12s + var(--i) * 70ms)}
+.chart .ev path{transform-box:fill-box;transform-origin:center bottom;animation:co-pop .2s ease-out both;animation-delay:calc(.45s + var(--i) * 25ms)}
+.chart.still .ln,.chart.still .ring,.chart.still .ev path{animation:none}
+.gauge .fill{transition:width .3s cubic-bezier(.3,.7,.2,1)}
+.gauge .rng{transition:left .3s cubic-bezier(.3,.7,.2,1),width .3s cubic-bezier(.3,.7,.2,1)}
+.fac .bar i{transition:width .28s cubic-bezier(.3,.7,.2,1)}
+.accbars i{transform-origin:bottom;transform:scaleY(.04);transition:transform .55s cubic-bezier(.3,.7,.2,1);transition-delay:calc(var(--i) * 45ms)}
+.accbars.in i{transform:none}
+.step .dot{transition:background-color .2s,box-shadow .2s}
+
 @media (max-width:640px) and (max-height:720px){
   .facts,.fhead{display:none}
   .hero h1{font-size:22px}
@@ -397,7 +419,7 @@ details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:
 <footer>Not affiliated with any office or legislator. Not a forecast of any specific bill and not advice.<br>Source: California Legislative Information bulk export (leginfo). Model code, tests and methodology are in the repository.</footer>
 </div></main>
 <script>if(/[?&](sess|chamber|scope|method|budget|sort)=/.test(location.search))location.replace("scorecard.html"+location.search+location.hash);</script>
-<script src="common.js?v=2026-10-29d"></script>
+<script src="common.js?v=2026-10-29e"></script>
 <script src="insights.js"></script>
 <script src="data/model.js"></script>
 <script>
@@ -533,10 +555,11 @@ function fillAreas() {
 function band(p) {
   return p < .25 ? "Long odds" : p < .38 ? "Below average" : p < .52 ? "About average" : p < .62 ? "Above average" : "Strong";
 }
+let lastP = null;
 function render() {
   syncPickers();
   const s = state(), sp = steps(s), p = sp.reduce((a, b) => a * b, 1), [lo, hi] = range(s);
-  $("p").textContent = pc(p); $("band").textContent = band(p); $("gfill").style.width = (100 * p) + "%";
+  countTo($("p"), lastP, p, $("result")); lastP = p; $("band").textContent = band(p); $("gfill").style.width = (100 * p) + "%";
   $("range").textContent = Math.round(100 * lo) === Math.round(100 * hi) ? pc(lo) : `${Math.round(100 * lo)}–${pc(hi)}`;
   $("grng").style.left = (100 * lo) + "%"; $("grng").style.width = (100 * (hi - lo)) + "%";
   const gap = Math.round(100 * (p - M.base_rate));
@@ -742,12 +765,34 @@ document.addEventListener("pointerdown", e => { if (openPick && !openPick.pop.co
 addEventListener("resize", () => closePick(false));
 addEventListener("scroll", () => { if (openPick && innerWidth > 640) closePick(false); }, {passive: true});
 
+
+// ---------- Motion ----------
+// Short and functional: the chart draws in when a bill opens, odds count to their new value,
+// bars grow once into view. Nothing waits on an animation, and reduced-motion turns it all off.
+const CALM = matchMedia("(prefers-reduced-motion: reduce)");
+function countTo(el, from, to, region) {
+  if (!el) return;
+  cancelAnimationFrame(el._raf);
+  if (CALM.matches || from == null || Math.round(100 * from) === Math.round(100 * to)) { el.textContent = pc(to); return; }
+  const t0 = performance.now(), dur = 360;
+  if (region) region.setAttribute("aria-busy", "true");
+  const step = t => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = pc(from + (to - from) * e);
+    if (k < 1) el._raf = requestAnimationFrame(step); else if (region) region.removeAttribute("aria-busy"); };
+  el._raf = requestAnimationFrame(step);
+}
+function grow(el) {
+  if (!el || CALM.matches || !("IntersectionObserver" in window)) { el && el.classList.add("in"); return; }
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { el.classList.add("in"); io.disconnect(); } }, {threshold: 0.4});
+  io.observe(el);
+}
+
 // ---------- Track a bill ----------
 // Odds at each checkpoint come precomputed (data/tracking.js); what happened to each bill
 // comes from its history (data/events.js, loaded on first use). Nothing here is invented:
 // a checkpoint the bill has not reached yet is left off the chart.
 const TS = new URLSearchParams(location.search);
-let TR = null, TRI = {}, trackSel = TS.get("b") || "", EV = null;
+let TR = null, TRI = {}, trackSel = TS.get("b") || "", EV = null, shownBill = null, shownP = null;
 const EXAMPLES = {2025: {featured: "SB40", list: ["SB1000", "AB1114", "AB539", "AB473", "AB271"]}};
 const WKEY = "capitolodds.watchlist";
 const getWatch = () => { try { return JSON.parse(localStorage.getItem(WKEY) || "[]").filter(x => typeof x === "string"); } catch (e) { return []; } };
@@ -761,7 +806,8 @@ function setMode(m) {
   document.title = m === "draft" ? "Estimate a bill · Capitol Odds" : "Capitol Odds: what are a California bill's chances?";
   if (m === "track") { const u = new URL(location.href); u.search = trackSel ? "?b=" + encodeURIComponent(trackSel) : ""; history.replaceState(null, "", u); }
   else { saveState(); }
-  if (m === "track" && !TR) CL.load("data/tracking.js").then(initTrack).catch(() => {
+  // Bills and their histories load together, so the featured chart draws once, complete
+  if (m === "track" && !TR) Promise.all([CL.load("data/tracking.js"), CL.load("data/events.js").catch(() => null)]).then(initTrack).catch(() => {
     $("tnote").textContent = "Could not load the bill list. Check your connection and reload the page."; $("tbill").innerHTML = ""; });
   if (m === "draft") { render(); similar(); }
 }
@@ -779,7 +825,8 @@ function initTrack() {
   const acc = T.accuracy, lab = label(T.session);
   $("ttest").textContent = lab; $("f-test").textContent = lab;
   if (acc.length) $("f-auc").textContent = `AUC ${acc[0].auc.toFixed(2)}–${acc[acc.length - 1].auc.toFixed(2)}`;
-  $("tacc").innerHTML = acc.map(a => `<div><b>${a.auc.toFixed(2)}</b><i class="${a.auc >= 0.8 ? "hi" : ""}" style="height:${Math.max(4, Math.round((a.auc - 0.5) * 190))}px"></i><span>${SHORT(a.days)}</span></div>`).join("");
+  $("tacc").innerHTML = acc.map((a, j) => `<div><b>${a.auc.toFixed(2)}</b><i style="--i:${j}" class="${a.auc >= 0.8 ? "hi" : ""}" style="height:${Math.max(4, Math.round((a.auc - 0.5) * 190))}px"></i><span>${SHORT(a.days)}</span></div>`).join("");
+  grow($("tacc"));
   $("tacc").setAttribute("aria-label", "AUC by time after introduction: " + acc.map(a => `${LBL(a.days).toLowerCase()} ${a.auc.toFixed(2)}`).join(", "));
   $("taccT").innerHTML = "<div class='scroll'><table><thead><tr><th>When</th><th class='n'>AUC</th><th class='n'>Predicted signed</th><th class='n'>Actually signed</th></tr></thead><tbody>" +
     acc.map(a => `<tr><td>${LBL(a.days)}</td><td class="n"><b>${a.auc.toFixed(2)}</b></td><td class="n">${pc(a.predicted_rate)}</td><td class="n">${pc(a.actual_rate)}</td></tr>`).join("") + "</tbody></table></div>";
@@ -787,11 +834,10 @@ function initTrack() {
     ? `${TR.length.toLocaleString()} bills from ${lab}, a finished session: each bill's odds are what the model said at the time, beside how it ended.`
     : `${TR.length.toLocaleString()} bills from ${lab}, odds as of ${T.asof}. They update with each weekly data refresh.`;
   const ex = EXAMPLES[T.session];
+  EV = window.EVENTS ? (EVENTS.session === T.session ? EVENTS.events : {}) : false;
   if (!trackSel || !TRI[trackSel]) trackSel = ex && TRI[ex.featured] ? ex.featured : biggestMovers(1)[0];
   showBill(trackSel, true);
   renderWatch();
-  CL.load("data/events.js").then(() => { EV = window.EVENTS && EVENTS.session === T.session ? EVENTS.events : {}; showBill(trackSel, true); })
-    .catch(() => { EV = false; showBill(trackSel, true); });
 }
 function biggestMovers(n) {
   return TR.map(b => { const [p, i] = latest(b); return [b.bill, i > 0 ? Math.abs(p - b.p[0]) : 0]; }).sort((a, b) => b[1] - a[1]).slice(0, n).map(x => x[0]);
@@ -847,7 +893,7 @@ function monotone(pts) {
     d += `C${(pts[i][0] + h).toFixed(1)},${(pts[i][1] + m[i] * h).toFixed(1)} ${(pts[i + 1][0] - h).toFixed(1)},${(pts[i + 1][1] - m[i + 1] * h).toFixed(1)} ${pts[i + 1][0].toFixed(1)},${pts[i + 1][1].toFixed(1)}`; }
   return d;
 }
-function chart(b, evs) {
+function chart(b, evs, drawn) {
   const narrow = (innerWidth > 960 ? $("tbill").clientWidth * 0.6 : $("tbill").clientWidth) < 520, ks = TRACKING.checkpoints, W = narrow ? 400 : 760, H = narrow ? 280 : 320, L = 44, R = 16, Tp = narrow ? 12 : 18, Bt = narrow ? 228 : 262;
   const xmax = Math.max(365, ...evs.map(e => e.day));
   const X = d => L + (W - L - R) * Math.min(d, xmax) / xmax, Y = p => Bt - (Bt - Tp) * p;
@@ -856,15 +902,16 @@ function chart(b, evs) {
   const xt = (narrow ? [0, 180, 365] : [0, 90, 180, 270, 365]).concat(xmax > 500 ? [Math.round(xmax / 30) * 30] : []).map(d => `<text x="${X(d)}" y="${Bt + 22}" text-anchor="${d === 0 ? "start" : d >= xmax ? "end" : "middle"}" fill="#55605A" font-size="12">${d === 0 ? "Introduced" : "Day " + d}</text>`).join("");
   const ev = evs.map((e, i) => `<g class="ev" tabindex="0" data-tip="${esc(fmtDate(e.date))}: ${esc(e.text)}" data-x="${X(e.day)}" data-y="${Bt}" aria-label="${esc(fmtDate(e.date))}: ${esc(e.text)}">` +
     `<line x1="${X(e.day)}" x2="${X(e.day)}" y1="${Tp}" y2="${Bt}" stroke="#C4CCC5" stroke-dasharray="2 5"></line>` +
-    `<path d="${e.good ? `M${X(e.day) - 6},${Bt + 2}L${X(e.day) + 6},${Bt + 2}L${X(e.day)},${Bt - 9}Z` : `M${X(e.day) - 6},${Bt - 9}L${X(e.day) + 6},${Bt - 9}L${X(e.day)},${Bt + 2}Z`}" fill="${e.good ? "#24573F" : "#8A2A36"}"></path></g>`).join("");
+    `<path style="--i:${i}" d="${e.good ? `M${X(e.day) - 6},${Bt + 2}L${X(e.day) + 6},${Bt + 2}L${X(e.day)},${Bt - 9}Z` : `M${X(e.day) - 6},${Bt - 9}L${X(e.day) + 6},${Bt - 9}L${X(e.day)},${Bt + 2}Z`}" fill="${e.good ? "#24573F" : "#8A2A36"}"></path></g>`).join("");
   const dots = pts.map(([x, y, k, p], i) => `<g class="pt" tabindex="0" data-tip="${LBL(k)}: ${pc(p)}" data-x="${x}" data-y="${y}" aria-label="${LBL(k)}: ${pc(p)} chance of being signed">` +
-    `<circle cx="${x}" cy="${y}" r="14" fill="transparent"></circle><circle class="ring" cx="${x}" cy="${y}" r="${i === pts.length - 1 ? 7 : 5}" fill="${i === pts.length - 1 ? "#24573F" : "#FFFFFF"}" stroke="#24573F" stroke-width="2.5"></circle></g>`).join("");
-  return `<div class="chart"><svg data-w="${W}" viewBox="0 0 ${W} ${H}" role="group" aria-label="Chance of ${esc(spaced(b.bill))} being signed at each checkpoint, with history events marked on the time axis">` +
-    `<g aria-hidden="true">${grid}${xt}</g>${ev}<path d="${monotone(pts)}" fill="none" stroke="#24573F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></path>${dots}</svg><div class="tip" hidden></div></div>` +
+    `<circle cx="${x}" cy="${y}" r="14" fill="transparent"></circle><circle class="ring" style="--i:${i}" cx="${x}" cy="${y}" r="${i === pts.length - 1 ? 7 : 5}" fill="${i === pts.length - 1 ? "#24573F" : "#FFFFFF"}" stroke="#24573F" stroke-width="2.5"></circle></g>`).join("");
+  return `<div class="chart${drawn ? " still" : ""}"><svg data-w="${W}" viewBox="0 0 ${W} ${H}" role="group" aria-label="Chance of ${esc(spaced(b.bill))} being signed at each checkpoint, with history events marked on the time axis">` +
+    `<g aria-hidden="true">${grid}${xt}</g>${ev}<path class="ln" pathLength="1" d="${monotone(pts)}" fill="none" stroke="#24573F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></path>${dots}</svg><div class="tip" hidden></div></div>` +
     `<div class="legend"><span>Dots: the model's estimate at each checkpoint</span><span>${UP} event that helped</span><span>${DN} event that hurt</span></div>`;
 }
 function showBill(id, quiet) {
   const b = TRI[id]; if (!b) return;
+  const same = id === shownBill; shownBill = id;
   trackSel = id;
   if (!$("track").hidden) { const u = new URL(location.href); u.search = "?b=" + encodeURIComponent(id); history.replaceState(null, "", u); }
   const ks = TRACKING.checkpoints, [p, i] = latest(b);
@@ -881,16 +928,18 @@ function showBill(id, quiet) {
   const watched = WATCH.includes(id);
   const tl = EV === null ? '<p class="empty">Loading what happened…</p>' : EV === false ? '<p class="empty">Could not load bill histories. Reload the page to try again.</p>' : !evs.length ? '<p class="empty">No committee votes, floor votes or Governor action recorded for this bill.</p>' :
     `<ol id="evl">${evs.map(e => `<li><span class="ar ${e.good ? "up" : "down"}" aria-hidden="true">${e.good ? "▲" : "▼"}</span><span><span class="dt">${fmtDate(e.date)}, day ${e.day}</span>${esc(e.text)}<span class="sr">${e.good ? " (helped)" : " (hurt)"}</span></span></li>`).join("")}</ol>${evs.length > 5 ? `<button class="btn sm more-ev" type="button" id="evmore">Show all ${evs.length}</button>` : ""}`;
-  $("tbill").innerHTML = `<div class="featured"><div class="fgrid">
+  $("tbill").innerHTML = `<div class="featured${same ? "" : " enter"}"><div class="fgrid">
     <div class="quote">
       <div class="fhead"><span>${esc(spaced(b.bill))} by <span class="${b.party}">${esc(b.member)} (${esc(b.party)})</span>, ${esc(b.area)}</span>${isEx ? `<span class="tag">Example from ${label(TRACKING.session)}</span>` : ""}</div>
       <h2>${esc(b.title.replace(/\.$/, ""))}</h2>
-      <div class="qrow"><div class="odds">${p == null ? "–" : pc(p)}</div><div class="qmeta">${mv}<p class="sub">Chance of being signed${i >= 0 ? `, ${i === 0 ? "at introduction" : ks[i] === 365 ? "one year in" : `day ${ks[i]}`}` : ""}. Outcome: <span class="o-${b.outcome}">${esc(outTxt)}</span></p></div></div>
+      <div class="qrow"><div class="odds" id="fodds">${p == null ? "–" : pc(same || shownP == null ? p : shownP)}</div><div class="qmeta">${mv}<p class="sub">Chance of being signed${i >= 0 ? `, ${i === 0 ? "at introduction" : ks[i] === 365 ? "one year in" : `day ${ks[i]}`}` : ""}. Outcome: <span class="o-${b.outcome}">${esc(outTxt)}</span></p></div></div>
     </div>
-    <div class="fchart">${chart(b, evs)}</div>
+    <div class="fchart">${chart(b, evs, same)}</div>
     <div class="factions"><button class="btn primary" type="button" id="wbtn" aria-pressed="${watched}">${watched ? "Remove from watchlist" : "Watch this bill"}</button><a class="btn" href="${CL.leginfo(TRACKING.session, b.bill)}" target="_blank" rel="noopener">Bill history</a><button class="btn" type="button" id="tshare">Copy link</button></div>
   </div>
   <div class="timeline" id="tev"><h3>What moved the odds</h3>${tl}</div></div>`;
+  if (!same && p != null) countTo($("fodds"), shownP == null ? 0 : shownP, p, $("tbill"));
+  if (p != null) shownP = p;
   $("wbtn").addEventListener("click", () => toggleWatch(id));
   if ($("evmore")) $("evmore").addEventListener("click", () => { $("evl").classList.add("all"); $("evmore").remove(); });
   CL.shareButton($("tshare"));
