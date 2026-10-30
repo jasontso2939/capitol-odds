@@ -107,7 +107,9 @@ dialog::backdrop{background:rgba(24,32,28,.45)}
   body{font-size:15px}
   .wrap,body>header .wrap,.topbar-in{padding-left:16px;padding-right:16px}
   .topbar{position:static}
-  .topnav{margin-left:0;width:100%}
+  .topnav{margin-left:0;width:calc(100% + 32px);margin-right:-16px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-right:16px}
+  .topnav::-webkit-scrollbar{display:none}
+  .topnav a{flex:none}
   .topnav a{padding:10px 9px;font-size:14px}
   body>header{padding-top:28px}
   h1{font-size:30px}
