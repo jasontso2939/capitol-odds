@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="common.css?v=2026-10-29b">
+<link rel="stylesheet" href="common.css?v=2026-10-29e">
 <style>
 /* Home page: tracking view (default) and drafting view */
 .odds{font-weight:800;font-stretch:125%;letter-spacing:-.03em;line-height:.88;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -17,16 +17,15 @@
 .mv{font-weight:600;font-size:17px}
 
 /* Intro */
-.intro{display:flex;flex-wrap:wrap;gap:24px 56px;align-items:flex-end;padding:44px 0 32px}
-.intro h1{font-size:clamp(34px,5vw,54px);line-height:1.02;letter-spacing:-.03em;margin:0;max-width:14ch;font-stretch:108%}
-.intro .copy{flex:1 1 420px;min-width:0}
-.intro .copy p{margin:14px 0 0;color:var(--muted);font-size:18px;max-width:52ch}
-.facts{flex:1 1 380px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:0;padding:0;list-style:none}
-.facts li{border-top:1px solid var(--line-strong);padding-top:12px;font-size:14px;color:var(--muted);line-height:1.45}
-.facts b{display:block;color:var(--ink);font-size:20px;white-space:nowrap;font-stretch:112%;letter-spacing:-.01em;margin-bottom:4px;font-weight:700}
-
+.hero{padding:28px 0 4px}
+.hero-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 32px}
+.hero h1{font-size:clamp(26px,3.4vw,42px);line-height:1.04;letter-spacing:-.03em;margin:0;font-stretch:106%}
+.hero-top p{margin:6px 0 0;color:var(--muted);font-size:16px;max-width:64ch}
+.facts{display:flex;flex-wrap:wrap;gap:4px 22px;margin:10px 0 0;padding:0;list-style:none;font-size:14px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:700}
+.facts .st{color:var(--subtle);font-size:13px}
 /* Search */
-.search{position:relative;margin:8px 0 12px}
+.search{position:relative;margin:16px 0 0}
 .search .box{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line-strong);border-radius:var(--r-md);padding:0 18px;min-height:60px}
 .search .box:focus-within{box-shadow:var(--focus)}
 .search input{flex:1;min-width:0;border:0;background:transparent;font-size:18px;padding:16px 0;min-height:58px}
@@ -42,19 +41,20 @@
 .results .au{font-size:13px;color:var(--muted);display:block}
 .results .pp{font-weight:700;font-stretch:115%;font-size:18px}
 .results .oc{font-size:13px;min-width:84px;text-align:right}
-.status{font-size:14px;color:var(--subtle);margin:0 0 28px}
 
 /* Featured bill */
-.featured{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:32px 48px;padding:28px 0 8px;border-top:1px solid var(--line)}
-.fhead{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:15px;color:var(--muted)}
+.featured{margin-top:20px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 26px 6px}
+.fgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:"info chart" "acts chart";grid-template-rows:auto 1fr;gap:16px 40px;align-items:start}
+.quote{grid-area:info}.fchart{grid-area:chart}.factions{grid-area:acts}
+.qrow{display:flex;flex-wrap:wrap;align-items:flex-end;gap:6px 18px}
+.fhead{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:14px;color:var(--muted)}
 .fhead .tag{margin:0}
-.featured h2{font-size:clamp(24px,3vw,34px);line-height:1.15;margin:8px 0 0;letter-spacing:-.015em;font-weight:700}
-.quote{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 28px;margin-top:22px}
-.quote .odds{font-size:clamp(84px,13vw,140px)}
-.quote .sub{padding-bottom:10px}
-.quote .sub p{margin:4px 0 0;color:var(--muted);font-size:15px}
-.factions{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.chart{position:relative;margin-top:26px}
+.featured h2{font-size:clamp(22px,2.4vw,28px);line-height:1.2;margin:8px 0 0;letter-spacing:-.015em;font-weight:700}
+.quote .odds{font-size:clamp(76px,8vw,116px);margin-top:14px;flex-basis:100%}
+.quote .sub{margin:6px 0 0;color:var(--muted);font-size:15px}
+.quote .mv{margin:8px 0 0}
+.factions{display:flex;flex-wrap:wrap;gap:8px;align-self:start}
+.chart{position:relative;margin-top:6px}
 .chart svg{display:block;width:100%;height:auto;overflow:visible}
 .chart .pt{cursor:pointer;outline:none}
 .chart .pt:focus-visible circle.ring{stroke:var(--ink);stroke-width:2.5}
@@ -63,23 +63,24 @@
 .tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:13px;line-height:1.35;padding:7px 10px;border-radius:6px;white-space:nowrap;transform:translate(-50%,calc(-100% - 12px));font-weight:500;z-index:5}
 .tip b{font-weight:700}
 .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted);margin-top:8px}
-.timeline h3,.panel-h{font-size:17px;margin:0 0 12px;font-weight:700}
-.timeline ol{list-style:none;margin:0;padding:0;position:relative}
-.timeline li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.4}
-.timeline li:last-child{border-bottom:1px solid var(--line)}
-.timeline .ar{font-size:12px;padding-top:3px}
-.timeline .dt{display:block;font-size:13px;color:var(--muted);margin-bottom:2px}
-.timeline .empty{color:var(--muted);font-size:15px}
+.timeline{margin-top:20px;border-top:1px solid var(--line);padding:18px 0 14px}
+.timeline h3{font-size:16px;margin:0 0 6px;font-weight:700}
+.timeline ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px}
+.timeline li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:8px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.35}
+.timeline .ar{font-size:11px;padding-top:3px}
+.timeline .dt{display:block;font-size:12px;color:var(--muted);margin-bottom:2px}
+.timeline .more-ev{display:none;margin-top:10px}
+.timeline .empty{color:var(--muted);font-size:14px;margin:4px 0 0}
 
 /* Watchlist */
-.block{margin-top:64px}
+.block{margin-top:48px}
 .block-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:14px}
 .block-h h2{font-size:26px;margin:0;font-weight:700}
 .block-h p{margin:0;color:var(--muted);font-size:15px}
 .wl{position:relative;overflow-x:auto;background:var(--panel);border-radius:var(--r-lg)}
 .wl table{min-width:820px}
 .wl th{background:var(--panel);padding:14px 16px}
-.wl td{padding:14px 16px;vertical-align:middle}
+.wl td{padding:10px 16px;vertical-align:middle}
 .wl tr.grp td{font-size:13px;color:var(--muted);padding:18px 16px 8px;border-bottom:1px solid var(--line-strong);background:var(--panel)}
 .wl tr.grp:hover{background:none}
 .wl tr.sel{background:var(--raised)}
@@ -91,9 +92,12 @@
 .wl .rm:hover{color:var(--ink)}
 
 /* Accuracy */
-.acc{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:24px 56px;align-items:end}
-.acc p{color:var(--muted);font-size:15px;margin:10px 0 0;max-width:46ch}
-.accbars{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;align-items:end;height:190px}
+.acc{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 48px;align-items:end;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 28px}
+.acc h2{font-size:22px;margin:0;font-weight:700}
+.acc p{color:var(--muted);font-size:14px;margin:8px 0 0;max-width:52ch}
+.acc details.more{margin-top:12px;border:0;padding:0}
+.acc details.more summary{min-height:36px;font-size:14px}
+.accbars{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;align-items:end;height:150px}
 .accbars div{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%;text-align:center}
 .accbars b{font-size:15px;font-stretch:112%}
 .accbars i{display:block;border-radius:4px 4px 0 0;background:#B8C2B9}
@@ -204,18 +208,70 @@ details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:
 .pop .none{padding:16px 12px;color:var(--muted)}
 @media (max-width:640px){.pop{left:16px!important;right:16px;width:auto;top:auto!important;bottom:16px;max-height:70vh}.pop ul{max-height:50vh}}
 
+/* Motion: quick, transform and opacity only */
+.btn,.chip,.topnav a,.segs .sg button,.pkb,.results button,.pop li.o,.wl .bill,.step-n button,details summary{transition:background-color .12s,color .12s,border-color .12s,box-shadow .12s}
+.wl tbody tr{transition:background-color .12s}
+@keyframes co-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes co-fade{from{opacity:0}to{opacity:1}}
+@keyframes co-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes co-pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
+.view:not([hidden]){animation:co-fade .16s ease-out}
+.results:not([hidden]),.pop{animation:co-in .14s ease-out}
+.featured.enter .quote,.featured.enter .factions{animation:co-in .24s ease-out both}
+.featured.enter .timeline li{animation:co-in .24s ease-out both;animation-delay:.25s}
+.chart .ln{stroke-dasharray:1;animation:co-draw .7s cubic-bezier(.3,.7,.2,1) both}
+.chart .ring{transform-box:fill-box;transform-origin:center;animation:co-pop .22s ease-out both;animation-delay:calc(.12s + var(--i) * 70ms)}
+.chart .ev path{transform-box:fill-box;transform-origin:center bottom;animation:co-pop .2s ease-out both;animation-delay:calc(.45s + var(--i) * 25ms)}
+.chart.still .ln,.chart.still .ring,.chart.still .ev path{animation:none}
+.gauge .fill{transition:width .3s cubic-bezier(.3,.7,.2,1)}
+.gauge .rng{transition:left .3s cubic-bezier(.3,.7,.2,1),width .3s cubic-bezier(.3,.7,.2,1)}
+.fac .bar i{transition:width .28s cubic-bezier(.3,.7,.2,1)}
+.accbars i{transform-origin:bottom;transform:scaleY(.04);transition:transform .55s cubic-bezier(.3,.7,.2,1);transition-delay:calc(var(--i) * 45ms)}
+.accbars.in i{transform:none}
+.step .dot{transition:background-color .2s,box-shadow .2s}
+
+@media (max-width:640px) and (max-height:720px){
+  .facts,.fhead{display:none}
+  .hero h1{font-size:22px}
+  .quote .odds{font-size:48px!important}
+  .featured h2{font-size:17px!important;margin-top:0!important}
+  .legend>span:first-child{display:none}
+}
 @media (max-width:960px){
-  .featured,.dgrid,.moves,.acc{grid-template-columns:minmax(0,1fr)}
+  .facts .st{display:none}
+  .fgrid,.dgrid,.moves,.acc{grid-template-columns:minmax(0,1fr)}
+  .fgrid{grid-template-areas:"info" "chart" "acts";grid-template-rows:auto}
+  .quote .odds{flex-basis:auto;font-size:clamp(56px,10vw,84px);margin-top:8px}
+  .qmeta{padding-bottom:6px;flex:1;min-width:170px}
+  .timeline ol{grid-template-columns:repeat(2,minmax(0,1fr))}
   .res{position:static}
 }
 @media (max-width:640px){
+  .hero{padding-top:16px}
+  .hero-top p,.hero-top .btn,.facts .st,.fhead .tag{display:none}
+  .hero h1{font-size:26px}
+  .search{margin-top:12px}
+  .search .box{min-height:50px}
+  .search input{min-height:48px;padding:10px 0;font-size:16px}
+  .facts{font-size:13px;gap:2px 14px}
+  .facts li:nth-child(3){display:none}
+  .featured{margin-top:14px}
+  .featured h2{font-size:19px;margin-top:4px}
+  .quote .odds{font-size:56px;margin-top:6px}
+  .quote .mv{font-size:15px}
+  .quote .sub{font-size:13px;margin-top:2px}
+  .fgrid{gap:10px}
+  .legend{font-size:12px;gap:2px 12px}
+  .featured{padding:16px 14px 4px}
+  .acc{padding:20px 16px}
+  .timeline ol{grid-template-columns:minmax(0,1fr)}
+  .timeline ol:not(.all) li:nth-child(n+6){display:none}
+  .timeline .more-ev{display:inline-flex}
   .sheet .row{grid-template-columns:minmax(0,1fr)}
   .pkb .ph{display:none}
   .sheet .lab{padding:14px 16px 0;font-size:14px}
   .sheet .val{padding:8px 16px 14px}
   .dgest{padding:16px}
-  .facts{grid-template-columns:1fr;gap:10px}
-  .intro{padding-top:28px}
   .results button{grid-template-columns:64px minmax(0,1fr) auto;padding:12px 14px}
   .results .oc{display:none}
   .chk{grid-template-columns:1fr}
@@ -231,48 +287,45 @@ details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:
 
 <!-- Track a bill: the home view -->
 <div class="view" id="track" hidden>
-  <div class="intro">
-    <div class="copy">
-      <h1>Know the odds before the vote.</h1>
-      <p>A statistical forecast of which California bills will become law, built for the people who write, track and influence legislation.</p>
+  <div class="hero">
+    <div class="hero-top">
+      <div>
+        <h1>Know the odds before the vote.</h1>
+        <p>Forecasts of which California bills become law, for the people who write, track and influence them.</p>
+      </div>
+      <button class="btn" id="m-draft" type="button" aria-selected="false">Drafting a bill? Estimate it</button>
+    </div>
+    <div class="search" role="search">
+      <label for="tq" class="sr">Search bills</label>
+      <div class="box">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6.5" fill="none" stroke="#55605A" stroke-width="2"></circle><path d="M14 14l4 4" stroke="#55605A" stroke-width="2" stroke-linecap="round"></path></svg>
+        <input id="tq" type="search" placeholder="Search by bill number, author or subject…" autocomplete="off" aria-controls="tres" aria-describedby="tnote">
+      </div>
+      <div id="tres" class="results" hidden></div>
     </div>
     <ul class="facts" aria-label="About the model">
-      <li><b id="f-bills">38,333 bills</b>in the training data, every legislator's bills since <span id="f-first">2007-08</span>.</li>
-      <li><b>Tested blind</b>on the <span id="f-test">2025-26</span> session, which the model never saw.</li>
-      <li><b id="f-auc">AUC 0.70–0.95</b>from introduction to one year in, as a bill's history builds.</li>
+      <li><b id="f-bills">38,333 bills</b> since <span id="f-first">2007-08</span></li>
+      <li><b>Tested blind</b> on <span id="f-test">2025-26</span></li>
+      <li><b id="f-auc">AUC 0.70–0.95</b> as a bill moves</li>
+      <li class="st" id="tnote">Loading bills…</li>
     </ul>
   </div>
-
-  <div class="search" role="search">
-    <label for="tq" class="sr">Search bills</label>
-    <div class="box">
-      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6.5" fill="none" stroke="#55605A" stroke-width="2"></circle><path d="M14 14l4 4" stroke="#55605A" stroke-width="2" stroke-linecap="round"></path></svg>
-      <input id="tq" type="search" placeholder="Search by bill number, author or subject…" autocomplete="off" aria-controls="tres" aria-describedby="tnote">
-    </div>
-    <div id="tres" class="results" hidden></div>
-  </div>
-  <p class="status" id="tnote">Loading bills…</p>
 
   <div id="tbill" aria-live="polite"><p class="loading">Loading the featured bill…</p></div>
 
   <div class="block" id="watch">
-    <div class="block-h"><h2>Watchlist</h2><p>Select a bill to chart it. Your bills stay in this browser.</p></div>
+    <div class="block-h"><h2>Watchlist</h2><p id="wlhint">Select a bill to chart it.</p></div>
     <div class="wl" id="wl"><p class="loading" style="padding:18px">Loading…</p></div>
   </div>
 
-  <div class="block">
-    <div class="acc">
-      <div>
-        <h2 style="font-size:26px;margin:0">The odds sharpen as a bill moves</h2>
-        <p>AUC measures how often a signed bill ranks above an unsigned bill. 0.50 is equivalent to chance. Each checkpoint has its own model, trained on earlier sessions and tested on <span id="ttest"></span>.</p>
-        <p class="small">AUC ranks bills against each other. It is not the chance that any single forecast is right.</p>
-      </div>
-      <div id="tacc" class="accbars" role="img" aria-label="AUC by days after introduction"></div>
+  <div class="block acc">
+    <div>
+      <h2>The odds sharpen as a bill moves</h2>
+      <p>AUC: how often a signed bill ranks above one that failed (0.50 is chance). One model per checkpoint, trained on earlier sessions and tested on <span id="ttest"></span>. It ranks bills; it is not the chance any single forecast is right.</p>
+      <details class="more"><summary>Predicted against actual</summary><div id="taccT"></div></details>
     </div>
-    <details class="more"><summary>Predicted against actual, by checkpoint</summary><div id="taccT"></div></details>
+    <div id="tacc" class="accbars" role="img" aria-label="AUC by days after introduction"></div>
   </div>
-
-  <p style="margin-top:56px"><button class="btn" id="m-draft" type="button" aria-selected="false">Drafting a bill? Estimate it before introduction</button></p>
 </div>
 
 <!-- Draft a bill -->
@@ -366,7 +419,7 @@ details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:
 <footer>Not affiliated with any office or legislator. Not a forecast of any specific bill and not advice.<br>Source: California Legislative Information bulk export (leginfo). Model code, tests and methodology are in the repository.</footer>
 </div></main>
 <script>if(/[?&](sess|chamber|scope|method|budget|sort)=/.test(location.search))location.replace("scorecard.html"+location.search+location.hash);</script>
-<script src="common.js?v=2026-10-29b"></script>
+<script src="common.js?v=2026-10-29e"></script>
 <script src="insights.js"></script>
 <script src="data/model.js"></script>
 <script>
@@ -502,10 +555,11 @@ function fillAreas() {
 function band(p) {
   return p < .25 ? "Long odds" : p < .38 ? "Below average" : p < .52 ? "About average" : p < .62 ? "Above average" : "Strong";
 }
+let lastP = null;
 function render() {
   syncPickers();
   const s = state(), sp = steps(s), p = sp.reduce((a, b) => a * b, 1), [lo, hi] = range(s);
-  $("p").textContent = pc(p); $("band").textContent = band(p); $("gfill").style.width = (100 * p) + "%";
+  countTo($("p"), lastP, p, $("result")); lastP = p; $("band").textContent = band(p); $("gfill").style.width = (100 * p) + "%";
   $("range").textContent = Math.round(100 * lo) === Math.round(100 * hi) ? pc(lo) : `${Math.round(100 * lo)}–${pc(hi)}`;
   $("grng").style.left = (100 * lo) + "%"; $("grng").style.width = (100 * (hi - lo)) + "%";
   const gap = Math.round(100 * (p - M.base_rate));
@@ -711,12 +765,34 @@ document.addEventListener("pointerdown", e => { if (openPick && !openPick.pop.co
 addEventListener("resize", () => closePick(false));
 addEventListener("scroll", () => { if (openPick && innerWidth > 640) closePick(false); }, {passive: true});
 
+
+// ---------- Motion ----------
+// Short and functional: the chart draws in when a bill opens, odds count to their new value,
+// bars grow once into view. Nothing waits on an animation, and reduced-motion turns it all off.
+const CALM = matchMedia("(prefers-reduced-motion: reduce)");
+function countTo(el, from, to, region) {
+  if (!el) return;
+  cancelAnimationFrame(el._raf);
+  if (CALM.matches || from == null || Math.round(100 * from) === Math.round(100 * to)) { el.textContent = pc(to); return; }
+  const t0 = performance.now(), dur = 360;
+  if (region) region.setAttribute("aria-busy", "true");
+  const step = t => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = pc(from + (to - from) * e);
+    if (k < 1) el._raf = requestAnimationFrame(step); else if (region) region.removeAttribute("aria-busy"); };
+  el._raf = requestAnimationFrame(step);
+}
+function grow(el) {
+  if (!el || CALM.matches || !("IntersectionObserver" in window)) { el && el.classList.add("in"); return; }
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { el.classList.add("in"); io.disconnect(); } }, {threshold: 0.4});
+  io.observe(el);
+}
+
 // ---------- Track a bill ----------
 // Odds at each checkpoint come precomputed (data/tracking.js); what happened to each bill
 // comes from its history (data/events.js, loaded on first use). Nothing here is invented:
 // a checkpoint the bill has not reached yet is left off the chart.
 const TS = new URLSearchParams(location.search);
-let TR = null, TRI = {}, trackSel = TS.get("b") || "", EV = null;
+let TR = null, TRI = {}, trackSel = TS.get("b") || "", EV = null, shownBill = null, shownP = null;
 const EXAMPLES = {2025: {featured: "SB40", list: ["SB1000", "AB1114", "AB539", "AB473", "AB271"]}};
 const WKEY = "capitolodds.watchlist";
 const getWatch = () => { try { return JSON.parse(localStorage.getItem(WKEY) || "[]").filter(x => typeof x === "string"); } catch (e) { return []; } };
@@ -730,7 +806,8 @@ function setMode(m) {
   document.title = m === "draft" ? "Estimate a bill · Capitol Odds" : "Capitol Odds: what are a California bill's chances?";
   if (m === "track") { const u = new URL(location.href); u.search = trackSel ? "?b=" + encodeURIComponent(trackSel) : ""; history.replaceState(null, "", u); }
   else { saveState(); }
-  if (m === "track" && !TR) CL.load("data/tracking.js").then(initTrack).catch(() => {
+  // Bills and their histories load together, so the featured chart draws once, complete
+  if (m === "track" && !TR) Promise.all([CL.load("data/tracking.js"), CL.load("data/events.js").catch(() => null)]).then(initTrack).catch(() => {
     $("tnote").textContent = "Could not load the bill list. Check your connection and reload the page."; $("tbill").innerHTML = ""; });
   if (m === "draft") { render(); similar(); }
 }
@@ -748,19 +825,19 @@ function initTrack() {
   const acc = T.accuracy, lab = label(T.session);
   $("ttest").textContent = lab; $("f-test").textContent = lab;
   if (acc.length) $("f-auc").textContent = `AUC ${acc[0].auc.toFixed(2)}–${acc[acc.length - 1].auc.toFixed(2)}`;
-  $("tacc").innerHTML = acc.map(a => `<div><b>${a.auc.toFixed(2)}</b><i class="${a.auc >= 0.8 ? "hi" : ""}" style="height:${Math.max(4, Math.round((a.auc - 0.5) * 260))}px"></i><span>${SHORT(a.days)}</span></div>`).join("");
+  $("tacc").innerHTML = acc.map((a, j) => `<div><b>${a.auc.toFixed(2)}</b><i style="--i:${j}" class="${a.auc >= 0.8 ? "hi" : ""}" style="height:${Math.max(4, Math.round((a.auc - 0.5) * 190))}px"></i><span>${SHORT(a.days)}</span></div>`).join("");
+  grow($("tacc"));
   $("tacc").setAttribute("aria-label", "AUC by time after introduction: " + acc.map(a => `${LBL(a.days).toLowerCase()} ${a.auc.toFixed(2)}`).join(", "));
   $("taccT").innerHTML = "<div class='scroll'><table><thead><tr><th>When</th><th class='n'>AUC</th><th class='n'>Predicted signed</th><th class='n'>Actually signed</th></tr></thead><tbody>" +
     acc.map(a => `<tr><td>${LBL(a.days)}</td><td class="n"><b>${a.auc.toFixed(2)}</b></td><td class="n">${pc(a.predicted_rate)}</td><td class="n">${pc(a.actual_rate)}</td></tr>`).join("") + "</tbody></table></div>";
   $("tnote").textContent = T.complete
-    ? `${TR.length.toLocaleString()} bills from ${lab}, a finished session. Odds are what the model would have said at the time, from models trained only on earlier sessions, shown next to how each bill ended.`
+    ? `${TR.length.toLocaleString()} bills from ${lab}, a finished session: each bill's odds are what the model said at the time, beside how it ended.`
     : `${TR.length.toLocaleString()} bills from ${lab}, odds as of ${T.asof}. They update with each weekly data refresh.`;
   const ex = EXAMPLES[T.session];
+  EV = window.EVENTS ? (EVENTS.session === T.session ? EVENTS.events : {}) : false;
   if (!trackSel || !TRI[trackSel]) trackSel = ex && TRI[ex.featured] ? ex.featured : biggestMovers(1)[0];
   showBill(trackSel, true);
   renderWatch();
-  CL.load("data/events.js").then(() => { EV = window.EVENTS && EVENTS.session === T.session ? EVENTS.events : {}; showBill(trackSel, true); })
-    .catch(() => { EV = false; showBill(trackSel, true); });
 }
 function biggestMovers(n) {
   return TR.map(b => { const [p, i] = latest(b); return [b.bill, i > 0 ? Math.abs(p - b.p[0]) : 0]; }).sort((a, b) => b[1] - a[1]).slice(0, n).map(x => x[0]);
@@ -816,8 +893,8 @@ function monotone(pts) {
     d += `C${(pts[i][0] + h).toFixed(1)},${(pts[i][1] + m[i] * h).toFixed(1)} ${(pts[i + 1][0] - h).toFixed(1)},${(pts[i + 1][1] - m[i + 1] * h).toFixed(1)} ${pts[i + 1][0].toFixed(1)},${pts[i + 1][1].toFixed(1)}`; }
   return d;
 }
-function chart(b, evs) {
-  const narrow = $("tbill").clientWidth < 600, ks = TRACKING.checkpoints, W = narrow ? 400 : 760, H = 320, L = 44, R = 16, Tp = 18, Bt = 262;
+function chart(b, evs, drawn) {
+  const narrow = (innerWidth > 960 ? $("tbill").clientWidth * 0.6 : $("tbill").clientWidth) < 520, ks = TRACKING.checkpoints, W = narrow ? 400 : 760, H = narrow ? 280 : 320, L = 44, R = 16, Tp = narrow ? 12 : 18, Bt = narrow ? 228 : 262;
   const xmax = Math.max(365, ...evs.map(e => e.day));
   const X = d => L + (W - L - R) * Math.min(d, xmax) / xmax, Y = p => Bt - (Bt - Tp) * p;
   const pts = ks.map((k, j) => b.p[j] == null ? null : [X(k), Y(b.p[j]), k, b.p[j]]).filter(Boolean);
@@ -825,15 +902,16 @@ function chart(b, evs) {
   const xt = (narrow ? [0, 180, 365] : [0, 90, 180, 270, 365]).concat(xmax > 500 ? [Math.round(xmax / 30) * 30] : []).map(d => `<text x="${X(d)}" y="${Bt + 22}" text-anchor="${d === 0 ? "start" : d >= xmax ? "end" : "middle"}" fill="#55605A" font-size="12">${d === 0 ? "Introduced" : "Day " + d}</text>`).join("");
   const ev = evs.map((e, i) => `<g class="ev" tabindex="0" data-tip="${esc(fmtDate(e.date))}: ${esc(e.text)}" data-x="${X(e.day)}" data-y="${Bt}" aria-label="${esc(fmtDate(e.date))}: ${esc(e.text)}">` +
     `<line x1="${X(e.day)}" x2="${X(e.day)}" y1="${Tp}" y2="${Bt}" stroke="#C4CCC5" stroke-dasharray="2 5"></line>` +
-    `<path d="${e.good ? `M${X(e.day) - 6},${Bt + 2}L${X(e.day) + 6},${Bt + 2}L${X(e.day)},${Bt - 9}Z` : `M${X(e.day) - 6},${Bt - 9}L${X(e.day) + 6},${Bt - 9}L${X(e.day)},${Bt + 2}Z`}" fill="${e.good ? "#24573F" : "#8A2A36"}"></path></g>`).join("");
+    `<path style="--i:${i}" d="${e.good ? `M${X(e.day) - 6},${Bt + 2}L${X(e.day) + 6},${Bt + 2}L${X(e.day)},${Bt - 9}Z` : `M${X(e.day) - 6},${Bt - 9}L${X(e.day) + 6},${Bt - 9}L${X(e.day)},${Bt + 2}Z`}" fill="${e.good ? "#24573F" : "#8A2A36"}"></path></g>`).join("");
   const dots = pts.map(([x, y, k, p], i) => `<g class="pt" tabindex="0" data-tip="${LBL(k)}: ${pc(p)}" data-x="${x}" data-y="${y}" aria-label="${LBL(k)}: ${pc(p)} chance of being signed">` +
-    `<circle cx="${x}" cy="${y}" r="14" fill="transparent"></circle><circle class="ring" cx="${x}" cy="${y}" r="${i === pts.length - 1 ? 7 : 5}" fill="${i === pts.length - 1 ? "#24573F" : "#FFFFFF"}" stroke="#24573F" stroke-width="2.5"></circle></g>`).join("");
-  return `<div class="chart"><svg data-w="${W}" viewBox="0 0 ${W} ${H}" role="group" aria-label="Chance of ${esc(spaced(b.bill))} being signed at each checkpoint, with history events marked on the time axis">` +
-    `<g aria-hidden="true">${grid}${xt}</g>${ev}<path d="${monotone(pts)}" fill="none" stroke="#24573F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></path>${dots}</svg><div class="tip" hidden></div></div>` +
+    `<circle cx="${x}" cy="${y}" r="14" fill="transparent"></circle><circle class="ring" style="--i:${i}" cx="${x}" cy="${y}" r="${i === pts.length - 1 ? 7 : 5}" fill="${i === pts.length - 1 ? "#24573F" : "#FFFFFF"}" stroke="#24573F" stroke-width="2.5"></circle></g>`).join("");
+  return `<div class="chart${drawn ? " still" : ""}"><svg data-w="${W}" viewBox="0 0 ${W} ${H}" role="group" aria-label="Chance of ${esc(spaced(b.bill))} being signed at each checkpoint, with history events marked on the time axis">` +
+    `<g aria-hidden="true">${grid}${xt}</g>${ev}<path class="ln" pathLength="1" d="${monotone(pts)}" fill="none" stroke="#24573F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></path>${dots}</svg><div class="tip" hidden></div></div>` +
     `<div class="legend"><span>Dots: the model's estimate at each checkpoint</span><span>${UP} event that helped</span><span>${DN} event that hurt</span></div>`;
 }
 function showBill(id, quiet) {
   const b = TRI[id]; if (!b) return;
+  const same = id === shownBill; shownBill = id;
   trackSel = id;
   if (!$("track").hidden) { const u = new URL(location.href); u.search = "?b=" + encodeURIComponent(id); history.replaceState(null, "", u); }
   const ks = TRACKING.checkpoints, [p, i] = latest(b);
@@ -849,18 +927,21 @@ function showBill(id, quiet) {
   const ex = EXAMPLES[TRACKING.session], isEx = ex && (id === ex.featured || ex.list.includes(id));
   const watched = WATCH.includes(id);
   const tl = EV === null ? '<p class="empty">Loading what happened…</p>' : EV === false ? '<p class="empty">Could not load bill histories. Reload the page to try again.</p>' : !evs.length ? '<p class="empty">No committee votes, floor votes or Governor action recorded for this bill.</p>' :
-    `<ol>${evs.map(e => `<li><span class="ar ${e.good ? "up" : "down"}" aria-hidden="true">${e.good ? "▲" : "▼"}</span><span><span class="dt">${fmtDate(e.date)}, day ${e.day}</span>${esc(e.text)}<span class="sr">${e.good ? " (helped)" : " (hurt)"}</span></span></li>`).join("")}</ol>`;
-  $("tbill").innerHTML = `<div class="featured">
-    <div>
+    `<ol id="evl">${evs.map(e => `<li><span class="ar ${e.good ? "up" : "down"}" aria-hidden="true">${e.good ? "▲" : "▼"}</span><span><span class="dt">${fmtDate(e.date)}, day ${e.day}</span>${esc(e.text)}<span class="sr">${e.good ? " (helped)" : " (hurt)"}</span></span></li>`).join("")}</ol>${evs.length > 5 ? `<button class="btn sm more-ev" type="button" id="evmore">Show all ${evs.length}</button>` : ""}`;
+  $("tbill").innerHTML = `<div class="featured${same ? "" : " enter"}"><div class="fgrid">
+    <div class="quote">
       <div class="fhead"><span>${esc(spaced(b.bill))} by <span class="${b.party}">${esc(b.member)} (${esc(b.party)})</span>, ${esc(b.area)}</span>${isEx ? `<span class="tag">Example from ${label(TRACKING.session)}</span>` : ""}</div>
       <h2>${esc(b.title.replace(/\.$/, ""))}</h2>
-      <div class="quote"><div class="odds">${p == null ? "–" : pc(p)}</div><div class="sub">${mv}<p>Estimated chance of being signed${i >= 0 ? `, ${i === 0 ? "at introduction" : ks[i] === 365 ? "one year in" : `day ${ks[i]}`}` : ""}</p><p>Introduced ${fmtDate(addDays(b.intro, 0))}. Outcome: <span class="o-${b.outcome}">${esc(outTxt)}</span></p></div></div>
-      <div class="factions"><button class="btn primary" type="button" id="wbtn" aria-pressed="${watched}">${watched ? "Remove from watchlist" : "Watch this bill"}</button><a class="btn" href="${CL.leginfo(TRACKING.session, b.bill)}" target="_blank" rel="noopener">Official bill history</a><button class="btn" type="button" id="tshare">Copy link</button></div>
-      ${chart(b, evs)}
+      <div class="qrow"><div class="odds" id="fodds">${p == null ? "–" : pc(same || shownP == null ? p : shownP)}</div><div class="qmeta">${mv}<p class="sub">Chance of being signed${i >= 0 ? `, ${i === 0 ? "at introduction" : ks[i] === 365 ? "one year in" : `day ${ks[i]}`}` : ""}. Outcome: <span class="o-${b.outcome}">${esc(outTxt)}</span></p></div></div>
     </div>
-    <div class="timeline" id="tev"><h3>What moved the odds</h3>${tl}</div>
-  </div>`;
+    <div class="fchart">${chart(b, evs, same)}</div>
+    <div class="factions"><button class="btn primary" type="button" id="wbtn" aria-pressed="${watched}">${watched ? "Remove from watchlist" : "Watch this bill"}</button><a class="btn" href="${CL.leginfo(TRACKING.session, b.bill)}" target="_blank" rel="noopener">Bill history</a><button class="btn" type="button" id="tshare">Copy link</button></div>
+  </div>
+  <div class="timeline" id="tev"><h3>What moved the odds</h3>${tl}</div></div>`;
+  if (!same && p != null) countTo($("fodds"), shownP == null ? 0 : shownP, p, $("tbill"));
+  if (p != null) shownP = p;
   $("wbtn").addEventListener("click", () => toggleWatch(id));
+  if ($("evmore")) $("evmore").addEventListener("click", () => { $("evl").classList.add("all"); $("evmore").remove(); });
   CL.shareButton($("tshare"));
   wireChart();
   document.querySelectorAll("#wl tr[data-b]").forEach(r => r.classList.toggle("sel", r.dataset.b === id));
@@ -896,13 +977,13 @@ function wrow(b, mine) {
     `<td>${mine ? `<button class="rm" type="button" data-rm="${esc(b.bill)}" aria-label="Remove ${esc(spaced(b.bill))} from watchlist">Remove</button>` : ""}</td></tr>`;
 }
 function renderWatch() {
+  $("wlhint").textContent = WATCH.length ? "Select a bill to chart it. Your bills stay in this browser." : `Examples from ${label(TRACKING.session)}. Use Watch this bill to add your own.`;
   const ex = EXAMPLES[TRACKING.session];
   const exIds = (ex ? ex.list : biggestMovers(5)).filter(x => TRI[x]);
   const mine = WATCH.filter(x => TRI[x]);
   $("wl").innerHTML = `<table><thead><tr><th scope="col">Bill</th><th scope="col">Title</th><th scope="col" class="n">At introduction</th><th scope="col">Trend</th><th scope="col" class="n">Latest odds</th><th scope="col">Outcome</th><th scope="col"><span class="sr">Actions</span></th></tr></thead><tbody>` +
-    `<tr class="grp"><td colspan="7">Your bills</td></tr>` +
-    (mine.length ? mine.map(x => wrow(TRI[x], true)).join("") : `<tr class="grp"><td colspan="7" style="color:var(--subtle);border:0">No bills yet. Open any bill and choose Watch this bill to keep it here.</td></tr>`) +
-    `<tr class="grp"><td colspan="7">${ex ? `Examples from ${label(TRACKING.session)}` : `Biggest movers in ${label(TRACKING.session)}`}</td></tr>` +
+    (mine.length ? `<tr class="grp"><td colspan="7">Your bills</td></tr>` + mine.map(x => wrow(TRI[x], true)).join("") : "") +
+    (mine.length || !ex ? `<tr class="grp"><td colspan="7">${ex ? `Examples from ${label(TRACKING.session)}` : `Biggest movers in ${label(TRACKING.session)}`}</td></tr>` : "") +
     exIds.map(x => wrow(TRI[x], false)).join("") + "</tbody></table>";
 }
 $("wl").addEventListener("click", e => {
