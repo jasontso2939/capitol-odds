@@ -1,6 +1,46 @@
 {
-  "date": "2026-10-26",
+  "date": "2026-11-02",
   "sessions": {
+    "2007": {
+      "complete": true,
+      "bills": 4636,
+      "signed": 1384,
+      "vetoed": 607,
+      "signed_pct": 29.77,
+      "members": 121
+    },
+    "2009": {
+      "complete": true,
+      "bills": 4037,
+      "signed": 1236,
+      "vetoed": 525,
+      "signed_pct": 30.61,
+      "members": 122
+    },
+    "2011": {
+      "complete": true,
+      "bills": 4037,
+      "signed": 1454,
+      "vetoed": 240,
+      "signed_pct": 36.01,
+      "members": 120
+    },
+    "2013": {
+      "complete": true,
+      "bills": 3956,
+      "signed": 1559,
+      "vetoed": 235,
+      "signed_pct": 39.41,
+      "members": 125
+    },
+    "2015": {
+      "complete": true,
+      "bills": 4124,
+      "signed": 1548,
+      "vetoed": 289,
+      "signed_pct": 37.55,
+      "members": 123
+    },
     "2017": {
       "complete": true,
       "bills": 4479,
@@ -43,13 +83,18 @@
     }
   },
   "model": {
-    "cv_auc": 0.674,
-    "out_of_session_auc": 0.662,
-    "staged_cv_auc": 0.673,
-    "staged_out_of_session_auc": 0.659,
-    "out_of_session_predicted": 0.407,
+    "cv_auc": 0.701,
+    "out_of_session_auc": 0.701,
+    "staged_cv_auc": 0.699,
+    "staged_out_of_session_auc": 0.7,
+    "out_of_session_predicted": 0.425,
     "out_of_session_actual": 0.445,
     "trained_on": [
+      2007,
+      2009,
+      2011,
+      2013,
+      2015,
       2017,
       2019,
       2021,
@@ -61,8 +106,18 @@
     "reviewed": 148,
     "agree": 119
   },
-  "committee_seats": 6421,
+  "committee_seats": 12263,
   "committee_years": [
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
     2017,
     2018,
     2019,
