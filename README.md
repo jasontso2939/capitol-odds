@@ -21,6 +21,16 @@ Every page keeps its state in the URL, so any view can be shared, and every tabl
 | --- | --- |
 | ![Bill outlook](docs/img/outlook.png) | <img src="docs/img/phone-outlook.png" width="260" alt="Bill outlook on a phone"> |
 
+## AI: explain it and rewrite it to pass
+
+On the Draft page, type a bill idea or paste a Legislative Counsel's Digest and choose **Explain it in plain English**. A language model (Meta's Muse Spark, through the Meta Model API):
+
+- **Reads the bill**, filling in the subject, first committee and fiscal flags, and quoting the phrase behind each flag.
+- **Explains the estimate** in plain English: why the bill scores where it does, where bills like it stall, what would raise the odds, and what the model can't see.
+- **Rewrites it to pass**: an amended version aimed at the weakest steps. The statistical model re-scores the draft in the browser and shows the change at every step, so the gain is measured, not claimed.
+
+The odds always come from the tested model; the language model reads and writes around it and never sets the number. Requests go through a small server function (`supabase/functions/billcast`) that holds the API key, so the key never reaches the browser. This feature was built first for Billcast, a fork made for the Meta AI hackathon.
+
 ## The idea
 
 Most legislative rankings hide their counting decisions. Here each decision is a switch you can see:
