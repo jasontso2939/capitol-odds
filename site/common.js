@@ -61,7 +61,7 @@ const CL = (() => {
   }
 
   // Top bar on every page. current: a file name, or "track" / "draft" for the two home views.
-  const PAGES = [["draft", "index.html", "Draft a bill"], ["track", "index.html?v=track", "Track bills"], ["scorecard.html", "scorecard.html", "Scorecard"],
+  const PAGES = [["draft", "index.html", "Billcast"], ["track", "index.html?v=track", "Track bills"], ["scorecard.html", "scorecard.html", "Scorecard"],
                  ["legislator.html", "legislator.html", "Legislators"], ["trends.html", "trends.html", "Trends"],
                  ["committees.html", "committees.html", "Committees"], ["findings.html", "findings.html", "Findings"]];
   const MARK = '<svg width="30" height="26" viewBox="0 0 30 26" aria-hidden="true"><path d="M15 2v3M6 15a9 9 0 0 1 18 0" fill="none" stroke="#24573F" stroke-width="2.4" stroke-linecap="round"></path><path d="M3 15h24M5 15v8M10 15v8M15 15v8M20 15v8M25 15v8M2 24h26" fill="none" stroke="#18201C" stroke-width="2" stroke-linecap="round"></path></svg>';
