@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="common.css?v=2026-11-03b">
+<link rel="stylesheet" href="common.css?v=2026-11-03c">
 <style>
 /* Home page: tracking view (default) and drafting view */
 .odds{font-weight:800;font-stretch:125%;letter-spacing:-.03em;line-height:.88;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -365,7 +365,7 @@ details.inputs .sheet{border:0;border-top:1px solid var(--line);border-radius:0 
         <h1>Know the odds before the vote.</h1>
         <p>Forecasts of which California bills become law, for the people who write, track and influence them.</p>
       </div>
-      <button class="btn" id="m-draft" type="button" aria-selected="false">Drafting a bill? Estimate it</button>
+      <button class="btn" id="m-draft" type="button" aria-selected="false">Drafting a bill? Try Billcast</button>
     </div>
     <div class="search" role="search">
       <label for="tq" class="sr">Search bills</label>
@@ -510,10 +510,10 @@ details.inputs .sheet{border:0;border-top:1px solid var(--line);border-radius:0 
 <footer>Not affiliated with any office or legislator. Not a forecast of any specific bill and not advice.<br>Source: California Legislative Information bulk export (leginfo). Model code, tests and methodology are in the repository.</footer>
 </div></main>
 <script>if(/[?&](sess|chamber|scope|method|budget|sort)=/.test(location.search))location.replace("scorecard.html"+location.search+location.hash);</script>
-<script src="common.js?v=2026-11-03b"></script>
+<script src="common.js?v=2026-11-03c"></script>
 <script src="insights.js"></script>
 <script src="data/model.js"></script>
-<script src="ai-config.js?v=2026-11-03b"></script>
+<script src="ai-config.js?v=2026-11-03c"></script>
 <script>
 const M = MODEL, MET = INSIGHTS.metrics, SM = MET.stages, {esc, label} = CL;
 const $ = id => document.getElementById(id);
