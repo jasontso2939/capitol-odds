@@ -2,18 +2,18 @@
 
 What are a California bill's chances of becoming law? Capitol Odds estimates the chance a proposed bill clears each step to the Governor's signature, alongside a transparent, reproducible scorecard for every member of the California Legislature since the 2007-08 session, rebuilt from the Legislature's official bulk data. One command downloads the data, parses it, applies documented counting rules and publishes a searchable dashboard. A weekly job refreshes it, reports what moved, and rolls over to each new session on its own.
 
-**Dashboard:** https://jasontso2939.github.io/calleg-scorecard/
+**Dashboard:** https://jasontso2939.github.io/capitol-odds/
 
 ![A tour of the dashboard](docs/img/tour.gif)
 
 | Page | What it shows |
 | --- | --- |
-| [Track and Draft](https://jasontso2939.github.io/calleg-scorecard/) | The home page. Search any bill in the current session to see its odds over time, with each committee vote, floor vote and Governor action marked, and keep a watchlist. Draft mode estimates a bill before introduction: the chance it clears each step, where it is likeliest to stall, and what moves the estimate. |
-| [Scorecard](https://jasontso2939.github.io/calleg-scorecard/scorecard.html) | Every member for any session: bills, signed, vetoed, rate, chamber ranks. Filters, sorting, per-member bill lists. |
-| [Legislators](https://jasontso2939.github.io/calleg-scorecard/legislator.html) | One page per person: record by session with ranks, committee seats and votes by year, every bill. Name changes stay on one page. |
-| [Trends](https://jasontso2939.github.io/calleg-scorecard/trends.html) | Where bills die, Appropriations by party, committee risk, fiscal flags, coauthors, timing, spot bills, veto reasons. |
-| [Committees](https://jasontso2939.github.io/calleg-scorecard/committees.html) | Rosters by year, chairs and vice chairs with dates, each member's votes, from the official roll calls. Renamed committees keep one history. |
-| [Findings](https://jasontso2939.github.io/calleg-scorecard/findings.html) | Eight plain findings from twenty years of bills, recomputed on every rebuild. |
+| [Track and Draft](https://jasontso2939.github.io/capitol-odds/) | The home page. Search any bill in the current session to see its odds over time, with each committee vote, floor vote and Governor action marked, and keep a watchlist. Draft mode estimates a bill before introduction: the chance it clears each step, where it is likeliest to stall, and what moves the estimate. |
+| [Scorecard](https://jasontso2939.github.io/capitol-odds/scorecard.html) | Every member for any session: bills, signed, vetoed, rate, chamber ranks. Filters, sorting, per-member bill lists. |
+| [Legislators](https://jasontso2939.github.io/capitol-odds/legislator.html) | One page per person: record by session with ranks, committee seats and votes by year, every bill. Name changes stay on one page. |
+| [Trends](https://jasontso2939.github.io/capitol-odds/trends.html) | Where bills die, Appropriations by party, committee risk, fiscal flags, coauthors, timing, spot bills, veto reasons. |
+| [Committees](https://jasontso2939.github.io/capitol-odds/committees.html) | Rosters by year, chairs and vice chairs with dates, each member's votes, from the official roll calls. Renamed committees keep one history. |
+| [Findings](https://jasontso2939.github.io/capitol-odds/findings.html) | Eight plain findings from twenty years of bills, recomputed on every rebuild. |
 
 Every page keeps its state in the URL, so any view can be shared, and every table has a CSV download. Pages load only the data they need (a legislator page is about 50 KB), so they work on a phone.
 
