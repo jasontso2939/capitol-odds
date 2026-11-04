@@ -15,6 +15,8 @@
 const API = "https://api.meta.ai/v1/chat/completions";
 const MODEL = Deno.env.get("META_MODEL") ?? "muse-spark-1.3";
 const ALLOWED = [
+  "https://capitolodds.com",
+  "https://www.capitolodds.com",
   "https://jasontso2939.github.io",
   "http://localhost:8000",
   "http://127.0.0.1:8000",

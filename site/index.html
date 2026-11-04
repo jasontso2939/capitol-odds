@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
-<title>Capitol Odds: what are a California bill's chances?</title>
-<meta name="description" content="A statistical forecast of which California bills will become law: search any bill to see its odds and what moved them, or estimate a bill you are drafting. Trained on every legislator's bills since the 2007-08 session.">
+<title>Capitol Odds: will your California bill pass?</title>
+<meta name="description" content="Describe a California bill idea or paste its Legislative Counsel's Digest. A model trained on every bill since 2007 scores its chance of becoming law, and AI explains the odds in plain English and drafts a version that can pass.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="common.css?v=2026-11-03a">
+<link rel="stylesheet" href="common.css?v=2026-11-03b">
 <style>
 /* Home page: tracking view (default) and drafting view */
 .odds{font-weight:800;font-stretch:125%;letter-spacing:-.03em;line-height:.88;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -208,6 +208,29 @@ details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:
 .pop .none{padding:16px 12px;color:var(--muted)}
 @media (max-width:640px){.pop{left:16px!important;right:16px;width:auto;top:auto!important;bottom:16px;max-height:70vh}.pop ul{max-height:50vh}}
 
+/* Draft home */
+.dhero{padding:32px 0 8px}
+.dtop{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px 32px}
+.dhero h1{font-size:clamp(28px,3.6vw,46px);line-height:1.06;letter-spacing:-.03em;margin:0;max-width:22ch;font-stretch:106%}
+.dlede{color:var(--muted);font-size:17px;margin:12px 0 0;max-width:70ch}
+.compose{margin-top:20px;background:var(--panel);border:1px solid var(--line-strong);border-radius:var(--r-lg);padding:16px 18px 18px;box-shadow:0 1px 0 var(--line)}
+.compose:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.compose textarea{border:0;padding:6px 4px;font-size:18px;line-height:1.55;min-height:120px;background:transparent;resize:vertical}
+.compose textarea:focus-visible{box-shadow:none}
+.compose .aiact{margin-top:8px;padding-top:12px;border-top:1px solid var(--line)}
+.dgrid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 32px;align-items:start;margin-top:24px}
+.aicard.explain{margin:0}
+.res .dact{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+details.inputs{margin-top:16px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg)}
+details.inputs>summary{cursor:pointer;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:18px 24px;min-height:56px}
+details.inputs>summary::-webkit-details-marker{display:none}
+details.inputs>summary::after{content:"+";margin-left:auto;color:var(--muted);font-size:22px;line-height:1}
+details.inputs[open]>summary::after{content:"−"}
+details.inputs .ih{font-weight:700;font-size:17px}
+details.inputs .isum{color:var(--ink);font-size:14px}
+details.inputs .ihint{flex-basis:100%;color:var(--muted);font-size:13px}
+details.inputs .sheet{border:0;border-top:1px solid var(--line);border-radius:0 0 var(--r-lg) var(--r-lg)}
+
 /* AI: explain and rewrite */
 .aiact{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:12px}
 .aimsg{font-size:14px;color:var(--muted);flex:1;min-width:220px}
@@ -283,6 +306,7 @@ details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:
 @media (max-width:960px){
   .facts .st{display:none}
   .fgrid,.dgrid,.moves,.acc{grid-template-columns:minmax(0,1fr)}
+  .dgrid .res{order:-1}
   .fgrid{grid-template-areas:"info" "chart" "acts";grid-template-rows:auto}
   .quote .odds{flex-basis:auto;font-size:clamp(56px,10vw,84px);margin-top:8px}
   .qmeta{padding-bottom:6px;flex:1;min-width:170px}
@@ -290,6 +314,11 @@ details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:
   .res{position:static}
 }
 @media (max-width:640px){
+  .dtop .btn{display:none}
+  .dhero{padding-top:18px}
+  .dlede{font-size:15px;margin-top:8px}
+  .compose{padding:12px}
+  .compose textarea{font-size:16px;min-height:96px}
   .hero{padding-top:16px}
   .hero-top p,.hero-top .btn,.facts .st,.fhead .tag{display:none}
   .hero h1{font-size:26px}
@@ -373,28 +402,61 @@ details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:
 
 <!-- Draft a bill -->
 <div class="view" id="draft" hidden>
-  <div class="dhead">
-    <div>
-      <h1>Estimate a bill before it's introduced</h1>
-      <p>Describe the bill. The model compares it with every bill since <span id="trainrange"></span> and estimates its chance of clearing each step to the Governor's signature.</p>
+  <div class="dhero">
+    <div class="dtop">
+      <h1>Describe a bill. See its odds. Get a version that can pass.</h1>
+      <button class="btn" id="m-track" type="button" aria-selected="false">Track a filed bill</button>
     </div>
-    <button class="btn" id="m-track" type="button" aria-selected="false">Bill already in print? Track it</button>
+    <p class="dlede">Type a bill idea or paste a Legislative Counsel's Digest. A model trained on every California bill since <span id="trainrange"></span> scores its chance of becoming law. AI explains the number in plain English and drafts a stronger version.</p>
+    <div class="compose">
+      <label for="dg" class="sr">Describe your bill</label>
+      <textarea id="dg" rows="4" placeholder="For example: Require landlords to return security deposits within 14 days with an itemized list and photos of any damage…"></textarea>
+      <div class="aiact">
+        <button class="btn primary" id="aread" type="button"><span class="spin" aria-hidden="true"></span><span class="lbl">Score and explain it</span></button>
+        <span class="aimsg" id="areadmsg" aria-live="polite">AI reads what you wrote and fills in the model's inputs. Nothing is saved.</span>
+      </div>
+      <div class="samples" id="samples"><span>Try an example (made up):</span></div>
+      <div class="aread-ev" id="aread-ev"></div>
+    </div>
   </div>
 
   <div class="dgrid">
-    <div>
-      <div class="sheet">
-        <div class="dgest">
-          <label for="dg">Describe your bill</label>
-          <p class="hint">Type the idea in a few sentences, or paste the Legislative Counsel's Digest. What the bill does is the strongest single input to the model.</p>
-          <textarea id="dg" rows="4" placeholder="Paste the Legislative Counsel's Digest, or describe your bill idea in a few sentences…"></textarea>
-          <div class="aiact">
-            <button class="btn primary" id="aread" type="button"><span class="spin" aria-hidden="true"></span><span class="lbl">Explain it in plain English</span></button>
-            <span class="aimsg" id="areadmsg" aria-live="polite">AI reads what you wrote, fills in the inputs below, then explains the odds.</span>
-          </div>
-          <div class="samples" id="samples"><span>Or try an example (made up for this page):</span></div>
-          <div class="aread-ev" id="aread-ev"></div>
-        </div>
+    <div class="aicard explain">
+      <div class="aihead"><div><h2>In plain English</h2><p class="who">Written by AI from the model's numbers. The odds themselves come from the statistical model.</p></div>
+        <button class="btn" id="aexp" type="button"><span class="spin" aria-hidden="true"></span><span class="lbl">Explain</span></button></div>
+      <div class="ai-out" id="aout" aria-live="polite"><p class="empty">Describe a bill above and choose Score and explain it. You'll get why it scores where it does, where bills like it stall, and what would raise the odds.</p></div>
+      <p class="trace" id="trace" hidden></p>
+    </div>
+    <aside class="res" aria-live="polite" aria-labelledby="res-h" tabindex="-1" id="result">
+      <p class="lab" id="res-h">Chance of being signed</p>
+      <div class="odds" id="p"></div>
+      <span class="band" id="band"></span>
+      <div class="gauge" aria-hidden="true"><div class="rng" id="grng"></div><div class="fill" id="gfill"></div><div class="base" id="gbase"></div></div>
+      <div class="gscale" aria-hidden="true"><span>0%</span><span>Typical bill</span><span>100%</span></div>
+      <div class="rnginfo">
+        <div>Likely range<b id="range"></b></div>
+        <div>Typical bill, <span id="baselabel"></span><b id="basepct"></b></div>
+      </div>
+      <p class="cmp" id="cmp"></p>
+      <div class="dact">
+        <button class="btn" id="share" type="button">Share this estimate</button>
+        <button class="btn" id="reset" type="button">Start over</button>
+        <button class="btn" id="estimate" type="button" hidden>Estimate bill</button>
+      </div>
+    </aside>
+  </div>
+
+  <section class="ai" aria-label="Rewrite to pass">
+    <div class="aicard">
+      <div class="aihead"><div><h2>Rewrite it to pass</h2><p class="who">AI drafts amended versions aimed at the weakest steps, like a staffer before a hearing. The model scores every draft and only shows ones that raise the odds, so the gain is measured, not claimed.</p></div>
+        <button class="btn primary" id="amend" type="button"><span class="spin" aria-hidden="true"></span><span class="lbl">Draft a stronger version</span></button></div>
+      <div id="amout" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <details class="inputs" id="inputs">
+    <summary><span class="ih">Model inputs</span><span class="isum" id="insum"></span><span class="ihint">AI fills these in from your description. Change any of them to see the odds move.</span></summary>
+    <div class="sheet">
         <div class="row"><label class="lab" for="author">Lead author</label><div class="val"><select id="author"></select></div></div>
         <div class="row" id="newrow"><span class="lab" id="ph-lab">Party and house</span><div class="val segs">
           <label for="party" class="sr">Party</label><select id="party"><option value="D">Democrat</option><option value="R">Republican</option></select>
@@ -417,42 +479,8 @@ details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:
           <label class="chip"><input type="checkbox" id="double_referred">Double referred</label>
           <label class="chip"><input type="checkbox" id="spot_bill">Spot bill</label>
         </div></div>
-      </div>
-
-      <div class="dact">
-        <button class="btn" id="estimate" type="button">Estimate bill</button>
-        <button class="btn" id="share" type="button">Share this estimate</button>
-        <button class="btn" id="reset" type="button">Reset</button>
-      </div>
     </div>
-
-    <aside class="res" aria-live="polite" aria-labelledby="res-h" tabindex="-1" id="result">
-      <p class="lab" id="res-h">Chance of being signed</p>
-      <div class="odds" id="p"></div>
-      <span class="band" id="band"></span>
-      <div class="gauge" aria-hidden="true"><div class="rng" id="grng"></div><div class="fill" id="gfill"></div><div class="base" id="gbase"></div></div>
-      <div class="gscale" aria-hidden="true"><span>0%</span><span>Typical bill</span><span>100%</span></div>
-      <div class="rnginfo">
-        <div>Likely range<b id="range"></b></div>
-        <div>Typical bill, <span id="baselabel"></span><b id="basepct"></b></div>
-      </div>
-      <p class="cmp" id="cmp"></p>
-    </aside>
-  </div>
-
-  <section class="ai" aria-label="AI explanation and rewrite">
-    <div class="aicard">
-      <div class="aihead"><div><h2>In plain English</h2><p class="who">Written by AI from the model's numbers. The odds themselves come from the statistical model.</p></div>
-        <button class="btn" id="aexp" type="button"><span class="spin" aria-hidden="true"></span><span class="lbl">Explain</span></button></div>
-      <div class="ai-out" id="aout" aria-live="polite"><p class="empty">Describe a bill at the top and choose Explain it in plain English. You'll get why it scores where it does, where bills like it stall, and what would raise the odds.</p></div>
-      <p class="trace" id="trace" hidden></p>
-    </div>
-    <div class="aicard">
-      <div class="aihead"><div><h2>Rewrite it to pass</h2><p class="who">AI drafts amended versions aimed at the weakest steps, like a staffer before a hearing. The model scores every draft and only shows ones that raise the odds, so the gain is measured, not claimed.</p></div>
-        <button class="btn primary" id="amend" type="button"><span class="spin" aria-hidden="true"></span><span class="lbl">Draft a stronger version</span></button></div>
-      <div id="amout" aria-live="polite"></div>
-    </div>
-  </section>
+  </details>
 
   <div class="path">
     <div class="block-h"><h2>Where it could stall</h2><p>Chance of clearing each step, for a bill that reached it.</p></div>
@@ -482,10 +510,10 @@ details.more summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:
 <footer>Not affiliated with any office or legislator. Not a forecast of any specific bill and not advice.<br>Source: California Legislative Information bulk export (leginfo). Model code, tests and methodology are in the repository.</footer>
 </div></main>
 <script>if(/[?&](sess|chamber|scope|method|budget|sort)=/.test(location.search))location.replace("scorecard.html"+location.search+location.hash);</script>
-<script src="common.js?v=2026-11-03a"></script>
+<script src="common.js?v=2026-11-03b"></script>
 <script src="insights.js"></script>
 <script src="data/model.js"></script>
-<script src="ai-config.js?v=2026-11-03a"></script>
+<script src="ai-config.js?v=2026-11-03b"></script>
 <script>
 const M = MODEL, MET = INSIGHTS.metrics, SM = MET.stages, {esc, label} = CL;
 const $ = id => document.getElementById(id);
@@ -534,7 +562,7 @@ function applyState(s) {
 }
 function saveState() {
   if (!$("track").hidden) return;   // the tracking view keeps its own ?b= state
-  CL.writeState({v: "draft", a: $("author").value, p: $("party").value, o: $("origin").value, c: $("area").value, w: $("window").value,
+  CL.writeState({v: "", a: $("author").value, p: $("party").value, o: $("origin").value, c: $("area").value, w: $("window").value,
     n: +$("coauth").value || 0, f: [...BIN, "joint_lead"].filter(b => $(b).checked).join(","), k: $("kw").value, g: $("dg").value}, DEF);
 }
 
@@ -651,6 +679,9 @@ function render() {
   if (s.author_on_committee) f.push(["Author sits on the committee", p - P({...s, author_on_committee: 0, author_chairs_committee: 0})]);
   f.sort((x, y) => Math.abs(y[1]) - Math.abs(x[1]));
   LAST = {s, p, lo, hi, sp, f};
+  const fl = BIN.filter(k => s[k]).map(k => LABEL[k].toLowerCase());
+  $("insum").textContent = `${s.a ? s.a.member : `A new ${s.origin} ${s.party === "D" ? "Democrat" : "Republican"}`}, ${s.policy_area.replace(/^(Assembly|Senate) /, "")}, filed ${$("window").selectedOptions[0].textContent}, ${$("coauth").value || 0} coauthors${fl.length ? ", " + fl.join(", ") : ""}`;
+  if (!s.has_text) $("cmp").innerHTML += ` <span class="small">Describe a bill to score it; until then this is a bill with typical inputs.</span>`;
   const big = Math.max(0.05, ...f.map(x => Math.abs(x[1])));
   $("fac").innerHTML = f.map(([l, d]) => { const w = (50 * Math.abs(d) / big).toFixed(1), u = d >= 0;
     return `<div>${esc(l)}</div><div class="bar" aria-hidden="true"><i class="${u ? "u" : "d"}" style="width:${w}%"></i></div>` +
@@ -904,12 +935,12 @@ async function readBill() {
     for (const k of FLAGS) if (typeof r[k] === "boolean") $(k).checked = r[k];
     const ev = r.evidence && typeof r.evidence === "object" ? Object.entries(r.evidence) : [];
     $("aread-ev").innerHTML = ev.map(([k, v]) => `<span title="${esc(String(v))}">${esc(LABEL[k] || k)}: “${esc(String(v).slice(0, 48))}”</span>`).join("");
-    msg.innerHTML = `<span class="ok">Inputs filled in.</span> Check them below; you can change any of them.`;
+    msg.innerHTML = `<span class="ok">Scored.</span> The AI filled in the model inputs further down; you can change any of them.`;
     similar(); render();
-    busy(b, false, "Explain it in plain English");
+    busy(b, false, "Score and explain it");
     await explain();
-    document.querySelector(".ai").scrollIntoView({block: "nearest", behavior: CALM.matches ? "auto" : "smooth"});
-  } catch (e) { msg.className = "aimsg err"; msg.textContent = e.message; $("aout").innerHTML = `<p class="empty ai-err">${esc(e.message)}</p>`; busy(b, false, "Explain it in plain English"); }
+    $("result").scrollIntoView({block: "nearest", behavior: CALM.matches ? "auto" : "smooth"});
+  } catch (e) { msg.className = "aimsg err"; msg.textContent = e.message; $("aout").innerHTML = `<p class="empty ai-err">${esc(e.message)}</p>`; busy(b, false, "Score and explain it"); }
 }
 $("aread").addEventListener("click", readBill);
 
@@ -1028,7 +1059,7 @@ $("amout").addEventListener("click", e => {
   $("dg").value = AMENDED.digest || $("dg").value; $("kw").value = AMENDED.subject || $("kw").value;
   for (const k of FLAGS) if (typeof AMENDED[k] === "boolean") $(k).checked = AMENDED[k];
   $("amout").innerHTML = ""; $("aread-ev").innerHTML = ""; similar(); render();
-  document.querySelector(".sheet").scrollIntoView({behavior: CALM.matches ? "auto" : "smooth"}); explain();
+  document.querySelector(".dgrid").scrollIntoView({behavior: CALM.matches ? "auto" : "smooth"}); explain();
 });
 
 // ---------- Track a bill ----------
@@ -1047,8 +1078,8 @@ function setMode(m) {
   $("m-draft").setAttribute("aria-selected", m === "draft"); $("m-track").setAttribute("aria-selected", m === "track");
   $("draft").hidden = m !== "draft"; $("track").hidden = m !== "track";
   CL.navCurrent(m);
-  document.title = m === "draft" ? "Estimate a bill · Capitol Odds" : "Capitol Odds: what are a California bill's chances?";
-  if (m === "track") { const u = new URL(location.href); u.search = trackSel ? "?b=" + encodeURIComponent(trackSel) : ""; history.replaceState(null, "", u); }
+  document.title = m === "draft" ? "Capitol Odds: will your California bill pass?" : "Track California bills · Capitol Odds";
+  if (m === "track") { const u = new URL(location.href); u.search = "?v=track" + (trackSel ? "&b=" + encodeURIComponent(trackSel) : ""); history.replaceState(null, "", u); }
   else { saveState(); }
   // Bills and their histories load together, so the featured chart draws once, complete
   if (m === "track" && !TR) Promise.all([CL.load("data/tracking.js"), CL.load("data/events.js").catch(() => null)]).then(initTrack).catch(() => {
@@ -1157,7 +1188,7 @@ function showBill(id, quiet) {
   const b = TRI[id]; if (!b) return;
   const same = id === shownBill; shownBill = id;
   trackSel = id;
-  if (!$("track").hidden) { const u = new URL(location.href); u.search = "?b=" + encodeURIComponent(id); history.replaceState(null, "", u); }
+  if (!$("track").hidden) { const u = new URL(location.href); u.search = "?v=track&b=" + encodeURIComponent(id); history.replaceState(null, "", u); }
   const ks = TRACKING.checkpoints, [p, i] = latest(b);
   // Biggest move into the latest estimate, measured from an earlier checkpoint
   let mv = "";
@@ -1236,7 +1267,7 @@ $("wl").addEventListener("click", e => {
 });
 
 // Start: tracking is the home view; drafting when the link asks for it or carries an estimate
-const wantsDraft = st0.v === "draft" || ["a", "p", "o", "c", "w", "n", "f", "k", "g"].some(k => TS.has(k));
+const wantsDraft = !(st0.v === "track" || TS.has("b"));
 CL.nav(wantsDraft ? "draft" : "track");
 document.querySelector(".topnav").addEventListener("click", e => {
   const a = e.target.closest("a[data-k]"); if (!a || !["track", "draft"].includes(a.dataset.k) || e.metaKey || e.ctrlKey) return;
