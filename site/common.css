@@ -37,6 +37,7 @@ a:hover{color:var(--accent-hover)}
 .topnav{display:flex;flex-wrap:wrap;gap:2px;margin-left:auto}
 .topnav a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;padding:10px 12px;border-radius:var(--r-sm);min-height:44px;display:flex;align-items:center}
 .topnav a:hover{color:var(--ink);background:var(--raised)}
+.topnav a.acct{border:1px solid var(--line-strong);margin-left:6px}
 .topnav a[aria-current=page]{color:var(--accent-hover);font-weight:600;background:var(--accent-soft)}
 
 /* Page shell */

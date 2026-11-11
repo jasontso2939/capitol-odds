@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon-32.png?v=1" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon.svg?v=1" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=1">
+<title>My desk · Capitol Odds</title>
+<meta name="description" content="Your saved California bills, notes, recently viewed bills and daily digest on Capitol Odds.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<link rel="stylesheet" href="common.css?v=2026-11-11a">
+<style>
+.signin{max-width:440px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;margin:8px 0 32px}
+.signin h2{margin:0 0 6px;font-size:var(--fs-lg)}
+.signin p{color:var(--muted);margin:0 0 16px;font-size:15px}
+.signin label{display:block;font-weight:600;font-size:var(--fs-sm);margin:0 0 6px}
+.signin input{width:100%;min-height:44px;font:inherit;padding:0 12px;border:1px solid var(--line-strong);border-radius:var(--r-sm);margin-bottom:12px;background:var(--panel)}
+.signin input.code{letter-spacing:.3em;font-size:20px;text-align:center}
+.msg{font-size:var(--fs-sm);color:var(--muted);min-height:1.4em;margin:8px 0 0}
+.msg.err{color:var(--down)}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.pane{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 20px;margin-bottom:24px}
+.pane h2{font-size:var(--fs-lg);margin:0 0 4px}
+.pane>p{color:var(--muted);margin:0 0 12px;font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:10px 8px;border-top:1px solid var(--line);vertical-align:top}
+th{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.04em;color:var(--subtle);border-top:0}
+td.n,th.n{text-align:right}
+.act{color:var(--muted);font-size:var(--fs-sm)}
+.note-i{border-top:1px solid var(--line);padding:10px 0}
+.note-i .meta{font-size:var(--fs-xs);color:var(--subtle)}
+.note-i p{margin:4px 0;white-space:pre-wrap}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.prefs label{display:block;font-weight:600;font-size:var(--fs-sm);margin:12px 0 6px}
+.prefs input[type=text],.prefs select{width:100%;min-height:40px;font:inherit;padding:0 10px;border:1px solid var(--line-strong);border-radius:var(--r-sm);background:var(--panel)}
+.prefs .chk{display:flex;gap:8px;align-items:center;font-weight:500}
+.empty{color:var(--muted);font-size:15px;padding:8px 0}
+.o-signed{color:var(--up);font-weight:600}.o-vetoed,.o-not_enacted{color:var(--down);font-weight:600}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1 id="h">My desk</h1>
+<p id="sub">Your bills, notes and morning digest, on any device.</p>
+<nav></nav>
+</div></header>
+<main><div class="wrap">
+
+<div id="out" hidden>
+  <div class="signin">
+    <h2>Sign in or create an account</h2>
+    <p>We email you a 6-digit code. No password to remember.</p>
+    <form id="f1">
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="email" required placeholder="you@example.com">
+      <button class="btn primary" type="submit" id="send">Email me a code</button>
+    </form>
+    <form id="f2" hidden>
+      <label for="code">6-digit code sent to <span id="sentto"></span></label>
+      <input id="code" class="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9 ]{6,8}" maxlength="8" required>
+      <div class="row"><button class="btn primary" type="submit">Sign in</button><button class="btn" type="button" id="back">Use a different email</button></div>
+    </form>
+    <p class="msg" id="msg" role="status" aria-live="polite"></p>
+  </div>
+  <div class="note"><b>What an account adds:</b> your watchlist and notes follow you to any computer or phone, a list of bills you looked at recently, and an optional email each weekday morning with only the bills on your list that moved. Bills you already saved in this browser come with you when you sign in.</div>
+</div>
+
+<div id="in" hidden>
+  <div class="grid">
+    <div>
+      <div class="pane">
+        <h2>Watchlist</h2>
+        <p>Latest action and odds for every bill you watch. Add bills from <a href="index.html?v=track">Track bills</a>.</p>
+        <div id="wl"><p class="empty">Loading…</p></div>
+        <div class="row" style="margin-top:12px"><button class="btn sm" id="wlcsv" type="button">Download (CSV)</button></div>
+      </div>
+      <div class="pane">
+        <h2>Notes</h2>
+        <p>Private to you. Add a note from any bill's page.</p>
+        <div id="nl"><p class="empty">Loading…</p></div>
+        <div class="row" style="margin-top:12px"><button class="btn sm" id="ncsv" type="button">Download (CSV)</button></div>
+      </div>
+    </div>
+    <div>
+      <div class="pane prefs">
+        <h2>Daily digest</h2>
+        <p>One email at about 6:30 a.m. on weekdays, only when a bill on your list changed.</p>
+        <label class="chk"><input type="checkbox" id="dig"> Send me the daily digest</label>
+        <label for="nm">Name in the greeting (optional)</label><input type="text" id="nm" maxlength="80">
+        <label for="role">I work as</label>
+        <select id="role"><option value="">Choose one (optional)</option><option value="staff">Legislative or committee staff</option><option value="lobbyist">Lobbyist or government relations</option><option value="advocate">Advocate or nonprofit</option><option value="agency">State or local agency</option><option value="press">Press</option><option value="other">Something else</option></select>
+        <label for="org">Organization (optional)</label><input type="text" id="org" maxlength="120">
+        <div class="row" style="margin-top:14px"><button class="btn primary sm" id="save" type="button">Save</button><span class="msg" id="pmsg" role="status" aria-live="polite"></span></div>
+      </div>
+      <div class="pane">
+        <h2>Recently viewed</h2>
+        <div id="hl"><p class="empty">Loading…</p></div>
+        <div class="row" style="margin-top:12px"><button class="btn sm" id="hclr" type="button">Clear</button></div>
+      </div>
+      <div class="pane">
+        <h2>Account</h2>
+        <p>Signed in as <b id="who"></b>.</p>
+        <div class="row"><button class="btn sm" id="so" type="button">Sign out</button><button class="btn sm" id="del" type="button">Delete account</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>Not affiliated with any office or legislator. Your watchlist, notes and history are private to your account and are never sold or shared.</footer>
+</div></main>
+<script src="ai-config.js?v=2026-11-11a"></script>
+<script src="account.js?v=2026-11-11a"></script>
+<script src="common.js?v=2026-11-11a"></script>
+<script>
+CL.nav("account.html");
+const $ = id => document.getElementById(id), {esc} = CL, A = CO_ACCOUNT;
+const spaced = id => id.replace(/^([A-Z]+)(\d+)$/, "$1 $2");
+const pc = p => p == null ? "–" : Math.round(p * 100) + "%";
+const OUT = {signed: "Signed", vetoed: "Vetoed", not_enacted: "Did not pass", pending: "Moving"};
+const when = iso => new Date(iso).toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"});
+const billLink = (s, b) => `index.html?v=track&b=${encodeURIComponent(b)}`;
+const say = (el, t, err) => { $(el).textContent = t; $(el).classList.toggle("err", !!err); };
+let WL = [], NOTES = [];
+
+// ---------- Signed out ----------
+let pendingEmail = "";
+$("f1").addEventListener("submit", async e => {
+  e.preventDefault(); pendingEmail = $("email").value; $("send").disabled = true; say("msg", "Sending…");
+  try { await A.sendCode(pendingEmail); $("sentto").textContent = pendingEmail; $("f1").hidden = true; $("f2").hidden = false; $("code").focus(); say("msg", "Check your inbox. The code works for one hour."); }
+  catch (err) { say("msg", err.message, true); }
+  finally { $("send").disabled = false; }
+});
+$("f2").addEventListener("submit", async e => {
+  e.preventDefault(); say("msg", "Checking…");
+  try { await A.verifyCode(pendingEmail, $("code").value); await carryLocalWatchlist(); say("msg", ""); show(); }
+  catch (err) { say("msg", "That code didn't work. Check it, or send a new one.", true); }
+});
+$("back").addEventListener("click", () => { $("f2").hidden = true; $("f1").hidden = false; say("msg", ""); });
+
+// Bills saved in this browser before signing in join the account
+async function carryLocalWatchlist() {
+  let local = [];
+  try { local = JSON.parse(localStorage.getItem("capitolodds.watchlist") || "[]").filter(x => typeof x === "string"); } catch (e) { /* none */ }
+  if (!local.length) return;
+  await CL.load("data/sessions.js").catch(() => null);
+  const s = Array.isArray(window.SESSIONS) && SESSIONS.length ? Math.max(...SESSIONS.map(x => x.year)) : 2025;
+  await A.watchlist.addMany(s, local).catch(() => null);
+}
+
+// ---------- Signed in ----------
+async function show() {
+  const u = A.user();
+  $("out").hidden = !!u; $("in").hidden = !u;
+  $("sub").textContent = u ? "Your bills, notes and morning digest, on any device." : "Save bills, keep notes and get a morning digest of what moved.";
+  if (!u) { $("email").focus(); return; }
+  $("who").textContent = u.email;
+  const [wl, notes, hist, prof] = await Promise.all([A.watchlist.list(), A.notes.list(), A.history.recent(15), A.profile.get()].map(p => p.catch(e => (console.error(e), null))));
+  WL = wl || []; NOTES = notes || [];
+  if (prof) { $("dig").checked = prof.digest_enabled; $("nm").value = prof.display_name || ""; $("role").value = prof.role || ""; $("org").value = prof.organization || ""; }
+  // Status for every watched bill, grouped by session
+  const bySess = {}; for (const w of WL) (bySess[w.session] = bySess[w.session] || []).push(w.bill_id);
+  const st = (await Promise.all(Object.entries(bySess).map(([s, b]) => A.billStatus(s, b)))).flat();
+  const S = Object.fromEntries(st.map(r => [`${r.session}:${r.bill_id}`, r]));
+  WL = WL.map(w => ({...w, ...(S[`${w.session}:${w.bill_id}`] || {})}));
+  $("wl").innerHTML = WL.length ? `<div class="scroll"><table><thead><tr><th>Bill</th><th>Latest action</th><th class="n">Odds</th><th></th></tr></thead><tbody>${WL.map(w =>
+    `<tr><td><a href="${billLink(w.session, w.bill_id)}"><b>${esc(spaced(w.bill_id))}</b></a> <span class="act">${CL.label(w.session)}</span><br><span class="act">${esc(w.title || "")}${w.author ? " · " + esc(w.author) : ""}</span></td>` +
+    `<td>${esc(w.last_action || "–")}<br><span class="act">${w.last_action_date ? esc(w.last_action_date) : ""}</span> <span class="o-${esc(w.outcome || "")}">${OUT[w.outcome] || ""}</span></td>` +
+    `<td class="n">${pc(w.odds)}</td><td><button class="btn sm" type="button" data-rm="${esc(w.session)}:${esc(w.bill_id)}" aria-label="Stop watching ${esc(spaced(w.bill_id))}">Remove</button></td></tr>`).join("")}</tbody></table></div>`
+    : `<p class="empty">No bills yet. Open any bill on <a href="index.html?v=track">Track bills</a> and choose Watch this bill.</p>`;
+  $("nl").innerHTML = NOTES.length ? NOTES.map(n => `<div class="note-i"><div class="meta"><a href="${billLink(n.session, n.bill_id)}">${esc(spaced(n.bill_id))}</a> · ${when(n.created_at)}</div><p>${esc(n.body)}</p><button class="btn sm" type="button" data-nd="${n.id}">Delete</button></div>`).join("")
+    : `<p class="empty">No notes yet.</p>`;
+  $("hl").innerHTML = hist && hist.length ? `<table><tbody>${hist.map(h => `<tr><td><a href="${billLink(h.session, h.bill_id)}">${esc(spaced(h.bill_id))}</a></td><td class="n act">${when(h.viewed_at)}</td></tr>`).join("")}</tbody></table>` : `<p class="empty">Bills you open will show up here.</p>`;
+}
+$("wl").addEventListener("click", async e => {
+  const b = e.target.closest("[data-rm]"); if (!b) return;
+  const [s, id] = b.dataset.rm.split(":"); b.disabled = true;
+  await A.watchlist.remove(s, id).catch(err => alert(err.message));
+  try { localStorage.setItem("capitolodds.watchlist", JSON.stringify(JSON.parse(localStorage.getItem("capitolodds.watchlist") || "[]").filter(x => x !== id))); } catch (e2) { /* ignore */ }
+  show();
+});
+$("nl").addEventListener("click", async e => {
+  const b = e.target.closest("[data-nd]"); if (!b || !confirm("Delete this note?")) return;
+  await A.notes.remove(b.dataset.nd).catch(err => alert(err.message)); show();
+});
+$("save").addEventListener("click", async () => {
+  say("pmsg", "Saving…");
+  try { await A.profile.update({digest_enabled: $("dig").checked, display_name: $("nm").value.trim() || null, role: $("role").value || null, organization: $("org").value.trim() || null}); say("pmsg", "Saved"); }
+  catch (err) { say("pmsg", err.message, true); }
+});
+$("hclr").addEventListener("click", async () => { await A.history.clear().catch(() => null); show(); });
+$("so").addEventListener("click", async () => { await A.signOut(); show(); });
+$("del").addEventListener("click", async () => {
+  if (!confirm("Delete your account, watchlist and notes? This can't be undone.")) return;
+  try { await A.deleteAccount(); show(); } catch (err) { alert(err.message); }
+});
+$("wlcsv").addEventListener("click", () => CL.csv("capitol-odds-watchlist.csv", WL.map(w => ({session: CL.label(w.session), bill: w.bill_id, title: w.title || "", author: w.author || "", last_action: w.last_action || "", last_action_date: w.last_action_date || "", outcome: w.outcome || "", odds: w.odds ?? "", added: w.added_at}))));
+$("ncsv").addEventListener("click", () => CL.csv("capitol-odds-notes.csv", NOTES.map(n => ({session: CL.label(n.session), bill: n.bill_id, note: n.body, created: n.created_at}))));
+A.onChange(() => show());
+if (!A.enabled) { $("out").hidden = false; say("msg", "Accounts aren't switched on for this copy of the site.", true); $("send").disabled = true; }
+else A.ready.then(show);
+</script>
+</body>
+</html>

@@ -76,7 +76,9 @@ const CL = (() => {
       document.body.prepend(bar);
     }
     bar.innerHTML = `<div class="topbar-in"><a class="brand" href="index.html">${MARK}<span>Capitol Odds</span></a>` +
-      `<nav class="topnav" aria-label="Main">${PAGES.map(([k, h, l]) => `<a href="${h}" data-k="${k}"${k === current ? ' aria-current="page"' : ""}>${l}</a>`).join("")}</nav></div>`;
+      `<nav class="topnav" aria-label="Main">${PAGES.map(([k, h, l]) => `<a href="${h}" data-k="${k}"${k === current ? ' aria-current="page"' : ""}>${l}</a>`).join("")}` +
+      // Account link: account.js relabels it "My desk" once someone is signed in
+      `<a href="account.html" data-k="account" class="acct"${current === "account.html" ? ' aria-current="page"' : ""}>${typeof CO_ACCOUNT !== "undefined" && CO_ACCOUNT.user() ? "My desk" : "Sign in"}</a></nav></div>`;
   }
   function navCurrent(k) {
     document.querySelectorAll(".topnav a").forEach(a => a.toggleAttribute("aria-current", a.dataset.k === k));

@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
-<link rel="stylesheet" href="common.css?v=2026-11-03c">
+<link rel="stylesheet" href="common.css?v=2026-11-11a">
 <style>
 /* Home page: tracking view (default) and drafting view */
 .odds{font-weight:800;font-stretch:125%;letter-spacing:-.03em;line-height:.88;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -74,6 +74,13 @@
 .timeline .more-ev{display:none;margin-top:10px}
 .timeline .empty{color:var(--muted);font-size:14px;margin:4px 0 0}
 
+/* Notes on a bill */
+.bnotes{margin-top:20px}
+.bnotes h3{font-size:var(--fs-md);margin:0 0 8px}
+.bnotes textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line-strong);border-radius:var(--r-sm);margin-bottom:8px;resize:vertical;background:var(--panel)}
+.bnotes .bn{border-top:1px solid var(--line);padding:8px 0}
+.bnotes .bn p{margin:2px 0 4px;white-space:pre-wrap}
+.bnotes .dt{font-size:var(--fs-xs);color:var(--subtle)}
 /* Watchlist */
 .block{margin-top:48px}
 .block-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:14px}
@@ -512,10 +519,11 @@ details.inputs .sheet{border:0;border-top:1px solid var(--line);border-radius:0 
 <footer>Not affiliated with any office or legislator. Not a forecast of any specific bill and not advice.<br>Source: California Legislative Information bulk export (leginfo). Model code, tests and methodology are in the repository.</footer>
 </div></main>
 <script>if(/[?&](sess|chamber|scope|method|budget|sort)=/.test(location.search))location.replace("scorecard.html"+location.search+location.hash);</script>
-<script src="common.js?v=2026-11-03c"></script>
+<script src="common.js?v=2026-11-11a"></script>
 <script src="insights.js"></script>
 <script src="data/model.js"></script>
-<script src="ai-config.js?v=2026-11-03c"></script>
+<script src="ai-config.js?v=2026-11-11a"></script>
+<script src="account.js?v=2026-11-11a"></script>
 <script>
 const M = MODEL, MET = INSIGHTS.metrics, SM = MET.stages, {esc, label} = CL;
 const $ = id => document.getElementById(id);
@@ -1109,12 +1117,13 @@ function initTrack() {
     acc.map(a => `<tr><td>${LBL(a.days)}</td><td class="n"><b>${a.auc.toFixed(2)}</b></td><td class="n">${pc(a.predicted_rate)}</td><td class="n">${pc(a.actual_rate)}</td></tr>`).join("") + "</tbody></table></div>";
   $("tnote").textContent = T.complete
     ? `${TR.length.toLocaleString()} bills from ${lab}, a finished session: each bill's odds are what the model said at the time, beside how it ended.`
-    : `${TR.length.toLocaleString()} bills from ${lab}, odds as of ${T.asof}. They update with each weekly data refresh.`;
+    : `${TR.length.toLocaleString()} bills from ${lab}, odds as of ${T.asof}. They update with each weekday data refresh.`;
   const ex = EXAMPLES[T.session];
   EV = window.EVENTS ? (EVENTS.session === T.session ? EVENTS.events : {}) : false;
   if (!trackSel || !TRI[trackSel]) trackSel = ex && TRI[ex.featured] ? ex.featured : biggestMovers(1)[0];
   showBill(trackSel, true);
   renderWatch();
+  if (typeof CO_ACCOUNT !== "undefined") CO_ACCOUNT.ready.then(syncWatch);
 }
 function biggestMovers(n) {
   return TR.map(b => { const [p, i] = latest(b); return [b.bill, i > 0 ? Math.abs(p - b.p[0]) : 0]; }).sort((a, b) => b[1] - a[1]).slice(0, n).map(x => x[0]);
@@ -1214,10 +1223,13 @@ function showBill(id, quiet) {
     <div class="fchart">${chart(b, evs, same)}</div>
     <div class="factions"><button class="btn primary" type="button" id="wbtn" aria-pressed="${watched}">${watched ? "Remove from watchlist" : "Watch this bill"}</button><a class="btn" href="${CL.leginfo(TRACKING.session, b.bill)}" target="_blank" rel="noopener">Bill history</a><button class="btn" type="button" id="tshare">Copy link</button></div>
   </div>
-  <div class="timeline" id="tev"><h3>What moved the odds</h3>${tl}</div></div>`;
+  <div class="timeline" id="tev"><h3>What moved the odds</h3>${tl}</div>
+  <div class="bnotes" id="bnotes" aria-live="polite"></div></div>`;
   if (!same && p != null) countTo($("fodds"), shownP == null ? 0 : shownP, p, $("tbill"));
   if (p != null) shownP = p;
   $("wbtn").addEventListener("click", () => toggleWatch(id));
+  paintNotes(id);
+  if (!same && ACC()) CO_ACCOUNT.history.record(TRACKING.session, id);
   if ($("evmore")) $("evmore").addEventListener("click", () => { $("evl").classList.add("all"); $("evmore").remove(); });
   CL.shareButton($("tshare"));
   wireChart();
@@ -1238,8 +1250,42 @@ function wireChart() {
 
 // Watchlist: examples from the session plus the viewer's own bills (this browser only)
 function toggleWatch(id) {
-  WATCH = WATCH.includes(id) ? WATCH.filter(x => x !== id) : [...WATCH, id];
+  const adding = !WATCH.includes(id);
+  WATCH = adding ? [...WATCH, id] : WATCH.filter(x => x !== id);
   setWatch(WATCH); renderWatch(); showBill(trackSel, true);
+  if (ACC()) (adding ? CO_ACCOUNT.watchlist.add(TRACKING.session, id) : CO_ACCOUNT.watchlist.remove(TRACKING.session, id))
+    .catch(e => { $("wlhint").textContent = "Couldn't save to your account: " + e.message; });
+}
+// Signed in: the account's watchlist is the list, and bills saved in this browser join it
+const ACC = () => typeof CO_ACCOUNT !== "undefined" && CO_ACCOUNT.user();
+async function syncWatch() {
+  if (!ACC() || !TR) return;
+  try {
+    const server = (await CO_ACCOUNT.watchlist.list(TRACKING.session)).map(w => w.bill_id);
+    const localOnly = WATCH.filter(x => !server.includes(x));
+    if (localOnly.length) await CO_ACCOUNT.watchlist.addMany(TRACKING.session, localOnly);
+    WATCH = [...new Set([...server, ...localOnly])]; setWatch(WATCH); renderWatch(); showBill(trackSel, true);
+  } catch (e) { console.error(e); }
+}
+// Notes on the open bill: private to the signed-in person
+async function paintNotes(id) {
+  const box = $("bnotes"); if (!box) return;
+  if (typeof CO_ACCOUNT === "undefined" || !CO_ACCOUNT.enabled) { box.innerHTML = ""; return; }
+  if (!ACC()) { box.innerHTML = `<h3>Your notes</h3><p class="empty"><a href="account.html">Sign in</a> to keep private notes on bills, save your watchlist across devices and get a morning digest of what moved.</p>`; return; }
+  box.innerHTML = `<h3>Your notes</h3><form id="nf"><label class="sr" for="nt">Add a note on ${esc(spaced(id))}</label><textarea id="nt" rows="2" maxlength="10000" placeholder="Add a private note: who to call, where the votes are, what the author promised"></textarea><button class="btn sm" type="submit">Save note</button></form><div id="nlist"><p class="empty">Loading…</p></div>`;
+  $("nf").addEventListener("submit", async e => {
+    e.preventDefault(); const t = $("nt").value.trim(); if (!t) return;
+    try { await CO_ACCOUNT.notes.add(TRACKING.session, id, t); $("nt").value = ""; listNotes(id); } catch (err) { $("nlist").insertAdjacentHTML("afterbegin", `<p class="empty">${esc(err.message)}</p>`); }
+  });
+  listNotes(id);
+}
+async function listNotes(id) {
+  try {
+    const ns = await CO_ACCOUNT.notes.list(TRACKING.session, id);
+    if (shownBill !== id || !$("nlist")) return;
+    $("nlist").innerHTML = ns.length ? ns.map(n => `<div class="bn"><span class="dt">${fmtDate(new Date(n.created_at))}</span><p>${esc(n.body)}</p><button class="btn sm" type="button" data-nd="${n.id}" aria-label="Delete note">Delete</button></div>`).join("") : "";
+    $("nlist").querySelectorAll("[data-nd]").forEach(b => b.addEventListener("click", async () => { await CO_ACCOUNT.notes.remove(b.dataset.nd).catch(() => null); listNotes(id); }));
+  } catch (e) { if ($("nlist")) $("nlist").innerHTML = ""; }
 }
 function spark(b) {
   const ks = TRACKING.checkpoints, pts = ks.map((k, j) => b.p[j] == null ? null : [(k / 365) * 116 + 2, 30 - b.p[j] * 26]).filter(Boolean);
@@ -1254,7 +1300,7 @@ function wrow(b, mine) {
     `<td>${mine ? `<button class="rm" type="button" data-rm="${esc(b.bill)}" aria-label="Remove ${esc(spaced(b.bill))} from watchlist">Remove</button>` : ""}</td></tr>`;
 }
 function renderWatch() {
-  $("wlhint").textContent = WATCH.length ? "Select a bill to chart it. Your bills stay in this browser." : `Examples from ${label(TRACKING.session)}. Use Watch this bill to add your own.`;
+  $("wlhint").textContent = WATCH.length ? (ACC() ? "Select a bill to chart it. Saved to your account." : "Select a bill to chart it. Your bills stay in this browser. Sign in to keep them everywhere.") : `Examples from ${label(TRACKING.session)}. Use Watch this bill to add your own.`;
   const ex = EXAMPLES[TRACKING.session];
   const exIds = (ex ? ex.list : biggestMovers(5)).filter(x => TRI[x]);
   const mine = WATCH.filter(x => TRI[x]);
