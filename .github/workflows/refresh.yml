@@ -1,7 +1,7 @@
 name: refresh-data
 on:
   schedule:
-    - cron: "17 13 * * 1"   # Mondays, 13:17 UTC
+    - cron: "17 12 * * 1-5"   # weekdays, 12:17 UTC (4:17 a.m. Pacific in winter), ahead of the 6:30 a.m. digest
   workflow_dispatch:
   push:
     branches: [main]
@@ -66,6 +66,12 @@ jobs:
             git commit -q -F commit_message.txt
             git push
           fi
+      - name: Send bill status to the accounts database (watchlists and daily digest)
+        # Skipped quietly until the two secrets are added in the repository settings
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: PYTHONPATH=src python scripts/sync_status.py "$YEAR"
       - uses: actions/upload-artifact@v7
         with:
           name: scorecard-site-and-data

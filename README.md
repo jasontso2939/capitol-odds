@@ -1,6 +1,6 @@
 # Capitol Odds
 
-What are a California bill's chances of becoming law? Capitol Odds estimates the chance a proposed bill clears each step to the Governor's signature, alongside a transparent, reproducible scorecard for every member of the California Legislature since the 2007-08 session, rebuilt from the Legislature's official bulk data. One command downloads the data, parses it, applies documented counting rules and publishes a searchable dashboard. A weekly job refreshes it, reports what moved, and rolls over to each new session on its own.
+What are a California bill's chances of becoming law? Capitol Odds estimates the chance a proposed bill clears each step to the Governor's signature, alongside a transparent, reproducible scorecard for every member of the California Legislature since the 2007-08 session, rebuilt from the Legislature's official bulk data. One command downloads the data, parses it, applies documented counting rules and publishes a searchable dashboard. A weekday job refreshes it, reports what moved, and rolls over to each new session on its own.
 
 **Dashboard:** https://jasontso2939.github.io/capitol-odds/
 
@@ -14,6 +14,7 @@ What are a California bill's chances of becoming law? Capitol Odds estimates the
 | [Trends](https://jasontso2939.github.io/capitol-odds/trends.html) | Where bills die, Appropriations by party, committee risk, fiscal flags, coauthors, timing, spot bills, veto reasons. |
 | [Committees](https://jasontso2939.github.io/capitol-odds/committees.html) | Rosters by year, chairs and vice chairs with dates, each member's votes, from the official roll calls. Renamed committees keep one history. |
 | [Findings](https://jasontso2939.github.io/capitol-odds/findings.html) | Eight plain findings from twenty years of bills, recomputed on every rebuild. |
+| [My desk](https://jasontso2939.github.io/capitol-odds/account.html) | Sign in with an email code to keep a watchlist and private notes on any device, see recently viewed bills, and get a weekday morning email with only the watched bills that moved. Setup: [docs/ACCOUNTS.md](docs/ACCOUNTS.md). |
 
 Every page keeps its state in the URL, so any view can be shared, and every table has a CSV download. Pages load only the data they need (a legislator page is about 50 KB), so they work on a phone.
 
@@ -108,7 +109,7 @@ python3 -m http.server -d site   # open http://localhost:8000
 | `src/calleg/trends.py` | Statewide trend tables, including veto-reason classification |
 | `src/calleg/committees.py` | Committee rosters, chairs and member votes from roll calls |
 | `src/calleg/predict.py`, `stages.py` | Bill outlook: one-step and staged models, evaluation, ranges, export for the browser |
-| `scripts/change_report.py` | Weekly change report and alerts |
+| `scripts/change_report.py` | Change report and alerts after each refresh |
 | `data/reference/` | Hand-checked facts: seat changes, name changes, committee renames, veto review |
 | `data/processed/` | Pipeline output (bills, members, committees, headline numbers) |
 | `tests/` | Unit tests for the rules and data-quality checks on the full build |
@@ -122,7 +123,7 @@ python3 -m http.server -d site   # open http://localhost:8000
 - **Staged model over a single one.** Both rank bills equally well; the staged one says where a bill's risk sits, which is what a reader can act on.
 - **Report accuracy honestly.** AUC 0.70 is useful for comparing scenarios and weak for any single bill, and the page says so.
 - **Static site, no server.** The dashboard is plain files with per-page data, so it's free to host, fast on a phone, and can't go down. One stylesheet (`site/common.css`) holds the design tokens every page uses.
-- **Automate the boring part.** A weekly job rebuilds, tests and flags anything that moved, and rolls over to a new session without a code change.
+- **Automate the boring part.** A weekday job rebuilds, tests and flags anything that moved, and rolls over to a new session without a code change.
 
 ## Limits, stated plainly
 
