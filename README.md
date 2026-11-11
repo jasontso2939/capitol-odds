@@ -140,7 +140,7 @@ python3 -m http.server -d site   # open http://localhost:8000
 
 ## How it was built
 
-Built with Claude Code. I chose the questions, the counting rules and the model design, and directed and reviewed the implementation. Tests cover the rules, the data quality and the model.
+I chose the questions, the counting rules and the model design, and directed and reviewed the implementation. Tests cover the rules, the data quality and the model.
 
 ## License and disclaimer
 
